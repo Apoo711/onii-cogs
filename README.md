@@ -3,12 +3,12 @@
 [![Discord.py](https://img.shields.io/badge/Discord.py-rewrite-blue.svg)](https://github.com/Rapptz/discord.py/tree/rewrite)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)  
 
-**Note: This is an unapproved repo, meaning no one formally reviewed this repo yet and any loss of data in your bot isn't my fault (Any loss of data is highly unlikely as I use these cogs for my bot.)  
-but hey, if at all you come across a bug, report it to me in discord.**
+**Note: This is an unapproved repo, meaning no one has formally reviewed this repo yet and any loss of data in your bot isn't my fault (Any loss of data is highly unlikely as I use these cogs for my bot.)  
+if at all you come across a bug, report it to me in discord.**
 
-A fun oriented list of Red-Cogs. 
+Some fun and anime orientated cogs for Redbot. 
 Discord User:  Onii-chan#3920
-Docs: https://npc-cogs.readthedocs.io/en/latest
+Docs:Making it!
  # Installation
 To add cogs from this repo to your instance, do these steps:
 - `[p]repo add onii-cogs https://github.com/onii-chan/onii-cogs`
