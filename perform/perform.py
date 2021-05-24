@@ -1,7 +1,6 @@
 import discord
 import aiohttp
 import asyncio
-import box
 
 from redbot.core import commands 
 from redbot.core.utils import chat_formatting
