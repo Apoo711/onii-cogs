@@ -1,6 +1,6 @@
 import discord
 from redbot.core import commands 
-import box
+from redbot.core.utils import chat_formatting
 
 class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
