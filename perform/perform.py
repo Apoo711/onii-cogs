@@ -12,7 +12,7 @@ class Perform(commands.Cog):
 
     async def req(self, url):
         async with aiohttp.ClientSession() as session:
-            res = async with session.get(f'https://nekos.life/api/v2/img/{url}')
+            async with session.get(f'https://nekos.life/api/v2/img/{url}') as res:
             res = await res.json()
             return box.Box(res)  
     
