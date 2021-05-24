@@ -5,16 +5,12 @@ import box
 
 from redbot.core import commands 
 from redbot.core.utils import chat_formatting
+from redbot.core.utils.chat_formatting import box
 
 class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
     def __init__(self, bot):
         self.bot = bot
-        
-    def box(text: str, lang: str = "") -> str:
-
-    ret = "```{}\n{}\n```".format(lang, text)
-    return ret
 
     async def req(self, url):
         async with aiohttp.ClientSession() as session:
