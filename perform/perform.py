@@ -1,4 +1,7 @@
 import discord
+import aiohttp
+import asyncio
+
 from redbot.core import commands 
 from redbot.core.utils import chat_formatting
 
@@ -8,9 +11,10 @@ class Perform(commands.Cog):
         self.bot = bot
 
     async def req(self, url):
-        res = await self.bot.session.get(f"https://nekos.life/api/v2/img/{url}")
+    async with aiohttp.ClientSession() as session:
+        res = async with session.get(f"https://nekos.life/api/v2/img/{url}")
         res = await res.json()
-        return box.Box(res)    
+        return box.Box(res)  
     
     @commands.command()
     @commands.guild_only()
