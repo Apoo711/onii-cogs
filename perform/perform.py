@@ -15,7 +15,7 @@ class Perform(commands.Cog):
         async with aiohttp.ClientSession() as session:
             async with session.get(f'https://nekos.life/api/v2/img/{url}') as res:
                 res = await res.json()
-                return box.Box(res)  
+                return box(res)  
     
     @commands.command()
     @commands.guild_only()
