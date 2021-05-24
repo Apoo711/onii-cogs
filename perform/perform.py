@@ -11,10 +11,10 @@ class Perform(commands.Cog):
         self.bot = bot
 
     async def req(self, url):
-    async with aiohttp.ClientSession() as session:
-        res = async with session.get(f"https://nekos.life/api/v2/img/{url}")
-        res = await res.json()
-        return box.Box(res)  
+        async with aiohttp.ClientSession() as session:
+            res = async with session.get(f"https://nekos.life/api/v2/img/{url}")
+            res = await res.json()
+            return box.Box(res)  
     
     @commands.command()
     @commands.guild_only()
