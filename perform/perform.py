@@ -3,31 +3,12 @@ import aiohttp
 import asyncio
 
 from redbot.core import commands 
-from redbot.core.utils import chat_formatting
+from redbot.core.utils import chat_formatting, box
 
 class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
     def __init__(self, bot):
         self.bot = bot
-        
-    def box(text: str, lang: str = "") -> str:
-    """Get the given text in a code block.
-
-    Parameters
-    ----------
-    text : str
-        The text to be marked up.
-    lang : `str`, optional
-        The syntax highlighting language for the codeblock.
-
-    Returns
-    -------
-    str
-        The marked up text.
-
-    """
-    ret = "```{}\n{}\n```".format(lang, text)
-    return ret
 
     async def req(self, url):
         async with aiohttp.ClientSession() as session:
