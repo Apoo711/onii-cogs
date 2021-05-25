@@ -71,7 +71,7 @@ class Wallpaper(commands.Cog):
          embed.set_image(url=res['url'])
          await ctx.reply(embed=embed)
         
-    @commands.command(name="avatar", alias=["av"])
+    @commands.command(name="randomavatar", alias=["rav"])
     async def avatar_(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/avatars') as r:
