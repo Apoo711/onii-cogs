@@ -3,6 +3,7 @@ import asyncio
 import random
 from redbot.core import commands
 from redbot.core.config import Group
+import aiohttp
 
 class Wallpaper(commands.Cog):
     
@@ -56,5 +57,32 @@ class Wallpaper(commands.Cog):
           embed.set_image(url  =  random.choice(("https://cdn.discordapp.com/attachments/763154622675681331/836852290933489664/bg-01.png", "https://cdn.discordapp.com/attachments/763154622675681331/836908773146361906/bg-02.png")))
           embed.set_footer(text="Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!")
           await ctx.send(embed=embed)
-                       
+    
+    @anime.command(alias=["rando"])
+    @commands.bot_has_permissions(embed_links=True)
+    async def random(self, ctx):
+     async with aiohttp.ClientSession() as cs:
+      async with cs.get('https://shiro.gg/api/images/wallpapers') as r:
+         res = await r.json()
+         embed = discord.Embed(
+          title = "Here's your random wallpaper!",
+          footer = "Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!",
+          color = discord.Color.random() 
+         )
+         embed.set_image(url=res['url'])
+         await ctx.reply(embed=embed)
+        
+    @anime.command(name="randomavatar", alias=["rav"])
+    @commands.bot_has_permissions(embed_links=True)
+    async def avatar_random(self, ctx: commands.Context):
+     async with aiohttp.ClientSession() as cs:
+      async with cs.get('https://shiro.gg/api/images/avatars') as r:
+         res = await r.json()
+         embed = discord.Embed(
+          title = f"**Here's your anime avatar!**",
+          footer = "Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!",
+          color = discord.Colour.random()
+         )
+         embed.set_image(url=res['url'])
+         await ctx.reply(embed=embed)
         
