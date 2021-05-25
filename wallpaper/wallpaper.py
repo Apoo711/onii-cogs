@@ -58,7 +58,7 @@ class Wallpaper(commands.Cog):
           embed.set_footer(text="Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!")
           await ctx.send(embed=embed)
     
-    @anime.command(alias=["rando"])
+    @anime.command(aliases=["rando"])
     @commands.bot_has_permissions(embed_links=True)
     async def random(self, ctx):
      async with aiohttp.ClientSession() as cs:
@@ -72,7 +72,7 @@ class Wallpaper(commands.Cog):
          embed.set_image(url=res['url'])
          await ctx.reply(embed=embed)
         
-    @anime.command(name="randomavatar", alias=["rav"])
+    @anime.command(name="randomavatar", aliases=["rav"])
     @commands.bot_has_permissions(embed_links=True)
     async def avatar_random(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
