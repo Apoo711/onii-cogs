@@ -19,6 +19,7 @@ To add cogs from this repo to your instance, do these steps:
 | Cog | Status | Description |
 | --- | ---------- |---------------- |
 | wallpaper | Alpha |<details><summary>Wallpaper commands for anime</summary>This cog chooses random wallpapers from a list and sends them to you in an embed.</details>
+| Nsfw | Alpha |<details><summary>Nsfw commands</summary>Nsfw commands, proceed with caution.</details>
 
                                                                                                                                                                                                                           
 ## Credits
