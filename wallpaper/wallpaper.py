@@ -68,6 +68,6 @@ class Wallpaper(commands.Cog):
           description = "Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!",
           color=0xe3be66 
          )
-        embed.set_image(url=res['url'])
+         embed.set_image(url=res['url'])
         await ctx.reply(embed=embed)
         
