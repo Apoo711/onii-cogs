@@ -81,6 +81,6 @@ class Wallpaper(commands.Cog):
           footer = "Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!",
           color = discord.Colour.random()
          )
-        embed.set_image(url=res['url'])
-        await ctx.reply(embed=embed)
+         embed.set_image(url=res['url'])
+         await ctx.reply(embed=embed)
         
