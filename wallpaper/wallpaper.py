@@ -65,9 +65,22 @@ class Wallpaper(commands.Cog):
          res = await r.json()
          embed = discord.Embed(
           title = "Here's your random wallpaper!",
-          description = "Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!",
-          color=0xe3be66 
+          footer = "Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!",
+          color = discord.Color.random() 
          )
          embed.set_image(url=res['url'])
          await ctx.reply(embed=embed)
+        
+    @commands.command(name="avatar", alias=["av"])
+    async def avatar_(self, ctx: commands.Context):
+     async with aiohttp.ClientSession() as cs:
+      async with cs.get('https://shiro.gg/api/images/avatars') as r:
+         res = await r.json()
+         embed = discord.Embed(
+          title = f"**Here's your anime avatar!**",
+          footer = "Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!",
+          color = discord.Colour.random()
+         )
+        embed.set_image(url=res['url'])
+        await ctx.reply(embed=embed)
         
