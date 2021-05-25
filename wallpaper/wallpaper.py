@@ -59,6 +59,7 @@ class Wallpaper(commands.Cog):
           await ctx.send(embed=embed)
     
     @anime.command(alias=["rando"])
+    @commands.bot_has_permissions(embed_links=True)
     async def random(self, ctx):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/wallpapers') as r:
@@ -72,7 +73,8 @@ class Wallpaper(commands.Cog):
          await ctx.reply(embed=embed)
         
     @anime.command(name="randomavatar", alias=["rav"])
-    async def avatar_(self, ctx: commands.Context):
+    @commands.bot_has_permissions(embed_links=True)
+    async def avatar_random(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/avatars') as r:
          res = await r.json()
