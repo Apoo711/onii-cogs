@@ -85,4 +85,4 @@ class Wallpaper(commands.Cog):
          )
          embed.set_image(url=res['url'])
          await ctx.reply(embed=embed)
-        
+    
