@@ -1,4 +1,4 @@
-A Customisable Custom Help Cog For Red:
+A wallpaper cog which sends anime wallpapers:
 =======================================
 
 
