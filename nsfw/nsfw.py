@@ -2,19 +2,16 @@ import json
 import discord
 import asyncio
 import aiohttp
+
 import logging
 import requests
 import datetime
-import coloredlogs
 
 from redbot.core import commands
 
 """
 WARNING: THIS IS AN NSFW COG. You have been warned, anything that now happens to your eyes is not my fault.
 """
-log = logging.getLogger("NSFW cog")
-coloredlogs.install(logger=log)
-
 
 async def api_call(call_uri, returnObj=False):
 	async with aiohttp.ClientSession() as session:
