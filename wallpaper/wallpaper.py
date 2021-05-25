@@ -57,8 +57,8 @@ class Wallpaper(commands.Cog):
           embed.set_footer(text="Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!")
           await ctx.send(embed=embed)
     
-    @commands.command()
-    async def wallpaper(self, ctx):
+    @anime.command(alias=["rando"])
+    async def random(self, ctx):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/wallpapers') as r:
          res = await r.json()
