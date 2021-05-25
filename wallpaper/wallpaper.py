@@ -56,5 +56,17 @@ class Wallpaper(commands.Cog):
           embed.set_image(url  =  random.choice(("https://cdn.discordapp.com/attachments/763154622675681331/836852290933489664/bg-01.png", "https://cdn.discordapp.com/attachments/763154622675681331/836908773146361906/bg-02.png")))
           embed.set_footer(text="Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!")
           await ctx.send(embed=embed)
-                       
+    
+    @commands.command()
+    async def wallpaper(self, ctx):
+     async with aiohttp.ClientSession() as cs:
+      async with cs.get('https://shiro.gg/api/images/wallpapers') as r:
+         res = await r.json()
+         embed = discord.Embed(
+          title = "Here's your random wallpaper!",
+          description = "Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!",
+          color=0xe3be66 
+         )
+        embed.set_image(url=res['url'])
+        await ctx.reply(embed=embed)
         
