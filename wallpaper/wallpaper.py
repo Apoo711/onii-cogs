@@ -69,5 +69,5 @@ class Wallpaper(commands.Cog):
           color=0xe3be66 
          )
          embed.set_image(url=res['url'])
-        await ctx.reply(embed=embed)
+         await ctx.reply(embed=embed)
         
