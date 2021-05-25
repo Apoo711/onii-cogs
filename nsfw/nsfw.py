@@ -297,10 +297,10 @@ class Nsfw(commands.Cog):
 	@commands.is_nsfw()
 	async def spank(self, ctx, user: commands.Greedy[discord.Member] = None):
 		if ctx.channel.is_nsfw():
-			if user == None:
+			if user is None:
 				await ctx.message.reply("Please mention somebody to spank nex time.")
 				return
-			spanked_users = "".join([f"{users.mention} " for users in user])
+			spanked_users = "".join(f"{users.mention} " for users in user)
 			embed = discord.Embed(
 				title="Oooof!",
 				description=f"{spanked_users} got spanked by {ctx.author.mention}",
