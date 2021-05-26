@@ -11,6 +11,7 @@ Index
    :caption: Contents:
 
    wallpaper
+   nsfw
 
 
 Indices and tables
