@@ -687,7 +687,7 @@ class Nsfw(commands.Cog):
 		else:
 			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False)
 
-	@commands.cooldown(3, 7, commands.BucketType.user), mention_author=False
+	@commands.cooldown(3, 7, commands.BucketType.user)
 	@commands.command(name="thigh", aliases=["thighs"])
 	@commands.is_nsfw()
 	async def thigh(self, ctx):
