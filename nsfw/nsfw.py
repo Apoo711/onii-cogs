@@ -53,9 +53,9 @@ class Nsfw(commands.Cog):
 			embed.set_image(
 				url=await api_call("https://nekos.life/api/v2/img/Random_hentai_gif")
 			)
-			await ctx.message.reply(embed=embed)
+			await ctx.reply(embed=embed)
 		else:
-			await ctx.message.reply("This command can only be used in a NSFW channel.")
+			await ctx.reply("This command can only be used in a NSFW channel.")
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
@@ -77,9 +77,9 @@ class Nsfw(commands.Cog):
 			)
 
 			embed.set_image(url=await api_call("https://nekos.life/api/v2/img/erok"))
-			await ctx.message.reply(embed=embed)
+			await ctx.reply(embed=embed, mention_author=False)
 		else:
-			await ctx.message.reply("This command can only be used in a NSFW channel.")
+			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False)
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
@@ -101,9 +101,9 @@ class Nsfw(commands.Cog):
 			)
 
 			embed.set_image(url=await api_call("https://nekos.life/api/v2/img/erokemo"))
-			await ctx.message.reply(embed=embed)
+			await ctx.reply(embed=embed, mention_author=False)
 		else:
-			await ctx.message.reply("This command can only be used in a NSFW channel.")
+			await ctx.reply("This command can only be used in a NSFW channel.")
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="feet", aliases=["feetgif", "foot"])
@@ -125,9 +125,9 @@ class Nsfw(commands.Cog):
 			)
 
 			embed.set_image(url=await api_call("https://nekos.life/api/v2/img/feetg"))
-			await ctx.message.reply(embed=embed)
+			await ctx.reply(embed=embed, mention_author=False)
 		else:
-			await ctx.message.reply("This command can only be used in a NSFW channel.")
+			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False)
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
@@ -147,9 +147,9 @@ class Nsfw(commands.Cog):
 				name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
 			)
 			embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cum"))
-			await ctx.message.reply(embed=embed)
+			await ctx.reply(embed=embed, mention_author=False)
 		else:
-			await ctx.message.reply("This command can only be used in a NSFW channel.")
+			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False)
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="hthighs", aliases=["hthigh", "animethigh"])
@@ -171,9 +171,9 @@ class Nsfw(commands.Cog):
 			embed.set_image(
 				url=await api_call("https://shiro.gg/api/images/nsfw/thighs")
 			)
-			await ctx.message.reply(embed=embed)
+			await ctx.reply(embed=embed, mention_author=False)
 		else:
-			await ctx.message.reply("This command can only be used in a NSFW channel.")
+			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False)
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="nekofuck", aliases=["nekosex", "nekogif"])
@@ -195,9 +195,9 @@ class Nsfw(commands.Cog):
 			embed.set_image(
 				url=await api_call("https://nekos.life/api/v2/img/nsfw_neko_gif")
 			)
-			await ctx.message.reply(embed=embed)
+			await ctx.message.reply(embed=embed, mention_author=False)
 		else:
-			await ctx.message.reply("This command can only be used in a NSFW channel.")
+			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False)
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="futanari")
@@ -219,9 +219,9 @@ class Nsfw(commands.Cog):
 			embed.set_image(
 				url=await api_call("https://nekos.life/api/v2/img/futanari")
 			)
-			await ctx.message.reply(embed=embed)
+			await ctx.reply(embed=embed)
 		else:
-			await ctx.message.reply("This command can only be used in a NSFW channel.")
+			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False)
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="boobs", aliases=["boob"])
@@ -242,9 +242,9 @@ class Nsfw(commands.Cog):
 			)
 			embed.set_image(url=await api_call("https://nekos.life/api/v2/img/boobs"))
 
-			await ctx.message.reply(embed=embed)
+			await ctx.reply(embed=embed, mention_author=False)
 		else:
-			await ctx.message.reply("This command can only be used in a NSFW channel.")
+			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False)
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="blowjob", aliases=["bj"])
@@ -265,9 +265,9 @@ class Nsfw(commands.Cog):
 			)
 			embed.set_image(url=await api_call("https://nekos.life/api/v2/img/blowjob"))
 
-			await ctx.message.reply(embed=embed)
+			await ctx.reply(embed=embed, mention_author=False)
 		else:
-			await ctx.message.reply("This command can only be used in a NSFW channel.")
+			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False)
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
