@@ -1,9 +1,10 @@
 import discord
 import asyncio
 import random
+import aiohttp
+
 from redbot.core import commands
 from redbot.core.config import Group
-import aiohttp
 
 class Wallpaper(commands.Cog):
     
