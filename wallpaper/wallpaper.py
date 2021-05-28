@@ -5,7 +5,8 @@ from redbot.core import commands
 from redbot.core.config import Group
 import aiohttp
 
-footer1 = text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",  icon_url=ctx.message.author.avatar_url,
+footer1 = text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}", 
+icon_url=ctx.message.author.avatar_url
 
 class Wallpaper(commands.Cog):
     
