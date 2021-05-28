@@ -56,7 +56,7 @@ class Wallpaper(commands.Cog):
           embed.add_field(name="Chibi", value="Aren't they cute?", inline=False)
           embed.set_image(url  =  random.choice(("https://cdn.discordapp.com/attachments/763154622675681331/836852290933489664/bg-01.png", "https://cdn.discordapp.com/attachments/763154622675681331/836908773146361906/bg-02.png")))
           embed.set_footer(text="Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!")
-          await ctx.send(embed=embed)
+          await ctx.reply(embed=embed, mention_author=False)
     
     @anime.command(alias=["rando"])
     @commands.bot_has_permissions(embed_links=True)
@@ -70,7 +70,7 @@ class Wallpaper(commands.Cog):
           color = discord.Color.random() 
          )
          embed.set_image(url=res['url'])
-         await ctx.reply(embed=embed)
+         await ctx.reply(embed=embed, mention_author=False)
         
     @anime.command(name="randomavatar", alias=["rav"])
     @commands.bot_has_permissions(embed_links=True)
@@ -84,5 +84,5 @@ class Wallpaper(commands.Cog):
           color = discord.Colour.random()
          )
          embed.set_image(url=res['url'])
-         await ctx.reply(embed=embed)
+         await ctx.reply(embed=embed, mention_author=False)
     
