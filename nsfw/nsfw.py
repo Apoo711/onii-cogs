@@ -637,7 +637,7 @@ class Nsfw(commands.Cog):
 			embed.set_image(url=response["message"])
 			await ctx.reply(embed=embed, mention_author=False)
 		else:
-			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False, mention_author=False)
+			await ctx.reply("This command can only be used in a NSFW channel.", mention_author=False)
 
 	@commands.cooldown(3, 7, commands.BucketType.user)
 	@commands.command(name="4k")
