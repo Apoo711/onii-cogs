@@ -8,7 +8,7 @@ if at all you come across a bug, report it to me in discord.**
 
 Some fun and anime orientated cogs for Redbot. 
 Discord User:  Onii-chan#3920
-Docs:Making it!
+Docs: [Docs](onii-cogs.readthedocs.io)
  # Installation
 To add cogs from this repo to your instance, do these steps:
 - `[p]repo add onii-cogs https://github.com/onii-chan/onii-cogs`
@@ -19,6 +19,7 @@ To add cogs from this repo to your instance, do these steps:
 | Cog | Status | Description |
 | --- | ---------- |---------------- |
 | wallpaper | Alpha |<details><summary>Wallpaper commands for anime</summary>This cog chooses random wallpapers from a list and sends them to you in an embed.</details>
+| Nsfw | Alpha |<details><summary>Nsfw commands</summary>Nsfw commands, proceed with caution.</details>
 
                                                                                                                                                                                                                           
 ## Credits

@@ -21,9 +21,9 @@ class Wallpaper(commands.Cog):
           embed=discord.Embed(color=0xFFF300)
           embed.add_field(name="Zenitsu", value="You asked for some Zenitsu wallpapers?", inline=False)
           embed.set_image(url = random.choice(("https://images2.alphacoders.com/100/thumb-1920-1007550.jpg", "https://cdn.discordapp.com/attachments/736113073328357386/813287821355778108/thumb-1920-1007788.jpg", "https://cdn.discordapp.com/attachments/736113073328357386/801781638991183903/thumb-1920-1026796.jpg", "https://www.enjpg.com/img/2020/zenitsu-12.jpg", "https://images.wallpapersden.com/image/download/breath-of-thunder-zenitsu-agatsuma_a21oameUmZqaraWkpJRobWllrWdma2U.jpg")))
-          embed.set_footer(text="Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!")
+          embed.set_footer(text="Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!")<<<<<<< Dev
           await ctx.reply(embed=embed, mention_author=False)
-         
+    
     @character.command(aliases=["nar"], name="naruto")
     @commands.bot_has_permissions(embed_links=True)
     async def naruto(self, ctx): 
@@ -58,7 +58,7 @@ class Wallpaper(commands.Cog):
           embed.set_footer(text="Wanna add your own wallpapers? Contact the owner or join the support server to suggest your own wallpaper!")
           await ctx.reply(embed=embed, mention_author=False)
     
-    @anime.command(alias=["rando"])
+    @anime.command(aliases=["rando"])
     @commands.bot_has_permissions(embed_links=True)
     async def random(self, ctx):
      async with aiohttp.ClientSession() as cs:
@@ -72,7 +72,7 @@ class Wallpaper(commands.Cog):
          embed.set_image(url=res['url'])
          await ctx.reply(embed=embed, mention_author=False)
         
-    @anime.command(name="randomavatar", alias=["rav"])
+    @anime.command(name="randomavatar", aliases=["rav"])
     @commands.bot_has_permissions(embed_links=True)
     async def avatar_random(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
