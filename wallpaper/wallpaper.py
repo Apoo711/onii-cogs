@@ -70,7 +70,7 @@ class Wallpaper(commands.Cog):
          res = await r.json()
          embed = discord.Embed(
           title = "Here's your random wallpaper!",
-          footer = f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url",
+          footer = f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url,
           color = discord.Color.random() 
          )
          embed.set_image(url=res['url'])
