@@ -14,7 +14,11 @@ class Wallpaper(commands.Cog):
         
     @wallpaper.group(aliases=["c"])
     async def character(self, ctx):
-        """Wallpaper commands"""
+        """The character commands in the wallpaper cog"""
+        
+    @wallpaper.group(aliases=["0"])
+    async def other(self, ctx):
+        """The uncategorised commands in the wallpaper cog"""
     
     @character.command(aliases=["zen"], name="zenitsu")
     @commands.bot_has_permissions(embed_links=True)
@@ -59,7 +63,7 @@ class Wallpaper(commands.Cog):
           embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
           await ctx.reply(embed=embed, mention_author=False)
     
-    @anime.command(aliases=["rando"])
+    @other.command(aliases=["rando"])
     @commands.bot_has_permissions(embed_links=True)
     async def random(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
@@ -73,7 +77,7 @@ class Wallpaper(commands.Cog):
          embed.set_image(url=res['url'])
          await ctx.reply(embed=embed, mention_author=False)
         
-    @anime.command(name="randomavatar", aliases=["rav"])
+    @other.command(name="randomavatar", aliases=["rav"])
     @commands.bot_has_permissions(embed_links=True)
     async def avatar_random(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
@@ -85,7 +89,8 @@ class Wallpaper(commands.Cog):
          await ctx.reply(embed=em, mention_author=False)
         
     
-    @commands.command()
+    @other.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def waifu(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/waifu') as r:
@@ -96,7 +101,8 @@ class Wallpaper(commands.Cog):
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
          await ctx.send(embed=em)
 
-    @commands.command()
+    @other.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def nekoi(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/neko') as r:
@@ -106,7 +112,8 @@ class Wallpaper(commands.Cog):
          em.set_image(url=res['url'])
          await ctx.send(embed=em)
     
-    @commands.command()
+    @other.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def weeb(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/weeb') as r:
@@ -116,7 +123,8 @@ class Wallpaper(commands.Cog):
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
          await ctx.send(embed=em)
             
-    @commands.command()
+    @other.command()
+    @commands.bot_has_permissions(embed_links=True)
     async def baka(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/weeb') as r:
