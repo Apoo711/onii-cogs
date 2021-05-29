@@ -91,7 +91,7 @@ class Wallpaper(commands.Cog):
     
     @commands.command()
     async def waifu(self, ctx: coommands.Context):
-        """Why not get yourself a waifu?"""
+       """Why not get yourself a waifu?"""
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/waifu') as r:
          res = await r.json()
