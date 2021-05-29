@@ -64,7 +64,7 @@ class Wallpaper(commands.Cog):
     
     @anime.command(aliases=["rando"])
     @commands.bot_has_permissions(embed_links=True)
-    async def random(self, ctx):
+    async def random(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/wallpapers') as r:
          res = await r.json()
@@ -90,7 +90,7 @@ class Wallpaper(commands.Cog):
         
     
     @commands.command()
-    async def waifu(self, ctx: coommands.Context):
+    async def waifu(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/waifu') as r:
          res = await r.json()
@@ -101,7 +101,7 @@ class Wallpaper(commands.Cog):
          await ctx.send(embed=em)
 
     @commands.command()
-    async def neko(self, ctx):
+    async def neko(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/neko') as r:
          res = await r.json()
@@ -111,7 +111,7 @@ class Wallpaper(commands.Cog):
          await ctx.send(embed=em)
     
     @commands.command()
-    async def weeb(self, ctx):
+    async def weeb(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/weeb') as r:
          res = await r.json()
@@ -121,7 +121,7 @@ class Wallpaper(commands.Cog):
          await ctx.send(embed=em)
             
     @commands.command()
-    async def baka(self, ctx):
+    async def baka(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/weeb') as r:
          res = await r.json()
