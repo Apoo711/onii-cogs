@@ -8,6 +8,14 @@ from redbot.core.config import Group
 
 class Wallpaper(commands.Cog):
     
+    def __init__(self, bot):
+        self.bot = bot
+    
+    async def req(self, url):
+        res = await self.bot.session.get(f"https://nekos.life/api/v2/img/{url}")
+        res = await res.json()
+        return box(res)    
+    
     @commands.group(aliases=["wp"])
     async def wallpaper(self, ctx):
         """Wallpaper commands"""
@@ -133,3 +141,13 @@ class Wallpaper(commands.Cog):
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
          em.set_image(url=res['url'])
          await ctx.send(embed=em)
+            
+    @commands.command()
+    @commands.guild_only()
+    async def baka(self, ctx):
+        """Random anime picture of BAKA."""
+        res = await self.req("baka")
+        em = discord.Embed(color=discord,Colour.Random(), title="BAKA!")
+        em.set_image(url=res.url)
+        em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
+        await ctx.send(embed=em)
