@@ -84,7 +84,7 @@ class Wallpaper(commands.Cog):
          res = await r.json()
          embed = discord.Embed(
           title = f"**Here's your anime avatar!**",
-          footer = f"footer1",
+          footer = f"Requested by {ctx.message.author.display_name} - Powered by shiro.gg",
           color = discord.Colour.random()
          )
          embed.set_image(url=res['url'])
