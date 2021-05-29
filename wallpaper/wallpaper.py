@@ -85,7 +85,7 @@ class Wallpaper(commands.Cog):
          em = discord.Embed(colour=discord.Colour.random(), title="**Here's your anime avatar!*")
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
          em.set_image(url=res['url'])
-         await ctx.reply(embed=embed, mention_author=False)
+         await ctx.reply(embed=em, mention_author=False)
         
     
     @commands.command()
