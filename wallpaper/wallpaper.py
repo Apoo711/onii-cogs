@@ -82,9 +82,8 @@ class Wallpaper(commands.Cog):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/avatars') as r:
          res = await r.json()
-         em = discord.Embed(color=ctx.author.color, title="**Here's your anime avatar!*")
+         em = discord.Embed(discord.Colour.random, title="**Here's your anime avatar!*")
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
-         em.set_color(discord.Colour.random())
          em.set_image(url=res['url'])
          await ctx.reply(embed=embed, mention_author=False)
         
