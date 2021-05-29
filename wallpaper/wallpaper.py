@@ -91,7 +91,6 @@ class Wallpaper(commands.Cog):
     
     @commands.command()
     async def waifu(self, ctx: coommands.Context):
-       """Why not get yourself a waifu?"""
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/waifu') as r:
          res = await r.json()
@@ -103,7 +102,6 @@ class Wallpaper(commands.Cog):
 
     @commands.command()
     async def neko(self, ctx):
-        """Get a random neko."""
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/neko') as r:
          res = await r.json()
@@ -114,7 +112,6 @@ class Wallpaper(commands.Cog):
     
     @commands.command()
     async def weeb(self, ctx):
-        """Get a random pic for weebs."""
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/weeb') as r:
          res = await r.json()
@@ -125,7 +122,6 @@ class Wallpaper(commands.Cog):
             
     @commands.command()
     async def baka(self, ctx):
-        """Random anime picture of BAKA."""
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/weeb') as r:
          res = await r.json()
