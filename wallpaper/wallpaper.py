@@ -101,7 +101,7 @@ class Wallpaper(commands.Cog):
          await ctx.send(embed=em)
 
     @commands.command()
-    async def neko(self, ctx: commands.Context):
+    async def nekoi(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://nekos.life/api/v2/img/neko') as r:
          res = await r.json()
