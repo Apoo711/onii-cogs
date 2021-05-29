@@ -82,17 +82,14 @@ class Wallpaper(commands.Cog):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/avatars') as r:
          res = await r.json()
-         embed = discord.Embed(
-          title = f"**Here's your anime avatar!**",
-          footer = f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url",
-          color = discord.Colour.random()
-         )
-         embed.set_image(url=res['url'])
+         em = discord.Embed(color=ctx.author.color, title="**Here's your anime avatar!*")
+         em.set_footer = f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url,
+         em.set_color = discord.Colour.random()
+         em.set_image(url=res['url'])
          await ctx.reply(embed=embed, mention_author=False)
         
     
     @commands.command()
-    @commands.guild_only()
     async def waifu(self, ctx: coommands.Context):
         """Why not get yourself a waifu?"""
      async with aiohttp.ClientSession() as cs:
@@ -105,7 +102,6 @@ class Wallpaper(commands.Cog):
          await ctx.send(embed=em)
 
     @commands.command()
-    @commands.guild_only()
     async def neko(self, ctx):
         """Get a random neko."""
      async with aiohttp.ClientSession() as cs:
@@ -117,7 +113,6 @@ class Wallpaper(commands.Cog):
          await ctx.send(embed=em)
     
     @commands.command()
-    @commands.guild_only()
     async def weeb(self, ctx):
         """Get a random pic for weebs."""
      async with aiohttp.ClientSession() as cs:
@@ -129,7 +124,6 @@ class Wallpaper(commands.Cog):
          await ctx.send(embed=em)
             
     @commands.command()
-    @commands.guild_only()
     async def baka(self, ctx):
         """Random anime picture of BAKA."""
      async with aiohttp.ClientSession() as cs:
