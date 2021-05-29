@@ -22,7 +22,7 @@ class Wallpaper(commands.Cog):
           embed=discord.Embed(color=0xFFF300)
           embed.add_field(name="Zenitsu", value="You asked for some Zenitsu wallpapers?", inline=False)
           embed.set_image(url = random.choice(("https://images2.alphacoders.com/100/thumb-1920-1007550.jpg", "https://cdn.discordapp.com/attachments/736113073328357386/813287821355778108/thumb-1920-1007788.jpg", "https://cdn.discordapp.com/attachments/736113073328357386/801781638991183903/thumb-1920-1026796.jpg", "https://www.enjpg.com/img/2020/zenitsu-12.jpg", "https://images.wallpapersden.com/image/download/breath-of-thunder-zenitsu-agatsuma_a21oameUmZqaraWkpJRobWllrWdma2U.jpg")))
-          embed.set_footer(text=f"footer1")
+          embed.set_footer(text="footer1")
           await ctx.reply(embed=embed, mention_author=False)
     
     @character.command(aliases=["nar"], name="naruto")
@@ -32,7 +32,7 @@ class Wallpaper(commands.Cog):
           embed.add_field(name="Zenitsu", value="You asked for some Naruto wallpapers?", inline=False)
           embed.set_image(url = random.choice(("https://cdn.discordapp.com/attachments/736113073328357386/748994203110866944/thumb-1920-532559.jpg", "https://cdn.discordapp.com/attachments/736113073328357386/800950373233459210/thumb-1920-303042.png", "https://cdn.discordapp.com/attachments/742663617522040843/818725598041735168/d5be3a21870ee870bc4b45dd92e68297.jpg", "https://cdn.discordapp.com/attachments/736113073328357386/800950373233459210/thumb-1920-303042.png", "https://wallpaperaccess.com/full/4757768.jpg", "https://wallpaperaccess.com/full/677436.jpg", "https://cdn.hipwallpaper.com/i/47/31/sqE0Hc.jpg", "https://www.teahub.io/photos/full/62-625201_naruto-uzumaki-kurama-4k-naruto-and-kurama-wallpaper.jpg", "https://wallpaper.dog/large/5456675.jpg")))
           embed.set_footer(
-                            text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}", 
+                            text="Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}", 
                             icon_url=ctx.message.author.avatar_url
           )
           await ctx.reply(embed=embed, mention_author=False)
@@ -43,7 +43,7 @@ class Wallpaper(commands.Cog):
           embed=discord.Embed(colour=0xFF9900)
           embed.add_field(name="Tanjiro", value="Behold Tanjiro!", inline=False)
           embed.set_image(url  =  random.choice(("https://wallpapercave.com/wp/wp4771870.jpg",  "https://wallpaperaccess.com/full/2661458.jpg",  "https://wallpapercave.com/wp/wp5194112.jpg")))
-          embed.set_footer(text=f"footer1")
+          embed.set_footer(text="footer1")
           await ctx.reply(embed=embed, mention_author=False)
                        
     
@@ -59,7 +59,7 @@ class Wallpaper(commands.Cog):
           embed=discord.Embed(colour=0xFF00AB)
           embed.add_field(name="Chibi", value="Aren't they cute?", inline=False)
           embed.set_image(url  =  random.choice(("https://cdn.discordapp.com/attachments/763154622675681331/836852290933489664/bg-01.png", "https://cdn.discordapp.com/attachments/763154622675681331/836908773146361906/bg-02.png")))
-          embed.set_footer(text=f"footer1")
+          embed.set_footer(text="footer1")
           await ctx.reply(embed=embed, mention_author=False)
     
     @anime.command(aliases=["rando"])
@@ -70,7 +70,7 @@ class Wallpaper(commands.Cog):
          res = await r.json()
          embed = discord.Embed(
           title = "Here's your random wallpaper!",
-          footer = f"footer1",
+          footer = f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url",
           color = discord.Color.random() 
          )
          embed.set_image(url=res['url'])
@@ -84,9 +84,58 @@ class Wallpaper(commands.Cog):
          res = await r.json()
          embed = discord.Embed(
           title = f"**Here's your anime avatar!**",
-          footer = f"Requested by {ctx.message.author.display_name} - Powered by shiro.gg",
+          footer = f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url",
           color = discord.Colour.random()
          )
          embed.set_image(url=res['url'])
          await ctx.reply(embed=embed, mention_author=False)
+        
     
+    @commands.command()
+    @commands.guild_only()
+    async def waifu(self, ctx: coommands.Context):
+        """Why not get yourself a waifu?"""
+     async with aiohttp.ClientSession() as cs:
+      async with cs.get('https://nekos.life/api/v2/img/waifu') as r:
+         res = await r.json()
+         em = discord.Embed(color=ctx.author.color, title="Waifu")
+         em.description = "Found a waifu for you!"
+         em.set_image(url=res.url)
+         em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
+         await ctx.send(embed=em)
+
+    @commands.command()
+    @commands.guild_only()
+    async def neko(self, ctx):
+        """Get a random neko."""
+     async with aiohttp.ClientSession() as cs:
+      async with cs.get('https://nekos.life/api/v2/img/neko') as r:
+         res = await r.json()
+         em = discord.Embed(color=ctx.author.color, title="Neko")
+         em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
+         em.set_image(url=res_url)
+         await ctx.send(embed=em)
+    
+    @commands.command()
+    @commands.guild_only()
+    async def weeb(self, ctx):
+        """Get a random pic for weebs."""
+     async with aiohttp.ClientSession() as cs:
+      async with cs.get('https://nekos.life/api/v2/img/weeb') as r:
+         res = await r.json()
+         em = discord.Embed(color=ctx.author.color, title="Weeb")
+         em.set_image(url=res.url)
+         em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
+         await ctx.send(embed=em)
+            
+    @commands.command()
+    @commands.guild_only()
+    async def baka(self, ctx):
+        """Random anime picture of BAKA."""
+     async with aiohttp.ClientSession() as cs:
+      async with cs.get('https://nekos.life/api/v2/img/weeb') as r:
+         res = await r.json()
+         em = discord.Embed(color=ctx.author.color, title="BAKA!")
+         em.set_image(url=res.url)
+         em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
+         await ctx.send(embed=em)
