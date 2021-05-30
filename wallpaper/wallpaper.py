@@ -28,7 +28,7 @@ class Wallpaper(commands.Cog):
     async def character(self, ctx):
         """The character commands in the wallpaper cog"""
         
-    @wallpaper.group(aliases=["0"])
+    @wallpaper.group(aliases=["o"])
     async def other(self, ctx):
         """The uncategorised commands in the wallpaper cog"""
     
