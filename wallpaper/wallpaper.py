@@ -150,7 +150,7 @@ class Wallpaper(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     @other.command()
     @commands.guild_only()
-    async def BAKA(self, ctx):
+    async def baka(self, ctx):
           embed = discord.Embed(
 				  title="BAKA!",
 				  color=discord.Colour.random(),
