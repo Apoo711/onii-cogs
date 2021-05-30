@@ -107,7 +107,7 @@ class Wallpaper(commands.Cog):
     async def Waifu(self, ctx):
           embed = discord.Embed(
 				  title="Waifu's for you!",
-				  color=discord,Colour.Random(),
+				  color=discord.Colour.Random(),
 				  timestamp=ctx.message.created_at,
           )
 
@@ -130,7 +130,7 @@ class Wallpaper(commands.Cog):
     async def nekoi(self, ctx):
           embed = discord.Embed(
 				  title="Neko",
-				  color=discord,Colour.Random(),
+				  color=discord.Colour.Random(),
 				  timestamp=ctx.message.created_at,
           )
 
@@ -153,7 +153,7 @@ class Wallpaper(commands.Cog):
     async def BAKA(self, ctx):
           embed = discord.Embed(
 				  title="BAKA!",
-				  color=discord,Colour.Random(),
+				  color=discord.Colour.Random(),
 				  timestamp=ctx.message.created_at,
           )
 
