@@ -82,9 +82,9 @@ class Wallpaper(commands.Cog):
       async with cs.get('https://shiro.gg/api/images/wallpapers') as r:
          res = await r.json()
          embed = discord.Embed(
-          title = "Here's your random wallpaper!",
-          footer = (text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
-          color = discord.Color.random() 
+          title("Here's your random wallpaper!"),
+          footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url),
+          color(discord.Color.random()) 
          )
          embed.set_image(url=res['url'])
          await ctx.reply(embed=embed, mention_author=False)
