@@ -6,15 +6,19 @@ import aiohttp
 from redbot.core import commands
 from redbot.core.config import Group
 
+async def api_call(call_uri, returnObj=False):
+	async with aiohttp.ClientSession() as session:
+		async with session.get(f"{call_uri}") as response:
+			response = await response.json()
+			if returnObj == False:
+				return response["url"]
+			elif returnObj == True:
+				return response
+
 class Wallpaper(commands.Cog):
     
     def __init__(self, bot):
-        self.bot = bot
-    
-    async def req(self, url):
-        res = await self.bot.session.get(f"https://nekos.life/api/v2/img/{url}")
-        res = await res.json()
-        return box(res)    
+        self.bot = bot    
     
     @commands.group(aliases=["wp"])
     async def wallpaper(self, ctx):
@@ -97,57 +101,71 @@ class Wallpaper(commands.Cog):
          await ctx.reply(embed=em, mention_author=False)
         
     
-    @other.command()
-    @commands.bot_has_permissions(embed_links=True)
-    async def waifu(self, ctx: commands.Context):
-     async with aiohttp.ClientSession() as cs:
-      async with cs.get('https://nekos.life/api/v2/img/waifu') as r:
-         res = await r.json()
-         em = discord.Embed(color=ctx.author.color, title="Waifu")
-         em.description = "Found a waifu for you!"
-         em.set_image(url=res['url'])
-         em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
-         await ctx.send(embed=em)
+	@commands.cooldown(5, 7, commands.BucketType.user)
+	@commands.command()
+	@commands.guild_only()
+	async def Waifu(self, ctx):
+          embed = discord.Embed(
+				  title="Waifu's for you!",
+				  color=discord,Colour.Random(),
+				  timestamp=ctx.message.created_at,
+          )
 
-    @other.command()
-    @commands.bot_has_permissions(embed_links=True)
-    async def nekoi(self, ctx: commands.Context):
-     async with aiohttp.ClientSession() as cs:
-      async with cs.get('https://nekos.life/api/v2/img/neko') as r:
-         res = await r.json()
-         em = discord.Embed(color=ctx.author.color, title="Neko")
-         em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
-         em.set_image(url=res['url'])
-         await ctx.send(embed=em)
-    
-    @other.command()
-    @commands.bot_has_permissions(embed_links=True)
-    async def weeb(self, ctx: commands.Context):
-     async with aiohttp.ClientSession() as cs:
-      async with cs.get('https://nekos.life/api/v2/img/weeb') as r:
-         res = await r.json()
-         em = discord.Embed(color=ctx.author.color, title="Weeb")
-         em.set_image(url=res['url'])
-         em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
-         await ctx.send(embed=em)
-            
-    @other.command()
-    @commands.bot_has_permissions(embed_links=True)
-    async def baka(self, ctx: commands.Context):
-     async with aiohttp.ClientSession() as cs:
-      async with cs.get('https://nekos.life/api/v2/img/weeb') as r:
-         res = await r.json()
-         em = discord.Embed(color=ctx.author.color, title="BAKA!")
-         em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
-         em.set_image(url=res['url'])
-         await ctx.send(embed=em)
-            
-    @commands.command()
-    @commands.guild_only()
-    async def baka(self, ctx):
-        """Random anime picture of BAKA."""
-        res = await self.req("baka")
-        em = discord.Embed(color=discord,Colour.Random(), title="BAKA!")
-        em.set_image(url=res.url)
-        em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by nekos.life", icon_url=ctx.author.avatar_url)
-        await ctx.send(embed=em)
+          embed.set_footer(
+				  text=f"Requested by {ctx.message.author.display_name} | Powered by nekos.life",
+				  icon_url=ctx.message.author.avatar_url,
+          )
+          embed.set_author(
+				  name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+          )
+
+          embed.set_image(
+				url=await api_call("https://nekos.life/api/v2/img/waifu")
+          )
+          await ctx.reply(embed=embed)
+
+	@commands.cooldown(5, 7, commands.BucketType.user)
+	@other.command()
+	@commands.guild_only()
+	async def nekoi(self, ctx):
+          embed = discord.Embed(
+				  title="Neko",
+				  color=discord,Colour.Random(),
+				  timestamp=ctx.message.created_at,
+          )
+
+          embed.set_footer(
+				  text=f"Requested by {ctx.message.author.display_name} | Powered by nekos.life",
+				  icon_url=ctx.message.author.avatar_url,
+          )
+          embed.set_author(
+				  name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+          )
+
+          embed.set_image(
+				url=await api_call("https://nekos.life/api/v2/img/neko")
+          )
+          await ctx.reply(embed=embed)
+ 
+	@commands.cooldown(5, 7, commands.BucketType.user)
+	@other.command()
+	@commands.guild_only()
+	async def BAKA(self, ctx):
+          embed = discord.Embed(
+				  title="BAKA!",
+				  color=discord,Colour.Random(),
+				  timestamp=ctx.message.created_at,
+          )
+
+          embed.set_footer(
+				  text=f"Requested by {ctx.message.author.display_name} | Powered by nekos.life",
+				  icon_url=ctx.message.author.avatar_url,
+          )
+          embed.set_author(
+				  name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+          )
+
+          embed.set_image(
+				url=await api_call("https://nekos.life/api/v2/img/baka")
+          )
+          await ctx.reply(embed=embed)
