@@ -101,10 +101,10 @@ class Wallpaper(commands.Cog):
          await ctx.reply(embed=em, mention_author=False)
         
     
-	@commands.cooldown(5, 7, commands.BucketType.user)
-	@commands.command()
-	@commands.guild_only()
-	async def Waifu(self, ctx):
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.command()
+    @commands.guild_only()
+    async def Waifu(self, ctx):
           embed = discord.Embed(
 				  title="Waifu's for you!",
 				  color=discord,Colour.Random(),
@@ -124,10 +124,10 @@ class Wallpaper(commands.Cog):
           )
           await ctx.reply(embed=embed)
 
-	@commands.cooldown(5, 7, commands.BucketType.user)
-	@other.command()
-	@commands.guild_only()
-	async def nekoi(self, ctx):
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @other.command()
+    @commands.guild_only()
+    async def nekoi(self, ctx):
           embed = discord.Embed(
 				  title="Neko",
 				  color=discord,Colour.Random(),
@@ -147,10 +147,10 @@ class Wallpaper(commands.Cog):
           )
           await ctx.reply(embed=embed)
  
-	@commands.cooldown(5, 7, commands.BucketType.user)
-	@other.command()
-	@commands.guild_only()
-	async def BAKA(self, ctx):
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @other.command()
+    @commands.guild_only()
+    async def BAKA(self, ctx):
           embed = discord.Embed(
 				  title="BAKA!",
 				  color=discord,Colour.Random(),
