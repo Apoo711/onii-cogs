@@ -85,9 +85,9 @@ class Perform(commands.Cog):
       async with cs.get('https://shiro.gg/api/images/tickle') as r:
          res = await r.json()
          em = discord.Embed(
-          colour=discord.Colour.random(), 
+          colour=discord.Colour.random(),
+	  description=f"**{ctx.author.name}** just tickled {f'**{str(user.name)}**' if user else 'themselves'}!",
 	 )
-	 em.description=f"**{ctx.author.name}** just tickled {f'**{str(user.name)}**' if user else 'themselves'}!"
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
          em.set_image(url=res['url'])
          await ctx.reply(embed=em, mention_author=False)
