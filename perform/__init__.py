@@ -1,4 +1,4 @@
-from .perform import Roleplay
+from .perform import Perform
 
 def setup(bot):
-    bot.add_cog(Roleplay(bot))
+    bot.add_cog(Perform(bot))
