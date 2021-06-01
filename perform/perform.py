@@ -1,5 +1,6 @@
 import discord
-from redbot.core import commands \
+from redbot.core import commands
+import aiohttp
 
 async def api_call(call_uri, returnObj=False):
 	async with aiohttp.ClientSession() as session:
