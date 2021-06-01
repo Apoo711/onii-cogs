@@ -10,7 +10,7 @@ async def api_call(call_uri, returnObj=False):
 			elif returnObj == True:
 				return response
 
-class Roleplay(commands.Cog):
+class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
     def __init__(self, bot):
         self.bot = bot   
