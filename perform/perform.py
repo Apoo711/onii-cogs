@@ -70,7 +70,7 @@ class Perform(commands.Cog):
 
     @commands.command(name="pat")
     @commands.bot_has_permissions(embed_links=True)
-    async def pat(self, ctx: commands.Context):
+    async def pat(self, ctx, *, user: discord.Member):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/pat') as r:
          em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just patted {f'**{str(user.name)}**' if user else 'themselves'}!")
