@@ -102,7 +102,7 @@ class Wallpaper(commands.Cog):
         
     
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command()
+    @other.command()
     @commands.guild_only()
     async def Waifu(self, ctx):
           embed = discord.Embed(
@@ -122,7 +122,7 @@ class Wallpaper(commands.Cog):
           embed.set_image(
 				url=await api_call("https://nekos.life/api/v2/img/waifu")
           )
-          await ctx.reply(embed=embed)
+          await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @other.command()
@@ -145,4 +145,4 @@ class Wallpaper(commands.Cog):
           embed.set_image(
 				url=await api_call("https://nekos.life/api/v2/img/neko")
           )
-          await ctx.reply(embed=embed)
+          await ctx.reply(embed=embed, mention_author=False)
