@@ -44,7 +44,7 @@ class Roleplay(commands.Cog):
     @commands.guild_only()
     async def baka(self, ctx):
           embed = discord.Embed(
-				  title="f"**{ctx.author.name}** cuddled {f'**{str(user.name)}**' if user else 'themselves'}!"",
+				  title=f"**{ctx.author.name}** cuddled {'**{str(user.name)}**' if user else 'themselves'}!",
 				  color=discord.Colour.random(),
 				  timestamp=ctx.message.created_at,
           )
@@ -67,7 +67,7 @@ class Roleplay(commands.Cog):
     async def poke(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/poke') as r:
-         em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just poked {f'**{str(user.name)}**' if user else 'themselves'}!")
+         em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** poked {'**{str(user.name)}**' if user else 'themselves'}!",)
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
          em.set_image(url=res['url'])
          await ctx.reply(embed=em, mention_author=False)
@@ -77,7 +77,7 @@ class Roleplay(commands.Cog):
     async def kiss(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/kiss') as r:
-         em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just kissed {f'**{str(user.name)}**' if user else 'themselves'}!")
+         em = discord.Embed(colour=discord.Colour.random(), title=title=f"**{ctx.author.name}** just kissed {'**{str(user.name)}**' if user else 'themselves'}!",)
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
          em.set_image(url=res['url'])
          await ctx.reply(embed=em, mention_author=False)
@@ -87,7 +87,7 @@ class Roleplay(commands.Cog):
     async def hug(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/hug') as r:
-         em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just hugged {f'**{str(user.name)}**' if user else 'themselves'}!")
+         em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just hugged {'**{str(user.name)}**' if user else 'themselves'}!",)
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
          em.set_image(url=res['url'])
          await ctx.reply(embed=em, mention_author=False)
@@ -107,7 +107,7 @@ class Roleplay(commands.Cog):
     async def tickle(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/tickle') as r:
-         em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just tickled {f'**{str(user.name)}**' if user else 'themselves'}!")
+         em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just tickled {'**{str(user.name)}**' if user else 'themselves'}!",)
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
          em.set_image(url=res['url'])
          await ctx.reply(embed=em, mention_author=False)
