@@ -23,7 +23,7 @@ class Perform(commands.Cog):
     async def angery(self, ctx):
           embed = discord.Embed(
 				  title=f"{ctx.message.author.display_name} is angry!",
-				  color=(),
+				  color=discord.Colour.random(),
 				  timestamp=ctx.message.created_at,
           )
 
