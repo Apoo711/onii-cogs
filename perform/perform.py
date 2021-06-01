@@ -77,7 +77,7 @@ class Roleplay(commands.Cog):
     async def kiss(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/kiss') as r:
-         em = discord.Embed(colour=discord.Colour.random(), title=title=f"**{ctx.author.name}** just kissed {'**{str(user.name)}**' if user else 'themselves'}!",)
+         em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just kissed {'**{str(user.name)}**' if user else 'themselves'}!",)
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
          em.set_image(url=res['url'])
          await ctx.reply(embed=em, mention_author=False)
