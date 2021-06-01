@@ -20,7 +20,7 @@ To add cogs from this repo to your instance, do these steps:
 | --- | ---------- |---------------- |
 | wallpaper | Alpha |<details><summary>Wallpaper commands for anime</summary>This cog chooses random wallpapers from a list and sends them to you in an embed.</details>
 | Nsfw | Alpha |<details><summary>Nsfw commands</summary>Nsfw commands, proceed with caution.</details>
-
+| Perform |Alpha |<deatails><summary>Perform commands</summary>Perform things like cuddle, poke, kiss etc.</details>
                                                                                                                                                                                                                           
 ## Credits
 - Everyone who contributed to make this better.
