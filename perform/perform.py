@@ -20,7 +20,7 @@ class Perform(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command()
     @commands.guild_only()
-    async def angery(self, ctx):
+    async def angry(self, ctx):
           embed = discord.Embed(
 				  title=f"{ctx.message.author.display_name} is angry!",
 				  color=discord.Colour.random(),
