@@ -15,34 +15,11 @@ class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
     def __init__(self, bot):
         self.bot = bot   
-
     
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command()
     @commands.guild_only()
-    async def angry(self, ctx):
-          embed = discord.Embed(
-				  title=f"{ctx.message.author.display_name} is angry!",
-				  color=discord.Colour.random(),
-          )
-
-          embed.set_footer(
-				  text=f"Requested by {ctx.message.author.display_name} | Powered by nekos.life",
-				  icon_url=ctx.message.author.avatar_url,
-          )
-          embed.set_author(
-				  name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-          )
-
-          embed.set_image(
-				url=await api_call("https://nekos.life/api/v2/img/baka")
-          )
-          await ctx.reply(embed=embed)
-    
-    @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command()
-    @commands.guild_only()
-    async def baka(self, ctx):
+    async def cuddle(self, ctx):
           embed = discord.Embed(
 				  title=f"**{ctx.author.name}** cuddled {'**{str(user.name)}**' if user else 'themselves'}!",
 				  color=discord.Colour.random(),
@@ -103,10 +80,10 @@ class Perform(commands.Cog):
 
     @commands.command(name="tickle")
     @commands.bot_has_permissions(embed_links=True)
-    async def tickle(self, ctx: commands.Context):
+    async def tickle(self, ctx: commands.Context, user: discord.Member):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/tickle') as r:
-         em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just tickled {'**{str(user.name)}**' if user else 'themselves'}!",)
+         em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just tickled {'**{user.mention}**' if user else 'themselves'}!",)
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
          em.set_image(url=res['url'])
          await ctx.reply(embed=em, mention_author=False)
