@@ -116,7 +116,7 @@ class Perform(commands.Cog):
 	 res = await r.json()
          em = discord.Embed(
           colour=discord.Colour.random(),
-	  description=f"**{ctx.author.mention}** is acting all smug!"
+	  description=f"**{ctx.author.mention}** is acting all smug!",
 	 )
          em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
          em.set_image(url=res['url'])
