@@ -104,7 +104,7 @@ class Wallpaper(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     @other.command()
     @commands.guild_only()
-    async def Waifu(self, ctx):
+    async def waifu(self, ctx):
           embed = discord.Embed(
 				  title="Waifu's for you!",
 				  color=discord.Colour.random(),
