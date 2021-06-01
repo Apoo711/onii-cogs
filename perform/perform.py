@@ -80,7 +80,7 @@ class Perform(commands.Cog):
 
     @commands.command(name="tickle")
     @commands.bot_has_permissions(embed_links=True)
-    async def tickle(self, ctx: commands.Context, user: discord.Member):
+    async def tickle(self, ctx: commands.Context):
      async with aiohttp.ClientSession() as cs:
       async with cs.get('https://shiro.gg/api/images/tickle') as r:
          em = discord.Embed(colour=discord.Colour.random(), title=f"**{ctx.author.name}** just tickled {'**{user.mention}**' if user else 'themselves'}!",)
