@@ -118,7 +118,7 @@ class Perform(commands.Cog):
 
     @commands.command(name="smug")
     @commands.bot_has_permissions(embed_links=True)
-    async def smug(self, ctx, user: discord.User):
+    async def smug(self, ctx):
         async with aiohttp.ClientSession() as cs:
             async with cs.get('https://shiro.gg/api/images/smug') as r:
                 res = await r.json()
