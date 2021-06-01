@@ -24,7 +24,6 @@ class Perform(commands.Cog):
           embed = discord.Embed(
 				  title=f"{ctx.message.author.display_name} is angry!",
 				  color=discord.Colour.random(),
-				  timestamp=ctx.message.created_at,
           )
 
           embed.set_footer(
@@ -47,7 +46,6 @@ class Perform(commands.Cog):
           embed = discord.Embed(
 				  title=f"**{ctx.author.name}** cuddled {'**{str(user.name)}**' if user else 'themselves'}!",
 				  color=discord.Colour.random(),
-				  timestamp=ctx.message.created_at,
           )
 
           embed.set_footer(
