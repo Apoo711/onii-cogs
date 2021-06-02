@@ -22,7 +22,7 @@ class Nsfw(commands.Cog):
 	Nsfw commands, proceed with caution.
 	"""
 
-	__author__ = "Onii-chan"
+	__author__ = ["Onii-chan"]
 	__version__ = "1.0.0"
 	
 	def __init__(self, bot):
