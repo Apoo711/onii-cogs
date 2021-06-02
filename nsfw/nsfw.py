@@ -7,6 +7,7 @@ import logging
 import datetime
 
 from redbot.core import commands
+from typing import Optional, List, Union
 
 async def api_call(call_uri, returnObj=False):
 	async with aiohttp.ClientSession() as session:
