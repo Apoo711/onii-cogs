@@ -9,7 +9,6 @@ import datetime
 
 from redbot.core import commands
 from .stuff import stuff
-from redbot.core.i18n import Translator, cog_i18n
 
 async def api_call(call_uri, returnObj=False):
 	async with aiohttp.ClientSession() as session:
@@ -20,10 +19,6 @@ async def api_call(call_uri, returnObj=False):
 			elif returnObj == True:
 				return response
 			
-
-_ = Translator("hentai", __file__)
-
-@cog_i18n(_)
 class hentai(commands.Cog):
 	"""
 	Nsfw commands, proceed with caution.
