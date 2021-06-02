@@ -5,6 +5,8 @@ from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, inline
 
+from typing import Optional, List, Union
+
 _ = Translator("hentai", __file__)
 
 
