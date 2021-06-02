@@ -1,4 +1,4 @@
-from .hentai import hentai
+from .Nsfw import Nsfw
 
 def setup(bot):
-    bot.add_cog(hentai(bot))
+    bot.add_cog(Nsfw(bot))
