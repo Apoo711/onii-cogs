@@ -23,8 +23,16 @@ class Nsfw(commands.Cog):
 	Nsfw commands, proceed with caution.
 	"""
 
+    	__author__ = ["Onii-chan"]
+   	__version__ = "1.0.0"
+	
 	def __init__(self, bot):
 		self.bot = bot
+		
+	def format_help_for_context(self, ctx: commands.Context) -> str:
+            """Thanks Sinbad!"""
+            pre_processed = super().format_help_for_context(ctx)
+            return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
