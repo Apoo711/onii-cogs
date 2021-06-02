@@ -9,6 +9,7 @@ import datetime
 
 from redbot.core import commands
 from .stuff import stuff
+from redbot.core.i18n import Translator, cog_i18n
 
 async def api_call(call_uri, returnObj=False):
 	async with aiohttp.ClientSession() as session:
