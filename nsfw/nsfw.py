@@ -18,14 +18,13 @@ async def api_call(call_uri, returnObj=False):
 			elif returnObj == True:
 				return response
 
+__author__ = ["Onii-chan"]
+__version__ = "0.1.0"
 
 class Nsfw(commands.Cog):
 	"""
 	Nsfw commands, proceed with caution.
 	"""
-	
-    	__author__ = ["Onii-chan"]
-   	__version__ = "0.1.0"
 
 	async def red_delete_data_for_user(self, **kwargs):
         	"""Nothing to delete."""
