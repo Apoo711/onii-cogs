@@ -7,10 +7,6 @@ from redbot.core.utils.chat_formatting import bold, box, inline
 
 from typing import Optional, List, Union
 
-_ = Translator("hentai", __file__)
-
-
-@cog_i18n(_)
 class stuff(commands.Cog):
   
     __author__ = ["Onii-chan"]
