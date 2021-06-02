@@ -218,7 +218,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="**Titties**!!!!!",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -241,7 +240,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="Oh shit!",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -264,7 +262,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="Dang!",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -653,7 +650,7 @@ class Nsfw(commands.Cog):
 		if ctx.channel.is_nsfw():
 			response = await api_call("https://nekobot.xyz/api/image?type=yaoi", True)
 			embed = discord.Embed(
-				title="", color=response["color"], timestamp=ctx.created_at
+				title="", color=response["color"],
 			)
 
 			embed.set_footer(
@@ -677,7 +674,7 @@ class Nsfw(commands.Cog):
 		if ctx.channel.is_nsfw():
 			response = await api_call("https://nekobot.xyz/api/image?type=thigh", True)
 			embed = discord.Embed(
-				title="", color=response["color"], timestamp=ctx.created_at
+				title="", color=response["color"],
 			)
 
 			embed.set_footer(
