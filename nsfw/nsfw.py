@@ -461,7 +461,7 @@ class Nsfw(commands.Cog):
 	@commands.command()
 	@commands.is_nsfw()
 	async def erofeet(self, ctx):
-		"""Erofeet Porn"""
+		"""Erofeet 3"""
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
 				title="",
@@ -605,7 +605,7 @@ class Nsfw(commands.Cog):
 		if ctx.channel.is_nsfw():
 			response = await api_call("https://nekobot.xyz/api/image?type=pgif", True)
 			embed = discord.Embed(
-				title="", color=response["color"], timestamp=ctx.created_at
+				title="", color=response["color"],
 			)
 
 			embed.set_footer(
@@ -629,7 +629,7 @@ class Nsfw(commands.Cog):
 		if ctx.channel.is_nsfw():
 			response = await api_call("https://nekobot.xyz/api/image?type=4k", True)
 			embed = discord.Embed(
-				title="", color=response["color"], timestamp=ctx.created_at
+				title="", color=response["color"],
 			)
 
 			embed.set_footer(
