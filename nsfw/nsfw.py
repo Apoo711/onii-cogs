@@ -8,6 +8,7 @@ import requests
 import datetime
 
 from redbot.core import commands
+from .stuff import stuff
 
 async def api_call(call_uri, returnObj=False):
 	async with aiohttp.ClientSession() as session:
@@ -17,39 +18,21 @@ async def api_call(call_uri, returnObj=False):
 				return response["url"]
 			elif returnObj == True:
 				return response
+			
 
-__author__ = ["Onii-chan"]
-__version__ = "0.1.0"
+_ = Translator("hentai", __file__)
 
-class Nsfw(commands.Cog):
+@cog_i18n(_)
+class hentai(commands.Cog):
 	"""
 	Nsfw commands, proceed with caution.
 	"""
 
-	async def red_delete_data_for_user(self, **kwargs):
-        	"""Nothing to delete."""
-        	return
-
 	def __init__(self, bot):
 		self.bot = bot
 		
-	def format_help_for_context(self, ctx: commands.Context) -> str:
-          """Thanks Sinbad!"""
-          pre_processed = super().format_help_for_context(ctx)
-          return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
-
-	async def _version_msg(self, ctx: commands.Context, version: str, authors: List[str]):
-            """Cog version message."""
-            msg = box(
-                _("Nsfw cog version: {version}\nAuthors: {authors}").format(
-                    version=version, authors=", ".join(authors)
-                ),
-                lang="py",
-            )
-            return await ctx.send(msg)
-		
 	@commands.command()
-	async def nsfwversion(self, ctx: commands.Context):
+	async def henversion(self, ctx: commands.Context):
             """Get the version of the installed Nsfw cog."""
 
             await self._version_msg(ctx, self.__version__, self.__author__)
