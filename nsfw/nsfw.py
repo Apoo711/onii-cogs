@@ -4,7 +4,6 @@ import asyncio
 import aiohttp
 
 import logging
-import requests
 import datetime
 
 from redbot.core import commands
