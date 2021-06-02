@@ -33,6 +33,12 @@ class Nsfw(commands.Cog):
 				pre_processed = super().format_help_for_context(ctx)
 				return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
 
+	@commands.command()
+	async def nsfwversion(self, ctx: commands.Context):
+            """Get the version of the installed Nsfw cog."""
+
+            await self._version_msg(ctx, self.__version__, self.__author__)
+	
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
