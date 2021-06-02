@@ -8,7 +8,6 @@ import requests
 import datetime
 
 from redbot.core import commands
-from .stuff import stuff
 
 async def api_call(call_uri, returnObj=False):
 	async with aiohttp.ClientSession() as session:
@@ -26,12 +25,6 @@ class Nsfw(commands.Cog):
 
 	def __init__(self, bot):
 		self.bot = bot
-		
-	@commands.command()
-	async def henversion(self, ctx: commands.Context):
-            """Get the version of the installed Nsfw cog."""
-
-            await self._version_msg(ctx, self.__version__, self.__author__)
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
@@ -299,7 +292,6 @@ class Nsfw(commands.Cog):
 				title="Oooof!",
 				description=f"{spanked_users} got spanked by {ctx.author.mention}",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -319,7 +311,7 @@ class Nsfw(commands.Cog):
 	async def lesbian(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
-				color=ctx.message.author.color, timestamp=ctx.message.created_at
+				color=ctx.message.author.color
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -339,7 +331,7 @@ class Nsfw(commands.Cog):
 	async def trap(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
-				color=ctx.message.author.color, timestamp=ctx.message.created_at
+				color=ctx.message.author.color
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -359,7 +351,7 @@ class Nsfw(commands.Cog):
 	async def hololewd(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
-				color=ctx.message.author.color, timestamp=ctx.message.created_at
+				color=ctx.message.author.color
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -381,9 +373,8 @@ class Nsfw(commands.Cog):
 	async def foxgirl(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
-				title="",
+				title="Foxy",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -406,9 +397,8 @@ class Nsfw(commands.Cog):
 	async def lewdkitsune(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
-				title="",
+				title="Lewddd",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -431,7 +421,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -454,7 +443,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -478,7 +466,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -502,7 +489,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -526,7 +512,7 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
+
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -550,7 +536,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="",
 				color=ctx.author.color,
-				timestamp=ctx.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.author.display_name}#{ctx.author.discriminator}",
@@ -574,7 +559,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="",
 				color=ctx.author.color,
-				timestamp=ctx.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.author.display_name}#{ctx.author.discriminator}",
@@ -597,7 +581,7 @@ class Nsfw(commands.Cog):
 		if ctx.channel.is_nsfw():
 			response = await api_call("https://nekobot.xyz/api/image?type=hass", True)
 			embed = discord.Embed(
-				title="", color=response["color"], timestamp=ctx.created_at
+				title="", color=response["color"],
 			)
 
 			embed.set_footer(
