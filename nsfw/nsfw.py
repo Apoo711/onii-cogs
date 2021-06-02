@@ -24,8 +24,8 @@ class Nsfw(commands.Cog):
 	Nsfw commands, proceed with caution.
 	"""
 	
-    	__author__ = ["Onii-chan"]
-    	__version__ = "0.1.0"
+    __author__ = ["Onii-chan"]
+    __version__ = "0.1.0"
 
 	async def red_delete_data_for_user(self, **kwargs):
         	"""Nothing to delete."""
@@ -48,7 +48,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="Juicy henti for you!",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 
 			embed.set_footer(
@@ -74,7 +73,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="Erok Kitsune !!!",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 
 			embed.set_footer(
@@ -98,7 +96,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="***ERO*** NEKO!",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 
 			embed.set_footer(
@@ -122,7 +119,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="***Feet***",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 
 			embed.set_footer(
@@ -146,7 +142,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="***Sticky white stuff!***",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -168,7 +163,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="Thic thighs!",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -192,7 +186,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="Catgirls!!!!",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
@@ -216,7 +209,6 @@ class Nsfw(commands.Cog):
 			embed = discord.Embed(
 				title="",
 				color=ctx.message.author.color,
-				timestamp=ctx.message.created_at,
 			)
 			embed.set_footer(
 				text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
