@@ -8,6 +8,7 @@ import datetime
 
 from redbot.core import commands
 from typing import Optional, List, Union
+from redbot.core.utils.chat_formatting import bold, box, inline
 
 async def api_call(call_uri, returnObj=False):
 	async with aiohttp.ClientSession() as session:
