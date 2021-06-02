@@ -19,7 +19,7 @@ async def api_call(call_uri, returnObj=False):
 			elif returnObj == True:
 				return response
 			
-class hentai(commands.Cog):
+class Nsfw(commands.Cog):
 	"""
 	Nsfw commands, proceed with caution.
 	"""
