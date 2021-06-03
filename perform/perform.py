@@ -24,7 +24,7 @@ class Perform(commands.Cog):
     @commands.guild_only()
     async def cuddle(self, ctx, user: discord.User):
         embed = discord.Embed(
-            description=f"**{ctx.author.mention}** cuddled {'**{str(user.mention)}**' if user else 'themselves'}!",
+            description=f"**{ctx.author.mention}** cuddled {f'**{str(user.mention)}**' if user else 'themselves'}!",
             color=discord.Colour.random(),
         )
 
@@ -49,7 +49,7 @@ class Perform(commands.Cog):
                 res = await r.json()
                 em = discord.Embed(
                     colour=discord.Colour.random(),
-                    description=f"**{ctx.author.mention}** poked {'**{str(user.mention)}**' if user else 'themselves'}!",
+                    description=f"**{ctx.author.mention}** poked {f'**{str(user.mention)}**' if user else 'themselves'}!",
                 )
                 em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
                               icon_url=ctx.author.avatar_url)
@@ -64,7 +64,7 @@ class Perform(commands.Cog):
                 res = await r.json()
                 em = discord.Embed(
                     colour=discord.Colour.random(),
-                    description=f"**{ctx.author.mention}** just kissed {'**{str(user.mention)}**' if user else 'themselves'}!",
+                    description=f"**{ctx.author.mention}** just kissed {f'**{str(user.mention)}**' if user else 'themselves'}!",
                 )
                 em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
                               icon_url=ctx.author.avatar_url)
@@ -79,7 +79,7 @@ class Perform(commands.Cog):
                 res = await r.json()
                 em = discord.Embed(
                     colour=discord.Colour.random(),
-                    description=f"**{ctx.author.mention}** just hugged {'**{str(user.mention)}**' if user else 'themselves'}!",
+                    description=f"**{ctx.author.mention}** just hugged {f'**{str(user.mention)}**' if user else 'themselves'}!",
                 )
                 em.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
                               icon_url=ctx.author.avatar_url)
