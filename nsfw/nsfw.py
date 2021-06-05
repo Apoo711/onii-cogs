@@ -54,6 +54,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def hentai(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -79,6 +80,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def erok(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -102,6 +104,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def eroneko(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -125,6 +128,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="feet", aliases=["feetgif", "foot"])
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def feet(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -147,6 +151,7 @@ class Nsfw(commands.Cog):
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
+	@commands.guild_only()
 	@commands.is_nsfw()
 	async def cum(self, ctx):
 		if ctx.channel.is_nsfw():
@@ -169,6 +174,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="hthighs", aliases=["hthigh", "animethigh"])
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def hthighs(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -192,6 +198,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="nekofuck", aliases=["nekosex", "nekogif"])
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def nekofuck(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -215,6 +222,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="futanari")
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def futanari(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -238,6 +246,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="boobs", aliases=["boob"])
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def boobs(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -260,6 +269,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command(name="blowjob", aliases=["bj"])
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def blowjob(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -282,6 +292,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def pussy(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -303,6 +314,7 @@ class Nsfw(commands.Cog):
 
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
+	@commands.guild_only()
 	@commands.is_nsfw()
 	async def spank(self, ctx, user: commands.Greedy[discord.Member] = None):
 		if ctx.channel.is_nsfw():
@@ -330,6 +342,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def lesbian(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -350,6 +363,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def trap(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -370,6 +384,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(5, 7, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def hololewd(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -392,6 +407,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(1, 5, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def foxgirl(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -416,6 +432,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(1, 5, commands.BucketType.user)
 	@commands.command(name="lewdkitsune", aliases=["lewdk"])
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def lewdkitsune(self, ctx):
 		if ctx.channel.is_nsfw():
 			embed = discord.Embed(
@@ -437,6 +454,7 @@ class Nsfw(commands.Cog):
 
 	@commands.cooldown(1, 5, commands.BucketType.user)
 	@commands.command()
+	@commands.guild_only()
 	@commands.is_nsfw()
 	async def kuni(self, ctx):
 		if ctx.channel.is_nsfw():
@@ -459,6 +477,7 @@ class Nsfw(commands.Cog):
 
 	@commands.cooldown(1, 5, commands.BucketType.user)
 	@commands.command()
+	@commands.guild_only()
 	@commands.is_nsfw()
 	async def femdom(self, ctx):
 		if ctx.channel.is_nsfw():
@@ -482,6 +501,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(1, 5, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def erofeet(self, ctx):
 		"""Erofeet 3"""
 		if ctx.channel.is_nsfw():
@@ -504,6 +524,7 @@ class Nsfw(commands.Cog):
 
 	@commands.cooldown(1, 5, commands.BucketType.user)
 	@commands.command()
+	@commands.guild_only()
 	@commands.is_nsfw()
 	async def solo(self, ctx):
 		"""Solo Porn"""
@@ -528,6 +549,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(1, 5, commands.BucketType.user)
 	@commands.command(name="gasm", aliases=["orgasm", "orgy"])
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def gasm(self, ctx):
 		"""Gasm Porn"""
 		if ctx.channel.is_nsfw():
@@ -552,6 +574,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(1, 5, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def yuri(self, ctx):
 		"""Yuri Porn"""
 		if ctx.channel.is_nsfw():
@@ -575,6 +598,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(1, 5, commands.BucketType.user)
 	@commands.command()
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def anal(self, ctx):
 		"""Anal Hentai"""
 		if ctx.channel.is_nsfw():
@@ -598,6 +622,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(3, 7, commands.BucketType.user)
 	@commands.command(name="ass", aliases=["hentaiass", "hass"])
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def ass(self, ctx):
 		"""Ass Hentai"""
 		if ctx.channel.is_nsfw():
@@ -622,6 +647,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(3, 7, commands.BucketType.user)
 	@commands.command(name="porn", aliases=["pgif"])
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def porn(self, ctx):
 		"""Just Porn"""
 		if ctx.channel.is_nsfw():
@@ -646,6 +672,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(3, 7, commands.BucketType.user)
 	@commands.command(name="4k")
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def fourk(self, ctx):
 		"""4L Hentai"""
 		if ctx.channel.is_nsfw():
@@ -670,6 +697,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(3, 7, commands.BucketType.user)
 	@commands.command(name="yaoi")
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def yaoi(self, ctx):
 		"""yaoi hentai"""
 		if ctx.channel.is_nsfw():
@@ -694,6 +722,7 @@ class Nsfw(commands.Cog):
 	@commands.cooldown(3, 7, commands.BucketType.user)
 	@commands.command(name="thigh", aliases=["thighs"])
 	@commands.is_nsfw()
+	@commands.guild_only()
 	async def thigh(self, ctx):
 		"""Thigh Hentai"""
 		if ctx.channel.is_nsfw():
