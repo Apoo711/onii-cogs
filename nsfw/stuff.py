@@ -1,7 +1,6 @@
 import discord
-
-from redbot.core.bot import Red
 from redbot.core import commands
+from redbot.core.bot import Red
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import bold, box, inline
 
@@ -10,7 +9,7 @@ _ = Translator("hentai", __file__)
 
 @cog_i18n(_)
 class stuff(commands.Cog):
-  
+
     __author__ = ["Onii-chan"]
     __version__ = "0.1.0"
 
@@ -18,7 +17,7 @@ class stuff(commands.Cog):
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
-        
+
     async def _version_msg(self, ctx: commands.Context, version: str, authors: List[str]):
         """Cog version message."""
         msg = box(

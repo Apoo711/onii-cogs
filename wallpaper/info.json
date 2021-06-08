@@ -1,5 +1,7 @@
 {
-    "author" : ["Onii-chan#3920"],
-    "name" : "Wallpaper",
-    "description" : "Wallpaper commands!"
+    "author": [
+        "Onii-chan#3920"
+    ],
+    "name": "Wallpaper",
+    "description": "Wallpaper commands!"
 }
