@@ -15,7 +15,7 @@ To add cogs from this repo to your instance, do these steps:
 - `[p]cog install onii-cogs <cog name>`
 - `[p]load <cog name>`
 
-## About Cogs
+## Cog List
 | Cog | Status | Description |
 | --- | ---------- |---------------- |
 | wallpaper | Alpha |<details><summary>Wallpaper commands for anime</summary>This cog chooses random wallpapers from a list and sends them to you in an embed.</details>
