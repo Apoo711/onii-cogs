@@ -28,7 +28,7 @@ To add cogs from this repo to your instance, do these steps:
 - Thank you Red community, you guys are awesome.
 
 # Contributing.md
-- Kindly follow the format of black with line-length = 99 and isort
+- Kindly follow the format of black with line-length = 150 and isort
 - This can be done by `pip install black isort`
 - Then running
 ```py
