@@ -256,7 +256,7 @@ class Nsfw(commands.Cog):
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command(name="blowjob", aliases=["bj"])
+    @commands.command(name="blowjob")
     @commands.is_nsfw()
     @commands.guild_only()
     async def blowjob(self, ctx):
