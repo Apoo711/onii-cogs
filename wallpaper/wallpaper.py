@@ -192,7 +192,7 @@ class Image(commands.Cog):
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command()
-    async def wasted(self, ctx, image_url):
+    async def wasted(self, ctx, image_url: None):
         '''Adds a wasted overlay to an image.'''
         if not image_url:
             image_url = ctx.author.image_url
