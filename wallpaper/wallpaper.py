@@ -63,7 +63,7 @@ class Image(commands.Cog):
     async def naruto(self, ctx):
         embed = discord.Embed(color=0xDC8D22)
         embed.add_field(
-            name="Zenitsu", value="You asked for some Naruto wallpapers?", inline=False
+            name="Naruto", value="You asked for some Naruto wallpapers?", inline=False
         )
         embed.set_image(
             url=random.choice(
