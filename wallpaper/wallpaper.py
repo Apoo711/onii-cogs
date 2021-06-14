@@ -4,7 +4,6 @@ import aiohttp
 import discord
 
 from redbot.core import commands
-from aiohttp import request
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
@@ -200,7 +199,7 @@ class Image(commands.Cog):
         
         image = f"https://some-random-api.ml/canvas/wasted?avatar={image_url}"
 
-        async with request("GET", image, headers={}) as response:
+        async with aiohttp.request("GET", image, headers={}) as response:
             if response.status == 200:
                 await ctx.message.delete()                
                 embed = discord.Embed(title="Wasted...",
