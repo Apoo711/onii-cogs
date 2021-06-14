@@ -4,7 +4,6 @@ import aiohttp
 import discord
 
 from redbot.core import commands
-from aiohttp import request
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
@@ -193,7 +192,7 @@ class Image(commands.Cog):
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command()
-    async def wasted(self, ctx):
+    async def wasted(self, ctx, image_url):
         '''Adds a wasted overlay to an image.'''
         image = f"https://some-random-api.ml/canvas/wasted?avatar={image_url}"
         image2 = f"https://some-random-api.ml/canvas/wasted?avatar={user.avatar_url}"
@@ -207,6 +206,6 @@ class Image(commands.Cog):
                     embed.set_image(url=image)
                 await ctx.send(embed=embed)
                 
-                if image is None:
+                else:
                     embed.set_image(url=image2)
                 await ctx.send(embed=embed)
