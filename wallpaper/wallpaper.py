@@ -209,4 +209,4 @@ class Image(commands.Cog):
                 
                 if image is None:
                     embed.set_image(url=image2)
-                await ctx.send (embed=embed)
+                await ctx.send(embed=embed)
