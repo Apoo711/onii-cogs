@@ -195,7 +195,7 @@ class Image(commands.Cog):
     async def wasted(self, ctx, image_url: None):
         '''Adds a wasted overlay to an image.'''
         if not image_url:
-            image_url = ctx.author.image_url
+            image_url = ctx.author.avatar_url
         
         image = f"https://some-random-api.ml/canvas/wasted?avatar={image_url}"
         image2 = f"https://some-random-api.ml/canvas/wasted?avatar={user.avatar_url}"
