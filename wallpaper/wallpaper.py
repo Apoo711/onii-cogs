@@ -200,7 +200,7 @@ class Image(commands.Cog):
         async with request("GET", image, headers={}) as response:
             if response.status == 200:
                 await ctx.message.delete()                
-                embed = Embed(title="Wasted...",
+                embed = discord.Embed(title="Wasted...",
                               colour=0xFF5D52)
                 if image is not None:
                     embed.set_image(url=image)
