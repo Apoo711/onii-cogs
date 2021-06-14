@@ -208,5 +208,5 @@ class Image(commands.Cog):
                 await ctx.send(embed=embed)
                 
                 if image is None:
-                    embed.sset_image(url=image2)
+                    embed.set_image(url=image2)
                 await ctx.send (embed=embed)
