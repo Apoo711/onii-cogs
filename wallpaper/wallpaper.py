@@ -192,13 +192,12 @@ class Image(commands.Cog):
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command()
-    async def wasted(self, ctx, image_url: None):
+    async def wasted(self, ctx, image_url=None):
         '''Adds a wasted overlay to an image.'''
         if not image_url:
             image_url = ctx.author.avatar_url
         
         image = f"https://some-random-api.ml/canvas/wasted?avatar={image_url}"
-        image2 = f"https://some-random-api.ml/canvas/wasted?avatar={user.avatar_url}"
 
         async with request("GET", image, headers={}) as response:
             if response.status == 200:
