@@ -1,11 +1,10 @@
 import asyncio
 import random
-
 import aiohttp
 import discord
-from redbot.core import commands
-from redbot.core.config import Group
 
+from redbot.core import commands
+from aiohttp import request
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
@@ -17,7 +16,7 @@ async def api_call(call_uri, returnObj=False):
                 return response
 
 
-class Wallpaper(commands.Cog):
+class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -27,11 +26,16 @@ class Wallpaper(commands.Cog):
 
     @wallpaper.group(aliases=["c"])
     async def character(self, ctx):
-        """The character commands in the wallpaper cog"""
+        """The character commands in the wallpaper part of the image cog"""
 
     @wallpaper.group(aliases=["o"])
     async def other(self, ctx):
-        """The uncategorised commands in the wallpaper cog"""
+        """The uncategorised commands in the image cog"""
+
+    @wallpaper.group(aliases=["ani"])
+    async def animals(self, ctx):
+        """The animal commands in the image cog"""
+
 
     @character.command(aliases=["zen"], name="zenitsu")
     @commands.bot_has_permissions(embed_links=True)
@@ -187,3 +191,17 @@ class Wallpaper(commands.Cog):
 
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/neko"))
         await ctx.reply(embed=embed, mention_author=False)
+
+    @other.command()
+    async def wasted(self, ctx, image_url):
+        '''Adds a wasted overlay to an image.'''
+        image = f"https://some-random-api.ml/canvas/wasted?avatar={image_url}"
+
+        async with request("GET", image, headers={}) as response:
+            if response.status == 200:
+                await ctx.message.delete()                
+                embed = Embed(title="Wasted...",
+                              colour=0xFF5D52)
+                if image is not None:
+                    embed.set_image(url=image)
+                await ctx.send(embed=embed)
