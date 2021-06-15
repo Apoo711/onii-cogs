@@ -196,16 +196,19 @@ class Image(commands.Cog):
         '''Adds a wasted overlay to an image.'''
         if not image_url:
             image_url = ctx.author.avatar_url
+            print("hey this works")
         
         image = f"https://some-random-api.ml/canvas/wasted?avatar={image_url}"
 
         async with aiohttp.request("GET", image, headers={}) as response:
             if response.status == 200:
-                await ctx.message.delete()                
+                await ctx.message.delete()
+                print("hey this works")                
                 embed = discord.Embed(title="Wasted...",
                               colour=0xFF5D52)
                 if image is not None:
                     embed.set_image(url=image)
+                    print("hey this works")     
                 await ctx.send(embed=embed)
-                
-               
+
+                               
