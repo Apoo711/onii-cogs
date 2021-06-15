@@ -203,13 +203,12 @@ class Image(commands.Cog):
 
         async with aiohttp.request("GET", image, headers={}) as response:
             if response.status == 200:
-                await ctx.message.delete()
                 print("hey this works")                
                 embed = discord.Embed(title="Wasted...",
                               colour=0xFF5D52)
                 if image is not None:
                     embed.set_image(url=image)
                     print("hey this works")     
-                await ctx.send(embed=embed)
+                await ctx.reply(embed=embed)
 
                                
