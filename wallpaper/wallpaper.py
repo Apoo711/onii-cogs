@@ -193,6 +193,7 @@ class Image(commands.Cog):
 
     @other.command()
     async def wasted(self, ctx, image_url=None):
+        print("hey this works")
         '''Adds a wasted overlay to an image.'''
         if not image_url:
             image_url = ctx.author.avatar_url
