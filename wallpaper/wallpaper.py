@@ -1,11 +1,12 @@
 import asyncio
 import random
-
 import aiohttp
 import discord
+
+import logging
+
 from redbot.core import commands
 from redbot.core.config import Group
-
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
@@ -16,6 +17,7 @@ async def api_call(call_uri, returnObj=False):
             elif returnObj == True:
                 return response
 
+log = logging.getLogger("red.onii.wallpaper")
 
 class Wallpaper(commands.Cog):
     def __init__(self, bot):
