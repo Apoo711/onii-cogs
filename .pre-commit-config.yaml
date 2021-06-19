@@ -3,7 +3,7 @@ default_language_version:
 exclude: ^.stubs/
 repos:
   - repo: https://github.com/psf/black
-    rev: '21.4b2'
+    rev: '21.6b0'
     hooks:
       - id: black
 
@@ -12,13 +12,13 @@ repos:
     hooks:
       - id: isort
 
-  - repo: https://gitlab.com/pycqa/flake8
+  - repo: https://github.com/PyCQA/flake8
     rev: 3.9.2
     hooks:
       - id: flake8
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.0.1
     hooks:
       # all files should end with an empty line (for one, it minimizes the diffs)
       - id: end-of-file-fixer
