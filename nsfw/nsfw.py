@@ -20,7 +20,8 @@ async def api_call(call_uri, returnObj=False):
             elif returnObj == True:
                 return response
 
-
+log = logging.getLogger("red.onii.nsfw")
+            
 class Nsfw(commands.Cog):
     """
     Nsfw commands, proceed with caution.
