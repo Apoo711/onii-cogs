@@ -19,19 +19,15 @@ class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.group(aliases=["wp"])
-    async def wallpaper(self, ctx):
-        """Wallpaper commands"""
-
-    @wallpaper.group(aliases=["c"])
+    @commands.group(aliases=["c"])
     async def character(self, ctx):
         """The character commands in the wallpaper part of the image cog"""
 
-    @wallpaper.group(aliases=["o"])
+    @commands.group(aliases=["o"])
     async def other(self, ctx):
         """The uncategorised commands in the image cog"""
 
-    @wallpaper.group(aliases=["ani"])
+    @commands.group(aliases=["ani"])
     async def animals(self, ctx):
         """The animal commands in the image cog"""
 
