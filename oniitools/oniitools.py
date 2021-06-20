@@ -14,4 +14,4 @@ class Oniitools(commands.Cog):
         """Detects user's penis length this is 100% accurate."""
         random.seed(user.id)
         p = "8" + "="*random.randint(0, 30) + "D"
-        await ctx.reply("Size: " + p)
+        await ctx.reply("Size: " + p, mention_author=False)
