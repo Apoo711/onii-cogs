@@ -18,16 +18,19 @@ async def api_call(call_uri, returnObj=False):
 class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        
+    @commands.group(aliases=["i"])
+    async def image(self, ctx):
 
-    @commands.group(aliases=["c"])
+    @image.group(aliases=["c"])
     async def character(self, ctx):
         """The character commands in the wallpaper part of the image cog"""
 
-    @commands.group(aliases=["o"])
+    @image.group(aliases=["o"])
     async def other(self, ctx):
         """The uncategorised commands in the image cog"""
 
-    @commands.group(aliases=["ani"])
+    @image.group(aliases=["ani"])
     async def animals(self, ctx):
         """The animal commands in the image cog"""
 
@@ -95,7 +98,7 @@ class Image(commands.Cog):
         embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
         await ctx.reply(embed=embed, mention_author=False)
 
-    @commands.group(aliases=["a"])
+    @image.group(aliases=["a"])
     async def anime(self, ctx):
         """Wallpaper commands"""
 
