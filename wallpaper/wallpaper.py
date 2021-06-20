@@ -21,6 +21,7 @@ class Image(commands.Cog):
         
     @commands.group(aliases=["i"])
     async def image(self, ctx):
+        """All the commands in the image cog"""
 
     @image.group(aliases=["c"])
     async def character(self, ctx):
