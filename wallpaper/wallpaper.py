@@ -183,7 +183,7 @@ class Image(commands.Cog):
         )
 
         embed.set_footer(
-            text=f"Requested by {ctx.message.author.display_name} | Powered by nekos.best",
+            text="Powered by nekos.best",
             icon_url=ctx.message.author.avatar_url,
         )
         embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
