@@ -12,6 +12,6 @@ class Oniitools(commands.Cog):
     @commands.command()
     async def penis(self, ctx, user : discord.Member):
         """Detects user's penis length this is 100% accurate."""
-        random.seed(User.id)
+        random.seed(user.id)
         p = "8" + "="*random.randint(0, 30) + "D"
         await ctx.reply("Size: " + p)
