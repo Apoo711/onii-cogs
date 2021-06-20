@@ -183,32 +183,10 @@ class Image(commands.Cog):
         )
 
         embed.set_footer(
-            text=f"Requested by {ctx.message.author.display_name} | Powered by nekos.life",
+            text=f"Requested by {ctx.message.author.display_name} | Powered by nekos.best",
             icon_url=ctx.message.author.avatar_url,
         )
         embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
 
-        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/neko"))
+        embed.set_image(url=await api_call("https://nekos.best/nekos"))
         await ctx.reply(embed=embed, mention_author=False)
-
-    @other.command()
-    async def wasted(self, ctx, image_url=None):
-        print("hey this works")
-        '''Adds a wasted overlay to an image.'''
-        if not image_url:
-            image_url = ctx.author.avatar_url
-            print("hey this works")
-        
-        image = f"https://some-random-api.ml/canvas/wasted?avatar={image_url}"
-
-        async with aiohttp.request("GET", image, headers={}) as response:
-            if response.status == 200:
-                print("hey this works")                
-                embed = discord.Embed(title="Wasted...",
-                              colour=0xFF5D52)
-                if image is not None:
-                    embed.set_image(url=image)
-                    print("hey this works")     
-                await ctx.reply(embed=embed)
-
-                               
