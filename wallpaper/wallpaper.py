@@ -95,7 +95,7 @@ class Image(commands.Cog):
         embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
         await ctx.reply(embed=embed, mention_author=False)
 
-    @wallpaper.group(aliases=["a"])
+    @commands.group(aliases=["a"])
     async def anime(self, ctx):
         """Wallpaper commands"""
 
