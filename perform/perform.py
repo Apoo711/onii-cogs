@@ -19,7 +19,7 @@ class Perform(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
     @commands.guild_only()
     async def cuddle(self, ctx, user: discord.User):
@@ -37,6 +37,7 @@ class Perform(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cuddle"))
         await ctx.reply(embed=embed)
 
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="poke")
     @commands.bot_has_permissions(embed_links=True)
     async def poke(self, ctx, user: discord.User):
@@ -53,7 +54,8 @@ class Perform(commands.Cog):
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
-
+    
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="kiss")
     @commands.bot_has_permissions(embed_links=True)
     async def kiss(self, ctx, user: discord.User):
@@ -70,7 +72,8 @@ class Perform(commands.Cog):
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
-
+    
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="hug")
     @commands.bot_has_permissions(embed_links=True)
     async def hug(self, ctx, user: discord.User):
@@ -88,6 +91,7 @@ class Perform(commands.Cog):
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
+    @commands.cooldown(1, 10, commands.BucketType.user)  
     @commands.command(name="pat")
     @commands.bot_has_permissions(embed_links=True)
     async def pat(self, ctx, user: discord.User):
@@ -104,7 +108,8 @@ class Perform(commands.Cog):
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
-
+    
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="tickle")
     @commands.bot_has_permissions(embed_links=True)
     async def tickle(self, ctx, user: discord.User):
@@ -121,7 +126,8 @@ class Perform(commands.Cog):
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
-
+    
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="smug")
     @commands.bot_has_permissions(embed_links=True)
     async def smug(self, ctx):
