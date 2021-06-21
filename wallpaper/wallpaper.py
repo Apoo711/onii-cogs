@@ -1,12 +1,12 @@
 import asyncio
+import logging
 import random
+
 import aiohttp
 import discord
-
-import logging
-
 from redbot.core import commands
 from redbot.core.config import Group
+
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:

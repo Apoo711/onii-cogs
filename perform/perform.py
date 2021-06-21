@@ -1,8 +1,9 @@
-import aiohttp
-import discord
 import logging
 
+import aiohttp
+import discord
 from redbot.core import commands
+
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
@@ -14,7 +15,7 @@ async def api_call(call_uri, returnObj=False):
                 return response
 
 log = logging.getLogger("red.onii.perform")
-            
+
 class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
 
