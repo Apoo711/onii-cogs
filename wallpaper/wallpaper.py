@@ -15,12 +15,13 @@ limitations under the License.
 """
 
 import asyncio
+import logging
 import random
+
 import aiohttp
 import discord
-import logging
-
 from redbot.core import commands
+
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
@@ -36,7 +37,7 @@ log = logging.getLogger("red.onii.wallpaper")
 class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
+
     @commands.group(aliases=["i"])
     async def image(self, ctx):
         """All the commands in the image cog"""

@@ -14,11 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import aiohttp
-import discord
 import logging
 
+import aiohttp
+import discord
 from redbot.core import commands
+
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
@@ -30,7 +31,7 @@ async def api_call(call_uri, returnObj=False):
                 return response
 
 log = logging.getLogger("red.onii.perform")
-            
+
 class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
 
@@ -72,7 +73,7 @@ class Perform(commands.Cog):
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
-    
+
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="kiss")
     @commands.bot_has_permissions(embed_links=True)
@@ -90,7 +91,7 @@ class Perform(commands.Cog):
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
-    
+
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="hug")
     @commands.bot_has_permissions(embed_links=True)
@@ -109,7 +110,7 @@ class Perform(commands.Cog):
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
-    @commands.cooldown(1, 10, commands.BucketType.user)  
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="pat")
     @commands.bot_has_permissions(embed_links=True)
     async def pat(self, ctx, user: discord.User):
@@ -126,7 +127,7 @@ class Perform(commands.Cog):
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
-    
+
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="tickle")
     @commands.bot_has_permissions(embed_links=True)
@@ -144,7 +145,7 @@ class Perform(commands.Cog):
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
-    
+
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="smug")
     @commands.bot_has_permissions(embed_links=True)

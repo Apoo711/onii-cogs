@@ -14,10 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import discord
-import random 
+import random
 
+import discord
 from redbot.core import commands
+
 
 class Oniitools(commands.Cog):
     """A random assortment of fun commands!"""
@@ -31,4 +32,4 @@ class Oniitools(commands.Cog):
         random.seed(user.id)
         p = "8" + "="*random.randint(0, 30) + "D"
         await ctx.reply("Size: " + p, mention_author=False)
-        
+

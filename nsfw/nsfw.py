@@ -18,14 +18,13 @@ import asyncio
 import datetime
 import json
 import logging
+from typing import List, Optional, Union
 
 import aiohttp
 import discord
-import logging
-
 from redbot.core import commands
 from redbot.core.utils.chat_formatting import bold, box, inline
-from typing import List, Optional, Union
+
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
@@ -37,7 +36,7 @@ async def api_call(call_uri, returnObj=False):
                 return response
 
 log = logging.getLogger("red.onii.nsfw")
-            
+
 class Nsfw(commands.Cog):
     """
     Nsfw commands, proceed with caution.
