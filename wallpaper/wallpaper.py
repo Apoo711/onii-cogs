@@ -1,12 +1,27 @@
+"""
+Copyright 2021 Onii-chan
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
 import asyncio
+import logging
 import random
+
 import aiohttp
 import discord
-
-import logging
-
 from redbot.core import commands
-from redbot.core.config import Group
+
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
@@ -19,21 +34,26 @@ async def api_call(call_uri, returnObj=False):
 
 log = logging.getLogger("red.onii.wallpaper")
 
-class Wallpaper(commands.Cog):
+class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.group(aliases=["wp"])
-    async def wallpaper(self, ctx):
-        """Wallpaper commands"""
+    @commands.group(aliases=["i"])
+    async def image(self, ctx):
+        """All the commands in the image cog"""
 
-    @wallpaper.group(aliases=["c"])
+    @image.group(aliases=["c"])
     async def character(self, ctx):
-        """The character commands in the wallpaper cog"""
+        """The character commands in the wallpaper part of the image cog"""
 
-    @wallpaper.group(aliases=["o"])
+    @image.group(aliases=["o"])
     async def other(self, ctx):
-        """The uncategorised commands in the wallpaper cog"""
+        """The uncategorised commands in the image cog"""
+
+    @image.group(aliases=["ani"])
+    async def animals(self, ctx):
+        """The animal commands in the image cog"""
+
 
     @character.command(aliases=["zen"], name="zenitsu")
     @commands.bot_has_permissions(embed_links=True)
@@ -61,7 +81,7 @@ class Wallpaper(commands.Cog):
     async def naruto(self, ctx):
         embed = discord.Embed(color=0xDC8D22)
         embed.add_field(
-            name="Zenitsu", value="You asked for some Naruto wallpapers?", inline=False
+            name="Naruto", value="You asked for some Naruto wallpapers?", inline=False
         )
         embed.set_image(
             url=random.choice(
@@ -98,7 +118,7 @@ class Wallpaper(commands.Cog):
         embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
         await ctx.reply(embed=embed, mention_author=False)
 
-    @wallpaper.group(aliases=["a"])
+    @image.group(aliases=["a"])
     async def anime(self, ctx):
         """Wallpaper commands"""
 
@@ -163,7 +183,7 @@ class Wallpaper(commands.Cog):
         )
 
         embed.set_footer(
-            text=f"Requested by {ctx.message.author.display_name} | Powered by nekos.life",
+            text="Powered by nekos.life",
             icon_url=ctx.message.author.avatar_url,
         )
         embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
@@ -174,18 +194,18 @@ class Wallpaper(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     @other.command()
     @commands.guild_only()
-    async def nekoi(self, ctx):
+    async def neko(self, ctx):
         embed = discord.Embed(
-            title="Neko",
+            title="Neko's For You!",
             color=discord.Colour.random(),
             timestamp=ctx.message.created_at,
         )
 
         embed.set_footer(
-            text=f"Requested by {ctx.message.author.display_name} | Powered by nekos.life",
+            text="Powered by nekos.best",
             icon_url=ctx.message.author.avatar_url,
         )
         embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
 
-        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/neko"))
+        embed.set_image(url=await api_call("https://nekos.best/nekos"))
         await ctx.reply(embed=embed, mention_author=False)
