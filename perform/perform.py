@@ -1,3 +1,20 @@
+"""
+Copyright 2021 Onii-chan
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
 import logging
 
 import aiohttp
@@ -22,7 +39,7 @@ class Perform(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
     @commands.guild_only()
     async def cuddle(self, ctx, user: discord.User):
@@ -40,6 +57,7 @@ class Perform(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cuddle"))
         await ctx.reply(embed=embed)
 
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="poke")
     @commands.bot_has_permissions(embed_links=True)
     async def poke(self, ctx, user: discord.User):
@@ -57,6 +75,7 @@ class Perform(commands.Cog):
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="kiss")
     @commands.bot_has_permissions(embed_links=True)
     async def kiss(self, ctx, user: discord.User):
@@ -74,6 +93,7 @@ class Perform(commands.Cog):
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="hug")
     @commands.bot_has_permissions(embed_links=True)
     async def hug(self, ctx, user: discord.User):
@@ -91,6 +111,7 @@ class Perform(commands.Cog):
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="pat")
     @commands.bot_has_permissions(embed_links=True)
     async def pat(self, ctx, user: discord.User):
@@ -108,6 +129,7 @@ class Perform(commands.Cog):
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="tickle")
     @commands.bot_has_permissions(embed_links=True)
     async def tickle(self, ctx, user: discord.User):
@@ -125,6 +147,7 @@ class Perform(commands.Cog):
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="smug")
     @commands.bot_has_permissions(embed_links=True)
     async def smug(self, ctx):
