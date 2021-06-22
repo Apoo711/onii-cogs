@@ -18,6 +18,7 @@ import asyncio
 import random
 import aiohttp
 import discord
+import logging
 
 from redbot.core import commands
 
@@ -30,6 +31,7 @@ async def api_call(call_uri, returnObj=False):
             elif returnObj == True:
                 return response
 
+log = logging.getLogger("red.onii.wallpaper")
 
 class Image(commands.Cog):
     def __init__(self, bot):
