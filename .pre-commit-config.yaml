@@ -6,6 +6,11 @@ repos:
     rev: '21.6b0'
     hooks:
       - id: black
+      
+  - repo: https://github.com/Pierre-Sassoulas/black-disable-checker
+    rev: '0.0.1'
+    hooks:
+      - id: black-disable-checker
 
   - repo: https://github.com/pycqa/isort
     rev: 5.8.0
