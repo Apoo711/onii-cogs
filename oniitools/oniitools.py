@@ -32,4 +32,3 @@ class Oniitools(commands.Cog):
         random.seed(user.id)
         p = "8" + "="*random.randint(0, 30) + "D"
         await ctx.reply("Size: " + p, mention_author=False)
-
