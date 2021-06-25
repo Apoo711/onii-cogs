@@ -3,17 +3,22 @@ default_language_version:
 exclude: ^.stubs/
 repos:
   - repo: https://github.com/psf/black
-    rev: '21.4b2'
+    rev: '21.6b0'
     hooks:
       - id: black
 
   - repo: https://github.com/pycqa/isort
-    rev: 5.8.0
+    rev: 5.9.1
     hooks:
       - id: isort
-      
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 3.9.2
+    hooks:
+      - id: flake8
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.0.1
     hooks:
       # all files should end with an empty line (for one, it minimizes the diffs)
       - id: end-of-file-fixer
@@ -48,3 +53,9 @@ repos:
       # Checks for git-related issues
       - id: check-case-conflict
       - id: check-merge-conflict
+
+  - repo: https://github.com/sourcery-ai/sourcery
+    rev: v0.9.2 # Get the latest tag from https://github.com/sourcery-ai/sourcery/tags
+    hooks:
+      - id: sourcery
+      # - args: [--in-place]  Automatically apply the refactorings in the hook

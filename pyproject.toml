@@ -1,7 +1,15 @@
 [tool.black]
-line-length = 99
+line-length = 150
 target-version = ['py38']
 
 [tool.isort]
+profile = "black"
+multi_line_output = 3
 combine_as_imports = true
 filter_files = true
+
+[flake8]
+ignore = E203, E266, E501, W503, F403, F401
+max-line-length = 150
+max-complexity = 18
+select = B,C,E,F,W,T4,B9
