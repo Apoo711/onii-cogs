@@ -6,11 +6,6 @@ repos:
     rev: '21.6b0'
     hooks:
       - id: black
-      
-  - repo: https://github.com/Pierre-Sassoulas/black-disable-checker
-    rev: '0.0.1'
-    hooks:
-      - id: black-disable-checker
 
   - repo: https://github.com/pycqa/isort
     rev: 5.9.1
@@ -58,7 +53,7 @@ repos:
       # Checks for git-related issues
       - id: check-case-conflict
       - id: check-merge-conflict
-      
+
   - repo: https://github.com/sourcery-ai/sourcery
     rev: v0.9.2 # Get the latest tag from https://github.com/sourcery-ai/sourcery/tags
     hooks:
