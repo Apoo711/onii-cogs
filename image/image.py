@@ -210,23 +210,22 @@ class Image(commands.Cog):
 
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
         await ctx.reply(embed=embed, mention_author=False)
-
-    @commands.cooldown(5, 7, commands.BucketType.user)
+        
     @other.command()
-    @commands.guild_only()
-    async def meme(self, ctx):
-        embed = discord.Embed(
-            title="Here's a Fresh meme for you!",
-            color=discord.Colour.random(),
-            timestamp=ctx.message.created_at,
-        )
-
-        embed.set_footer(
-            text="Powered by meme-api",
-            icon_url=ctx.message.author.avatar_url,
-        )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-
-        embed.set_image(url=await api_call("https://some-random-api.ml/meme/"))
-        await ctx.reply(embed=embed, mention_author=False)
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.bot_has_permissions(embed_links=True)
+    async def meme(self, ctx: commands.Context):
+        async with aiohttp.ClientSession() as cs:
+            async with cs.get("https://some-random-api.ml/meme/") as r:
+                res = await r.json()
+                embed = discord.Embed(
+                    title("Here's A Fresh Meme For You"),
+                    footer(
+                        text=f"Requested by: {str(ctx.author)} | Powered by meme-api",
+                        icon_url=ctx.author.avatar_url,
+                    ),
+                    color(discord.Color.random()),
+                )
+                embed.set_image(url=res["url"])
+                await ctx.reply(embed=embed, mention_author=False)
    
