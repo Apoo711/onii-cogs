@@ -224,5 +224,5 @@ class Image(commands.Cog):
         )
         embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
 
-        embed.set_image(url=await api_call("https://some-random-api.ml/meme/"))
+        embed.set_image(url=await api_call("https://meme-api.herokuapp.com/gimme"))
         await ctx.reply(embed=embed, mention_author=False)
