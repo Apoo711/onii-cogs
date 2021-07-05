@@ -209,8 +209,7 @@ class Image(commands.Cog):
         await ctx.reply(embed=embed, mention_author=False)
         
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.guild_only()
-    @commands.command
+    @commands.command()
     async def meme(self, ctx):
         embed = discord.Embed(
             title="Here's a Fresh meme for you!",
