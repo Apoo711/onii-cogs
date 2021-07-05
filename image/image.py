@@ -227,22 +227,3 @@ class Image(commands.Cog):
 
         embed.set_image(url=await api_call("https://some-random-api.ml/meme/"))
         await ctx.reply(embed=embed, mention_author=False)
-        
-
-    @other.command()
-    async def wasted(self, ctx, image_url):
-        '''Adds a wasted overlay to an image.'''
-        image = f"https://some-random-api.ml/canvas/wasted?avatar={image_url}"
-        image2 = f"https://some-random-api.ml/canvas/wasted?avatar={user.avatar_url}"
-        async with request("GET", image, headers={}) as response:
-            if response.status == 200:
-                await ctx.message.delete()                
-                embed = discord.Embed(title="Wasted...",
-                              colour=0xFF5D52)
-                if image is not None:
-                    embed.set_image(url=image)
-                
-                else:
-                    embed.set_image(url=image2)
-                
-                await ctx.send(embed=embed)
