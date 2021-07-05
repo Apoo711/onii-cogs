@@ -210,13 +210,39 @@ class Image(commands.Cog):
         
     @other.command()
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.bot_has_permissions(embed_links=True)
-    async def meme(self, ctx: commands.Context):
-        async with aiohttp.ClientSession() as cs:
-            async with cs.get("https://some-random-api.ml/meme/") as r:
-                res = await r.json()
-                embed = discord.Embed(title="Here's A Fresh Meme For You", color=discord.Color.random())
-                embed.set_image(url=res["url"])
-                embed.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by meme-api", icon_url=ctx.author.avatar_url)
-                await ctx.reply(embed=embed, mention_author=False)
-   
+    @other.command()
+    @commands.guild_only()
+    async def meme(self, ctx):
+        embed = discord.Embed(
+            title="Here's a Fresh meme for you!",
+            color=discord.Colour.random(),
+            timestamp=ctx.message.created_at,
+        )
+
+        embed.set_footer(
+            text="Powered by meme-api",
+            icon_url=ctx.message.author.avatar_url,
+        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+
+        embed.set_image(url=await api_call("https://some-random-api.ml/meme/"))
+        await ctx.reply(embed=embed, mention_author=False)
+        
+
+    @other.command()
+    async def wasted(self, ctx, image_url):
+        '''Adds a wasted overlay to an image.'''
+        image = f"https://some-random-api.ml/canvas/wasted?avatar={image_url}"
+        image2 = f"https://some-random-api.ml/canvas/wasted?avatar={user.avatar_url}"
+        async with request("GET", image, headers={}) as response:
+            if response.status == 200:
+                await ctx.message.delete()                
+                embed = discord.Embed(title="Wasted...",
+                              colour=0xFF5D52)
+                if image is None:
+                    embed.set_image(url=image2)
+                await ctx.send(embed=embed)
+                
+                else:
+                    embed.set_image(url=image)
+                await ctx.send(embed=embed)
