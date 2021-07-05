@@ -217,8 +217,7 @@ class Image(commands.Cog):
                 res = await r.json()
                 embed = discord.Embed(
                     title="Here's A Fresh Meme For You"),
-                    ,
-                    color(discord.Color.random()),
+                    color=discord.Color.random(),
                 )
                 embed.set_image(url=res["url"])
                 embed.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by meme-api", icon_url=ctx.author.avatar_url)
