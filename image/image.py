@@ -210,7 +210,6 @@ class Image(commands.Cog):
         
     @other.command()
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @other.command()
     @commands.guild_only()
     async def meme(self, ctx):
         embed = discord.Embed(
