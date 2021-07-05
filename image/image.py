@@ -215,10 +215,7 @@ class Image(commands.Cog):
         async with aiohttp.ClientSession() as cs:
             async with cs.get("https://some-random-api.ml/meme/") as r:
                 res = await r.json()
-                embed = discord.Embed(
-                    title="Here's A Fresh Meme For You"),
-                    color=discord.Color.random(),
-                )
+                embed = discord.Embed(title="Here's A Fresh Meme For You"), color=discord.Color.random())
                 embed.set_image(url=res["url"])
                 embed.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by meme-api", icon_url=ctx.author.avatar_url)
                 await ctx.reply(embed=embed, mention_author=False)
