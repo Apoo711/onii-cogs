@@ -239,10 +239,10 @@ class Image(commands.Cog):
                 await ctx.message.delete()                
                 embed = discord.Embed(title="Wasted...",
                               colour=0xFF5D52)
-                if image is None:
-                    embed.set_image(url=image2)
+                if image is not None:
+                    embed.set_image(url=image)
                 await ctx.send(embed=embed)
                 
                 else:
-                    embed.set_image(url=image)
+                    embed.set_image(url=image2)
                 await ctx.send(embed=embed)
