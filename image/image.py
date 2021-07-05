@@ -208,7 +208,6 @@ class Image(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
         await ctx.reply(embed=embed, mention_author=False)
         
-    @other.command()
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.guild_only()
     async def meme(self, ctx):
