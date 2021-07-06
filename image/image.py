@@ -145,7 +145,7 @@ class Image(commands.Cog):
     async def random(self, ctx: commands.Context):
         """Shows some anime wallpaper from reddit.
 
-        Anime wallpapers shown are taken from r/Animewallpaper.
+        Wallpapers shown are taken from r/Animewallpaper.
         
         Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
@@ -246,5 +246,29 @@ class Image(commands.Cog):
             text="Powered by r/memes",
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
+        await ctx.send(embed=embed)
+    
+    @commands.command()
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def space(self, ctx: commands.Context):
+        """Shows some space wallpapers from reddit.
+
+        Wallpapers shown are taken from r/SpaceWalls.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://www.reddit.com/r/SpaceWalls/new.json?sort=hot"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                children = data["children"]
+                post = random.choice(children)["data"]
+                title = post["title"]
+                url = post["url_overridden_by_dest"]
+
+        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed.set_image(url=url)
         await session.close()
         await ctx.send(embed=embed)
