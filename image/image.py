@@ -206,20 +206,25 @@ class Image(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
         await ctx.reply(embed=embed, mention_author=False)
 
-    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
-    async def meme(self, ctx):
-        embed = discord.Embed(
-            title="Here's a Fresh meme for you!",
-            color=discord.Colour.random(),
-            timestamp=ctx.message.created_at,
-        )
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def meme(self, ctx: commands.Context):
+        """Shows some memes from reddit.
 
-        embed.set_footer(
-            text="Powered by meme-api",
-            icon_url=ctx.message.author.avatar_url,
-        )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        Memes shown are taken from r/memes.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://www.reddit.com/r/memes/new.json?sort=hot"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                children = data["children"]
+                post = random.choice(children)["data"]
+                title = post["title"]
+                url = post["url_overridden_by_dest"]
 
-        embed.set_image(url=await api_call("https://meme-api.herokuapp.com/gimme"))
-        await ctx.reply(embed=embed, mention_author=False)
+        embed = discord.Embed(title=title).set_image(url=url)
+        await session.close()
+        await ctx.send(embed=embed)
