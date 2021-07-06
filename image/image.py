@@ -228,9 +228,9 @@ class Image(commands.Cog):
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def space(self, ctx: commands.Context):
-        """Shows some space wallpapers from reddit.
+        """Shows some space images from reddit.
 
-        Wallpapers shown are taken from r/spaceporn.
+        Images shown are taken from r/spaceporn.
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
