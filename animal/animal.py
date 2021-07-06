@@ -1,12 +1,9 @@
 """
 Copyright 2021 Onii-chan
-
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
-
     http://www.apache.org/licenses/LICENSE-2.0
-
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,20 +22,20 @@ from redbot.core import commands
 log = logging.getLogger("red.onii.animal")
 
 class Animal(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
     
     __author__ = ["Onii-chan"]
     __version__ = "1.0.0"
-
-    def __init__(self, bot):
-        self.bot = bot
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
 
-    @commands.group(aliases=["c"])
+    @commands.group(aliases=["i"])
     async def image(self, ctx):
+        """These commands will return images"""
     
     @image.command()
     @commands.guild_only()
@@ -73,7 +70,6 @@ class Animal(commands.Cog):
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def cat(self, ctx: commands.Context):
         """Shows some cat images from reddit.
-
         Images shown are taken from r/catwallpapers.
         """
         async with aiohttp.ClientSession() as session:
