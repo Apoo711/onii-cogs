@@ -139,10 +139,10 @@ class Image(commands.Cog):
         embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
         await ctx.reply(embed=embed, mention_author=False)
 
-    @commands.command()
+    @other.command(aliases=["rando"])
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def meme(self, ctx: commands.Context):
+    async def random(self, ctx: commands.Context):
         """Shows some anime wallpaper from reddit.
 
         Anime wallpapers shown are taken from r/Animewallpaper.
