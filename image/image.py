@@ -249,7 +249,7 @@ class Image(commands.Cog):
         await session.close()
         await ctx.send(embed=embed)
     
-    @commands.command()
+    @other.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def space(self, ctx: commands.Context):
@@ -270,5 +270,9 @@ class Image(commands.Cog):
 
         embed = discord.Embed(title=title, colour=discord.Colour.random())
         embed.set_image(url=url)
+        embed.set_footer(
+            text="Powered by r/SpaceWalls",
+            icon_url=ctx.message.author.avatar_url,
+        )
         await session.close()
         await ctx.send(embed=embed)
