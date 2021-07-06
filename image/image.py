@@ -50,11 +50,6 @@ class Image(commands.Cog):
     async def other(self, ctx):
         """The uncategorised commands in the image cog"""
 
-    @image.group(aliases=["ani"])
-    async def animals(self, ctx):
-        """The animal commands in the image cog"""
-
-
     @character.command(aliases=["zen"], name="zenitsu")
     @commands.bot_has_permissions(embed_links=True)
     async def zenitsu(self, ctx):
@@ -76,46 +71,32 @@ class Image(commands.Cog):
         embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
         await ctx.reply(embed=embed, mention_author=False)
 
-    @character.command(aliases=["nar"], name="naruto")
-    @commands.bot_has_permissions(embed_links=True)
-    async def naruto(self, ctx):
-        embed = discord.Embed(color=0xDC8D22)
-        embed.add_field(
-            name="Naruto", value="You asked for some Naruto wallpapers?", inline=False
-        )
-        embed.set_image(
-            url=random.choice(
-                (
-                    "https://cdn.discordapp.com/attachments/736113073328357386/748994203110866944/thumb-1920-532559.jpg",
-                    "https://cdn.discordapp.com/attachments/736113073328357386/800950373233459210/thumb-1920-303042.png",
-                    "https://cdn.discordapp.com/attachments/742663617522040843/818725598041735168/d5be3a21870ee870bc4b45dd92e68297.jpg",
-                    "https://cdn.discordapp.com/attachments/736113073328357386/800950373233459210/thumb-1920-303042.png",
-                    "https://wallpaperaccess.com/full/4757768.jpg",
-                    "https://wallpaperaccess.com/full/677436.jpg",
-                    "https://cdn.hipwallpaper.com/i/47/31/sqE0Hc.jpg",
-                    "https://www.teahub.io/photos/full/62-625201_naruto-uzumaki-kurama-4k-naruto-and-kurama-wallpaper.jpg",
-                    "https://wallpaper.dog/large/5456675.jpg",
-                )
-            )
-        )
-        embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
-        await ctx.reply(embed=embed, mention_author=False)
+    @other.command()
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def naruto(self, ctx: commands.Context):
+        """Shows some naruto wallpapers from reddit.
 
-    @character.command(aliases=["jiro"], name="tanjiro")
-    @commands.bot_has_permissions(embed_links=True)
-    async def tanjiro(self, ctx):
-        embed = discord.Embed(colour=0xFF9900)
-        embed.add_field(name="Tanjiro", value="Behold Tanjiro!", inline=False)
-        embed.set_image(
-            url=random.choice(
-                (
-                    "https://wallpapercave.com/wp/wp4771870.jpg",
-                    "https://wallpaperaccess.com/full/2661458.jpg",
-                    "https://wallpapercave.com/wp/wp5194112.jpg",
-                )
-            )
+        Wallpapers shown are taken from r/narutowallpapers.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://www.reddit.com/r/narutowallpapers/new.json?sort=hot"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                children = data["children"]
+                post = random.choice(children)["data"]
+                title = post["title"]
+                url = post["url_overridden_by_dest"]
+
+        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed.set_image(url=url)
+        embed.set_footer(
+            text="Powered by r/narutowallpapers",
+            icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
+        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @image.group(aliases=["a"])
@@ -167,7 +148,7 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed, mention_author=False)
 
     @other.command(name="randomavatar", aliases=["rav"])
     @commands.bot_has_permissions(embed_links=True)
@@ -247,7 +228,7 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed, mention_author=False)
     
     @other.command()
     @commands.guild_only()
@@ -275,4 +256,4 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed, mention_author=False)
