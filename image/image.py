@@ -38,7 +38,7 @@ class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.group(aliases=["im"])
+    @commands.group(aliases=["i"])
     async def image(self, ctx):
         """All the commands in the image cog"""
 
@@ -150,7 +150,7 @@ class Image(commands.Cog):
         await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
-    @image.command(name="randomavatar", aliases=["rav"])
+    @other.command(name="randomavatar", aliases=["rav"])
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def avatar_random(self, ctx: commands.Context):
