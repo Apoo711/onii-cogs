@@ -230,11 +230,11 @@ class Image(commands.Cog):
     async def space(self, ctx: commands.Context):
         """Shows some space wallpapers from reddit.
 
-        Wallpapers shown are taken from r/SpaceWalls.
+        Wallpapers shown are taken from r/spaceporn.
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/SpaceWalls/new.json?sort=hot"
+                "https://www.reddit.com/r/spaceporn/new.json?sort=hot"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -246,7 +246,7 @@ class Image(commands.Cog):
         embed = discord.Embed(title=title, colour=discord.Colour.random())
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/SpaceWalls",
+            text="Powered by r/spaceporn",
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
@@ -256,7 +256,7 @@ class Image(commands.Cog):
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def animememe(self, ctx: commands.Context):
-        """Shows some space wallpapers from reddit.
+        """Shows some anime memes from reddit.
 
         Wallpapers shown are taken from r/Animemes.
         """
