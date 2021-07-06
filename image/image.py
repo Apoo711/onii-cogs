@@ -146,6 +146,8 @@ class Image(commands.Cog):
         """Shows some anime wallpaper from reddit.
 
         Anime wallpapers shown are taken from r/Animewallpaper.
+        
+        Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
