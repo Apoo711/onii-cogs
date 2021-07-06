@@ -32,12 +32,8 @@ class Animal(commands.Cog):
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
-
-    @commands.group(aliases=["i"])
-    async def image(self, ctx):
-        """These commands will return images"""
     
-    @image.command()
+    @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def dog(self, ctx: commands.Context):
@@ -65,7 +61,7 @@ class Animal(commands.Cog):
         await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
-    @image.command()
+    @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def cat(self, ctx: commands.Context):
