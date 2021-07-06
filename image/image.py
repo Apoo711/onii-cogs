@@ -38,7 +38,7 @@ class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.group(aliases=["i"])
+    @commands.group(aliases=["im"])
     async def image(self, ctx):
         """All the commands in the image cog"""
 
