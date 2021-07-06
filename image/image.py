@@ -269,3 +269,59 @@ class Image(commands.Cog):
         )
         await session.close()
         await ctx.reply(embed=embed, mention_author=False)
+        
+    @commands.command(aliases=["animeme"])
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def animememe(self, ctx: commands.Context):
+        """Shows some space wallpapers from reddit.
+
+        Wallpapers shown are taken from r/Animemes.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://www.reddit.com/r/Animemes/new.json?sort=hot"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                children = data["children"]
+                post = random.choice(children)["data"]
+                title = post["title"]
+                url = post["url_overridden_by_dest"]
+
+        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed.set_image(url=url)
+        embed.set_footer(
+            text="Powered by r/Animemes",
+            icon_url=ctx.message.author.avatar_url,
+        )
+        await session.close()
+        await ctx.reply(embed=embed, mention_author=False)
+        
+    @other.command()
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def moe(self, ctx: commands.Context):
+        """Shows some space wallpapers from reddit.
+
+        Wallpapers shown are taken from r/awwnime.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://www.reddit.com/r/awwnime/new.json?sort=hot"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                children = data["children"]
+                post = random.choice(children)["data"]
+                title = post["title"]
+                url = post["url_overridden_by_dest"]
+
+        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed.set_image(url=url)
+        embed.set_footer(
+            text="Powered by r/awwnime",
+            icon_url=ctx.message.author.avatar_url,
+        )
+        await session.close()
+        await ctx.reply(embed=embed, mention_author=False)
