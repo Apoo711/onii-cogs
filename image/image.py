@@ -225,6 +225,7 @@ class Image(commands.Cog):
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
 
-        embed = discord.Embed(title=title).set_image(url=url)
+        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed.set_image(url=url)
         await session.close()
         await ctx.send(embed=embed)
