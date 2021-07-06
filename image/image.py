@@ -150,21 +150,33 @@ class Image(commands.Cog):
         await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
-    @other.command(name="randomavatar", aliases=["rav"])
-    @commands.bot_has_permissions(embed_links=True)
+    @image.command(name="randomavatar", aliases=["rav"])
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
     async def avatar_random(self, ctx: commands.Context):
-        async with aiohttp.ClientSession() as cs:
-            async with cs.get("https://shiro.gg/api/images/avatars") as r:
-                res = await r.json()
-                em = discord.Embed(
-                    colour=discord.Colour.random(), title="**Here's your anime avatar!*"
-                )
-                em.set_footer(
-                    text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
-                    icon_url=ctx.author.avatar_url,
-                )
-                em.set_image(url=res["url"])
-                await ctx.reply(embed=em, mention_author=False)
+        """Shows some profile pictures from reddit.
+
+        Pictures shown are taken from r/ProfilePic.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://www.reddit.com/r/ProfilePic/new.json?sort=hot"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                children = data["children"]
+                post = random.choice(children)["data"]
+                title = post["title"]
+                url = post["url_overridden_by_dest"]
+
+        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed.set_image(url=url)
+        embed.set_footer(
+            text="Powered by r/ProfilePic",
+            icon_url=ctx.message.author.avatar_url,
+        )
+        await session.close()
+        await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @other.command()
