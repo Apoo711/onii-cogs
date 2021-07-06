@@ -1,5 +1,5 @@
-from .image import Image
+from .animal import Animal
 
 
 def setup(bot):
-    bot.add_cog(Image(bot))
+    bot.add_cog(Animal(bot))
