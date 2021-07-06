@@ -127,7 +127,7 @@ class Image(commands.Cog):
         """Shows some anime wallpaper from reddit.
 
         Wallpapers shown are taken from r/Animewallpaper.
-        
+
         Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
         async with aiohttp.ClientSession() as session:
@@ -223,7 +223,7 @@ class Image(commands.Cog):
         )
         await session.close()
         await ctx.reply(embed=embed, mention_author=False)
-    
+
     @other.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -251,7 +251,7 @@ class Image(commands.Cog):
         )
         await session.close()
         await ctx.reply(embed=embed, mention_author=False)
-        
+
     @commands.command(aliases=["animeme"])
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -279,7 +279,7 @@ class Image(commands.Cog):
         )
         await session.close()
         await ctx.reply(embed=embed, mention_author=False)
-        
+
     @other.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
