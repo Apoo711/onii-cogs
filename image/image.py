@@ -140,20 +140,18 @@ class Image(commands.Cog):
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command(aliases=["rando"])
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.bot_has_permissions(embed_links=True)
     async def random(self, ctx: commands.Context):
         async with aiohttp.ClientSession() as cs:
             async with cs.get("https://shiro.gg/api/images/wallpapers") as r:
                 res = await r.json()
                 embed = discord.Embed(
-                    title("Here's your random wallpaper!"),
-                    footer(
-                        text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
-                        icon_url=ctx.author.avatar_url,
-                    ),
-                    color(discord.Color.random()),
+                    title="Here's your random wallpaper!",
+                    color=discord.Color.random(),
                 )
                 embed.set_image(url=res["url"])
+                embed.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
                 await ctx.reply(embed=embed, mention_author=False)
 
     @other.command(name="randomavatar", aliases=["rav"])
@@ -172,9 +170,8 @@ class Image(commands.Cog):
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
-    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @other.command()
-    @commands.guild_only()
     async def waifu(self, ctx):
         embed = discord.Embed(
             title="Waifu's for you!",
@@ -191,9 +188,8 @@ class Image(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/waifu"))
         await ctx.reply(embed=embed, mention_author=False)
 
-    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @other.command()
-    @commands.guild_only()
     async def neko(self, ctx):
         embed = discord.Embed(
             title="Neko's For You!",
@@ -208,4 +204,22 @@ class Image(commands.Cog):
         embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
 
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
+        await ctx.reply(embed=embed, mention_author=False)
+        
+    @commands.cooldown(1, 10, commands.BucketType.user)
+    @commands.command()
+    async def meme(self, ctx):
+        embed = discord.Embed(
+            title="Here's a Fresh meme for you!",
+            color=discord.Colour.random(),
+            timestamp=ctx.message.created_at,
+        )
+
+        embed.set_footer(
+            text="Powered by meme-api",
+            icon_url=ctx.message.author.avatar_url,
+        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+
+        embed.set_image(url=await api_call("https://meme-api.herokuapp.com/gimme"))
         await ctx.reply(embed=embed, mention_author=False)

@@ -1,4 +1,4 @@
-from .wallpaper import Image
+from .image import Image
 
 
 def setup(bot):
