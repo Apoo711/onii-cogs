@@ -152,7 +152,7 @@ class Image(commands.Cog):
                     color=discord.Color.random(),
                 )
                 embed.set_image(url=res["url"])
-                footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
+                embed.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
                 await ctx.reply(embed=embed, mention_author=False)
 
     @other.command(name="randomavatar", aliases=["rav"])
