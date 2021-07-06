@@ -120,7 +120,7 @@ class Image(commands.Cog):
 
     @image.group(aliases=["a"])
     async def anime(self, ctx):
-        """Wallpaper commands"""
+        """Image commands"""
 
     @anime.command(name="chibi")
     @commands.bot_has_permissions(embed_links=True)
@@ -139,20 +139,29 @@ class Image(commands.Cog):
         embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
         await ctx.reply(embed=embed, mention_author=False)
 
-    @other.command(aliases=["rando"])
-    @commands.cooldown(1, 10, commands.BucketType.user)
-    @commands.bot_has_permissions(embed_links=True)
-    async def random(self, ctx: commands.Context):
-        async with aiohttp.ClientSession() as cs:
-            async with cs.get("https://shiro.gg/api/images/wallpapers") as r:
-                res = await r.json()
-                embed = discord.Embed(
-                    title="Here's your random wallpaper!",
-                    color=discord.Color.random(),
-                )
-                embed.set_image(url=res["url"])
-                embed.set_footer(text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg", icon_url=ctx.author.avatar_url)
-                await ctx.reply(embed=embed, mention_author=False)
+    @commands.command()
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def meme(self, ctx: commands.Context):
+        """Shows some anime wallpaper from reddit.
+
+        Anime wallpapers shown are taken from r/Animewallpaper.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://www.reddit.com/r/Animewallpaper/new.json?sort=hot"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                children = data["children"]
+                post = random.choice(children)["data"]
+                title = post["title"]
+                url = post["url_overridden_by_dest"]
+
+        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed.set_image(url=url)
+        await session.close()
+        await ctx.send(embed=embed)
 
     @other.command(name="randomavatar", aliases=["rav"])
     @commands.bot_has_permissions(embed_links=True)
