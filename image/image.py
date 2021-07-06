@@ -141,6 +141,7 @@ class Image(commands.Cog):
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command(aliases=["rando"])
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.bot_has_permissions(embed_links=True)
     async def random(self, ctx: commands.Context):
         async with aiohttp.ClientSession() as cs:
@@ -170,9 +171,8 @@ class Image(commands.Cog):
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
-    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @other.command()
-    @commands.guild_only()
     async def waifu(self, ctx):
         embed = discord.Embed(
             title="Waifu's for you!",
@@ -189,9 +189,8 @@ class Image(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/waifu"))
         await ctx.reply(embed=embed, mention_author=False)
 
-    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @other.command()
-    @commands.guild_only()
     async def neko(self, ctx):
         embed = discord.Embed(
             title="Neko's For You!",
@@ -208,7 +207,7 @@ class Image(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
         await ctx.reply(embed=embed, mention_author=False)
         
-    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
     async def meme(self, ctx):
         embed = discord.Embed(
