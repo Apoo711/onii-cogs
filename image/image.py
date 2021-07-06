@@ -23,7 +23,6 @@ import discord
 from redbot.core import commands
 
 
-
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
         async with session.get(f"{call_uri}") as response:
