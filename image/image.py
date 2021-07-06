@@ -241,7 +241,7 @@ class Image(commands.Cog):
         embed = discord.Embed(title=title, colour=discord.Colour.random())
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by [r/memes](https://www.reddit.com/r/memes/)",
+            text="Powered by r/memes",
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
