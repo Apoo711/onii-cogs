@@ -36,12 +36,6 @@ class Animal(commands.Cog):
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
-        
-# Facts Group will be added when I add a command for this group
-
-#    @commands.group(aliases=["i"])
-#    async def facts(self, ctx):
-#        """All the commands in the image cog"""
 
     @commands.group(aliases=["c"])
     async def image(self, ctx):
