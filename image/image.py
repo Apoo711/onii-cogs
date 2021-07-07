@@ -91,7 +91,11 @@ class Image(commands.Cog):
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random(), url=f"https://reddit.com{link}")
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/narutowallpapers",
@@ -142,7 +146,11 @@ class Image(commands.Cog):
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random(), url=f"https://reddit.com{link}")
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/Animewallpaper",
@@ -170,7 +178,11 @@ class Image(commands.Cog):
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random(), url=f"https://reddit.com{link}")
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/ProfilePic",
@@ -216,7 +228,11 @@ class Image(commands.Cog):
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random(), url=f"https://reddit.com{link}")
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/memes",
@@ -244,7 +260,11 @@ class Image(commands.Cog):
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random(), url=f"https://reddit.com{link}")
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/spaceporn",
@@ -273,7 +293,11 @@ class Image(commands.Cog):
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random(), url=f"https://reddit.com{link}")
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/Animemes",
@@ -302,7 +326,11 @@ class Image(commands.Cog):
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random(), url=f"https://reddit.com{link}")
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/awwnime",
