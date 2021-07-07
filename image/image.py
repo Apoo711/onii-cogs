@@ -162,13 +162,13 @@ class Image(commands.Cog):
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def avatar_random(self, ctx: commands.Context):
-        """Shows some profile pictures from reddit.
+        """Shows some anime profile pictures from reddit.
 
-        Pictures shown are taken from r/ProfilePic.
+        Pictures shown are taken from r/AnimePFP.
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/ProfilePic/new.json?sort=hot"
+                "https://www.reddit.com/r/AnimePFP/new.json?sort=hot"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -185,7 +185,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/ProfilePic",
+            text="Powered by r/AnimePFP",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
