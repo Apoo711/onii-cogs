@@ -216,10 +216,11 @@ class Image(commands.Cog):
 
         Memes shown are taken from r/memes.
         """
+        SPACE = "spaceengine", "LandscapeAstro"
+        API = "https://www.reddit.com/r/{}/top.json?sort=new"
+
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://www.reddit.com/r/memes/top.json?sort=hot"
-            ) as resp:
+            async with session.get(API + choice(SPACE)) as resp:
                 data = await resp.json()
                 data = data["data"]
                 children = data["children"]
@@ -227,6 +228,7 @@ class Image(commands.Cog):
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
+                subreddit_name = post["subreddit_name_prefixed"]
                 r_author = post["author"]
                 upvote = post["ups"]
 
@@ -237,7 +239,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {upvote} | Post by {r_author} | r/memes",
+            text=f"👍 {upvote} | Post by {r_author} | {subreddit_name}",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
