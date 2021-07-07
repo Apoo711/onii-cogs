@@ -215,6 +215,8 @@ class Image(commands.Cog):
         """Shows some memes from reddit.
         Memes shown are taken from r/memes.
         """
+        async with ctx.typing():
+            await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://www.reddit.com/r/memes/top.json?sort=hot"
