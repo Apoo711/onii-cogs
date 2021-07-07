@@ -239,7 +239,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"{upvote} | {downvote}",
+            text=f"👍 {upvote} | 👎 {downvote}",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
