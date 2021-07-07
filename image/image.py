@@ -227,7 +227,7 @@ class Image(commands.Cog):
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
-                r_author  = post["author_fullname"]
+                r_author  = post["author"]
 
         embed = discord.Embed(
             title=title,
