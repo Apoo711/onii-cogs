@@ -227,6 +227,7 @@ class Image(commands.Cog):
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
+                r_author  = post["author_fullname"]
 
         embed = discord.Embed(
             title=title,
@@ -235,7 +236,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/memes",
+            text=f"Post by {r_author} - r/memes",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
