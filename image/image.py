@@ -254,12 +254,12 @@ class Image(commands.Cog):
 
         Images shown are taken from r/spaceengine and r/LandscapeAstro.
         """
-        space_reddits="spaceengine", "LandscapeAstro"
-        space_reddit_chooser=random.choice(space_reddits)
-        
+        SPACE = "spaceengine", "LandscapeAstro"
+        API = "https://www.reddit.com/r/{}/top.json?sort=new"
+        async with ctx.typing():
+            await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                f"https://www.reddit.com/r/{space_reddit_chooser}/top.json?sort=hot"
+            async with session.get(API + random.choice(SPACE)
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -303,9 +303,8 @@ class Image(commands.Cog):
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
-                upvote = post["ups"]
-                upvote = post["ups"]
                 r_author = post["author"]
+                upvote = post["ups"]
 
         embed = discord.Embed(
             title=title,
