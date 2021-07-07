@@ -270,7 +270,6 @@ class Image(commands.Cog):
             text="Powered by r/spaceporn",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.command(aliases=["animeme"])
@@ -303,7 +302,6 @@ class Image(commands.Cog):
             text="Powered by r/Animemes",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command()
@@ -336,7 +334,6 @@ class Image(commands.Cog):
             text="Powered by r/awwnime",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
         
     @other.command()
@@ -369,5 +366,4 @@ class Image(commands.Cog):
             text="Powered by r/EarthPorn",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
