@@ -263,7 +263,7 @@ class Image(commands.Cog):
                 children = data["children"]
                 post = random.choice(children)["data"]
                 title = post["title"]
-                url = post["url_overridden_by_dest"]
+                url = post["url"]
                 link = post["permalink"]
                 subreddit_name = post["subreddit_name_prefixed"]
                 r_author = post["author"]
