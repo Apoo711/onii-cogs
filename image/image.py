@@ -235,7 +235,7 @@ class Image(commands.Cog):
             title=title,
             colour=discord.Colour.random(),
             url=f"https://reddit.com{link}",
-            description="Post by {r_author} - r/memes"
+            description=f"Post by {r_author} - r/memes"
         )
         embed.set_image(url=url)
         embed.set_footer(
