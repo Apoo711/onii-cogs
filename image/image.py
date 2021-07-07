@@ -70,10 +70,10 @@ class Image(commands.Cog):
         )
         await ctx.reply(embed=embed, mention_author=False)
 
-    @commands.command(aliases=["rando"])
+    @commands.command(name="randomwallpaper", aliases=["ran"])
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def random(self, ctx: commands.Context):
+    async def wallpaper_random(self, ctx: commands.Context):
         """Shows some anime wallpaper from reddit.
 
         Wallpapers shown are taken from r/Animewallpaper.
