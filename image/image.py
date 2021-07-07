@@ -229,17 +229,15 @@ class Image(commands.Cog):
                 link = post["permalink"]
                 r_author = post["author"]
                 upvote = post["ups"]
-                downvote = post["downs"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
             url=f"https://reddit.com{link}",
-            description=f"Post by {r_author} - r/memes"
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {upvote} | 👎 {downvote}",
+            text=f"👍 {upvote} | Post by {r_author} - r/memes",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
