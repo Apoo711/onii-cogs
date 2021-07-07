@@ -96,7 +96,6 @@ class Image(commands.Cog):
             text="Powered by r/narutowallpapers",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @image.group(aliases=["a"])
@@ -147,7 +146,6 @@ class Image(commands.Cog):
             text="Powered by r/Animewallpaper",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command(name="randomavatar", aliases=["rav"])
@@ -175,7 +173,6 @@ class Image(commands.Cog):
             text="Powered by r/ProfilePic",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
@@ -214,14 +211,14 @@ class Image(commands.Cog):
                 post = random.choice(children)["data"]
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
+                link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed = discord.Embed(title=f"[{title}]({permalink})", colour=discord.Colour.random())
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/memes",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command()
