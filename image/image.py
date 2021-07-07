@@ -253,11 +253,12 @@ class Image(commands.Cog):
         """
         SPACE = "spaceengine", "LandscapeAstro"
         SPACE_CHOOSER = random.choice(SPACE)
-        API = f"https://www.reddit.com/r/{SPACE_CHOOSER}/top.json?sort=new"
+#        API = f"https://www.reddit.com/r/{SPACE_CHOOSER}/top.json?sort=new"
         async with ctx.typing():
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
-            async with session.get(API) as resp:
+            async with session.get(f"https://www.reddit.com/r/{SPACE_CHOOSER}/top.json?sort=new"
+            ) as resp:
                 data = await resp.json()
                 data = data["data"]
                 children = data["children"]
