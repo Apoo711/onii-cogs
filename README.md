@@ -12,7 +12,7 @@ Discord User:  Onii-chan#3920
 Docs: [Docs](onii-cogs.readthedocs.io)
  # Installation
 To add cogs from this repo to your instance, do these steps:
-- `[p]repo add onii-cogs https://github.com/onii-chan/onii-cogs`
+- `[p]repo add onii-cogs https://github.com/Onii-Chan-Discord/onii-cogs`
 - `[p]cog install onii-cogs <cog name>`
 - `[p]load <cog name>`
 
