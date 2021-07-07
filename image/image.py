@@ -221,7 +221,8 @@ class Image(commands.Cog):
         async with ctx.typing():
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
-            async with session.get(API + random.choice(SPACE)) as resp:
+            async with session.get(API + random.choice(SPACE)
+            ) as resp:
                 data = await resp.json()
                 data = data["data"]
                 children = data["children"]
