@@ -273,7 +273,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"Posted by {r_author} - r/{subreddit_name}",
+            text=f"Posted by {r_author} - {subreddit_name}",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
