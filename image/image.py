@@ -213,15 +213,11 @@ class Image(commands.Cog):
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def meme(self, ctx: commands.Context):
         """Shows some memes from reddit.
-
         Memes shown are taken from r/memes.
         """
-        SPACE = "spaceengine", "LandscapeAstro"
-        API = "https://www.reddit.com/r/{}/top.json?sort=new"
-        async with ctx.typing():
-            await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
-            async with session.get(API + random.choice(SPACE)
+            async with session.get(
+                "https://www.reddit.com/r/memes/top.json?sort=hot"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -230,7 +226,6 @@ class Image(commands.Cog):
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
-                subreddit_name = post["subreddit_name_prefixed"]
                 r_author = post["author"]
                 upvote = post["ups"]
 
@@ -241,7 +236,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {upvote} | Post by {r_author} | {subreddit_name}",
+            text=f"👍 {upvote} | Post by {r_author} | r/memes",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
