@@ -305,6 +305,7 @@ class Image(commands.Cog):
                 link = post["permalink"]
                 upvote = post["ups"]
                 upvote = post["ups"]
+                r_author = post["author"]
 
         embed = discord.Embed(
             title=title,
@@ -338,6 +339,7 @@ class Image(commands.Cog):
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
                 upvote = post["ups"]
+                r_author = post["author"]
 
         embed = discord.Embed(
             title=title,
@@ -371,6 +373,7 @@ class Image(commands.Cog):
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
                 upvote = post["ups"]
+                r_author = post["author"]
 
         embed = discord.Embed(
             title=title,
