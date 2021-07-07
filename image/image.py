@@ -37,41 +37,8 @@ log = logging.getLogger("red.onii.image")
 class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-    @commands.group(aliases=["i"])
-    async def image(self, ctx):
-        """All the commands in the image cog"""
-
-    @image.group(aliases=["c"])
-    async def character(self, ctx):
-        """The character commands in the wallpaper part of the image cog"""
-
-    @image.group(aliases=["o"])
-    async def other(self, ctx):
-        """The uncategorised commands in the image cog"""
-
-    @character.command(aliases=["zen"], name="zenitsu")
-    @commands.bot_has_permissions(embed_links=True)
-    async def zenitsu(self, ctx):
-        embed = discord.Embed(color=0xFFF300)
-        embed.add_field(
-            name="Zenitsu", value="You asked for some Zenitsu wallpapers?", inline=False
-        )
-        embed.set_image(
-            url=random.choice(
-                (
-                    "https://images2.alphacoders.com/100/thumb-1920-1007550.jpg",
-                    "https://cdn.discordapp.com/attachments/736113073328357386/813287821355778108/thumb-1920-1007788.jpg",
-                    "https://cdn.discordapp.com/attachments/736113073328357386/801781638991183903/thumb-1920-1026796.jpg",
-                    "https://www.enjpg.com/img/2020/zenitsu-12.jpg",
-                    "https://images.wallpapersden.com/image/download/breath-of-thunder-zenitsu-agatsuma_a21oameUmZqaraWkpJRobWllrWdma2U.jpg",
-                )
-            )
-        )
-        embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
-        await ctx.reply(embed=embed, mention_author=False)
-
-    @other.command()
+        
+    @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def naruto(self, ctx: commands.Context):
@@ -103,28 +70,7 @@ class Image(commands.Cog):
         )
         await ctx.reply(embed=embed, mention_author=False)
 
-    @image.group(aliases=["a"])
-    async def anime(self, ctx):
-        """Image commands"""
-
-    @anime.command(name="chibi")
-    @commands.bot_has_permissions(embed_links=True)
-    async def chibi(self, ctx):
-        """Random cute wallpaper(Will contain characters from multiple anime's)"""
-        embed = discord.Embed(colour=0xFF00AB)
-        embed.add_field(name="Chibi", value="Aren't they cute?", inline=False)
-        embed.set_image(
-            url=random.choice(
-                (
-                    "https://cdn.discordapp.com/attachments/763154622675681331/836852290933489664/bg-01.png",
-                    "https://cdn.discordapp.com/attachments/763154622675681331/836908773146361906/bg-02.png",
-                )
-            )
-        )
-        embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
-        await ctx.reply(embed=embed, mention_author=False)
-
-    @other.command(aliases=["rando"])
+    @commands.command(aliases=["rando"])
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def random(self, ctx: commands.Context):
@@ -158,7 +104,7 @@ class Image(commands.Cog):
         )
         await ctx.reply(embed=embed, mention_author=False)
 
-    @other.command(name="randomavatar", aliases=["rav"])
+    @commands.command(name="randomavatar", aliases=["rav"])
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def avatar_random(self, ctx: commands.Context):
@@ -191,7 +137,8 @@ class Image(commands.Cog):
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
-    @other.command()
+    @commands.command()
+    @commands.guild_only()
     async def neko(self, ctx):
         embed = discord.Embed(
             title="Neko's For You!",
@@ -243,7 +190,7 @@ class Image(commands.Cog):
         )
         await ctx.reply(embed=embed, mention_author=False)
 
-    @other.command()
+    @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def space(self, ctx: commands.Context):
@@ -315,7 +262,7 @@ class Image(commands.Cog):
         )
         await ctx.reply(embed=embed, mention_author=False)
 
-    @other.command()
+    @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def moe(self, ctx: commands.Context):
@@ -349,7 +296,7 @@ class Image(commands.Cog):
         )
         await ctx.reply(embed=embed, mention_author=False)
         
-    @other.command()
+    @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def scenery(self, ctx: commands.Context):
