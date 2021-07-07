@@ -252,7 +252,7 @@ class Image(commands.Cog):
         Images shown are taken from r/spaceengine and r/LandscapeAstro.
         """
         SPACE = "spaceengine", "LandscapeAstro"
-        SPACE_CHOOSER = random.choice("SPACE")
+        SPACE_CHOOSER = random.choice(SPACE)
         API = f"https://www.reddit.com/r/{SPACE_CHOOSER}/top.json?sort=new"
         async with ctx.typing():
             await asyncio.sleep(1)
