@@ -32,7 +32,7 @@ async def api_call(call_uri, returnObj=False):
             elif returnObj == True:
                 return response
 
-log = logging.getLogger("red.onii.wallpaper")
+log = logging.getLogger("red.onii.image")
 
 class Image(commands.Cog):
     def __init__(self, bot):
@@ -218,7 +218,7 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/memes/new.json?sort=hot"
+                "https://www.reddit.com/r/memes/top.json?sort=hot"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -227,16 +227,19 @@ class Image(commands.Cog):
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
-                r_author  = post["author"]
+                r_author = post["author"]
+                upvote = post["ups"]
+                downvote = post["downs"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+            url=f"https://reddit.com{link}",
+            description="Post by {r_author} - r/memes""
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"Post by {r_author} - r/memes",
+            text=f"{upvote} | {downvote}",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
