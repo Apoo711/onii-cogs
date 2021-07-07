@@ -249,9 +249,12 @@ class Image(commands.Cog):
 
         Images shown are taken from r/spaceporn.
         """
+        space_reddits="spaceengine", "LandscapeAstro"
+        space_reddit_chooser=random.choice(space_reddits)
+        
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/spaceporn/new.json?sort=hot"
+                f"https://www.reddit.com/r/{space_reddit_chooser}/new.json?sort=hot"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
