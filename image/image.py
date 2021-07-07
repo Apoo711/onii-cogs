@@ -89,14 +89,18 @@ class Image(commands.Cog):
                 post = random.choice(children)["data"]
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
+                link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/narutowallpapers",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @image.group(aliases=["a"])
@@ -140,14 +144,18 @@ class Image(commands.Cog):
                 post = random.choice(children)["data"]
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
+                link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/Animewallpaper",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command(name="randomavatar", aliases=["rav"])
@@ -168,14 +176,18 @@ class Image(commands.Cog):
                 post = random.choice(children)["data"]
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
+                link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/ProfilePic",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
@@ -214,27 +226,31 @@ class Image(commands.Cog):
                 post = random.choice(children)["data"]
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
+                link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/memes",
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def space(self, ctx: commands.Context):
-        """Shows some space wallpapers from reddit.
+        """Shows some space images from reddit.
 
-        Wallpapers shown are taken from r/SpaceWalls.
+        Images shown are taken from r/spaceporn.
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/SpaceWalls/new.json?sort=hot"
+                "https://www.reddit.com/r/spaceporn/new.json?sort=hot"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -242,11 +258,16 @@ class Image(commands.Cog):
                 post = random.choice(children)["data"]
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
+                link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/SpaceWalls",
+            text="Powered by r/spaceporn",
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
@@ -256,7 +277,7 @@ class Image(commands.Cog):
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def animememe(self, ctx: commands.Context):
-        """Shows some space wallpapers from reddit.
+        """Shows some anime memes from reddit.
 
         Wallpapers shown are taken from r/Animemes.
         """
@@ -270,8 +291,13 @@ class Image(commands.Cog):
                 post = random.choice(children)["data"]
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
+                link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/Animemes",
@@ -298,8 +324,13 @@ class Image(commands.Cog):
                 post = random.choice(children)["data"]
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
+                link = post["permalink"]
 
-        embed = discord.Embed(title=title, colour=discord.Colour.random())
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            url=f"https://reddit.com{link}"
+        )
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/awwnime",
