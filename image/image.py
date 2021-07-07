@@ -247,7 +247,7 @@ class Image(commands.Cog):
     async def space(self, ctx: commands.Context):
         """Shows some space images from reddit.
 
-        Images shown are taken from r/spaceporn.
+        Images shown are taken from r/spaceengine and r/LandscapeAstro.
         """
         space_reddits="spaceengine", "LandscapeAstro"
         space_reddit_chooser=random.choice(space_reddits)
@@ -263,6 +263,8 @@ class Image(commands.Cog):
                 title = post["title"]
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
+                subreddit_name=post["subreddit_name_prefixed"]
+                r_author  = post["author"]
 
         embed = discord.Embed(
             title=title,
@@ -271,7 +273,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/spaceporn",
+            text=f"Posted by {r_author} - r/{subreddit_name}",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
