@@ -213,12 +213,13 @@ class Image(commands.Cog):
                 url = post["url_overridden_by_dest"]
                 link = post["permalink"]
 
-        embed = discord.Embed(title=f"[{title}]({permalink})", colour=discord.Colour.random())
+        embed = discord.Embed(title=title, colour=discord.Colour.random())
         embed.set_image(url=url)
         embed.set_footer(
             text="Powered by r/memes",
             icon_url=ctx.message.author.avatar_url,
         )
+        embed.set_url(url=f"https://reddit.com/{link}")
         await ctx.reply(embed=embed, mention_author=False)
 
     @other.command()
