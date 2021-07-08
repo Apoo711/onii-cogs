@@ -162,12 +162,13 @@ class Image(commands.Cog):
         """Shows some memes from reddit.
         Memes shown are taken from r/memes.
         """
+        MEME_API = "memes", "Animemes"
+        MEME_CHOOSER = random.choice(SPACE)
+        API = f"https://www.reddit.com/r/{MEME_CHOOSER}/new.json?sort=new"
         async with ctx.typing():
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://www.reddit.com/r/memes/new.json?sort=hot"
-            ) as resp:
+            async with session.get(API) as resp:
                 data = await resp.json()
                 data = data["data"]
                 children = data["children"]
@@ -177,6 +178,7 @@ class Image(commands.Cog):
                 link = post["permalink"]
                 r_author = post["author"]
                 upvote = post["ups"]
+                subreddit_name = post["subreddit_name_prefixed"]
 
         embed = discord.Embed(
             title=title,
@@ -185,7 +187,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {upvote} | Post by {r_author} | r/memes",
+            text=f"👍 {upvote} | Post by {r_author} | {subreddit_name}",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
@@ -198,7 +200,7 @@ class Image(commands.Cog):
 
         Images shown are taken from r/spaceengine and r/LandscapeAstro.
         """
-        SPACE = "spaceengine", "LandscapeAstro"
+        SPACE = "spaceengine", "LandscapeAstro", "astrophotography"
         SPACE_CHOOSER = random.choice(SPACE)
         API = f"https://www.reddit.com/r/{SPACE_CHOOSER}/new.json?sort=new"
         async with ctx.typing():
@@ -224,40 +226,6 @@ class Image(commands.Cog):
         embed.set_image(url=url)
         embed.set_footer(
             text=f"👍 {upvote} | Post by {r_author} | {subreddit_name}",
-            icon_url=ctx.message.author.avatar_url,
-        )
-        await ctx.reply(embed=embed, mention_author=False)
-
-    @commands.command(aliases=["animeme"])
-    @commands.guild_only()
-    @commands.cooldown(1, 5, commands.BucketType.user)
-    async def animememe(self, ctx: commands.Context):
-        """Shows some anime memes from reddit.
-
-        Memes shown are taken from r/Animemes.
-        """
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://www.reddit.com/r/Animemes/new.json?sort=hot"
-            ) as resp:
-                data = await resp.json()
-                data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
-                r_author = post["author"]
-                upvote = post["ups"]
-
-        embed = discord.Embed(
-            title=title,
-            colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}",
-        )
-        embed.set_image(url=url)
-        embed.set_footer(
-            text=f"👍 {upvote} | Post by {r_author} - r/Animemes",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
