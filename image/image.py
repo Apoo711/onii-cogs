@@ -166,7 +166,7 @@ class Image(commands.Cog):
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/memes/top.json?sort=hot"
+                "https://www.reddit.com/r/memes/new.json?sort=hot"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -200,7 +200,7 @@ class Image(commands.Cog):
         """
         SPACE = "spaceengine", "LandscapeAstro"
         SPACE_CHOOSER = random.choice(SPACE)
-        API = f"https://www.reddit.com/r/{SPACE_CHOOSER}/top.json?sort=new"
+        API = f"https://www.reddit.com/r/{SPACE_CHOOSER}/new.json?sort=new"
         async with ctx.typing():
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
