@@ -84,24 +84,26 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/Animewallpaper/new.json?sort=hot"
+                "https://api.martinebot.com/v1/images/subreddit?name=Animewallpaper"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                author = data["author"]
+                r_author = author["name"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+            url=link
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/Animewallpaper",
+            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/Animewallpaper | api.martinebot.com",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
@@ -123,6 +125,10 @@ class Image(commands.Cog):
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                author = data["author"]
+                r_author = author["name"]
 
         embed = discord.Embed(
             title=title,
@@ -131,7 +137,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/AnimePFP",
+            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/AnimePFP | api.martinebot.com",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
@@ -168,31 +174,33 @@ class Image(commands.Cog):
         async with ctx.typing():
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
-            async with session.get(API) as resp:
+            async with session.get(
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+            ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url"]
-                link = post["permalink"]
-                r_author = post["author"]
-                upvote = post["ups"]
-                subreddit_name = post["subreddit_name_prefixed"]
-                comments = post["num_comments"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}",
+            url=link
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {upvote} | Comments: {comments} | Post by {r_author} | {subreddit_name}",
+            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/{sub_name} | api.martinebot.com",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
-
+        
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -207,26 +215,29 @@ class Image(commands.Cog):
         async with ctx.typing():
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
-            async with session.get(API) as resp:
+            async with session.get(
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+            ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url"]
-                link = post["permalink"]
-                subreddit_name = post["subreddit_name_prefixed"]
-                r_author = post["author"]
-                upvote = post["ups"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}",
+            url=link
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {upvote} | Post by {r_author} | {subreddit_name}",
+            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/{sub_name} | api.martinebot.com",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
@@ -245,26 +256,29 @@ class Image(commands.Cog):
         async with ctx.typing():
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
-            async with session.get(API) as resp:
+            async with session.get(
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+            ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url"]
-                link = post["permalink"]
-                subreddit_name = post["subreddit_name_prefixed"]
-                r_author = post["author"]
-                upvote = post["ups"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}",
+            url=link
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {upvote} | Post by {r_author} | {subreddit_name}",
+            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/{sub_name} | api.martinebot.com",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
@@ -279,26 +293,26 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/EarthPorn/new.json?sort=hot"
+                "https://api.martinebot.com/v1/images/subreddit?name=EarthPorn"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url"]
-                link = post["permalink"]
-                upvote = post["ups"]
-                r_author = post["author"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                author = data["author"]
+                r_author = author["name"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}",
+            url=link
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {upvote} | Post by {r_author} - r/EarthPorn",
+            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/EarthPorn | api.martinebot.com",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
