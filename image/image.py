@@ -188,7 +188,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {upvote} | Post by {r_author} | {subreddit_name}",
+            text=f"👍 {upvote} | Comments: {comments} | Post by {r_author} | {subreddit_name}",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
