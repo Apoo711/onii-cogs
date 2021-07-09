@@ -236,12 +236,15 @@ class Image(commands.Cog):
     async def moe(self, ctx: commands.Context):
         """Shows some moe images from reddit.
 
-        Images shown are taken from r/awwnime.
+        Images shown are taken from r/awwnime, r/animeboys, r/cuteanimeboys, r/CuteAnimeGirls.
         """
+        MOE_API = "awwnime", "animeboys", "cuteanimeboys", "CuteAnimeGirls"
+        MOE_CHOOSER = random.choice(MOE)
+        API = f"https://www.reddit.com/r/{MOE_CHOOSER}/new.json?sort=new"
+        async with ctx.typing():
+            await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://www.reddit.com/r/awwnime/new.json?sort=hot"
-            ) as resp:
+            async with session.get(API) as resp:
                 data = await resp.json()
                 data = data["data"]
                 children = data["children"]
@@ -249,8 +252,9 @@ class Image(commands.Cog):
                 title = post["title"]
                 url = post["url"]
                 link = post["permalink"]
-                upvote = post["ups"]
+                subreddit_name = post["subreddit_name_prefixed"]
                 r_author = post["author"]
+                upvote = post["ups"]
 
         embed = discord.Embed(
             title=title,
@@ -259,7 +263,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {upvote} | Post by {r_author} - r/awwnime",
+            text=f"👍 {upvote} | Post by {r_author} | {subreddit_name}",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
