@@ -48,15 +48,17 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/narutowallpapers/new.json?sort=hot"
+                "https://api.martinebot.com/v1/images/subreddit?name=narutowallpapers"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                author = data["author"]
+                r_author = author["name"]
 
         embed = discord.Embed(
             title=title,
@@ -65,7 +67,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/narutowallpapers",
+            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/narutowallpapers",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
