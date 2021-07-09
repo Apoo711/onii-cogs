@@ -239,7 +239,7 @@ class Image(commands.Cog):
         Images shown are taken from r/awwnime, r/animeboys, r/cuteanimeboys, r/CuteAnimeGirls.
         """
         MOE_API = "awwnime", "animeboys", "cuteanimeboys", "CuteAnimeGirls"
-        MOE_CHOOSER = random.choice(MOE)
+        MOE_CHOOSER = random.choice(MOE_API)
         API = f"https://www.reddit.com/r/{MOE_CHOOSER}/new.json?sort=new"
         async with ctx.typing():
             await asyncio.sleep(1)
