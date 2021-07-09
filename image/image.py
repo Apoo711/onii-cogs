@@ -179,6 +179,7 @@ class Image(commands.Cog):
                 r_author = post["author"]
                 upvote = post["ups"]
                 subreddit_name = post["subreddit_name_prefixed"]
+                comments = post["num_comments"]
 
         embed = discord.Embed(
             title=title,
