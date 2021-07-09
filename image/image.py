@@ -162,7 +162,7 @@ class Image(commands.Cog):
         """Shows some memes from reddit.
         Memes shown are taken from r/memes.
         """
-        MEME_API = "memes", "Animemes"
+        MEME_API = "memes", "Animemes", "dankmeme"
         MEME_CHOOSER = random.choice(MEME_API)
         API = f"https://www.reddit.com/r/{MEME_CHOOSER}/new.json?sort=new"
         async with ctx.typing():
