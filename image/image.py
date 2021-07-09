@@ -168,9 +168,8 @@ class Image(commands.Cog):
         """Shows some memes from reddit.
         Memes shown are taken from r/memes.
         """
-        MEME_API = "memes", "Animemes", "dankmemes"
-        MEME_CHOOSER = random.choice(MEME_API)
-        API = f"https://www.reddit.com/r/{MEME_CHOOSER}/new.json?sort=new"
+        SUBREDDITS = ["memes", "Animemes", "dankmeme"]
+        API = random.choice(SUBREDDITS)
         async with ctx.typing():
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
@@ -179,6 +178,7 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
+                author = data["author"]
                 subreddit = data["subreddit"]
                 sub_name = subreddit["name"]
                 title = data["title"]
@@ -186,9 +186,7 @@ class Image(commands.Cog):
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                author = data["author"]
                 r_author = author["name"]
-
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
