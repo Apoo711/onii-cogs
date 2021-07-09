@@ -179,7 +179,6 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                author = data["author"]
                 subreddit = data["subreddit"]
                 sub_name = subreddit["name"]
                 title = data["title"]
@@ -187,6 +186,7 @@ class Image(commands.Cog):
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
+                author = data["author"]
                 r_author = author["name"]
 
         embed = discord.Embed(
