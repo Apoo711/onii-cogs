@@ -63,12 +63,11 @@ class Image(commands.Cog):
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            description=f"Powered By The martinebot.com API",
             url=link
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/narutowallpapers",
+            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/narutowallpapers | api.martinebot.com",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
