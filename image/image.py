@@ -166,12 +166,10 @@ class Image(commands.Cog):
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def meme(self, ctx: commands.Context):
         """Shows some memes from reddit.
-        Memes shown are taken from r/memes.
+        Memes shown are taken from r/memes, r/Animemes, r/dankmemes.
         """
-        SUBREDDITS = ["memes", "Animemes", "dankmeme"]
+        SUBREDDITS = ["memes", "Animemes", "dankmemes"]
         API = random.choice(SUBREDDITS)
-        async with ctx.typing():
-            await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 f"https://api.martinebot.com/v1/images/subreddit?name={API}"
@@ -197,6 +195,7 @@ class Image(commands.Cog):
             text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/{sub_name} | api.martinebot.com",
             icon_url=ctx.message.author.avatar_url,
         )
+        await ctx.trigger_typing()
         await ctx.reply(embed=embed, mention_author=False)
         
     @commands.command()
@@ -207,11 +206,8 @@ class Image(commands.Cog):
 
         Images shown are taken from r/spaceengine and r/LandscapeAstro.
         """
-        SPACE = "spaceengine", "LandscapeAstro", "astrophotography"
-        SPACE_CHOOSER = random.choice(SPACE)
-        API = f"https://www.reddit.com/r/{SPACE_CHOOSER}/new.json?sort=new"
-        async with ctx.typing():
-            await asyncio.sleep(1)
+        SUBREDDITS = ["spaceengine", "LandscapeAstro"]
+        API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 f"https://api.martinebot.com/v1/images/subreddit?name={API}"
@@ -227,7 +223,6 @@ class Image(commands.Cog):
                 ups = data["upvotes"]
                 comments = data["comments"]
                 r_author = author["name"]
-
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
@@ -238,6 +233,7 @@ class Image(commands.Cog):
             text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/{sub_name} | api.martinebot.com",
             icon_url=ctx.message.author.avatar_url,
         )
+        await ctx.trigger_typing()
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.command()
