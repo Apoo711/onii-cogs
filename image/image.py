@@ -114,20 +114,18 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/AnimePFP/new.json?sort=hot"
+                "https://api.martinebot.com/v1/images/subreddit?name=AnimePFP"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+            url=link
         )
         embed.set_image(url=url)
         embed.set_footer(
