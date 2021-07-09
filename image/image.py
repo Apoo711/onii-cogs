@@ -63,7 +63,7 @@ class Image(commands.Cog):
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            description=f"Powered By The MartineBot API",
+            description=f"Powered By The martinebot.com API",
             url=link
         )
         embed.set_image(url=url)
