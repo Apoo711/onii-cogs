@@ -63,7 +63,7 @@ class Image(commands.Cog):
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+            url=link
         )
         embed.set_image(url=url)
         embed.set_footer(
