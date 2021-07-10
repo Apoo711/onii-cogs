@@ -104,6 +104,8 @@ class Image(commands.Cog):
                 comments = data["comments"]
                 author = data["author"]
                 r_author = author["name"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
 
         embed = discord.Embed(
             title=title,
@@ -112,7 +114,12 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/Animewallpaper | api.martinebot.com",
+            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+                ups,
+                comments,
+                r_author,
+                sub_name,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
@@ -138,6 +145,8 @@ class Image(commands.Cog):
                 comments = data["comments"]
                 author = data["author"]
                 r_author = author["name"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
 
         embed = discord.Embed(
             title=title,
@@ -146,7 +155,12 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/AnimePFP | api.martinebot.com",
+            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+                ups,
+                comments,
+                r_author,
+                sub_name,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
@@ -202,7 +216,12 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/{sub_name} | api.martinebot.com",
+            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+                ups,
+                comments,
+                r_author,
+                sub_name,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.trigger_typing()
@@ -240,7 +259,12 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/{sub_name} | api.martinebot.com",
+            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+                ups,
+                comments,
+                r_author,
+                sub_name,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.trigger_typing()
@@ -252,7 +276,9 @@ class Image(commands.Cog):
     async def moe(self, ctx: commands.Context):
         """Shows some moe images from reddit.
 
-        Images shown are taken from r/awwnime, r/animeboys, r/cuteanimeboys, r/CuteAnimeGirls.
+        Images shown are taken from:
+        
+        r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.
         """
         SUBREDDITS = ["animeboys", "CuteAnimeGirlss",
                       "cuteanimeboys", "awwnime"]
@@ -279,7 +305,12 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/{sub_name} | api.martinebot.com",
+            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+                ups,
+                comments,
+                r_author,
+                sub_name,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.trigger_typing()
@@ -306,6 +337,8 @@ class Image(commands.Cog):
                 comments = data["comments"]
                 author = data["author"]
                 r_author = author["name"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
 
         embed = discord.Embed(
             title=title,
@@ -314,7 +347,12 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/EarthPorn | api.martinebot.com",
+            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+                ups,
+                comments,
+                r_author,
+                sub_name,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
