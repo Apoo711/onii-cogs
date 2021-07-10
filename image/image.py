@@ -210,19 +210,23 @@ class Image(commands.Cog):
                 ups = data["upvotes"]
                 comments = data["comments"]
                 r_author = author["name"]
+                downvotes = data["downvotes"]
         
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
+            description="Post by u/{}\nFrom {}".format(
+                r_author,
+                sub_name,
+            ),
             url=link
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
+            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
                 ups,
+                downvotes,
                 comments,
-                r_author,
-                sub_name,
             ),
             icon_url=ctx.message.author.avatar_url,
         )
