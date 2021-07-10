@@ -204,18 +204,20 @@ class Image(commands.Cog):
                 author = data["author"]
                 subreddit = data["subreddit"]
                 sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
                 r_author = author["name"]
+                r_author_url = author["url"]
                 downvotes = data["downvotes"]
         
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            description=f"Post by u/{r_author}\nFrom {sub_name}",
+            description=f"Post by u/[{r_author}]({r_author_url})\nFrom r/[{sub_name}]({sub_url})",
             url=link,
         )
         embed.set_image(url=url)
