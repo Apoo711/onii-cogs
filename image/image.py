@@ -52,7 +52,7 @@ class Image(commands.Cog):
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://martinebot.com/v1/images/subreddit?name=narutowallpapers"
+                "https://api.martinebot.com/v1/images/subreddit?name=narutowallpapers"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -95,7 +95,7 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://martinebot.com/v1/images/subreddit?name=Animewallpaper"
+                "https://api.martinebot.com/v1/images/subreddit?name=Animewallpaper"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -136,7 +136,7 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://martinebot.com/v1/images/subreddit?name=AnimePFP"
+                "https://api.martinebot.com/v1/images/subreddit?name=AnimePFP"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -198,7 +198,7 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://martinebot.com/v1/images/subreddit?name={API}"
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -241,7 +241,7 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://martinebot.com/v1/images/subreddit?name={API}"
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -287,7 +287,7 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://martinebot.com/v1/images/subreddit?name={API}"
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -328,7 +328,7 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://martinebot.com/v1/images/subreddit?name=EarthPorn"
+                "https://api.martinebot.com/v1/images/subreddit?name=EarthPorn"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
