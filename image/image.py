@@ -74,9 +74,9 @@ class Image(commands.Cog):
             title=title,
             colour=discord.Colour.random(),
             description=(
-                "Post by [u/{}]({})\n"
-                "From [r/{}]({})\n"
-                "This post was created on: <t:{}:F>"
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>"
             ).format(
                 r_author,
                 r_author_url,
@@ -135,9 +135,9 @@ class Image(commands.Cog):
             title=title,
             colour=discord.Colour.random(),
             description=(
-                "Post by [u/{}]({})\n"
-                "From [r/{}]({})\n"
-                "This post was created on: <t:{}:F>"
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>"
             ).format(
                 r_author,
                 r_author_url,
@@ -194,9 +194,9 @@ class Image(commands.Cog):
             title=title,
             colour=discord.Colour.random(),
             description=(
-                "Post by [u/{}]({})\n"
-                "From [r/{}]({})\n"
-                "This post was created on: <t:{}:F>"
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>"
             ).format(
                 r_author,
                 r_author_url,
@@ -272,9 +272,9 @@ class Image(commands.Cog):
             title=title,
             colour=discord.Colour.random(),
             description=(
-                "Post by [u/{}]({})\n"
-                "From [r/{}]({})\n"
-                "This post was created on: <t:{}:F>"
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>"
             ).format(
                 r_author,
                 r_author_url,
@@ -333,9 +333,9 @@ class Image(commands.Cog):
             title=title,
             colour=discord.Colour.random(),
             description=(
-                "Post by [u/{}]({})\n"
-                "From [r/{}]({})\n"
-                "This post was created on: <t:{}:F>"
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>"
             ).format(
                 r_author,
                 r_author_url,
@@ -397,9 +397,9 @@ class Image(commands.Cog):
             title=title,
             colour=discord.Colour.random(),
             description=(
-                "Post by [u/{}]({})\n"
-                "From [r/{}]({})\n"
-                "This post was created on: <t:{}:F>"
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>"
             ).format(
                 r_author,
                 r_author_url,
@@ -456,9 +456,9 @@ class Image(commands.Cog):
             title=title,
             colour=discord.Colour.random(),
             description=(
-                "Post by [u/{}]({})\n"
-                "From [r/{}]({})\n"
-                "This post was created on: <t:{}:F>"
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>"
             ).format(
                 r_author,
                 r_author_url,
