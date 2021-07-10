@@ -197,7 +197,7 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com//v1/images/memes"
+                "https://api.martinebot.com/v1/images/memes"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -210,6 +210,7 @@ class Image(commands.Cog):
                 ups = data["upvotes"]
                 comments = data["comments"]
                 r_author = author["name"]
+        
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
