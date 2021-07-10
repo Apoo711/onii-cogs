@@ -56,32 +56,50 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
+                author = data["author"]
                 subreddit = data["subreddit"]
                 sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                author = data["author"]
                 r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=link
+            description=(
+                "Post by [u/{}]({})\n"
+                "From [r/{}]({})\n"
+                "This post was created on: <t:{}:F>"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+            ),
+            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
+            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
                 ups,
+                downvotes,
                 comments,
-                r_author,
-                sub_name,
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
 
     @commands.command(name="randomwallpaper", aliases=["ran"])
     @commands.guild_only()
@@ -99,32 +117,50 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                author = data["author"]
                 r_author = author["name"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=link
+            description=(
+                "Post by [u/{}]({})\n"
+                "From [r/{}]({})\n"
+                "This post was created on: <t:{}:F>"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+            ),
+            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
+            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
                 ups,
+                downvotes,
                 comments,
-                r_author,
-                sub_name,
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
 
     @commands.command(name="randomavatar", aliases=["rav"])
     @commands.guild_only()
@@ -140,34 +176,51 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                author = data["author"]
                 r_author = author["name"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=link
+            description=(
+                "Post by [u/{}]({})\n"
+                "From [r/{}]({})\n"
+                "This post was created on: <t:{}:F>"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+            ),
+            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
+            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
                 ups,
+                downvotes,
                 comments,
-                r_author,
-                sub_name,
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
 
-    @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
     @commands.guild_only()
     async def neko(self, ctx):
@@ -214,14 +267,14 @@ class Image(commands.Cog):
                 r_author_url = author["url"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
-        
+
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
             description=(
                 "Post by [u/{}]({})\n"
                 "From [r/{}]({})\n"
-                "This post was created on <t:{}:F>"
+                "This post was created on: <t:{}:F>"
             ).format(
                 r_author,
                 r_author_url,
@@ -265,29 +318,47 @@ class Image(commands.Cog):
                 author = data["author"]
                 subreddit = data["subreddit"]
                 sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
                 r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
+
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=link
+            description=(
+                "Post by [u/{}]({})\n"
+                "From [r/{}]({})\n"
+                "This post was created on: <t:{}:F>"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+            ),
+            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
+            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
                 ups,
+                downvotes,
                 comments,
-                r_author,
-                sub_name,
             ),
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.trigger_typing()
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
 
     @commands.command()
     @commands.guild_only()
@@ -311,29 +382,47 @@ class Image(commands.Cog):
                 author = data["author"]
                 subreddit = data["subreddit"]
                 sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
                 r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
+
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=link
+            description=(
+                "Post by [u/{}]({})\n"
+                "From [r/{}]({})\n"
+                "This post was created on: <t:{}:F>"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+            ),
+            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
+            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
                 ups,
+                downvotes,
                 comments,
-                r_author,
-                sub_name,
             ),
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.trigger_typing()
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
 
     @commands.command()
     @commands.guild_only()
@@ -349,29 +438,47 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                author = data["author"]
                 r_author = author["name"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            url=link
+            description=(
+                "Post by [u/{}]({})\n"
+                "From [r/{}]({})\n"
+                "This post was created on: <t:{}:F>"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+            ),
+            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
+            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
                 ups,
+                downvotes,
                 comments,
-                r_author,
-                sub_name,
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
