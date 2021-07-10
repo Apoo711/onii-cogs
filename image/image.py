@@ -67,15 +67,6 @@ class Image(commands.Cog):
                 author = data["author"]
                 r_author = author["name"]
 
-        footer_text = _(
-            "👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com"
-        ).format(
-            ups,
-            comments,
-            r_author,
-            sub_name,
-        )
-
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
@@ -83,7 +74,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=footer_text,
+            text="👍 {ups} | Comments: {comments} | Post by {r_author} | {sub_name} | api.martinebot.com",
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.trigger_typing()
