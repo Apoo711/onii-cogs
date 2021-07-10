@@ -192,13 +192,12 @@ class Image(commands.Cog):
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def meme(self, ctx: commands.Context):
         """Shows some memes from reddit.
+
         Memes shown are taken from r/memes, r/Animemes, r/dankmemes.
         """
-        SUBREDDITS = ["memes", "Animemes", "dankmemes"]
-        API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                "https://api.martinebot.com//v1/images/memes"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
