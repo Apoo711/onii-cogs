@@ -17,10 +17,12 @@ limitations under the License.
 import asyncio
 import logging
 import random
-
 import aiohttp
+
 import discord
+
 from redbot.core import commands
+from redbot.core.i18n import Translator, cog_i18n
 
 
 async def api_call(call_uri, returnObj=False):
@@ -33,11 +35,14 @@ async def api_call(call_uri, returnObj=False):
                 return response
 
 log = logging.getLogger("red.onii.image")
+_ = Translator("Image", __file__)
 
+
+@cog_i18n
 class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
+
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -60,6 +65,15 @@ class Image(commands.Cog):
                 author = data["author"]
                 r_author = author["name"]
 
+        footer_text = _(
+            "👍 {ups} | Comments: {comments} | Post by {r_author}"
+            "r/narutowallpapers | api.martinebot.com"
+        ).format(
+            ups=ups
+            comments=comments
+            r_author=r_author
+        )
+
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
@@ -67,7 +81,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text=f"👍 {ups} | Comments: {comments} | Post by {r_author} | r/narutowallpapers | api.martinebot.com",
+            text=footer_text,
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.reply(embed=embed, mention_author=False)
@@ -156,7 +170,8 @@ class Image(commands.Cog):
             text="Powered by nekos.best",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name,
+                         icon_url=self.bot.user.avatar_url)
 
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
         await ctx.reply(embed=embed, mention_author=False)
@@ -197,7 +212,7 @@ class Image(commands.Cog):
         )
         await ctx.trigger_typing()
         await ctx.reply(embed=embed, mention_author=False)
-        
+
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -244,7 +259,8 @@ class Image(commands.Cog):
 
         Images shown are taken from r/awwnime, r/animeboys, r/cuteanimeboys, r/CuteAnimeGirls.
         """
-        SUBREDDITS = ["animeboys", "CuteAnimeGirlss", "cuteanimeboys", "awwnime"]
+        SUBREDDITS = ["animeboys", "CuteAnimeGirlss",
+                      "cuteanimeboys", "awwnime"]
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
@@ -273,7 +289,7 @@ class Image(commands.Cog):
         )
         await ctx.trigger_typing()
         await ctx.reply(embed=embed, mention_author=False)
-        
+
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
