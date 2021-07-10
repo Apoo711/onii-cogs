@@ -70,7 +70,12 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {ups} | Comments: {comments} | Post by {r_author} | {sub_name} | api.martinebot.com",
+            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+                ups,
+                comments,
+                r_author,
+                sub_name,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.trigger_typing()
