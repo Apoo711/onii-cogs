@@ -57,6 +57,8 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
@@ -66,12 +68,12 @@ class Image(commands.Cog):
                 r_author = author["name"]
 
         footer_text = _(
-            "👍 {ups} | Comments: {comments} | Post by {r_author}\n"
-            "r/narutowallpapers | api.martinebot.com"
+            "👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com"
         ).format(
-            ups=ups,
-            comments=comments,
-            r_author=r_author,
+            ups,
+            comments,
+            r_author,
+            sub_name,
         )
 
         embed = discord.Embed(
@@ -84,6 +86,7 @@ class Image(commands.Cog):
             text=footer_text,
             icon_url=ctx.message.author.avatar_url,
         )
+        await ctx.trigger_typing()
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.command(name="randomwallpaper", aliases=["ran"])
