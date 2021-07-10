@@ -22,8 +22,6 @@ import aiohttp
 import discord
 
 from redbot.core import commands
-from redbot.core.i18n import Translator, cog_i18n
-
 
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
@@ -35,10 +33,8 @@ async def api_call(call_uri, returnObj=False):
                 return response
 
 log = logging.getLogger("red.onii.image")
-_ = Translator("Image", __file__)
 
 
-@cog_i18n
 class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
