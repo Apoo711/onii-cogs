@@ -47,6 +47,8 @@ class Image(commands.Cog):
 
         Wallpapers shown are taken from r/narutowallpapers.
         """
+        async with ctx.typing():
+            await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://api.martinebot.com/v1/images/subreddit?name=narutowallpapers"
@@ -70,7 +72,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+            text="👍 {} | Comments: {} | Post by {} | {} | Martine Api".format(
                 ups,
                 comments,
                 r_author,
@@ -78,7 +80,6 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await ctx.trigger_typing()
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.command(name="randomwallpaper", aliases=["ran"])
