@@ -217,7 +217,15 @@ class Image(commands.Cog):
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            description=f"Post by u/[{r_author}]({r_author_url})\nFrom r/[{sub_name}]({sub_url})",
+            description=(
+                "Post by [u/{}]({})\n"
+                "From [r/{}]({})\n"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+            ),
             url=link,
         )
         embed.set_image(url=url)
