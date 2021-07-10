@@ -213,6 +213,7 @@ class Image(commands.Cog):
                 r_author = author["name"]
                 r_author_url = author["url"]
                 downvotes = data["downvotes"]
+                created_at = data["created_at"]
         
         embed = discord.Embed(
             title=title,
@@ -220,11 +221,13 @@ class Image(commands.Cog):
             description=(
                 "Post by [u/{}]({})\n"
                 "From [r/{}]({})\n"
+                "This post was created on {}"
             ).format(
                 r_author,
                 r_author_url,
                 sub_name,
                 sub_url,
+                created_at,
             ),
             url=link,
         )
