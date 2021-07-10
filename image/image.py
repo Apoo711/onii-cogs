@@ -51,7 +51,7 @@ class Image(commands.Cog):
             await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/subreddit?name=narutowallpapers"
+                "https://Martine API/v1/images/subreddit?name=narutowallpapers"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -72,7 +72,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | Martine Api".format(
+            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
                 ups,
                 comments,
                 r_author,
@@ -94,7 +94,7 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/subreddit?name=Animewallpaper"
+                "https://Martine API/v1/images/subreddit?name=Animewallpaper"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -115,7 +115,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
                 ups,
                 comments,
                 r_author,
@@ -135,7 +135,7 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/subreddit?name=AnimePFP"
+                "https://Martine API/v1/images/subreddit?name=AnimePFP"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -156,7 +156,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
                 ups,
                 comments,
                 r_author,
@@ -197,7 +197,7 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                f"https://Martine API/v1/images/subreddit?name={API}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -217,7 +217,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
                 ups,
                 comments,
                 r_author,
@@ -240,7 +240,7 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                f"https://Martine API/v1/images/subreddit?name={API}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -260,7 +260,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
                 ups,
                 comments,
                 r_author,
@@ -286,7 +286,7 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                f"https://Martine API/v1/images/subreddit?name={API}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -306,7 +306,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
                 ups,
                 comments,
                 r_author,
@@ -327,7 +327,7 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/subreddit?name=EarthPorn"
+                "https://Martine API/v1/images/subreddit?name=EarthPorn"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
@@ -348,7 +348,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} | Comments: {} | Post by {} | {} | api.martinebot.com".format(
+            text="👍 {} | Comments: {} | Post by {} | {} | Martine API".format(
                 ups,
                 comments,
                 r_author,
