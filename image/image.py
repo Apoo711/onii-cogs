@@ -66,12 +66,12 @@ class Image(commands.Cog):
                 r_author = author["name"]
 
         footer_text = _(
-            "👍 {ups} | Comments: {comments} | Post by {r_author}"
+            "👍 {ups} | Comments: {comments} | Post by {r_author}\n"
             "r/narutowallpapers | api.martinebot.com"
         ).format(
-            ups=ups
-            comments=comments
-            r_author=r_author
+            ups=ups,
+            comments=comments,
+            r_author=r_author,
         )
 
         embed = discord.Embed(
