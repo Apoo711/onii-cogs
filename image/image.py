@@ -215,11 +215,8 @@ class Image(commands.Cog):
         embed = discord.Embed(
             title=title,
             colour=discord.Colour.random(),
-            description="Post by u/{}\nFrom {}".format(
-                r_author,
-                sub_name,
-            ),
-            url=link
+            description=f"Post by u/{r_author}\nFrom {sub_name}",
+            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
@@ -231,7 +228,10 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await ctx.trigger_typing()
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
 
     @commands.command()
     @commands.guild_only()
