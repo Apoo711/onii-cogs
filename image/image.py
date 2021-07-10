@@ -221,7 +221,7 @@ class Image(commands.Cog):
             description=(
                 "Post by [u/{}]({})\n"
                 "From [r/{}]({})\n"
-                "This post was created on {}"
+                "This post was created on <t:{}:F>"
             ).format(
                 r_author,
                 r_author_url,
