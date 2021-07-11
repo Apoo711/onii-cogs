@@ -307,7 +307,10 @@ class Image(commands.Cog):
 
         Images shown are taken from r/spaceengine and r/LandscapeAstro.
         """
-        SUBREDDITS = ["spaceengine", "LandscapeAstro"]
+        SUBREDDITS = [
+            "spaceengine",
+            "LandscapeAstro"
+        ]
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
@@ -370,8 +373,12 @@ class Image(commands.Cog):
 
         r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.
         """
-        SUBREDDITS = ["animeboys", "CuteAnimeGirlss",
-                      "cuteanimeboys", "awwnime"]
+        SUBREDDITS = [
+            "animeboys",
+            "CuteAnimeGirlss",
+            "cuteanimeboys",
+            "awwnime"
+        ]
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
