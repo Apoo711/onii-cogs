@@ -77,7 +77,7 @@ class Image(commands.Cog):
                 "**Post by:** [u/{}]({})\n"
                 "**From:** [r/{}]({})\n"
                 "**This post was created on:** <t:{}:F>\n"
-                "**Title:** {}"
+                "**Title:** [{}]({})"
             ).format(
                 r_author,
                 r_author_url,
@@ -85,10 +85,10 @@ class Image(commands.Cog):
                 sub_url,
                 created_at,
                 title,
+                url,
             ),
             url=link,
         )
-        embed.set_image(url=url)
         embed.set_footer(
             text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
                 ups,
