@@ -71,18 +71,20 @@ class Image(commands.Cog):
                 created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...",
             colour=discord.Colour.random(),
             description=(
                 "**Post by:** [u/{}]({})\n"
                 "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** {}"
             ).format(
                 r_author,
                 r_author_url,
                 sub_name,
                 sub_url,
                 created_at,
+                title,
             ),
             url=link,
         )
