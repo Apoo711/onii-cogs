@@ -71,7 +71,7 @@ class Image(commands.Cog):
                 created_at = data["created_at"]
 
         embed = discord.Embed(
-            title="Here's a random image...",
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
                 "**Post by:** [u/{}]({})\n"
@@ -116,7 +116,6 @@ class Image(commands.Cog):
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://api.martinebot.com/v1/images/subreddit?name=Animewallpaper"
-            ) as resp:
                 data = await resp.json()
                 data = data["data"]
                 author = data["author"]
@@ -134,20 +133,22 @@ class Image(commands.Cog):
                 created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
                 "**Post by:** [u/{}]({})\n"
                 "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
             ).format(
                 r_author,
                 r_author_url,
                 sub_name,
                 sub_url,
                 created_at,
+                title,
+                link,
             ),
-            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
@@ -193,20 +194,22 @@ class Image(commands.Cog):
                 created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
                 "**Post by:** [u/{}]({})\n"
                 "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
             ).format(
                 r_author,
                 r_author_url,
                 sub_name,
                 sub_url,
                 created_at,
+                title,
+                link,
             ),
-            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
@@ -271,20 +274,22 @@ class Image(commands.Cog):
                 created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
                 "**Post by:** [u/{}]({})\n"
                 "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
             ).format(
                 r_author,
                 r_author_url,
                 sub_name,
                 sub_url,
                 created_at,
+                title,
+                link,
             ),
-            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
@@ -335,20 +340,22 @@ class Image(commands.Cog):
                 created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
                 "**Post by:** [u/{}]({})\n"
                 "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
             ).format(
                 r_author,
                 r_author_url,
                 sub_name,
                 sub_url,
                 created_at,
+                title,
+                link,
             ),
-            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
@@ -403,20 +410,22 @@ class Image(commands.Cog):
                 created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
                 "**Post by:** [u/{}]({})\n"
                 "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
             ).format(
                 r_author,
                 r_author_url,
                 sub_name,
                 sub_url,
                 created_at,
+                title,
+                link,
             ),
-            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
@@ -462,20 +471,22 @@ class Image(commands.Cog):
                 created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
                 "**Post by:** [u/{}]({})\n"
                 "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
             ).format(
                 r_author,
                 r_author_url,
                 sub_name,
                 sub_url,
                 created_at,
+                title,
+                link,
             ),
-            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
@@ -521,20 +532,22 @@ class Image(commands.Cog):
                 created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
                 "**Post by:** [u/{}]({})\n"
                 "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
             ).format(
                 r_author,
                 r_author_url,
                 sub_name,
                 sub_url,
                 created_at,
+                title,
+                link,
             ),
-            url=link,
         )
         embed.set_image(url=url)
         embed.set_footer(
