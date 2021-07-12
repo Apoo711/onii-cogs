@@ -85,9 +85,10 @@ class Image(commands.Cog):
                 sub_url,
                 created_at,
                 title,
-                url,
+                link,
             ),
         )
+        embed.set_image(url=url)
         embed.set_footer(
             text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
                 ups,
