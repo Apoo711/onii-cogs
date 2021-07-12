@@ -489,3 +489,62 @@ class Image(commands.Cog):
             embed=embed,
             mention_author=False,
         )
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def unix(self, ctx: commands.Context):
+        """Shows some unix images from reddit.
+
+        Images shown are taken from r/UnixPorn.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://api.martinebot.com/v1/images/subreddit?name=UnixPorn"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
+
+        embed = discord.Embed(
+            title=title,
+            colour=discord.Colour.random(),
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+            ),
+            url=link,
+        )
+        embed.set_image(url=url)
+        embed.set_footer(
+            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
+            icon_url=ctx.message.author.avatar_url,
+        )
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
