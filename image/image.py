@@ -90,7 +90,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
                 ups,
                 downvotes,
                 comments,
@@ -153,7 +153,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
                 ups,
                 downvotes,
                 comments,
@@ -214,7 +214,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
                 ups,
                 downvotes,
                 comments,
@@ -294,7 +294,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
                 ups,
                 downvotes,
                 comments,
@@ -360,7 +360,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
                 ups,
                 downvotes,
                 comments,
@@ -430,7 +430,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
                 ups,
                 downvotes,
                 comments,
@@ -491,7 +491,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
                 ups,
                 downvotes,
                 comments,
@@ -552,7 +552,7 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍 {} • 👎 {} • 💬 {} • martinebot.com API".format(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
                 ups,
                 downvotes,
                 comments,
