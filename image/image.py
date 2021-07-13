@@ -75,7 +75,7 @@ class Image(commands.Cog):
                 
                 else:
                     author = ""
-                    r_author = ""
+                    r_author = "Unknown"
                     r_author_url = ""
 
         embed = discord.Embed(
