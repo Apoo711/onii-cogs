@@ -77,6 +77,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def hentai(self, ctx):
+        """Plain old hentai"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Juicy henti for you!",
@@ -109,6 +110,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def erok(self, ctx):
+        """Eroctic!"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Erok Kitsune !!!",
@@ -141,6 +143,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def eroneko(self, ctx):
+        """Eroctic nekos? what could be better?"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="***ERO*** NEKO!",
@@ -173,6 +176,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def feet(self, ctx):
+        """Tasty feet"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="***Feet***",
@@ -205,6 +209,7 @@ class Nsfw(commands.Cog):
     @commands.guild_only()
     @commands.is_nsfw()
     async def cum(self, ctx):
+        """Beautiful white cum"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="***Sticky white stuff!***",
@@ -235,6 +240,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def nekofuck(self, ctx):
+        """Fuck nekos!"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Catgirls!!!!",
@@ -265,6 +271,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def futanari(self, ctx):
+        """Futanari stuff."""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="",
@@ -295,6 +302,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def boobs(self, ctx):
+        """Juicy tits"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="**Titties**!!!!!",
@@ -326,6 +334,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def blowjob(self, ctx):
+        """Blowjobs"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Oh shit!",
@@ -357,6 +366,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def pussy(self, ctx):
+        """Tight pussies"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Dang!",
@@ -388,6 +398,7 @@ class Nsfw(commands.Cog):
     @commands.guild_only()
     @commands.is_nsfw()
     async def spank(self, ctx, user: commands.Greedy[discord.Member] = None):
+        """Spank somebody"""
         if ctx.channel.is_nsfw():
             if user is None:
                 await ctx.message.reply(
@@ -428,6 +439,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def lesbian(self, ctx):
+        """Lesbian Hentai"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(color=ctx.message.author.color)
             embed.set_footer(
@@ -455,6 +467,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def trap(self, ctx):
+        """Trapped"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(color=ctx.message.author.color)
             embed.set_footer(
@@ -482,6 +495,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def hololewd(self, ctx):
+        """hololewd stuff"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(color=ctx.message.author.color)
             embed.set_footer(
@@ -509,6 +523,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def foxgirl(self, ctx):
+        """Foxgirls!"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Foxy",
@@ -540,6 +555,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def lewdkitsune(self, ctx):
+        """Lewdkitsune hentai!"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Lewddd",
@@ -571,6 +587,7 @@ class Nsfw(commands.Cog):
     @commands.guild_only()
     @commands.is_nsfw()
     async def kuni(self, ctx):
+        """Kuni Hentai!"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="",
@@ -602,6 +619,7 @@ class Nsfw(commands.Cog):
     @commands.guild_only()
     @commands.is_nsfw()
     async def femdom(self, ctx):
+        """femdom hentai"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="",
