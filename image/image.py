@@ -70,6 +70,16 @@ class Image(commands.Cog):
                 r_author_url = author["url"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
+        
+        if data[author] is True:
+            author = data["author"]
+            r_author = author["name"]
+            r_author_url = author["url"]
+        
+        else:
+            author = ""
+            r_author = ""
+            r_author_url = ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
