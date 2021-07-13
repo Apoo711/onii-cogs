@@ -32,46 +32,14 @@ async def api_call(call_uri, returnObj=False):
             elif returnObj == True:
                 return response
 
-log = logging.getLogger("red.onii.wallpaper")
+log = logging.getLogger("red.onii.image")
+
 
 class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.group(aliases=["i"])
-    async def image(self, ctx):
-        """All the commands in the image cog"""
-
-    @image.group(aliases=["c"])
-    async def character(self, ctx):
-        """The character commands in the wallpaper part of the image cog"""
-
-    @image.group(aliases=["o"])
-    async def other(self, ctx):
-        """The uncategorised commands in the image cog"""
-
-    @character.command(aliases=["zen"], name="zenitsu")
-    @commands.bot_has_permissions(embed_links=True)
-    async def zenitsu(self, ctx):
-        embed = discord.Embed(color=0xFFF300)
-        embed.add_field(
-            name="Zenitsu", value="You asked for some Zenitsu wallpapers?", inline=False
-        )
-        embed.set_image(
-            url=random.choice(
-                (
-                    "https://images2.alphacoders.com/100/thumb-1920-1007550.jpg",
-                    "https://cdn.discordapp.com/attachments/736113073328357386/813287821355778108/thumb-1920-1007788.jpg",
-                    "https://cdn.discordapp.com/attachments/736113073328357386/801781638991183903/thumb-1920-1026796.jpg",
-                    "https://www.enjpg.com/img/2020/zenitsu-12.jpg",
-                    "https://images.wallpapersden.com/image/download/breath-of-thunder-zenitsu-agatsuma_a21oameUmZqaraWkpJRobWllrWdma2U.jpg",
-                )
-            )
-        )
-        embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
-        await ctx.reply(embed=embed, mention_author=False)
-
-    @other.command()
+    @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def naruto(self, ctx: commands.Context):
@@ -79,55 +47,65 @@ class Image(commands.Cog):
 
         Wallpapers shown are taken from r/narutowallpapers.
         """
+        async with ctx.typing():
+            await asyncio.sleep(1)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/narutowallpapers/new.json?sort=hot"
+                "https://api.martinebot.com/v1/images/subreddit?name=narutowallpapers"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/narutowallpapers",
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await ctx.reply(embed=embed, mention_author=False)
-
-    @image.group(aliases=["a"])
-    async def anime(self, ctx):
-        """Image commands"""
-
-    @anime.command(name="chibi")
-    @commands.bot_has_permissions(embed_links=True)
-    async def chibi(self, ctx):
-        """Random cute wallpaper(Will contain characters from multiple anime's)"""
-        embed = discord.Embed(colour=0xFF00AB)
-        embed.add_field(name="Chibi", value="Aren't they cute?", inline=False)
-        embed.set_image(
-            url=random.choice(
-                (
-                    "https://cdn.discordapp.com/attachments/763154622675681331/836852290933489664/bg-01.png",
-                    "https://cdn.discordapp.com/attachments/763154622675681331/836908773146361906/bg-02.png",
-                )
-            )
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
         )
-        embed.set_footer(text=f"Requested by: {str(ctx.author)}", icon_url=ctx.author.avatar_url),
-        await ctx.reply(embed=embed, mention_author=False)
 
-    @other.command(aliases=["rando"])
+    @commands.command(name="randomwallpaper", aliases=["ran"])
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def random(self, ctx: commands.Context):
+    async def wallpaper_random(self, ctx: commands.Context):
         """Shows some anime wallpaper from reddit.
 
         Wallpapers shown are taken from r/Animewallpaper.
@@ -136,62 +114,120 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/Animewallpaper/new.json?sort=hot"
+                "https://api.martinebot.com/v1/images/subreddit?name=Animewallpaper"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/Animewallpaper",
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
 
-    @other.command(name="randomavatar", aliases=["rav"])
+    @commands.command(name="randomavatar", aliases=["rav"])
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def avatar_random(self, ctx: commands.Context):
-        """Shows some profile pictures from reddit.
+        """Shows some anime profile pictures from reddit.
 
-        Pictures shown are taken from r/ProfilePic.
+        Pictures shown are taken from r/AnimePFP.
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/ProfilePic/new.json?sort=hot"
+                "https://api.martinebot.com/v1/images/subreddit?name=AnimePFP"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/ProfilePic",
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
 
-    @commands.cooldown(1, 10, commands.BucketType.user)
-    @other.command()
+    @commands.command()
+    @commands.guild_only()
     async def neko(self, ctx):
         embed = discord.Embed(
             title="Neko's For You!",
@@ -203,138 +239,327 @@ class Image(commands.Cog):
             text="Powered by nekos.best",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name,
+                         icon_url=self.bot.user.avatar_url)
 
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
         await ctx.reply(embed=embed, mention_author=False)
 
-    @commands.command()
+    @commands.command(aliases=["memes"])
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def meme(self, ctx: commands.Context):
         """Shows some memes from reddit.
 
-        Memes shown are taken from r/memes.
+        Memes shown are taken from r/memes, r/Animemes, r/dankmemes.
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/memes/new.json?sort=hot"
+                "https://api.martinebot.com/v1/images/memes"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/memes",
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
 
-    @other.command()
+    @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def space(self, ctx: commands.Context):
         """Shows some space images from reddit.
 
-        Images shown are taken from r/spaceporn.
+        Images shown are taken from r/spaceengine and r/LandscapeAstro.
         """
+        SUBREDDITS = [
+            "spaceengine",
+            "LandscapeAstro"
+        ]
+        API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/spaceporn/new.json?sort=hot"
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/spaceporn",
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
-        await ctx.reply(embed=embed, mention_author=False)
-
-    @commands.command(aliases=["animeme"])
-    @commands.guild_only()
-    @commands.cooldown(1, 5, commands.BucketType.user)
-    async def animememe(self, ctx: commands.Context):
-        """Shows some anime memes from reddit.
-
-        Wallpapers shown are taken from r/Animemes.
-        """
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://www.reddit.com/r/Animemes/new.json?sort=hot"
-            ) as resp:
-                data = await resp.json()
-                data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
-
-        embed = discord.Embed(
-            title=title,
-            colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
         )
-        embed.set_image(url=url)
-        embed.set_footer(
-            text="Powered by r/Animemes",
-            icon_url=ctx.message.author.avatar_url,
-        )
-        await session.close()
-        await ctx.reply(embed=embed, mention_author=False)
 
-    @other.command()
+    @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def moe(self, ctx: commands.Context):
-        """Shows some space wallpapers from reddit.
+        """Shows some moe images from reddit.
 
-        Wallpapers shown are taken from r/awwnime.
+        Images shown are taken from:
+
+        r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.
         """
+        SUBREDDITS = [
+            "animeboys",
+            "CuteAnimeGirlss",
+            "cuteanimeboys",
+            "awwnime"
+        ]
+        API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://www.reddit.com/r/awwnime/new.json?sort=hot"
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url_overridden_by_dest"]
-                link = post["permalink"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
         embed = discord.Embed(
-            title=title,
+            title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
-            url=f"https://reddit.com{link}"
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="Powered by r/awwnime",
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def scenery(self, ctx: commands.Context):
+        """Shows some scenery from reddit.
+
+        Images shown are taken from r/EarthPorn.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://api.martinebot.com/v1/images/subreddit?name=EarthPorn"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
+
+        embed = discord.Embed(
+            title="Here's a random image...:frame_photo:",
+            colour=discord.Colour.random(),
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
+        )
+        embed.set_image(url=url)
+        embed.set_footer(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
+            icon_url=ctx.message.author.avatar_url,
+        )
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def unix(self, ctx: commands.Context):
+        """Shows some unix images from reddit.
+
+        Images shown are taken from r/UnixPorn.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://api.martinebot.com/v1/images/subreddit?name=UnixPorn"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                author = data["author"]
+                subreddit = data["subreddit"]
+                sub_name = subreddit["name"]
+                sub_url = subreddit["url"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                r_author = author["name"]
+                r_author_url = author["url"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
+
+        embed = discord.Embed(
+            title="Here's a random image...:frame_photo:",
+            colour=discord.Colour.random(),
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
+        )
+        embed.set_image(url=url)
+        embed.set_footer(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
+            icon_url=ctx.message.author.avatar_url,
+        )
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
