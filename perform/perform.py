@@ -41,6 +41,14 @@ class Perform(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    __author__ = ["Onii-chan"]
+    __version__ = "2.1.0"
+
+    def format_help_for_context(self, ctx: commands.Context) -> str:
+        """Thanks Sinbad!"""
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
+
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
     @commands.guild_only()

@@ -38,8 +38,17 @@ log = logging.getLogger("red.onii.image")
 
 class Image(commands.Cog):
     """Get tons of memes or other images"""
+
     def __init__(self, bot):
         self.bot = bot
+
+    __author__ = ["Onii-chan"]
+    __version__ = "3.2.1"
+
+    def format_help_for_context(self, ctx: commands.Context) -> str:
+        """Thanks Sinbad!"""
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
 
     @commands.command()
     @commands.guild_only()
@@ -57,19 +66,33 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                author = data["author"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
-                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                r_author = author["name"]
-                r_author_url = author["url"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
+
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
+
+                else:
+                    subreddit = ""
+                    sub_name = "Unknown"
+                    sub_url = ""
+
+                if data["author"]:
+                    author = data["author"]
+                    r_author = author["name"]
+                    r_author_url = author["url"]
+
+                else:
+                    author = ""
+                    r_author = "Unknown"
+                    r_author_url = ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -121,19 +144,33 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                author = data["author"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
-                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                r_author = author["name"]
-                r_author_url = author["url"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
+
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
+
+                else:
+                    subreddit = ""
+                    sub_name = "Unknown"
+                    sub_url = ""
+
+                if data["author"]:
+                    author = data["author"]
+                    r_author = author["name"]
+                    r_author_url = author["url"]
+
+                else:
+                    author = ""
+                    r_author = "Unknown"
+                    r_author_url = ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -183,19 +220,33 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                author = data["author"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
-                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                r_author = author["name"]
-                r_author_url = author["url"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
+
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
+
+                else:
+                    subreddit = ""
+                    sub_name = "Unknown"
+                    sub_url = ""
+
+                if data["author"]:
+                    author = data["author"]
+                    r_author = author["name"]
+                    r_author_url = author["url"]
+
+                else:
+                    author = ""
+                    r_author = "Unknown"
+                    r_author_url = ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -264,19 +315,33 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                author = data["author"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
-                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                r_author = author["name"]
-                r_author_url = author["url"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
+
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
+
+                else:
+                    subreddit = ""
+                    sub_name = "Unknown"
+                    sub_url = ""
+
+                if data["author"]:
+                    author = data["author"]
+                    r_author = author["name"]
+                    r_author_url = author["url"]
+
+                else:
+                    author = ""
+                    r_author = "Unknown"
+                    r_author_url = ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -331,19 +396,33 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                author = data["author"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
-                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                r_author = author["name"]
-                r_author_url = author["url"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
+
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
+
+                else:
+                    subreddit = ""
+                    sub_name = "Unknown"
+                    sub_url = ""
+
+                if data["author"]:
+                    author = data["author"]
+                    r_author = author["name"]
+                    r_author_url = author["url"]
+
+                else:
+                    author = ""
+                    r_author = "Unknown"
+                    r_author_url = ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -402,19 +481,33 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                author = data["author"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
-                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                r_author = author["name"]
-                r_author_url = author["url"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
+
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
+
+                else:
+                    subreddit = ""
+                    sub_name = "Unknown"
+                    sub_url = ""
+
+                if data["author"]:
+                    author = data["author"]
+                    r_author = author["name"]
+                    r_author_url = author["url"]
+
+                else:
+                    author = ""
+                    r_author = "Unknown"
+                    r_author_url = ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -464,19 +557,33 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                author = data["author"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
-                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                r_author = author["name"]
-                r_author_url = author["url"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
+
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
+
+                else:
+                    subreddit = ""
+                    sub_name = "Unknown"
+                    sub_url = ""
+
+                if data["author"]:
+                    author = data["author"]
+                    r_author = author["name"]
+                    r_author_url = author["url"]
+
+                else:
+                    author = ""
+                    r_author = "Unknown"
+                    r_author_url = ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -526,19 +633,33 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                author = data["author"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
-                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
                 comments = data["comments"]
-                r_author = author["name"]
-                r_author_url = author["url"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
+
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
+
+                else:
+                    subreddit = ""
+                    sub_name = "Unknown"
+                    sub_url = ""
+
+                if data["author"]:
+                    author = data["author"]
+                    r_author = author["name"]
+                    r_author_url = author["url"]
+
+                else:
+                    author = ""
+                    r_author = "Unknown"
+                    r_author_url = ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
