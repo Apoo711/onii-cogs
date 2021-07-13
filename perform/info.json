@@ -3,5 +3,6 @@
         "Ari (Onii-chan#3920)"
     ],
     "name": "Perform",
-    "description": "Perform Actions like kiss, cuddle etc."
+    "description": "Perform Actions like kiss, cuddle etc.",
+    "install_msg": "Hello and thank you for installing this cog, this cog shouldn't contain any nsfw gifs and allows you to interact with other people."
 }

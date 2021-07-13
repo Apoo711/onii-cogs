@@ -31,11 +31,13 @@ async def api_call(call_uri, returnObj=False):
                 return response["url"]
             elif returnObj == True:
                 return response
+    await session.close()
 
 log = logging.getLogger("red.onii.image")
 
 
 class Image(commands.Cog):
+    """Get tons of memes or other images"""
     def __init__(self, bot):
         self.bot = bot
 
@@ -96,6 +98,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -159,6 +162,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -220,6 +224,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -300,6 +305,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -366,6 +372,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -436,6 +443,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -497,6 +505,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -558,6 +567,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
