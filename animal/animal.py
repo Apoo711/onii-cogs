@@ -69,7 +69,7 @@ class Animal(commands.Cog):
                     author = data["author"]
                     r_author = author["name"]
                     r_author_url = author["url"]
-                
+
                 else:
                     author = ""
                     r_author = "Unknown"
@@ -144,7 +144,7 @@ class Animal(commands.Cog):
                     author = data["author"]
                     r_author = author["name"]
                     r_author_url = author["url"]
-                
+
                 else:
                     author = ""
                     r_author = "Unknown"
