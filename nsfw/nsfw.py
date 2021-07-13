@@ -31,6 +31,7 @@ async def api_call(call_uri, returnObj=False):
                 return response["url"]
             elif returnObj == True:
                 return response
+    await session.close()
 
 log = logging.getLogger("red.onii.nsfw")
 
