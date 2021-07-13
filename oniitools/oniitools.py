@@ -26,6 +26,14 @@ class Oniitools(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    __author__ = ["Onii-chan"]
+    __version__ = "1.0.0"
+
+    def format_help_for_context(self, ctx: commands.Context) -> str:
+        """Thanks Sinbad!"""
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
+
     @commands.command()
     async def penis(self, ctx, user: discord.Member):
         """Detects user's penis length this is 100% accurate."""

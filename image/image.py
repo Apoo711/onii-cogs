@@ -38,8 +38,17 @@ log = logging.getLogger("red.onii.image")
 
 class Image(commands.Cog):
     """Get tons of memes or other images"""
+
     def __init__(self, bot):
         self.bot = bot
+
+    __author__ = ["Onii-chan"]
+    __version__ = "3.2.1"
+
+    def format_help_for_context(self, ctx: commands.Context) -> str:
+        """Thanks Sinbad!"""
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
 
     @commands.command()
     @commands.guild_only()
