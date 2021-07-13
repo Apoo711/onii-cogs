@@ -68,7 +68,7 @@ class Image(commands.Cog):
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
         
-                if data["author"] is True:
+                if data["author"]:
                     author = data["author"]
                     r_author = author["name"]
                     r_author_url = author["url"]
