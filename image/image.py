@@ -17,10 +17,9 @@ limitations under the License.
 import asyncio
 import logging
 import random
+
 import aiohttp
-
 import discord
-
 from redbot.core import commands
 
 
