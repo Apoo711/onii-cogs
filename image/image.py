@@ -66,9 +66,6 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                subreddit = data["subreddit"]
-                sub_name = subreddit["name"]
-                sub_url = subreddit["url"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
@@ -76,7 +73,17 @@ class Image(commands.Cog):
                 comments = data["comments"]
                 downvotes = data["downvotes"]
                 created_at = data["created_at"]
-        
+
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
+
+                else:
+                    subreddit = ""
+                    sub_name = "Unknown"
+                    sub_url = ""
+
                 if data["author"]:
                     author = data["author"]
                     r_author = author["name"]
