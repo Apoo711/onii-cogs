@@ -14,16 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import asyncio
-import datetime
-import json
 import logging
-from typing import List, Optional, Union
+from typing import List
 
 import aiohttp
 import discord
 from redbot.core import commands
-from redbot.core.utils.chat_formatting import bold, box, inline
+from redbot.core.utils.chat_formatting import box
 
 
 async def api_call(call_uri, returnObj=False):
@@ -36,6 +33,7 @@ async def api_call(call_uri, returnObj=False):
                 return response
 
 log = logging.getLogger("red.onii.nsfw")
+
 
 class Nsfw(commands.Cog):
     """
@@ -53,7 +51,12 @@ class Nsfw(commands.Cog):
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
 
-    async def _version_msg(self, ctx: commands.Context, version: str, authors: List[str]):
+    async def _version_msg(
+        self,
+        ctx: commands.Context,
+        version: str,
+        authors: List[str]
+    ):
         """Cog version message."""
         msg = box(
             ("Nsfw cog version: {version}\nAuthors: {authors}").format(
@@ -74,6 +77,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def hentai(self, ctx):
+        """Plain old hentai"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Juicy henti for you!",
@@ -81,21 +85,32 @@ class Nsfw(commands.Cog):
             )
 
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
 
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/Random_hentai_gif"))
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/Random_hentai_gif"
+                    )
+                )
             await ctx.reply(embed=embed)
         else:
-            await ctx.reply("This command can only be used in a NSFW channel.")
+            await ctx.reply(
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
+            )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command()
     @commands.is_nsfw()
     @commands.guild_only()
     async def erok(self, ctx):
+        """Eroctic!"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Erok Kitsune !!!",
@@ -103,16 +118,24 @@ class Nsfw(commands.Cog):
             )
 
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
 
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/erok"))
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/erok"
+                )
+            )
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -120,6 +143,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def eroneko(self, ctx):
+        """Eroctic nekos? what could be better?"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="***ERO*** NEKO!",
@@ -127,21 +151,32 @@ class Nsfw(commands.Cog):
             )
 
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
 
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/erokemo"))
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/erokemo"
+                )
+            )
             await ctx.reply(embed=embed, mention_author=False)
         else:
-            await ctx.reply("This command can only be used in a NSFW channel.")
+            await ctx.reply(
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
+            )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="feet", aliases=["feetgif", "foot"])
     @commands.is_nsfw()
     @commands.guild_only()
     async def feet(self, ctx):
+        """Tasty feet"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="***Feet***",
@@ -149,16 +184,24 @@ class Nsfw(commands.Cog):
             )
 
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
 
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/feetg"))
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/feetg"
+                )
+            )
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -166,43 +209,30 @@ class Nsfw(commands.Cog):
     @commands.guild_only()
     @commands.is_nsfw()
     async def cum(self, ctx):
+        """Beautiful white cum"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="***Sticky white stuff!***",
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cum"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/cum"
+                    )
+                )
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
-            )
-
-    @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command(name="hthighs", aliases=["hthigh", "animethigh"])
-    @commands.is_nsfw()
-    @commands.guild_only()
-    async def hthighs(self, ctx):
-        if ctx.channel.is_nsfw():
-            embed = discord.Embed(
-                title="Thic thighs!",
-                color=ctx.message.author.color,
-            )
-            embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
-            )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://shiro.gg/api/images/nsfw/thighs"))
-            await ctx.reply(embed=embed, mention_author=False)
-        else:
-            await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -210,21 +240,30 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def nekofuck(self, ctx):
+        """Fuck nekos!"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Catgirls!!!!",
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/nsfw_neko_gif"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/nsfw_neko_gif"
+                )
+            )
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -232,21 +271,30 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def futanari(self, ctx):
+        """Futanari stuff."""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="",
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/futanari"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/futanari"
+                )
+            )
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -254,22 +302,31 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def boobs(self, ctx):
+        """Juicy tits"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="**Titties**!!!!!",
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/boobs"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/boobs"
+                )
+            )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -277,22 +334,31 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def blowjob(self, ctx):
+        """Blowjobs"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Oh shit!",
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/blowjob"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/blowjob"
+                )
+            )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -300,22 +366,31 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def pussy(self, ctx):
+        """Tight pussies"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Dang!",
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/pussy"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/pussy"
+                )
+            )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -323,26 +398,40 @@ class Nsfw(commands.Cog):
     @commands.guild_only()
     @commands.is_nsfw()
     async def spank(self, ctx, user: commands.Greedy[discord.Member] = None):
+        """Spank somebody"""
         if ctx.channel.is_nsfw():
             if user is None:
-                await ctx.message.reply("Please mention somebody to spank nex time.")
+                await ctx.message.reply(
+                    "Please mention somebody to spank nex time."
+                    )
                 return
             spanked_users = "".join(f"{users.mention} " for users in user)
             embed = discord.Embed(
                 title="Oooof!",
-                description=f"{spanked_users} got spanked by {ctx.author.mention}",
+                description="{} got spanked by {}".format(
+                    spanked_users,
+                    ctx.author.mention,
+                ),
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/spank"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/spank"
+                )
+            )
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -350,18 +439,27 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def lesbian(self, ctx):
+        """Lesbian Hentai"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(color=ctx.message.author.color)
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/les"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/les"
+                )
+            )
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -369,18 +467,27 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def trap(self, ctx):
+        """Trapped"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(color=ctx.message.author.color)
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/trap"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/trap"
+                )
+            )
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -388,18 +495,27 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def hololewd(self, ctx):
+        """hololewd stuff"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(color=ctx.message.author.color)
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/hololewd"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/hololewd"
+                )
+            )
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -407,22 +523,31 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def foxgirl(self, ctx):
+        """Foxgirls!"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Foxy",
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/fox_girl"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/fox_girl"
+                )
+            )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -430,22 +555,31 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def lewdkitsune(self, ctx):
+        """Lewdkitsune hentai!"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="Lewddd",
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/lewdk"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/lewdk"
+                )
+            )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -453,22 +587,31 @@ class Nsfw(commands.Cog):
     @commands.guild_only()
     @commands.is_nsfw()
     async def kuni(self, ctx):
+        """Kuni Hentai!"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="",
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/kuni"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/kuni"
+                )
+            )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -476,22 +619,31 @@ class Nsfw(commands.Cog):
     @commands.guild_only()
     @commands.is_nsfw()
     async def femdom(self, ctx):
+        """femdom hentai"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
                 title="",
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/femdom"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/femdom"
+                )
+            )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -506,16 +658,24 @@ class Nsfw(commands.Cog):
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/erofeet"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/erofeet"
+                )
+            )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -530,16 +690,24 @@ class Nsfw(commands.Cog):
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/solog"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/solog"
+                    )
+                )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -554,16 +722,24 @@ class Nsfw(commands.Cog):
                 color=ctx.message.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                text=f"Requested by {ctx.message.author.display_name}",
                 icon_url=ctx.message.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/gasm"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/gasm"
+                )
+            )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -578,16 +754,24 @@ class Nsfw(commands.Cog):
                 color=ctx.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.author.display_name}#{ctx.author.discriminator}",
+                text=f"Requested by {ctx.author.display_name}",
                 icon_url=ctx.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/yuri"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/yuri"
+                )
+            )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -602,16 +786,24 @@ class Nsfw(commands.Cog):
                 color=ctx.author.color,
             )
             embed.set_footer(
-                text=f"Requested by {ctx.author.display_name}#{ctx.author.discriminator}",
+                text=f"Requested by {ctx.author.display_name}",
                 icon_url=ctx.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/anal"))
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call(
+                    "https://nekos.life/api/v2/img/anal"
+                )
+                )
 
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(3, 7, commands.BucketType.user)
@@ -621,23 +813,30 @@ class Nsfw(commands.Cog):
     async def ass(self, ctx):
         """Ass Hentai"""
         if ctx.channel.is_nsfw():
-            response = await api_call("https://nekobot.xyz/api/image?type=hass", True)
+            response = await api_call(
+                "https://nekobot.xyz/api/image?type=hass",
+                True
+                )
             embed = discord.Embed(
-                title="",
+                title="Big ass",
                 color=response["color"],
             )
 
             embed.set_footer(
-                text=f"Requested by {ctx.author.display_name}#{ctx.author.discriminator}",
+                text=f"Requested by {ctx.author.display_name}",
                 icon_url=ctx.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
 
             embed.set_image(url=response["message"])
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(3, 7, commands.BucketType.user)
@@ -647,23 +846,30 @@ class Nsfw(commands.Cog):
     async def porn(self, ctx):
         """Just Porn"""
         if ctx.channel.is_nsfw():
-            response = await api_call("https://nekobot.xyz/api/image?type=pgif", True)
+            response = await api_call(
+                "https://nekobot.xyz/api/image?type=pgif",
+                True
+            )
             embed = discord.Embed(
-                title="",
+                title="Real porn",
                 color=response["color"],
             )
 
             embed.set_footer(
-                text=f"Requested by {ctx.author.display_name}#{ctx.author.discriminator}",
+                text=f"Requested by {ctx.author.display_name}",
                 icon_url=ctx.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
 
             embed.set_image(url=response["message"])
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(3, 7, commands.BucketType.user)
@@ -671,25 +877,32 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def fourk(self, ctx):
-        """4L Hentai"""
+        """4K Hentai"""
         if ctx.channel.is_nsfw():
-            response = await api_call("https://nekobot.xyz/api/image?type=4k", True)
+            response = await api_call(
+                "https://nekobot.xyz/api/image?type=4k",
+                True
+            )
             embed = discord.Embed(
-                title="",
+                title="The best quality",
                 color=response["color"],
             )
 
             embed.set_footer(
-                text=f"Requested by {ctx.author.display_name}#{ctx.author.discriminator}",
+                text=f"Requested by {ctx.author.display_name}",
                 icon_url=ctx.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
 
             embed.set_image(url=response["message"])
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(3, 7, commands.BucketType.user)
@@ -699,23 +912,30 @@ class Nsfw(commands.Cog):
     async def yaoi(self, ctx):
         """yaoi hentai"""
         if ctx.channel.is_nsfw():
-            response = await api_call("https://nekobot.xyz/api/image?type=yaoi", True)
+            response = await api_call(
+                "https://nekobot.xyz/api/image?type=yaoi",
+                True
+            )
             embed = discord.Embed(
-                title="",
+                title="Yaoi",
                 color=response["color"],
             )
 
             embed.set_footer(
-                text=f"Requested by {ctx.author.display_name}#{ctx.author.discriminator}",
+                text=f"Requested by {ctx.author.display_name}",
                 icon_url=ctx.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
 
             embed.set_image(url=response["message"])
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )
 
     @commands.cooldown(3, 7, commands.BucketType.user)
@@ -725,21 +945,28 @@ class Nsfw(commands.Cog):
     async def thigh(self, ctx):
         """Thigh Hentai"""
         if ctx.channel.is_nsfw():
-            response = await api_call("https://nekobot.xyz/api/image?type=thigh", True)
+            response = await api_call(
+                "https://nekobot.xyz/api/image?type=thigh",
+                True
+            )
             embed = discord.Embed(
-                title="",
+                title="Them thic thighs",
                 color=response["color"],
             )
 
             embed.set_footer(
-                text=f"Requested by {ctx.author.display_name}#{ctx.author.discriminator}",
+                text=f"Requested by {ctx.author.display_name}",
                 icon_url=ctx.author.avatar_url,
             )
-            embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
 
             embed.set_image(url=response["message"])
             await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(
-                "This command can only be used in a NSFW channel.", mention_author=False
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
             )

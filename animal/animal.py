@@ -11,7 +11,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import asyncio
 import logging
 import random
 
@@ -20,6 +19,7 @@ import discord
 from redbot.core import commands
 
 log = logging.getLogger("red.onii.animal")
+
 
 class Animal(commands.Cog):
     def __init__(self, bot):

@@ -33,6 +33,7 @@ async def api_call(call_uri, returnObj=False):
 
 log = logging.getLogger("red.onii.perform")
 
+
 class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
 
@@ -49,13 +50,20 @@ class Perform(commands.Cog):
         )
 
         embed.set_footer(
-            text=f"Requested by {ctx.message.author.display_name} | Powered by nekos.life",
+            text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
 
-        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cuddle"))
-        await ctx.reply(embed=embed)
+        embed.set_image(
+            url=await api_call(
+                "https://nekos.life/api/v2/img/cuddle"
+            )
+        )
+        await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="poke")
@@ -69,7 +77,7 @@ class Perform(commands.Cog):
                     description=f"**{ctx.author.mention}** poked {f'**{str(user.mention)}**' if user else 'themselves'}!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
+                    text=f"Requested by: {str(ctx.author)}",
                     icon_url=ctx.author.avatar_url,
                 )
                 em.set_image(url=res["url"])
@@ -87,7 +95,7 @@ class Perform(commands.Cog):
                     description=f"**{ctx.author.mention}** just kissed {f'**{str(user.mention)}**' if user else 'themselves'}!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
+                    text=f"Requested by: {str(ctx.author)}",
                     icon_url=ctx.author.avatar_url,
                 )
                 em.set_image(url=res["url"])
@@ -105,7 +113,7 @@ class Perform(commands.Cog):
                     description=f"**{ctx.author.mention}** just hugged {f'**{str(user.mention)}**' if user else 'themselves'}!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
+                    text=f"Requested by: {str(ctx.author)}",
                     icon_url=ctx.author.avatar_url,
                 )
                 em.set_image(url=res["url"])
@@ -123,7 +131,7 @@ class Perform(commands.Cog):
                     description=f"**{ctx.author.mention}** just patted {f'**{str(user.mention)}**' if user else 'themselves'}!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
+                    text=f"Requested by: {str(ctx.author)}",
                     icon_url=ctx.author.avatar_url,
                 )
                 em.set_image(url=res["url"])
@@ -141,7 +149,7 @@ class Perform(commands.Cog):
                     description=f"**{ctx.author.mention}** just tickled {f'**{str(user.mention)}**' if user else 'themselves'}!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
+                    text=f"Requested by: {str(ctx.author)}",
                     icon_url=ctx.author.avatar_url,
                 )
                 em.set_image(url=res["url"])
@@ -156,10 +164,10 @@ class Perform(commands.Cog):
                 res = await r.json()
                 em = discord.Embed(
                     colour=discord.Colour.random(),
-                    description=f"**{ctx.author.mention}** is acting all smug!",
+                    description=f"**{ctx.author.mention}** is acting so smug!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)} | Powered by shiro.gg",
+                    text=f"Requested by: {str(ctx.author)}",
                     icon_url=ctx.author.avatar_url,
                 )
                 em.set_image(url=res["url"])
