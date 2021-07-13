@@ -12,7 +12,6 @@ limitations under the License.
 """
 
 import logging
-import random
 
 import aiohttp
 import discord
