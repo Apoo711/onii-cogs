@@ -19,16 +19,19 @@ To add cogs from this repo to your instance, do these steps:
 ## Cog List
 | Cog | Status | Description |
 | --- | ---------- |---------------- |
-| wallpaper | Alpha |<details><summary>Wallpaper commands for anime</summary>This cog chooses random wallpapers from a list and sends them to you in an embed.</details>
+| Image | Alpha |<details><summary>Wallpaper commands for anime</summary>This cog chooses random wallpapers from a different subreddits and sends them to you in an embed.</details>
 | Nsfw | Alpha |<details><summary>Nsfw commands</summary>Nsfw commands, proceed with caution.</details>
 | Perform |Alpha |<deatails><summary>Perform commands</summary>Perform things like cuddle, poke, kiss etc.</details>
+| Oniitools | Alpha |<details><summary> My set of must have commands.</summary>This cog chooses random wallpapers from a different subreddits and sends them to you in an embed.</details>
+| Animals | Alpha |<details><summary>Sends images of cute animals!</summary>Sends very cute animals in an embed, more animals coming soon.</details>
 
 ## Credits
 - Everyone who contributed to make this better.
 - Thank you Red community, you guys are awesome.
+- Thank you OofChair for fixing things in my readme
 
 # Contributing.md
-- Kindly follow the format of black with line-length = 150 and isort
+- Kindly follow the format of black with line-length = 99 and isort
 - This can be done by `pip install black isort`
 - Then running
 ```py
