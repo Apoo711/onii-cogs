@@ -22,6 +22,7 @@ log = logging.getLogger("red.onii.animal")
 
 
 class Animal(commands.Cog):
+    """Get images of animals!"""
     def __init__(self, bot):
         self.bot = bot
 

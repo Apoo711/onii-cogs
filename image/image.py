@@ -36,6 +36,7 @@ log = logging.getLogger("red.onii.image")
 
 
 class Image(commands.Cog):
+    """Get tons of memes or other images"""
     def __init__(self, bot):
         self.bot = bot
 
