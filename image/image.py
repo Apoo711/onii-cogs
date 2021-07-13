@@ -97,6 +97,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -160,6 +161,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -221,6 +223,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -301,6 +304,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -367,6 +371,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -437,6 +442,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -498,6 +504,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -559,6 +566,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
+        await session.close()
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
