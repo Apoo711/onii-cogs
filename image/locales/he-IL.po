@@ -74,4 +74,3 @@ msgid "Shows some unix images from reddit.\n\n"
 "        Images shown are taken from r/UnixPorn.\n"
 "        "
 msgstr ""
-
