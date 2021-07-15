@@ -35,6 +35,7 @@ class Animal(commands.Cog):
 
     @commands.group(aliases=["facts"])
     async def fact(self, ctx: commands.Context):
+        """Get some random facts"""
 
     @commands.command()
     @commands.guild_only()
