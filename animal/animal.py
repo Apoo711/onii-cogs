@@ -221,7 +221,7 @@ class Animal(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://some-random-api.ml/facts/dog"
+                "https://some-random-api.ml/facts/cat"
                 ) as resp:
                 data = await resp.json()
                 fact = data["fact"]
