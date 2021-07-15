@@ -949,10 +949,10 @@ class Nsfw(commands.Cog):
                 mention_author=False
             )
 
-    @commands.command()
+    @real.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def unix(self, ctx: commands.Context):
+    async def pussy(self, ctx: commands.Context):
         """Shows some pussy images from reddit.
 
         Images shown are taken from r/pussy.
