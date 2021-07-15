@@ -26,14 +26,14 @@ class Animal(commands.Cog):
         self.bot = bot
 
     __author__ = ["Onii-chan"]
-    __version__ = "1.2.0"
+    __version__ = "1.2.1"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
 
-    @commands.group(aliases=["facts"])
+    @commands.group()
     async def fact(self, ctx: commands.Context):
         """Get some random facts"""
 
