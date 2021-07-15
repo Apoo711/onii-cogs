@@ -1,4 +1,4 @@
-A wallpaper cog:
+Image
 =======================================
 
 
@@ -6,15 +6,15 @@ A wallpaper cog:
 
 | This cog was made because I wanted a cog which would send anime wallpapers.
 |
-| Use ``[p]wallpaper`` to see what commands this cog has.
+| Use ``[p]help Image`` to see what commands this cog has.
 
 Setup And Installation
 -------
  
 1. | Start by adding the repo through ``[p]repo add onii-cogs`` and type ``I agree``
-2. | Now add the cog through ``[p]cog install onii-cogs wallpaper``
-3. | load the cog with ``[p]load wallpaper``
-4. | Done! For a list of commands just type ``[p]wallpaper or [p]w`` and enjoy some anime wallpapers!
+2. | Now add the cog through ``[p]cog install onii-cogs image``
+3. | load the cog with ``[p]load image``
+4. | Done! For a list of commands just type ``[p]help Image``
 
 
 
