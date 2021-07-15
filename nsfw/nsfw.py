@@ -948,3 +948,79 @@ class Nsfw(commands.Cog):
                 "This command can only be used in a NSFW channel.",
                 mention_author=False
             )
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def unix(self, ctx: commands.Context):
+        """Shows some pussy images from reddit.
+
+        Images shown are taken from r/pussy.
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://api.martinebot.com/v1/images/subreddit?name=pussy"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
+
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
+
+                else:
+                    subreddit = ""
+                    sub_name = "Unknown"
+                    sub_url = ""
+
+                if data["author"]:
+                    author = data["author"]
+                    r_author = author["name"]
+                    r_author_url = author["url"]
+
+                else:
+                    author = ""
+                    r_author = "Unknown"
+                    r_author_url = ""
+
+        embed = discord.Embed(
+            title="Here's a random image...:frame_photo:",
+            colour=discord.Colour.random(),
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
+        )
+        embed.set_image(url=url)
+        embed.set_footer(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
+            icon_url=ctx.message.author.avatar_url,
+        )
+        await session.close()
+        await ctx.trigger_typing()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
