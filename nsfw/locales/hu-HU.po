@@ -1,0 +1,164 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: onii-cogs\n"
+"POT-Creation-Date: 2021-07-15 20:53+1000\n"
+"PO-Revision-Date: 2021-07-15 10:58\n"
+"Last-Translator: \n"
+"Language-Team: Hungarian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: onii-cogs\n"
+"X-Crowdin-Project-ID: 465420\n"
+"X-Crowdin-Language: hu\n"
+"X-Crowdin-File: /Dev/nsfw/locales/messages.pot\n"
+"X-Crowdin-File-ID: 28\n"
+"Language: hu_HU\n"
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:72
+#, docstring
+msgid "Get the version of the installed Nsfw cog."
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:81
+#, docstring
+msgid "Plain old hentai"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:114
+#, docstring
+msgid "Eroctic!"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:147
+#, docstring
+msgid "Eroctic nekos? what could be better?"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:180
+#, docstring
+msgid "Tasty feet"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:213
+#, docstring
+msgid "Beautiful white cum"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:244
+#, docstring
+msgid "Fuck nekos!"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:275
+#, docstring
+msgid "Futanari stuff."
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:306
+#, docstring
+msgid "Juicy tits"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:338
+#, docstring
+msgid "Blowjobs"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:370
+#, docstring
+msgid "Tight pussies"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:402
+#, docstring
+msgid "Spank somebody"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:443
+#, docstring
+msgid "Lesbian Hentai"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:471
+#, docstring
+msgid "Trapped"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:499
+#, docstring
+msgid "hololewd stuff"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:527
+#, docstring
+msgid "Foxgirls!"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:559
+#, docstring
+msgid "Lewdkitsune hentai!"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:591
+#, docstring
+msgid "Kuni Hentai!"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:623
+#, docstring
+msgid "femdom hentai"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:655
+#, docstring
+msgid "Erofeet 3"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:687
+#, docstring
+msgid "Solo Porn"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:719
+#, docstring
+msgid "Gasm Porn"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:751
+#, docstring
+msgid "Yuri Porn"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:783
+#, docstring
+msgid "Anal Hentai"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:815
+#, docstring
+msgid "Ass Hentai"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:848
+#, docstring
+msgid "Just Porn"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:881
+#, docstring
+msgid "4K Hentai"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:914
+#, docstring
+msgid "yaoi hentai"
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\nsfw\nsfw.py:947
+#, docstring
+msgid "Thigh Hentai"
+msgstr ""
+
