@@ -191,7 +191,7 @@ class Animal(commands.Cog):
             mention_author=False,
         )
 
-    @fact.command()
+    @fact.command(name="dog")
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def f_dog(self, ctx):
