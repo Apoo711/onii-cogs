@@ -9,7 +9,7 @@ if at all you come across a bug, report it to me in discord.**
 
 Some fun and anime orientated cogs for Redbot.
 Discord User:  Onii-chan#3920
-Docs: [Docs](onii-cogs.readthedocs.io)
+Docs: [Docs](https://onii-cogs.readthedocs.io)
  # Installation
 To add cogs from this repo to your instance, do these steps:
 - `[p]repo add onii-cogs https://github.com/Onii-Chan-Discord/onii-cogs`
