@@ -697,6 +697,7 @@ class Image(commands.Cog):
 
     @commands.command(aliases=["celeb"])
     @commands.guild_only()
+    @commands.is_nsfw()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def celebrity(self, ctx: commands.Context):
         """Shows some imagesof celebrities from reddit.
