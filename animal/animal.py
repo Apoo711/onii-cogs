@@ -33,6 +33,9 @@ class Animal(commands.Cog):
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
 
+    @commands.group(aliases=["facts"])
+    async def fact(self, ctx: commands.Context):
+
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -41,6 +44,7 @@ class Animal(commands.Cog):
 
         Pictures shown are taken from r/dogpictures.
         """
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://api.martinebot.com/v1/images/subreddit?name=dogpictures"
@@ -108,14 +112,16 @@ class Animal(commands.Cog):
             embed=embed,
             mention_author=False,
         )
+
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def cat(self, ctx: commands.Context):
-        """Shows some cat wallpaperd from reddit.
+        """Shows some cat wallpaper from reddit.
 
         Wallpapers shown are taken from r/catwallpapers.
         """
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://api.martinebot.com/v1/images/subreddit?name=catwallpapers"
@@ -178,8 +184,29 @@ class Animal(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
             mention_author=False,
         )
+
+    @fact.command()
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def f_dog(self, ctx):
+        """Get a random dog fact"""
+        await ctx.trigger_typing()
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://some-random-api.ml/facts/dog"
+                ) as request:
+                response = await request.json()
+                fact = response["fact"]
+
+                embed = discord.Embed(color=(await ctx.embed_colour()))
+                embed.set_image(
+                    url="https://media.tenor.com/images/d7afbeb5c3b3efc48a86eb2c3450ceb8/tenor.gif"
+                )
+                embed.add_field(
+                    name="Here's a random dog fact!", value=fact
+                )
+                await ctx.send(embed=embed)
