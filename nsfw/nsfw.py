@@ -67,7 +67,7 @@ class Nsfw(commands.Cog):
         )
         return await ctx.send(msg)
 
-    @hentai.command()
+    @commands.command()
     async def nsfwversion(self, ctx: commands.Context):
         """Get the version of the installed Nsfw cog."""
 
