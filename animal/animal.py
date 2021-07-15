@@ -200,13 +200,35 @@ class Animal(commands.Cog):
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://some-random-api.ml/facts/dog"
-                ) as request:
-                response = await request.json()
-                fact = response["fact"]
+                ) as resp:
+                data = await resp.json()
+                fact = data["fact"]
 
                 embed = discord.Embed(color=(await ctx.embed_colour()))
                 embed.set_image(
                     url="https://media.tenor.com/images/d7afbeb5c3b3efc48a86eb2c3450ceb8/tenor.gif"
+                )
+                embed.add_field(
+                    name="Here's a random dog fact!", value=fact
+                )
+                await ctx.send(embed=embed)
+
+    @fact.command(name="cat")
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def f_cat(self, ctx):
+        """Get a random dog fact"""
+        await ctx.trigger_typing()
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://some-random-api.ml/facts/dog"
+                ) as resp:
+                data = await resp.json()
+                fact = data["fact"]
+
+                embed = discord.Embed(color=(await ctx.embed_colour()))
+                embed.set_image(
+                    url="https://media1.tenor.com/images/f6fe8d1d0463f4e51b6367bbecf56a3e/tenor.gif?itemid=6198981"
                 )
                 embed.add_field(
                     name="Here's a random dog fact!", value=fact
