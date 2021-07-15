@@ -34,6 +34,7 @@ class Animal(commands.Cog):
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
 
     @commands.group()
+    @commands.guild_only()
     async def fact(self, ctx: commands.Context):
         """Get some random facts"""
 
