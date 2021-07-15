@@ -75,12 +75,12 @@ class Nsfw(commands.Cog):
 
     @commands.group()
     @commands.is_nsfw()
-    async def hentai(self, ctx: command.Context):
+    async def hentai(self, ctx: commands.Context):
         """Hentai Commands"""
 
     @commands.group()
     @commands.is_nsfw()
-    async def real(self, ctx: command.Context):
+    async def real(self, ctx: commands.Context):
         """Real Porn"""
 
     @commands.cooldown(5, 7, commands.BucketType.user)
