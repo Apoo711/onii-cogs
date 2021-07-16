@@ -162,18 +162,18 @@ class Animal(commands.Cog):
             title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
+                "**Title:** [{}]({})"
                 "**Post by:** [u/{}]({})\n"
                 "**From:** [r/{}]({})\n"
                 "**This post was created on:** <t:{}:F>\n"
-                "**Title:** [{}]({})"
             ).format(
+                title,
+                link,
                 r_author,
                 r_author_url,
                 sub_name,
                 sub_url,
                 created_at,
-                title,
-                link,
             ),
         )
         embed.set_image(url=url)
@@ -222,15 +222,15 @@ class Animal(commands.Cog):
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://some-random-api.ml/facts/cat"
-                ) as resp:
+            ) as resp:
                 data = await resp.json()
                 fact = data["fact"]
 
-                embed = discord.Embed(color=(await ctx.embed_colour()))
-                embed.set_image(
-                    url="https://media1.tenor.com/images/f6fe8d1d0463f4e51b6367bbecf56a3e/tenor.gif?itemid=6198981"
-                )
-                embed.add_field(
-                    name="Here's a random dog fact!", value=fact
-                )
-                await ctx.send(embed=embed)
+        embed = discord.Embed(color=(await ctx.embed_colour()))
+        embed.set_image(
+            url="https://media1.tenor.com/images/f6fe8d1d0463f4e51b6367bbecf56a3e/tenor.gif?itemid=6198981"
+        )
+        embed.add_field(
+            name="Here's a random dog fact!", value=fact
+        )
+        await ctx.send(embed=embed)
