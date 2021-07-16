@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: onii-cogs\n"
 "POT-Creation-Date: 2021-07-15 20:53+1000\n"
-"PO-Revision-Date: 2021-07-15 10:57\n"
+"PO-Revision-Date: 2021-07-16 10:54\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,8 @@ msgstr ""
 msgid "Shows some dog pictures from reddit.\n\n"
 "        Pictures shown are taken from r/dogpictures.\n"
 "        "
-msgstr ""
+msgstr "Redditからの犬の写真をいくつか表示します。\n\n"
+"         示されている写真はr / dogpicturesから取られています。        "
 
 #: C:\Users\aryan\Documents\GitHub\onii-cogs\animal\animal.py:115
 #, docstring
@@ -30,3 +31,4 @@ msgid "Shows some cat wallpaperd from reddit.\n\n"
 "        Wallpapers shown are taken from r/catwallpapers.\n"
 "        "
 msgstr ""
+
