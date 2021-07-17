@@ -466,6 +466,7 @@ class Image(commands.Cog):
         Images shown are taken from:
         r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.
         """
+        await ctx.trigger_typing()
         SUBREDDITS = [
             "animeboys",
             "CuteAnimeGirlss",
@@ -534,7 +535,6 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
             mention_author=False,
