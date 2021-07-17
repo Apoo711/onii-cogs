@@ -131,7 +131,7 @@ class Image(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def subr(self, ctx: commands.Context, subreddit: str):
+    async def subr(self, ctx: commands.Context, subr_it: str):
         """Shows some anime wallpaper from reddit.
 
         Wallpapers shown are taken from random subreddits.
@@ -140,7 +140,7 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/{subreddit}"
+                f"https://api.martinebot.com/v1/images/subreddit/{subr_it}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
