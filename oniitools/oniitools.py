@@ -45,8 +45,9 @@ class Oniitools(commands.Cog):
 
     @commands.command()
     @commands.bot_has_permissions(embed_links=True)
-    async def osu(ctx, self, player:str):
+    async def osu(self, player: str, ctx):
         """Osu stats for player"""
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as s:
             async with s.get(
                 f"https://api.martinebot.com/v1/imagesgen/osuprofile?&player_username={player}"
@@ -63,9 +64,12 @@ class Oniitools(commands.Cog):
                     )
                     emb.set_image(url="attachment://osu.png")
                     emb.set_footer(text="Powered by martinebot.com API")
+
                     await ctx.reply(file=f, embed=emb)
                     f.close()
+
                 elif resp.status in (404, 410, 422):
                     await ctx.reply((await resp.json())['message'])
+
                 else:
                     await ctx.reply("API is down currently, please try later")
