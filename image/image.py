@@ -190,9 +190,9 @@ class Image(commands.Cog):
                     )
                     await session.close()
                     await ctx.trigger_typing()
-                    await ctx.reply(
+                    return await ctx.reply(
                         embed=embed,
-                        mention_author=False,
+                        mention_author=False
                     )
 
     @commands.command(name="randomwallpaper", aliases=["raw"])
