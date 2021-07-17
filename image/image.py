@@ -477,11 +477,12 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.reddit.com/r/{API}/new.json?random"
+                f"https://api.reddit.com/r/{API}/new.json?sort=new"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                post = data["children"]
+                children = data["children"]
+                post = random.choice(children)["data"]
                 title = post["title"]
                 url = post["url"]
                 link = post["post_url"]
