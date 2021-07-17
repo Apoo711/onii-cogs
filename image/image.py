@@ -477,7 +477,7 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.reddit.com/r/{API}/new.json?sort=new"
+                f"https://reddit.com/r/{API}/new.json?sort=new"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
