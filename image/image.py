@@ -149,7 +149,6 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
                 ups = data["upvotes"]
@@ -176,6 +175,12 @@ class Image(commands.Cog):
                     author = ""
                     r_author = "Unknown"
                     r_author_url = ""
+                
+                if data["title"]:
+                    title = data["title"]
+
+                else:
+                    title = "Unknown"
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
