@@ -45,7 +45,7 @@ class Oniitools(commands.Cog):
 
     @commands.command()
     @commands.bot_has_permissions(embed_links=True)
-    async def osu(self, player: str, ctx):
+    async def osu(self, ctx, player: str):
         """Osu stats for player"""
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as s:
