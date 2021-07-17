@@ -128,7 +128,7 @@ class Image(commands.Cog):
             mention_author=False,
         )
 
-    @commands.command(name="randomwallpaper", aliases=["rav"])
+    @commands.command(name="randomwallpaper", aliases=["raw"])
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def wallpaper_random(self, ctx: commands.Context):
