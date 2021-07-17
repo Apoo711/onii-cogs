@@ -149,12 +149,6 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
 
                 if data["subreddit"]:
                     subreddit = data["subreddit"]
@@ -176,11 +170,13 @@ class Image(commands.Cog):
                     r_author = "Unknown"
                     r_author_url = ""
                 
-                if data["title"]:
-                    title = data["title"]
-
-                else:
-                    title = "Unknown"
+                if data["data"]:
+                    url = data["image_url"]
+                    link = data["post_url"]
+                    ups = data["upvotes"]
+                    comments = data["comments"]
+                    downvotes = data["downvotes"]
+                    created_at = data["created_at"]
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
