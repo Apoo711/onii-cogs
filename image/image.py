@@ -142,37 +142,19 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-
-                if data["image_url"]:
-                    url = data["image_url"] or ""
-
-                if data["subreddit"]:
-                    subreddit = data["subreddit"] or ""
-                    sub_name = subreddit["name"] or "Unknown"
-                    sub_url = subreddit["url"] or ""
-
-                if data["author"]:
-                    author = data["author"] or ""
-                    r_author = author["name"] or "Unknown"
-                    r_author_url = author["url"] or ""
-
-                if data["title"]:
-                    title = data["title"] or ""
-
-                if data["created_at"]:
-                    created_at = data["created_at"] or ""
-
-                if data["downvotes"]:
-                    downvotes = data["downvotes"] or ""
-
-                if data["comments"]:
-                    comments = data["comments"] or ""
-
-                if data["ups"]:
-                    ups = data["upvotes"] or ""
-
-                if data["post_url"]:
-                    link = data["post_url"] or ""
+                url = data["image_url"] or ""
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
