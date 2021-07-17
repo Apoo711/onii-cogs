@@ -140,7 +140,7 @@ class Image(commands.Cog):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/subreddit?name=Animewallpaper"
+                "https://api.martinebot.com/v1/images/wallpaper"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
