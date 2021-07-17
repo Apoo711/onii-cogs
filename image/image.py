@@ -134,13 +134,18 @@ class Image(commands.Cog):
     async def wallpaper_random(self, ctx: commands.Context):
         """Shows some anime wallpaper from reddit.
 
-        Wallpapers shown are taken from r/Animewallpaper.
+        Wallpapers shown are taken from random subreddits.
 
         Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
+        SUBREDDITS = [
+            "images/subreddits?name=Animewallpaper",
+            "images/wallpaper"
+        ]
+        API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/wallpaper"
+                f"https://api.martinebot.com/v1/{API}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
