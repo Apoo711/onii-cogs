@@ -59,7 +59,7 @@ class Oniitools(commands.Cog):
                     )
                     emb = discord.Embed(
                         title=f"{player}'s Osu Stats",
-                        colour=await ctx.embed_colour()
+                        colour=discord.Colour.random()
                     )
                     emb.set_image(url="attachment://osu.png")
                     emb.set_footer(text="Powered by martinebot.com API")
