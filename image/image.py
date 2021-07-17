@@ -463,9 +463,7 @@ class Image(commands.Cog):
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def moe(self, ctx: commands.Context):
         """Shows some moe images from reddit.
-
         Images shown are taken from:
-
         r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.
         """
         SUBREDDITS = [
@@ -477,33 +475,34 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://reddit.com/r/{API}/new.json?sort=random"
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                children = data["children"]
-                post = random.choice(children)["data"]
-                title = post["title"]
-                url = post["url"]
-                link = post["permalink"]
-                ups = post["ups"]
-                comments = post["num_comments"]
-                downvotes = post["downs"]
-                created_at = post["created_utc"]
+                title = data["title"]
+                url = data["image_url"]
+                link = data["post_url"]
+                ups = data["upvotes"]
+                comments = data["comments"]
+                downvotes = data["downvotes"]
+                created_at = data["created_at"]
 
-                if post["subreddit"]:
-                    sub_name = post["subreddit"]
-                    sub_url = f"https://reddit.com/r/{sub_name}"
-
+                if data["subreddit"]:
+                    subreddit = data["subreddit"]
+                    sub_name = subreddit["name"]
+                    sub_url = subreddit["url"]
                 else:
+                    subreddit = ""
                     sub_name = "Unknown"
                     sub_url = ""
 
-                if post["author"]:
-                    r_author = post["author"]
-                    r_author_url = f"https://reddit.com/u/{r_author}"
+                if data["author"]:
+                    author = data["author"]
+                    r_author = author["name"]
+                    r_author_url = author["url"]
 
                 else:
+                    author = ""
                     r_author = "Unknown"
                     r_author_url = ""
 
