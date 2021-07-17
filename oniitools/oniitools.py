@@ -45,21 +45,20 @@ class Oniitools(commands.Cog):
 
     @commands.command()
     @commands.bot_has_permissions(embed_links=True)
-    async def osu(ctx, self, name:str):
+    async def osu(ctx, self, player:str):
         """Osu stats for player"""
-        
         async with aiohttp.ClientSession() as s:
             async with s.get(
-                f"https://api.martinebot.com/v1/imagesgen/osuprofile?&player_username={name}"
+                f"https://api.martinebot.com/v1/imagesgen/osuprofile?&player_username={player}"
             ) as resp:
                 if resp.status in (200, 201):
                     f = discord.File(
                         fp=BytesIO(
                             await resp.read()
-                        ), filename=f"osu.png"
+                        ), filename="osu.png"
                     )
                     emb = discord.Embed(
-                        title=f"{name}'s Osu Stats",
+                        title=f"{player}'s Osu Stats",
                         colour=await ctx.embed_colour()
                     )
                     emb.set_image(url="attachment://osu.png")
