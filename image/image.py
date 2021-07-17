@@ -132,9 +132,7 @@ class Image(commands.Cog):
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def subr(self, ctx: commands.Context, reddit: str):
-        """Shows some anime wallpaper from reddit.
-
-        Wallpapers shown are taken from random subreddits.
+        """Shows some images form the specified subreddit.
 
         Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
@@ -144,43 +142,37 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
 
                 if data["image_url"]:
-                    url = data["image_url"]
-  
-                else:
-                    url = ""
+                    url = data["image_url"] or ""
 
                 if data["subreddit"]:
-                    subreddit = data["subreddit"]
-                    sub_name = subreddit["name"]
-                    sub_url = subreddit["url"]
-
-                else:
-                    subreddit = ""
-                    sub_name = "Unknown"
-                    sub_url = ""
+                    subreddit = data["subreddit"] or ""
+                    sub_name = subreddit["name"] or "Unknown"
+                    sub_url = subreddit["url"] or ""
 
                 if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
-
-                else:
-                    author = ""
-                    r_author = "Unknown"
-                    r_author_url = ""
+                    author = data["author"] or ""
+                    r_author = author["name"] or "Unknown"
+                    r_author_url = author["url"] or ""
 
                 if data["title"]:
-                    title = data["title"]
+                    title = data["title"] or ""
 
-                else:
-                    title = ""
+                if data["created_at"]:
+                    created_at = data["created_at"] or ""
+
+                if data["downvotes"]:
+                    downvotes = data["downvotes"] or ""
+
+                if data["comments"]:
+                    comments = data["comments"] or ""
+
+                if data["ups"]:
+                    ups = data["upvotes"] or ""
+
+                if data["post_url"]:
+                    link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
