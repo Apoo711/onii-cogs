@@ -477,17 +477,18 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                f"https://api.reddit.com/r/{API}/new.json?random"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                title = data["title"]
-                url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
+                post = data["children"]
+                title = post["title"]
+                url = post["url"]
+                link = post["post_url"]
+                ups = post["ups"]
+                comments = post["comments"]
+                downvotes = post["downs"]
+                created_at = post["created"]
 
                 if data["subreddit"]:
                     subreddit = data["subreddit"]
@@ -499,13 +500,11 @@ class Image(commands.Cog):
                     sub_name = "Unknown"
                     sub_url = ""
 
-                if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
+                if post["author"]:
+                    r_author = post["author"]
+                    r_author_url = f"https://reddit.com/u/{r_author}"
 
                 else:
-                    author = ""
                     r_author = "Unknown"
                     r_author_url = ""
 
