@@ -15,11 +15,9 @@ limitations under the License.
 """
 
 import random
-import discord
-import aiohttp
 
+import discord
 from redbot.core import commands
-from io import BytesIO
 
 
 class Oniitools(commands.Cog):
@@ -42,31 +40,3 @@ class Oniitools(commands.Cog):
         random.seed(user.id)
         p = "8" + "="*random.randint(0, 30) + "D"
         await ctx.reply("Size: " + p, mention_author=False)
-
-    @commands.command()
-    @commands.bot_has_permissions(embed_links=True)
-    async def osu(ctx, self, name:str):
-        """Osu stats for player"""
-        
-        async with aiohttp.ClientSession() as s:
-            async with s.get(
-                f"https://api.martinebot.com/v1/imagesgen/osuprofile?&player_username={name}"
-            ) as resp:
-                if resp.status in (200, 201):
-                    f = discord.File(
-                        fp=BytesIO(
-                            await resp.read()
-                        ), filename=f"osu.png"
-                    )
-                    emb = discord.Embed(
-                        title=f"{name}'s Osu Stats",
-                        colour=await ctx.embed_colour()
-                    )
-                    emb.set_image(url="attachment://osu.png")
-                    emb.set_footer(text="Powered by martinebot.com API")
-                    await ctx.send(file=f, embed=emb)
-                    f.close()
-                elif resp.status in (404, 410, 422):
-                    await ctx.send((await resp.json())['message'])
-                else:
-                    await ctx.send("API is down currently, please try later")
