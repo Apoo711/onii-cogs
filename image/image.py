@@ -156,39 +156,44 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-        embed = discord.Embed(
-            title="Here's a random image...:frame_photo:",
-            colour=discord.Colour.random(),
-            description=(
-                "**Post by:** [u/{}]({})\n"
-                "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>\n"
-                "**Title:** [{}]({})"
-            ).format(
-                r_author,
-                r_author_url,
-                sub_name,
-                sub_url,
-                created_at,
-                title,
-                link,
-            ),
-        )
-        embed.set_image(url=image_url)
-        embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
-            icon_url=ctx.message.author.avatar_url,
-        )
-        await session.close()
-        await ctx.trigger_typing()
-        await ctx.reply(
-            embed=embed,
-            mention_author=False,
-        )
+                if data["nsfw"]:
+                    ctx.send("Sorry but this is nsfw.")
+                
+                else:
+
+                    embed = discord.Embed(
+                        title="Here's a random image...:frame_photo:",
+                        colour=discord.Colour.random(),
+                        description=(
+                            "**Post by:** [u/{}]({})\n"
+                            "**From:** [r/{}]({})\n"
+                            "**This post was created on:** <t:{}:F>\n"
+                            "**Title:** [{}]({})"
+                        ).format(
+                            r_author,
+                            r_author_url,
+                            sub_name,
+                            sub_url,
+                            created_at,
+                            title,
+                            link,
+                        ),
+                    )
+                    embed.set_image(url=image_url)
+                    embed.set_footer(
+                        text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                            ups,
+                            downvotes,
+                            comments,
+                        ),
+                        icon_url=ctx.message.author.avatar_url,
+                    )
+                    await session.close()
+                    await ctx.trigger_typing()
+                    await ctx.reply(
+                        embed=embed,
+                        mention_author=False,
+                    )
 
     @commands.command(name="randomwallpaper", aliases=["raw"])
     @commands.guild_only()
