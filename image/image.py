@@ -485,7 +485,7 @@ class Image(commands.Cog):
                 post = random.choice(children)["data"]
                 title = post["title"]
                 url = post["url"]
-                link = post["post_url"]
+                link = post["permalinkl"]
                 ups = post["ups"]
                 comments = post["comments"]
                 downvotes = post["downs"]
