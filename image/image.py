@@ -489,14 +489,13 @@ class Image(commands.Cog):
                 ups = post["ups"]
                 comments = post["num_comments"]
                 downvotes = post["downs"]
-                created_at = post["created"]
+                created_at = post["created_utc"]
 
                 if post["subreddit"]:
                     sub_name = post["subreddit"]
                     sub_url = f"https://reddit.com/r/{sub_name}"
 
                 else:
-                    subreddit = ""
                     sub_name = "Unknown"
                     sub_url = ""
 
