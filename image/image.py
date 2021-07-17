@@ -142,7 +142,7 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                url = data["image_url"] or ""
+                url = data.get("image_url", None)
                 subreddit = data["subreddit"] or ""
                 sub_name = subreddit["name"] or "Unknown"
                 sub_url = subreddit["url"] or ""
