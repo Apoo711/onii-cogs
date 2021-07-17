@@ -491,7 +491,7 @@ class Image(commands.Cog):
                 downvotes = post["downs"]
                 created_at = post["created"]
 
-                if data["subreddit"]:
+                if post["subreddit"]:
                     subreddit = data["subreddit"]
                     sub_name = subreddit["name"]
                     sub_url = subreddit["url"]
