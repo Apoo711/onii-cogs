@@ -487,7 +487,7 @@ class Image(commands.Cog):
                 url = post["url"]
                 link = post["permalink"]
                 ups = post["ups"]
-                comments = post["comments"]
+                comments = post["num_comments"]
                 downvotes = post["downs"]
                 created_at = post["created"]
 
