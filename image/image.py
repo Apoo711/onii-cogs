@@ -131,18 +131,18 @@ class Image(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def subr(self, ctx: commands.Context, reddit: str):
+    async def subr(self, ctx: commands.Context, subreddit: str):
         """Shows some images form the specified subreddit.
 
         Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit/{reddit}"
+                f"https://api.martinebot.com/v1/images/subreddit?name={subreddit}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                url = data.get("image_url", None)
+                image_url = data["image_url"]
                 subreddit = data["subreddit"] or ""
                 sub_name = subreddit["name"] or "Unknown"
                 sub_url = subreddit["url"] or ""
@@ -174,7 +174,7 @@ class Image(commands.Cog):
                 link,
             ),
         )
-        embed.set_image(url=url)
+        embed.set_image(url=image_url)
         embed.set_footer(
             text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
                 ups,
