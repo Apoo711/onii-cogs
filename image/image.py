@@ -131,14 +131,14 @@ class Image(commands.Cog):
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def subr(self, ctx: commands.Context, subreddit: str):
+    async def subr(self, ctx: commands.Context, reddit: str):
         """Shows some images form the specified subreddit.
 
         Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={subreddit}"
+                f"https://api.martinebot.com/v1/images/subreddit?name={reddit}"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
