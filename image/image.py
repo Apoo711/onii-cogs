@@ -156,8 +156,8 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    ctx.send("Sorry but this is nsfw.")
+                if subreddit is nsfw:
+                    return ctx.send("Sorry but this is nsfw.")
                 
                 else:
 
