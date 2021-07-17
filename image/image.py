@@ -156,9 +156,9 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if subreddit is nsfw:
+                if data["nsfw"]:
                     return ctx.send("Sorry but this is nsfw.")
-                
+
                 else:
 
                     embed = discord.Embed(
