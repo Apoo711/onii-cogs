@@ -63,9 +63,9 @@ class Oniitools(commands.Cog):
                     )
                     emb.set_image(url="attachment://osu.png")
                     emb.set_footer(text="Powered by martinebot.com API")
-                    await ctx.send(file=f, embed=emb)
+                    await ctx.reply(file=f, embed=emb)
                     f.close()
                 elif resp.status in (404, 410, 422):
-                    await ctx.send((await resp.json())['message'])
+                    await ctx.reply((await resp.json())['message'])
                 else:
-                    await ctx.send("API is down currently, please try later")
+                    await ctx.reply("API is down currently, please try later")
