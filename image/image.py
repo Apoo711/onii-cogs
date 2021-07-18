@@ -128,7 +128,17 @@ class Image(commands.Cog):
                 origin = await resp.json()
 
                 if not origin["success"]:
-                    return await ctx.send("Sorry but this subreddit doesnt exist")
+                    embed = discord.Embed(
+                        title="That subreddit doesn't seem to exist...",
+                        colour=discord.Colour.random(),
+                        description=(
+                            "I did my best to find {}, but my search yielded no results.\n"
+                            "Please check for any mistakes in the name and try again."
+                        ).format(
+                            reddit
+                            )
+                    )
+                    return await ctx.reply(embed=embed, mention_author=False)
 
                 data = origin["data"]
                 image_url = data["image_url"]
