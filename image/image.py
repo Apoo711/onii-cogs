@@ -125,8 +125,8 @@ class Image(commands.Cog):
             async with session.get(
                 f"https://api.martinebot.com/v1/images/subreddit?name={reddit}"
             ) as resp:
-                data = await resp.json()
-                data = data["data"]
+                origin = await resp.json()
+                data = origin["data"]
                 image_url = data["image_url"]
                 subreddit = data["subreddit"] or ""
                 sub_name = subreddit["name"] or "Unknown"
@@ -141,7 +141,7 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if not data["success"]:
+                if not origin["success"]:
                     return await ctx.send("Sorry but this subreddit doesnt exist")
 
                 if data["nsfw"]:
