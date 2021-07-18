@@ -58,41 +58,26 @@ class Image(commands.Cog):
 
         Wallpapers shown are taken from r/narutowallpapers.
         """
-        async with ctx.typing():
-            await asyncio.sleep(1)
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://api.martinebot.com/v1/images/subreddit?name=narutowallpapers"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                title = data["title"]
                 url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
-
-                if data["subreddit"]:
-                    subreddit = data["subreddit"]
-                    sub_name = subreddit["name"]
-                    sub_url = subreddit["url"]
-
-                else:
-                    subreddit = ""
-                    sub_name = "Unknown"
-                    sub_url = ""
-
-                if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
-
-                else:
-                    author = ""
-                    r_author = "Unknown"
-                    r_author_url = ""
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -122,7 +107,6 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -136,6 +120,7 @@ class Image(commands.Cog):
 
         Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 f"https://api.martinebot.com/v1/images/subreddit?name={reddit}"
@@ -156,44 +141,48 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    return ctx.send("Sorry but this is nsfw.")
+                if not data["success"]:
+
+                    if data["nsfw"]:
+                        return await ctx.send("Sorry but this is nsfw.")
+
+                    else:
+
+                        embed = discord.Embed(
+                            title="Here's a random image...:frame_photo:",
+                            colour=discord.Colour.random(),
+                            description=(
+                                "**Post by:** [u/{}]({})\n"
+                                "**From:** [r/{}]({})\n"
+                                "**This post was created on:** <t:{}:F>\n"
+                                "**Title:** [{}]({})"
+                            ).format(
+                                r_author,
+                                r_author_url,
+                                sub_name,
+                                sub_url,
+                                created_at,
+                                title,
+                                link,
+                            ),
+                        )
+                        embed.set_image(url=image_url)
+                        embed.set_footer(
+                            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                                ups,
+                                downvotes,
+                                comments,
+                            ),
+                            icon_url=ctx.message.author.avatar_url,
+                        )
+                        await session.close()
+                        return await ctx.reply(
+                            embed=embed,
+                            mention_author=False
+                        )
 
                 else:
-
-                    embed = discord.Embed(
-                        title="Here's a random image...:frame_photo:",
-                        colour=discord.Colour.random(),
-                        description=(
-                            "**Post by:** [u/{}]({})\n"
-                            "**From:** [r/{}]({})\n"
-                            "**This post was created on:** <t:{}:F>\n"
-                            "**Title:** [{}]({})"
-                        ).format(
-                            r_author,
-                            r_author_url,
-                            sub_name,
-                            sub_url,
-                            created_at,
-                            title,
-                            link,
-                        ),
-                    )
-                    embed.set_image(url=image_url)
-                    embed.set_footer(
-                        text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                            ups,
-                            downvotes,
-                            comments,
-                        ),
-                        icon_url=ctx.message.author.avatar_url,
-                    )
-                    await session.close()
-                    await ctx.trigger_typing()
-                    return await ctx.reply(
-                        embed=embed,
-                        mention_author=False
-                    )
+                    return await ctx.send("Sorry but this subreddit doesnt exist")
 
     @commands.command(name="randomwallpaper", aliases=["raw"])
     @commands.guild_only()
@@ -205,6 +194,7 @@ class Image(commands.Cog):
 
         Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
+        await ctx.trigger_typing()
         SUBREDDITS = [
             "images/subreddits?name=Animewallpaper",
             "images/wallpaper"
@@ -217,37 +207,18 @@ class Image(commands.Cog):
                 data = await resp.json()
                 data = data["data"]
                 url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
-
-                if data["subreddit"]:
-                    subreddit = data["subreddit"]
-                    sub_name = subreddit["name"]
-                    sub_url = subreddit["url"]
-
-                else:
-                    subreddit = ""
-                    sub_name = "Unknown"
-                    sub_url = ""
-
-                if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
-
-                else:
-                    author = ""
-                    r_author = "Unknown"
-                    r_author_url = ""
-
-                if data["title"]:
-                    title = data["title"]
-
-                else:
-                    title = ""
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -277,7 +248,6 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -291,39 +261,26 @@ class Image(commands.Cog):
 
         Pictures shown are taken from r/AnimePFP.
         """
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://api.martinebot.com/v1/images/subreddit?name=AnimePFP"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                title = data["title"]
                 url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
-
-                if data["subreddit"]:
-                    subreddit = data["subreddit"]
-                    sub_name = subreddit["name"]
-                    sub_url = subreddit["url"]
-
-                else:
-                    subreddit = ""
-                    sub_name = "Unknown"
-                    sub_url = ""
-
-                if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
-
-                else:
-                    author = ""
-                    r_author = "Unknown"
-                    r_author_url = ""
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -353,7 +310,6 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -386,39 +342,26 @@ class Image(commands.Cog):
 
         Memes shown are taken from r/memes, r/Animemes, r/dankmemes.
         """
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://api.martinebot.com/v1/images/memes"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                title = data["title"]
                 url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
-
-                if data["subreddit"]:
-                    subreddit = data["subreddit"]
-                    sub_name = subreddit["name"]
-                    sub_url = subreddit["url"]
-
-                else:
-                    subreddit = ""
-                    sub_name = "Unknown"
-                    sub_url = ""
-
-                if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
-
-                else:
-                    author = ""
-                    r_author = "Unknown"
-                    r_author_url = ""
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -448,7 +391,6 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -462,6 +404,7 @@ class Image(commands.Cog):
 
         Images shown are taken from r/spaceengine and r/LandscapeAstro.
         """
+        await ctx.trigger_typing()
         SUBREDDITS = [
             "spaceengine",
             "LandscapeAstro"
@@ -473,33 +416,19 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                title = data["title"]
                 url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
-
-                if data["subreddit"]:
-                    subreddit = data["subreddit"]
-                    sub_name = subreddit["name"]
-                    sub_url = subreddit["url"]
-
-                else:
-                    subreddit = ""
-                    sub_name = "Unknown"
-                    sub_url = ""
-
-                if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
-
-                else:
-                    author = ""
-                    r_author = "Unknown"
-                    r_author_url = ""
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -529,7 +458,6 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -557,32 +485,19 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                title = data["title"]
                 url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
-
-                if data["subreddit"]:
-                    subreddit = data["subreddit"]
-                    sub_name = subreddit["name"]
-                    sub_url = subreddit["url"]
-                else:
-                    subreddit = ""
-                    sub_name = "Unknown"
-                    sub_url = ""
-
-                if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
-
-                else:
-                    author = ""
-                    r_author = "Unknown"
-                    r_author_url = ""
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -625,39 +540,26 @@ class Image(commands.Cog):
 
         Images shown are taken from r/EarthPorn.
         """
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://api.martinebot.com/v1/images/subreddit?name=EarthPorn"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                title = data["title"]
                 url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
-
-                if data["subreddit"]:
-                    subreddit = data["subreddit"]
-                    sub_name = subreddit["name"]
-                    sub_url = subreddit["url"]
-
-                else:
-                    subreddit = ""
-                    sub_name = "Unknown"
-                    sub_url = ""
-
-                if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
-
-                else:
-                    author = ""
-                    r_author = "Unknown"
-                    r_author_url = ""
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -687,7 +589,6 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -701,39 +602,26 @@ class Image(commands.Cog):
 
         Images shown are taken from r/UnixPorn.
         """
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 "https://api.martinebot.com/v1/images/subreddit?name=UnixPorn"
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                title = data["title"]
                 url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
-
-                if data["subreddit"]:
-                    subreddit = data["subreddit"]
-                    sub_name = subreddit["name"]
-                    sub_url = subreddit["url"]
-
-                else:
-                    subreddit = ""
-                    sub_name = "Unknown"
-                    sub_url = ""
-
-                if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
-
-                else:
-                    author = ""
-                    r_author = "Unknown"
-                    r_author_url = ""
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -763,7 +651,6 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -780,6 +667,7 @@ class Image(commands.Cog):
 
         r/UltraHighResCelebs, r/HighResCelebs and r/UHQcelebs.
         """
+        await ctx.trigger_typing()
         SUBREDDITS = [
             "UltraHighResCeleb",
             "HighResCelebs",
@@ -792,33 +680,19 @@ class Image(commands.Cog):
             ) as resp:
                 data = await resp.json()
                 data = data["data"]
-                title = data["title"]
                 url = data["image_url"]
-                link = data["post_url"]
-                ups = data["upvotes"]
-                comments = data["comments"]
-                downvotes = data["downvotes"]
-                created_at = data["created_at"]
-
-                if data["subreddit"]:
-                    subreddit = data["subreddit"]
-                    sub_name = subreddit["name"]
-                    sub_url = subreddit["url"]
-
-                else:
-                    subreddit = ""
-                    sub_name = "Unknown"
-                    sub_url = ""
-
-                if data["author"]:
-                    author = data["author"]
-                    r_author = author["name"]
-                    r_author_url = author["url"]
-
-                else:
-                    author = ""
-                    r_author = "Unknown"
-                    r_author_url = ""
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -848,7 +722,6 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
         await session.close()
-        await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
             mention_author=False,
