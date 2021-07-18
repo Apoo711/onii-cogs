@@ -126,6 +126,10 @@ class Image(commands.Cog):
                 f"https://api.martinebot.com/v1/images/subreddit?name={reddit}"
             ) as resp:
                 origin = await resp.json()
+
+                if not origin["success"]:
+                    return await ctx.send("Sorry but this subreddit doesnt exist")
+
                 data = origin["data"]
                 image_url = data["image_url"]
                 subreddit = data["subreddit"] or ""
@@ -140,9 +144,6 @@ class Image(commands.Cog):
                 comments = data["comments"] or ""
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
-
-                if not origin["success"]:
-                    return await ctx.send("Sorry but this subreddit doesnt exist")
 
                 if data["nsfw"]:
                     return await ctx.send("Sorry but this is nsfw.")
