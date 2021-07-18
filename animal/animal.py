@@ -119,7 +119,7 @@ class Animal(commands.Cog):
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def cat(self, ctx: commands.Context):
-        """Shows some cat wallpaper from reddit.
+        """Shows some cat wallpapers from reddit.
 
         Wallpapers shown are taken from r/catwallpapers.
         """
@@ -217,7 +217,7 @@ class Animal(commands.Cog):
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def f_cat(self, ctx):
-        """Get a random dog fact"""
+        """Get a random cat fact"""
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
@@ -231,6 +231,6 @@ class Animal(commands.Cog):
             url="https://media1.tenor.com/images/f6fe8d1d0463f4e51b6367bbecf56a3e/tenor.gif?itemid=6198981"
         )
         embed.add_field(
-            name="Here's a random dog fact!", value=fact
+            name="Here's a random cat fact!", value=fact
         )
         await ctx.send(embed=embed)
