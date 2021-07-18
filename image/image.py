@@ -132,8 +132,8 @@ class Image(commands.Cog):
                         title="That subreddit doesn't seem to exist...",
                         colour=discord.Colour.random(),
                         description=(
-                            "I did my best to find {}, but my search yielded no results.\n"
-                            "Please check for any mistakes in the name and try again."
+                            "**I did my best to find '{}', but my search yielded no results.**\n"
+                            "**Please check for any mistakes in the name and try again.**"
                         ).format(
                             reddit
                             )
