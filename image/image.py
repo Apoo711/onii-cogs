@@ -142,47 +142,43 @@ class Image(commands.Cog):
                 link = data["post_url"] or ""
 
                 if not data["success"]:
-
-                    if data["nsfw"]:
-                        return await ctx.send("Sorry but this is nsfw.")
-
-                    else:
-
-                        embed = discord.Embed(
-                            title="Here's a random image...:frame_photo:",
-                            colour=discord.Colour.random(),
-                            description=(
-                                "**Post by:** [u/{}]({})\n"
-                                "**From:** [r/{}]({})\n"
-                                "**This post was created on:** <t:{}:F>\n"
-                                "**Title:** [{}]({})"
-                            ).format(
-                                r_author,
-                                r_author_url,
-                                sub_name,
-                                sub_url,
-                                created_at,
-                                title,
-                                link,
-                            ),
-                        )
-                        embed.set_image(url=image_url)
-                        embed.set_footer(
-                            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                                ups,
-                                downvotes,
-                                comments,
-                            ),
-                            icon_url=ctx.message.author.avatar_url,
-                        )
-                        await session.close()
-                        return await ctx.reply(
-                            embed=embed,
-                            mention_author=False
-                        )
-
-                else:
                     return await ctx.send("Sorry but this subreddit doesnt exist")
+
+                if data["nsfw"]:
+                    return await ctx.send("Sorry but this is nsfw.")
+
+                embed = discord.Embed(
+                    title="Here's a random image...:frame_photo:",
+                    colour=discord.Colour.random(),
+                    description=(
+                        "**Post by:** [u/{}]({})\n"
+                        "**From:** [r/{}]({})\n"
+                        "**This post was created on:** <t:{}:F>\n"
+                        "**Title:** [{}]({})"
+                    ).format(
+                        r_author,
+                        r_author_url,
+                        sub_name,
+                        sub_url,
+                        created_at,
+                        title,
+                        link,
+                    ),
+                )
+                embed.set_image(url=image_url)
+                embed.set_footer(
+                    text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                        ups,
+                        downvotes,
+                        comments,
+                    ),
+                    icon_url=ctx.message.author.avatar_url,
+                )
+                await session.close()
+                return await ctx.reply(
+                    embed=embed,
+                    mention_author=False
+                )
 
     @commands.command(name="randomwallpaper", aliases=["raw"])
     @commands.guild_only()
