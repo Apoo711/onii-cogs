@@ -961,8 +961,8 @@ class Nsfw(commands.Cog):
             async with session.get(
                 "https://api.martinebot.com/v1/images/subreddit?name=pussy"
             ) as resp:
-                data = await resp.json()
-                data = data["data"]
+                origin = await resp.json()
+                data = origin["data"]
                 title = data["title"]
                 url = data["image_url"]
                 link = data["post_url"]
