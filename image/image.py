@@ -156,7 +156,8 @@ class Image(commands.Cog):
                 link = data["post_url"] or ""
 
                 if data["nsfw"]:
-                    return await ctx.send("Sorry but this is nsfw.")
+                    if not ctx.channel.is_nsfw():
+                        return await ctx.send("Sorry but this is nsfw.")
 
                 embed = discord.Embed(
                     title="Here's a random image...:frame_photo:",
@@ -665,7 +666,6 @@ class Image(commands.Cog):
 
     @commands.command(aliases=["celeb"])
     @commands.guild_only()
-    @commands.is_nsfw()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def celebrity(self, ctx: commands.Context):
         """Shows some imagesof celebrities from reddit.
@@ -675,61 +675,65 @@ class Image(commands.Cog):
         r/UltraHighResCelebs, r/HighResCelebs and r/UHQcelebs.
         """
         await ctx.trigger_typing()
-        SUBREDDITS = [
-            "UltraHighResCeleb",
-            "HighResCelebs",
-            "UHQcelebs",
-        ]
-        API = random.choice(SUBREDDITS)
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
-            ) as resp:
-                data = await resp.json()
-                data = data["data"]
-                url = data["image_url"]
-                subreddit = data["subreddit"] or ""
-                sub_name = subreddit["name"] or "Unknown"
-                sub_url = subreddit["url"] or ""
-                author = data["author"] or ""
-                r_author = author["name"] or "Unknown"
-                r_author_url = author["url"] or ""
-                title = data["title"] or ""
-                created_at = data["created_at"] or ""
-                downvotes = data["downvotes"] or ""
-                comments = data["comments"] or ""
-                ups = data["upvotes"] or ""
-                link = data["post_url"] or ""
+        
+        if ctx.channel.is_nsfw():
+            SUBREDDITS = [
+                "UltraHighResCeleb",
+                "HighResCelebs",
+                "UHQcelebs",
+            ]
+            API = random.choice(SUBREDDITS)
+            async with aiohttp.ClientSession() as session:
+                async with session.get(
+                    f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                ) as resp:
+                    data = await resp.json()
+                    data = data["data"]
+                    url = data["image_url"]
+                    subreddit = data["subreddit"] or ""
+                    sub_name = subreddit["name"] or "Unknown"
+                    sub_url = subreddit["url"] or ""
+                    author = data["author"] or ""
+                    r_author = author["name"] or "Unknown"
+                    r_author_url = author["url"] or ""
+                    title = data["title"] or ""
+                    created_at = data["created_at"] or ""
+                    downvotes = data["downvotes"] or ""
+                    comments = data["comments"] or ""
+                    ups = data["upvotes"] or ""
+                    link = data["post_url"] or ""
 
-        embed = discord.Embed(
-            title="Here's a random image...:frame_photo:",
-            colour=discord.Colour.random(),
-            description=(
-                "**Post by:** [u/{}]({})\n"
-                "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>\n"
-                "**Title:** [{}]({})"
-            ).format(
-                r_author,
-                r_author_url,
-                sub_name,
-                sub_url,
-                created_at,
-                title,
-                link,
-            ),
-        )
-        embed.set_image(url=url)
-        embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
-            icon_url=ctx.message.author.avatar_url,
-        )
-        await session.close()
-        await ctx.reply(
-            embed=embed,
-            mention_author=False,
-        )
+            embed = discord.Embed(
+                title="Here's a random image...:frame_photo:",
+                colour=discord.Colour.random(),
+                description=(
+                    "**Post by:** [u/{}]({})\n"
+                    "**From:** [r/{}]({})\n"
+                    "**This post was created on:** <t:{}:F>\n"
+                    "**Title:** [{}]({})"
+                ).format(
+                    r_author,
+                    r_author_url,
+                    sub_name,
+                    sub_url,
+                    created_at,
+                    title,
+                    link,
+                ),
+            )
+            embed.set_image(url=url)
+            embed.set_footer(
+                text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                    ups,
+                    downvotes,
+                    comments,
+                ),
+                icon_url=ctx.message.author.avatar_url,
+            )
+            await session.close()
+            await ctx.reply(
+                embed=embed,
+                mention_author=False,
+            )
+        else:
+            return await ctx.send("Sorry but this is nsfw")
