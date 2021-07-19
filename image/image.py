@@ -20,7 +20,7 @@ import random
 
 import aiohttp
 import discord
-from redbot.core import commands
+from redbot.core import commands, Config
 
 
 async def api_call(call_uri, returnObj=False):
@@ -39,16 +39,67 @@ log = logging.getLogger("red.onii.image")
 class Image(commands.Cog):
     """Get tons of memes or other images"""
 
-    def __init__(self, bot):
-        self.bot = bot
-
-    __author__ = ["Onii-chan"]
-    __version__ = "3.2.1"
-
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
+
+    async def red_get_data_for_user(self, *, user_id: int):
+        """
+        This cog does not story any end user data.
+        """
+        return {}
+
+    async def red_delete_data_for_user(self, **kwargs):
+        """
+        Nothing to delete.
+        """
+        return
+
+    def __init__(self, bot):
+        self.bot = bot
+        self.config = Config.get_conf(
+            self,
+            identifier=741291562687922329,
+            force_registration=True,
+        )
+        default_guild = {
+            "memereddit": "images/memes",
+        }
+        self.config.register_guild(**default_guild)
+
+    __author__ = ["Onii-chan"]
+    __version__ = "3.2.1"
+
+    @commands.group(name="imset")
+    @commands.guild_only()
+    @commands.admin()
+    async def imageset(self, ctx: commands.Context):
+        """Base command for managing meme stuff."""
+
+    @imageset.command(name="memereddit", aliases=["mreddit", "memesubreddit"])
+    @commands.cooldown(1, 30, commands.BucketType.guild)
+    async def _memereddit(
+        self, ctx: commands.Context, *, subreddit: str
+    ):
+        """Set the subreddit for the meme command.
+        Default subreddit is [r/memes](https://reddit.com/r/memes).
+        Examples:
+        - `[p]imset mreddit subreddit/memes`
+        This will set the subreddit to subreddit/memes.
+        - `[p]imset mreddit subreddit/dankmemes subreddit/memes`
+        This will set the subreddit to r/dankmemes **and** r/memes.
+        Arguments:
+        - `<subreddit>` The name of the subreddit/s to be used. Only
+        enter the subreddit name like in the examples above,
+        don't enter the full url.
+        """
+        await self.config.guild(ctx.guild).memereddit.set(subreddit)
+        await ctx.send(
+            "The subreddit has sucessfully set to `{}`".format(
+                subreddit
+            )
+        )
 
     @commands.command()
     @commands.guild_only()
@@ -368,12 +419,13 @@ class Image(commands.Cog):
     async def meme(self, ctx: commands.Context):
         """Shows some memes from reddit.
 
-        Memes shown are taken from r/memes, r/Animemes, r/dankmemes.
+        Memes shown are taken from the subreddit set by the admins.
         """
         await ctx.trigger_typing()
+        meme_r = await self.config.guild(ctx.guild).memereddit()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/memes"
+                f"https://api.martinebot.com/v1/{meme_r}"
             ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
