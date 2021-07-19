@@ -426,7 +426,8 @@ class Image(commands.Cog):
         """
         await ctx.trigger_typing()
         subreddit = await self.config.guild(ctx.guild).memereddit().split()
-        API = random.choice(subreddit)
+        subreddit2 = subreddit.split()
+        API = random.choice(subreddit2)
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 f"https://api.martinebot.com/v1/images/subreddit?name={API}"
