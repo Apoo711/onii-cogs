@@ -64,7 +64,7 @@ class Image(commands.Cog):
             force_registration=True,
         )
         default_guild = {
-            "memereddit": "memes",
+            "memereddit": ["memes", "dankmemes"],
         }
         self.config.register_guild(**default_guild)
 
@@ -80,7 +80,7 @@ class Image(commands.Cog):
     @imageset.command(name="memereddit", aliases=["mreddit"])
     @commands.cooldown(1, 30, commands.BucketType.guild)
     async def _memereddit(
-        self, ctx: commands.Context, *, subreddit: str
+        self, ctx: commands.Context, *, subreddit: str.split()
     ):
         """Set the subreddit for the meme command.
         Default subreddit is [r/memes](https://reddit.com/r/memes).
