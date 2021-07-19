@@ -98,9 +98,8 @@ class Image(commands.Cog):
         don't enter the full url or you'll brreak smth.
         """
         await self.config.guild(ctx.guild).memereddit.set(subreddit)
-        text = subreddit.split(", ")
         await ctx.send(
-            f"The subreddit/s has sucessfully set to `{text}`"
+            f"The subreddit/s has sucessfully set to `{subreddit}`"
         )
 
     @commands.command()
