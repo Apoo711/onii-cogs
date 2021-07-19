@@ -77,7 +77,7 @@ class Image(commands.Cog):
     async def imageset(self, ctx: commands.Context):
         """Base command for managing meme stuff."""
 
-    @imageset.command(name="memereddit", aliases=["mreddit", "memesubreddit"])
+    @imageset.command(name="memereddit", aliases=["mreddit"])
     @commands.cooldown(1, 30, commands.BucketType.guild)
     async def _memereddit(
         self, ctx: commands.Context, *, subreddit: str
@@ -85,18 +85,18 @@ class Image(commands.Cog):
         """Set the subreddit for the meme command.
         Default subreddit is [r/memes](https://reddit.com/r/memes).
         Examples:
-        - `[p]imset mreddit subreddit/memes`
+        - `[p]imset mreddit memes`
         This will set the subreddit to subreddit/memes.
-        - `[p]imset mreddit subreddit/dankmemes subreddit/memes`
+        - `[p]imset mreddit `dankmemes memes`
         This will set the subreddit to r/dankmemes **and** r/memes.
         Arguments:
         - `<subreddit>` The name of the subreddit/s to be used. Only
         enter the subreddit name like in the examples above,
-        don't enter the full url.
+        don't enter the full url or you'll brreak smth.
         """
         await self.config.guild(ctx.guild).memereddit.set(subreddit)
         await ctx.send(
-            "The subreddit has sucessfully set to `{}`".format(
+            "The subreddit/s has sucessfully set to `{}`".format(
                 subreddit
             )
         )
@@ -422,10 +422,11 @@ class Image(commands.Cog):
         Memes shown are taken from the subreddit set by the admins.
         """
         await ctx.trigger_typing()
-        meme_r = await self.config.guild(ctx.guild).memereddit()
+        subreddit = await self.config.guild(ctx.guild).memereddit()
+        API = random.choice(subreddit)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/{meme_r}"
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
             ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
@@ -446,7 +447,8 @@ class Image(commands.Cog):
                 if data["nsfw"]:
                     if not ctx.channel.is_nsfw():
                         return await ctx.send(
-                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
+                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content."
+                            " Please turn nsfw on and try again later."
                         )
 
         embed = discord.Embed(
