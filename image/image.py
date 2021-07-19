@@ -425,7 +425,7 @@ class Image(commands.Cog):
         Memes shown are taken from the subreddit set by the admins.
         """
         await ctx.trigger_typing()
-        subreddit = await self.config.guild(ctx.guild).memereddit().split()
+        subreddit = await self.config.guild(ctx.guild).memereddit()
         subreddit2 = subreddit.split()
         API = random.choice(subreddit2)
         async with aiohttp.ClientSession() as session:
