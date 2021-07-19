@@ -64,7 +64,7 @@ class Image(commands.Cog):
             force_registration=True,
         )
         default_guild = {
-            "memereddit": "images/memes",
+            "memereddit": "memes",
         }
         self.config.register_guild(**default_guild)
 
@@ -425,7 +425,7 @@ class Image(commands.Cog):
         meme_r = await self.config.guild(ctx.guild).memereddit()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/{meme_r}"
+                f"https://api.martinebot.com/v1/images/{meme_r}"
             ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
