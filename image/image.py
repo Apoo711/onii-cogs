@@ -80,7 +80,10 @@ class Image(commands.Cog):
     @imageset.command(name="memereddit", aliases=["mreddit"])
     @commands.cooldown(1, 30, commands.BucketType.guild)
     async def _memereddit(
-        self, ctx: commands.Context, *, subreddit: str.split()
+        self,
+        ctx: commands.Context,
+        *,
+        subreddit: str
     ):
         """Set the subreddit for the meme command.
         Default subreddit is [r/memes](https://reddit.com/r/memes).
@@ -422,7 +425,7 @@ class Image(commands.Cog):
         Memes shown are taken from the subreddit set by the admins.
         """
         await ctx.trigger_typing()
-        subreddit = await self.config.guild(ctx.guild).memereddit()
+        subreddit = await self.config.guild(ctx.guild).memereddit().split()
         API = random.choice(subreddit)
         async with aiohttp.ClientSession() as session:
             async with session.get(
