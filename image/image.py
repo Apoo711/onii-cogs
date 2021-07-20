@@ -113,8 +113,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/subreddit?name=narutowallpapers"
-            ) as resp:
+                        "https://api.martinebot.com/v1/images/subreddit?name=narutowallpapers"
+                    ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -131,11 +131,10 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    if not ctx.channel.is_nsfw():
-                        return await ctx.send(
-                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
-                        )
+                if data["nsfw"] and not ctx.channel.is_nsfw():
+                    return await ctx.send(
+                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
+                    )
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -181,8 +180,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={reddit}"
-            ) as resp:
+                        f"https://api.martinebot.com/v1/images/subreddit?name={reddit}"
+                    ) as resp:
                 origin = await resp.json()
 
                 if not origin["success"]:
@@ -213,11 +212,10 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    if not ctx.channel.is_nsfw():
-                        return await ctx.send(
-                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
-                        )
+                if data["nsfw"] and not ctx.channel.is_nsfw():
+                    return await ctx.send(
+                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
+                    )
 
                 embed = discord.Embed(
                     title="Here's a random image...:frame_photo:",
@@ -270,8 +268,8 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/{API}"
-            ) as resp:
+                        f"https://api.martinebot.com/v1/{API}"
+                    ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -288,11 +286,10 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    if not ctx.channel.is_nsfw():
-                        return await ctx.send(
-                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
-                        )
+                if data["nsfw"] and not ctx.channel.is_nsfw():
+                    return await ctx.send(
+                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
+                    )
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -338,8 +335,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/subreddit?name=AnimePFP"
-            ) as resp:
+                        "https://api.martinebot.com/v1/images/subreddit?name=AnimePFP"
+                    ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -356,11 +353,10 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    if not ctx.channel.is_nsfw():
-                        return await ctx.send(
-                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
-                        )
+                if data["nsfw"] and not ctx.channel.is_nsfw():
+                    return await ctx.send(
+                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
+                    )
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -428,8 +424,8 @@ class Image(commands.Cog):
         API = random.choice(subreddit2)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
-            ) as resp:
+                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                    ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -446,12 +442,11 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    if not ctx.channel.is_nsfw():
-                        return await ctx.send(
-                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content."
-                            " Please turn nsfw on and try again later."
-                        )
+                if data["nsfw"] and not ctx.channel.is_nsfw():
+                    return await ctx.send(
+                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content."
+                        " Please turn nsfw on and try again later."
+                    )
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -502,8 +497,8 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
-            ) as resp:
+                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                    ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -520,11 +515,10 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    if not ctx.channel.is_nsfw():
-                        return await ctx.send(
-                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
-                        )
+                if data["nsfw"] and not ctx.channel.is_nsfw():
+                    return await ctx.send(
+                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
+                    )
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -577,8 +571,8 @@ class Image(commands.Cog):
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
-            ) as resp:
+                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                    ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -595,11 +589,10 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    if not ctx.channel.is_nsfw():
-                        return await ctx.send(
-                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
-                        )
+                if data["nsfw"] and not ctx.channel.is_nsfw():
+                    return await ctx.send(
+                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
+                    )
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -645,8 +638,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/subreddit?name=EarthPorn"
-            ) as resp:
+                        "https://api.martinebot.com/v1/images/subreddit?name=EarthPorn"
+                    ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -663,11 +656,10 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    if not ctx.channel.is_nsfw():
-                        return await ctx.send(
-                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
-                        )
+                if data["nsfw"] and not ctx.channel.is_nsfw():
+                    return await ctx.send(
+                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
+                    )
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -713,8 +705,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                "https://api.martinebot.com/v1/images/subreddit?name=UnixPorn"
-            ) as resp:
+                        "https://api.martinebot.com/v1/images/subreddit?name=UnixPorn"
+                    ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -731,11 +723,10 @@ class Image(commands.Cog):
                 ups = data["upvotes"] or ""
                 link = data["post_url"] or ""
 
-                if data["nsfw"]:
-                    if not ctx.channel.is_nsfw():
-                        return await ctx.send(
-                            "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
-                        )
+                if data["nsfw"] and not ctx.channel.is_nsfw():
+                    return await ctx.send(
+                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
+                    )
 
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
@@ -782,64 +773,64 @@ class Image(commands.Cog):
         """
         await ctx.trigger_typing()
 
-        if ctx.channel.is_nsfw():
-            SUBREDDITS = [
-                "UltraHighResCeleb",
-                "HighResCelebs",
-                "UHQcelebs",
-            ]
-            API = random.choice(SUBREDDITS)
-            async with aiohttp.ClientSession() as session:
-                async with session.get(
-                    f"https://api.martinebot.com/v1/images/subreddit?name={API}"
-                ) as resp:
-                    data = await resp.json()
-                    data = data["data"]
-                    url = data["image_url"]
-                    subreddit = data["subreddit"] or ""
-                    sub_name = subreddit["name"] or "Unknown"
-                    sub_url = subreddit["url"] or ""
-                    author = data["author"] or ""
-                    r_author = author["name"] or "Unknown"
-                    r_author_url = author["url"] or ""
-                    title = data["title"] or ""
-                    created_at = data["created_at"] or ""
-                    downvotes = data["downvotes"] or ""
-                    comments = data["comments"] or ""
-                    ups = data["upvotes"] or ""
-                    link = data["post_url"] or ""
-
-            embed = discord.Embed(
-                title="Here's a random image...:frame_photo:",
-                colour=discord.Colour.random(),
-                description=(
-                    "**Post by:** [u/{}]({})\n"
-                    "**From:** [r/{}]({})\n"
-                    "**This post was created on:** <t:{}:F>\n"
-                    "**Title:** [{}]({})"
-                ).format(
-                    r_author,
-                    r_author_url,
-                    sub_name,
-                    sub_url,
-                    created_at,
-                    title,
-                    link,
-                ),
-            )
-            embed.set_image(url=url)
-            embed.set_footer(
-                text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                    ups,
-                    downvotes,
-                    comments,
-                ),
-                icon_url=ctx.message.author.avatar_url,
-            )
-            await session.close()
-            await ctx.reply(
-                embed=embed,
-                mention_author=False,
-            )
-        else:
+        if not ctx.channel.is_nsfw():
             return await ctx.send("Sorry but this is nsfw")
+
+        SUBREDDITS = [
+            "UltraHighResCeleb",
+            "HighResCelebs",
+            "UHQcelebs",
+        ]
+        API = random.choice(SUBREDDITS)
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+            ) as resp:
+                data = await resp.json()
+                data = data["data"]
+                url = data["image_url"]
+                subreddit = data["subreddit"] or ""
+                sub_name = subreddit["name"] or "Unknown"
+                sub_url = subreddit["url"] or ""
+                author = data["author"] or ""
+                r_author = author["name"] or "Unknown"
+                r_author_url = author["url"] or ""
+                title = data["title"] or ""
+                created_at = data["created_at"] or ""
+                downvotes = data["downvotes"] or ""
+                comments = data["comments"] or ""
+                ups = data["upvotes"] or ""
+                link = data["post_url"] or ""
+
+        embed = discord.Embed(
+            title="Here's a random image...:frame_photo:",
+            colour=discord.Colour.random(),
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
+        )
+        embed.set_image(url=url)
+        embed.set_footer(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
+            icon_url=ctx.message.author.avatar_url,
+        )
+        await session.close()
+        await ctx.reply(
+            embed=embed,
+            mention_author=False,
+        )
