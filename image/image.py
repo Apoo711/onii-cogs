@@ -64,7 +64,7 @@ class Image(commands.Cog):
             force_registration=True,
         )
         default_guild = {
-            "memereddit": ["memes", "dankmemes"],
+            "memereddit": ["memes dankmemes"],
         }
         self.config.register_guild(**default_guild)
 
@@ -75,7 +75,7 @@ class Image(commands.Cog):
     @commands.guild_only()
     @commands.admin()
     async def imageset(self, ctx: commands.Context):
-        """Base command for managing meme stuff."""
+        """Base command for managing image stuff."""
 
     @imageset.command(name="memereddit", aliases=["mreddit"])
     @commands.cooldown(1, 30, commands.BucketType.guild)
