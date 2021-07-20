@@ -15,11 +15,11 @@ limitations under the License.
 """
 
 import random
-import discord
-import aiohttp
-
-from redbot.core import commands
 from io import BytesIO
+
+import aiohttp
+import discord
+from redbot.core import commands
 
 
 class Oniitools(commands.Cog):
@@ -47,7 +47,7 @@ class Oniitools(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def osu(ctx, self, name:str):
         """Osu stats for player"""
-        
+
         async with aiohttp.ClientSession() as s:
             async with s.get(
                 f"https://api.martinebot.com/v1/imagesgen/osuprofile?&player_username={name}"
