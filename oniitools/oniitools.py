@@ -45,28 +45,31 @@ class Oniitools(commands.Cog):
 
     @commands.command()
     @commands.bot_has_permissions(embed_links=True)
-    async def osu(ctx, self, name:str):
+    async def osu(self, ctx, player: str):
         """Osu stats for player"""
-
+        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as s:
             async with s.get(
-                f"https://api.martinebot.com/v1/imagesgen/osuprofile?&player_username={name}"
+                f"https://api.martinebot.com/v1/imagesgen/osuprofile?&player_username={player}"
             ) as resp:
                 if resp.status in (200, 201):
                     f = discord.File(
                         fp=BytesIO(
                             await resp.read()
-                        ), filename=f"osu.png"
+                        ), filename="osu.png"
                     )
                     emb = discord.Embed(
-                        title=f"{name}'s Osu Stats",
-                        colour=await ctx.embed_colour()
+                        title=f"{player}'s Osu Stats",
+                        colour=discord.Colour.random()
                     )
                     emb.set_image(url="attachment://osu.png")
                     emb.set_footer(text="Powered by martinebot.com API")
-                    await ctx.send(file=f, embed=emb)
+
+                    await ctx.reply(file=f, embed=emb)
                     f.close()
+
                 elif resp.status in (404, 410, 422):
-                    await ctx.send((await resp.json())['message'])
+                    await ctx.reply((await resp.json())['message'])
+
                 else:
-                    await ctx.send("API is down currently, please try later")
+                    await ctx.reply("API is down currently, please try later")

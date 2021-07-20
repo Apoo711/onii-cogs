@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: onii-cogs\n"
+"POT-Creation-Date: 2021-07-15 20:53+1000\n"
+"PO-Revision-Date: 2021-07-16 10:54\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: onii-cogs\n"
+"X-Crowdin-Project-ID: 465420\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /Dev/image/locales/messages.pot\n"
+"X-Crowdin-File-ID: 26\n"
+"Language: tr_TR\n"
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\image\image.py:57
+#, docstring
+msgid "Shows some naruto wallpapers from reddit.\n\n"
+"        Wallpapers shown are taken from r/narutowallpapers.\n"
+"        "
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\image\image.py:135
+#, docstring
+msgid "Shows some anime wallpaper from reddit.\n\n"
+"        Wallpapers shown are taken from r/Animewallpaper.\n\n"
+"        Warning: Some Images Could Be Considered Nsfw In Some Servers.\n"
+"        "
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\image\image.py:213
+#, docstring
+msgid "Shows some anime profile pictures from reddit.\n\n"
+"        Pictures shown are taken from r/AnimePFP.\n"
+"        "
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\image\image.py:308
+#, docstring
+msgid "Shows some memes from reddit.\n\n"
+"        Memes shown are taken from r/memes, r/Animemes, r/dankmemes.\n"
+"        "
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\image\image.py:384
+#, docstring
+msgid "Shows some space images from reddit.\n\n"
+"        Images shown are taken from r/spaceengine and r/LandscapeAstro.\n"
+"        "
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\image\image.py:465
+#, docstring
+msgid "Shows some moe images from reddit.\n\n"
+"        Images shown are taken from:\n\n"
+"        r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.\n"
+"        "
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\image\image.py:550
+#, docstring
+msgid "Shows some scenery from reddit.\n\n"
+"        Images shown are taken from r/EarthPorn.\n"
+"        "
+msgstr ""
+
+#: C:\Users\aryan\Documents\GitHub\onii-cogs\image\image.py:626
+#, docstring
+msgid "Shows some unix images from reddit.\n\n"
+"        Images shown are taken from r/UnixPorn.\n"
+"        "
+msgstr ""
