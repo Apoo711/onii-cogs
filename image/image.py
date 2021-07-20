@@ -64,7 +64,7 @@ class Image(commands.Cog):
             force_registration=True,
         )
         default_guild = {
-            "memereddit": "memes",
+            "memereddit": ["memes", "dankmemes"],
         }
         self.config.register_guild(**default_guild)
 
@@ -80,7 +80,10 @@ class Image(commands.Cog):
     @imageset.command(name="memereddit", aliases=["mreddit"])
     @commands.cooldown(1, 30, commands.BucketType.guild)
     async def _memereddit(
-        self, ctx: commands.Context, *, subreddit: str
+        self,
+        ctx: commands.Context,
+        *,
+        subreddit: str
     ):
         """Set the subreddit for the meme command.
         Default subreddit is [r/memes](https://reddit.com/r/memes).
@@ -96,9 +99,7 @@ class Image(commands.Cog):
         """
         await self.config.guild(ctx.guild).memereddit.set(subreddit)
         await ctx.send(
-            "The subreddit/s has sucessfully set to `{}`".format(
-                subreddit
-            )
+            f"The subreddit/s has sucessfully set to `{subreddit}`"
         )
 
     @commands.command()
@@ -423,7 +424,8 @@ class Image(commands.Cog):
         """
         await ctx.trigger_typing()
         subreddit = await self.config.guild(ctx.guild).memereddit()
-        API = random.choice(subreddit)
+        subreddit2 = subreddit.split()
+        API = random.choice(subreddit2)
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 f"https://api.martinebot.com/v1/images/subreddit?name={API}"
