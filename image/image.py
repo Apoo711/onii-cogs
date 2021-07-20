@@ -64,7 +64,7 @@ class Image(commands.Cog):
             force_registration=True,
         )
         default_guild = {
-            "memereddit": ["memes dankmemes"],
+            "memereddit": ["memes", "dankmemes"],
         }
         self.config.register_guild(**default_guild)
 
