@@ -92,7 +92,7 @@ class Image(commands.Cog):
         Arguments:
         - `<subreddit>` The name of the subreddit/s to be used. Only
         enter the subreddit name like in the examples above,
-        don't enter the full url or you'll brreak smth.
+        don't enter the full url or you'll break smth.
         """
         await self.config.guild(ctx.guild).memereddit.set(subreddit)
         await ctx.send(
