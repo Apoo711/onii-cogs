@@ -20,7 +20,7 @@ import random
 
 import aiohttp
 import discord
-from redbot.core import commands, Config
+from redbot.core import Config, commands
 
 
 async def api_call(call_uri, returnObj=False):
@@ -781,7 +781,7 @@ class Image(commands.Cog):
         r/UltraHighResCelebs, r/HighResCelebs and r/UHQcelebs.
         """
         await ctx.trigger_typing()
-        
+
         if ctx.channel.is_nsfw():
             SUBREDDITS = [
                 "UltraHighResCeleb",
