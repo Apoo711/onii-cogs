@@ -4,9 +4,7 @@ target-version = ['py38']
 
 [tool.isort]
 profile = "black"
-multi_line_output = 3
-combine_as_imports = true
-filter_files = true
+line_length = 99
 
 [flake8]
 ignore = E203, E266, E501, W503, F403, F401
