@@ -15,11 +15,11 @@ limitations under the License.
 """
 
 import random
-import discord
-import aiohttp
-
-from redbot.core import commands
 from io import BytesIO
+
+import aiohttp
+import discord
+from redbot.core import commands
 
 
 class Oniitools(commands.Cog):
