@@ -62,37 +62,6 @@ class Image(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.group(name="imset")
-    @commands.guild_only()
-    @commands.admin()
-    async def imageset(self, ctx: commands.Context):
-        """Base command for managing image stuff."""
-
-    @imageset.command(name="memereddit", aliases=["mreddit"])
-    @commands.cooldown(1, 30, commands.BucketType.guild)
-    async def _memereddit(
-        self,
-        ctx: commands.Context,
-        *,
-        subreddit: str
-    ):
-        """Set the subreddit for the meme command.
-        Default subreddit is [r/memes](https://reddit.com/r/memes).
-        Examples:
-        - `[p]imset mreddit memes`
-        This will set the subreddit to subreddit/memes.
-        - `[p]imset mreddit `dankmemes memes`
-        This will set the subreddit to r/dankmemes **and** r/memes.
-        Arguments:
-        - `<subreddit>` The name of the subreddit/s to be used. Only
-        enter the subreddit name like in the examples above,
-        don't enter the full url or you'll break smth.
-        """
-        await self.config.guild(ctx.guild).memereddit.set(subreddit)
-        await ctx.send(
-            f"The subreddit/s has sucessfully set to `{subreddit}`"
-        )
-
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 5, commands.BucketType.user)
