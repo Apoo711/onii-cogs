@@ -39,6 +39,9 @@ log = logging.getLogger("red.onii.image")
 class Image(commands.Cog):
     """Get tons of memes or other images"""
 
+    __author__ = ["Onii-chan"]
+    __version__ = "3.3.0"
+
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
@@ -58,18 +61,6 @@ class Image(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.config = Config.get_conf(
-            self,
-            identifier=741291562687922329,
-            force_registration=True,
-        )
-        default_guild = {
-            "memereddit": ["memes", "dankmemes"],
-        }
-        self.config.register_guild(**default_guild)
-
-    __author__ = ["Onii-chan"]
-    __version__ = "3.2.1"
 
     @commands.group(name="imset")
     @commands.guild_only()
@@ -419,12 +410,9 @@ class Image(commands.Cog):
         Memes shown are taken from the subreddit set by the admins.
         """
         await ctx.trigger_typing()
-        subreddit = await self.config.guild(ctx.guild).memereddit()
-        subreddit2 = subreddit.split()
-        API = random.choice(subreddit2)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                        "https://api.martinebot.com/v1/images/memes"
                     ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
