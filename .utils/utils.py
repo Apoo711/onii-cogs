@@ -26,7 +26,7 @@ DEFAULT_INFO = {
 logging.basicConfig(filename="scripts.log", level=logging.INFO)
 log = logging.getLogger(__file__)
 
-ROOT = Path(__file__).parents[1]
+ROOT = Path(__file__).parent.resolve().parents[1]
 
 VER_REG = re.compile(r"\_\_version\_\_ = \"(\d+\.\d+\.\d+)", flags=re.I)
 
