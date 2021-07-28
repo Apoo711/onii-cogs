@@ -95,7 +95,6 @@ class Image(commands.Cog):
                     return await ctx.send(
                         "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
                     )
-
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
@@ -123,11 +122,13 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
-        await ctx.reply(
-            embed=embed,
-            mention_author=False,
-        )
+        try:
+            await ctx.reply(
+                embed=embed,
+                mention_author=False,
+            )
+        except discord.HTTPException:
+            await ctx.send("Something went wrong while posting an image.")
 
     @commands.command()
     @commands.guild_only()
@@ -204,7 +205,7 @@ class Image(commands.Cog):
                     ),
                     icon_url=ctx.message.author.avatar_url,
                 )
-                await session.close()
+
                 return await ctx.reply(
                     embed=embed,
                     mention_author=False
@@ -278,7 +279,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -345,7 +346,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -432,7 +433,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -504,7 +505,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -578,7 +579,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -645,7 +646,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -712,7 +713,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -786,7 +787,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,

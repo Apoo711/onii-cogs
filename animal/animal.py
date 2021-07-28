@@ -108,7 +108,7 @@ class Animal(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.trigger_typing()
         await ctx.reply(
             embed=embed,
@@ -185,7 +185,7 @@ class Animal(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
