@@ -580,10 +580,13 @@ class Image(commands.Cog):
             icon_url=ctx.message.author.avatar_url,
         )
 
-        await ctx.reply(
-            embed=embed,
-            mention_author=False,
-        )
+        try:
+            await ctx.reply(
+                embed=embed,
+                mention_author=False,
+            )
+        except discord.HTTPException:
+            await ctx.send("Something went wrong while posting an image.")
 
     @commands.command()
     @commands.guild_only()
