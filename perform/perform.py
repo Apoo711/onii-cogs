@@ -75,7 +75,7 @@ class Perform(commands.Cog):
                 "https://media1.tenor.com/images/996159e911ae816c153bfa523e18d7c4/tenor.gif?itemid=17299734",
                 "https://media1.tenor.com/images/2eb222b142f24be14ea2da5c84a92b08/tenor.gif?itemid=15905904",
                 "https://media1.tenor.com/images/c9b1fa86a103a3bf878ab1741d0bfdfe/tenor.gif?itemid=19349444",
-                "https://media1.tenor.com/images/a7ed1e6575b047ae219c8bdef3cdb799/tenor.gif?itemid=16082139", 
+                "https://media1.tenor.com/images/a7ed1e6575b047ae219c8bdef3cdb799/tenor.gif?itemid=16082139",
                 "https://media1.tenor.com/images/0d202a5b98b413a88a4611feae8cd855/tenor.gif?itemid=16910479f",
                 "https://media1.tenor.com/images/5250cae3a499250ee32627109c4cec0b/tenor.gif?itemid=19431854",
                 "https://media1.tenor.com/images/02e7e815066e728e721a44eb3e1118d3/tenor.gif?itemid=16055441",
@@ -100,7 +100,7 @@ class Perform(commands.Cog):
                 "https://media1.tenor.com/images/5b378a7894bc420954616a61eeb7f8c7/tenor.gif?itemid=21256762",
                 "https://media1.tenor.com/images/04ce28c62c8cfeb102b3ac2a9bf28050/tenor.gif?itemid=12411417",
                 "https://media1.tenor.com/images/2b8e5a43989d6fb81776267d1efba103/tenor.gif?itemid=21833649",
-                "https://media1.tenor.com/images/5bbe44f124365864b1537f686d0a77f5/tenor.gif?itemid=20556956"            
+                "https://media1.tenor.com/images/5bbe44f124365864b1537f686d0a77f5/tenor.gif?itemid=20556956"
             ],
             "kill":[
                 "https://media1.tenor.com/images/55507aea306782b916659085fc062909/tenor.gif?itemid=8932977",
@@ -112,7 +112,7 @@ class Perform(commands.Cog):
                 "https://media1.tenor.com/images/e4db2e0888c2c85a042ea9e54fc4d771/tenor.gif?itemid=16079109",
                 "https://media1.tenor.com/images/2706b52a7bf7b34cfe43d7f49381ee85/tenor.gif?itemid=13617665",
                 "https://media1.tenor.com/images/b73f2fb18d2dcc2ea7fa0ac20830f91f/tenor.gif?itemid=11409825",
-                "https://media1.tenor.com/images/9df97f1c83c532cc29ab8d9ec099acf5/tenor.gif?itemid=10616092"               
+                "https://media1.tenor.com/images/9df97f1c83c532cc29ab8d9ec099acf5/tenor.gif?itemid=10616092"
             ],
         }
         self.config.register_global(**default_global)
@@ -480,7 +480,7 @@ class Perform(commands.Cog):
 
         mn = len(images)
         i = randint(0, mn - 1)
-        
+
         em = discord.Embed(
             colour=discord.Colour.random(),
             description=f"**{ctx.author.mention}** is facepalming!",
