@@ -29,7 +29,8 @@ To add cogs from this repo to your instance, do these steps:
 ## Credits
 - Everyone who contributed to make this better.
 - Thank you Red community, you guys are awesome.
-- Thank you OofChair for fixing things in my readme
+- Thank you OofChair for fixing things in my readme!
+- Thank you Sravan for completing my todo for the perform cog!
 
 # Contributing.md
 - Kindly follow the format of black with line-length = 99 and isort
