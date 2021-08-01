@@ -118,7 +118,7 @@ class Perform(commands.Cog):
         self.config.register_global(**default_global)
 
 
-    __author__ = ["Onii-chan", "sravan"]
+    __author__ = ["Onii-chan"]
     __version__ = "3.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
