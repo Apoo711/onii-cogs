@@ -3,11 +3,11 @@ import json
 import logging
 import os
 import re
-import click
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Mapping, Optional
 
+import click
 import tabulate
 from babel.lists import format_list as babel_list
 
