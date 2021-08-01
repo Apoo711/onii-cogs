@@ -117,7 +117,6 @@ class Perform(commands.Cog):
         }
         self.config.register_global(**default_global)
 
-
     __author__ = ["Onii-chan"]
     __version__ = "3.0.0"
 
@@ -176,12 +175,17 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def kiss(self, ctx, user: discord.Member):
         """Kiss a user!"""
+        if user == ctx.author:
+            user2 = "themselves"
+        else:
+            user2 = f"**{str(user.mention)}**"
+
         async with aiohttp.ClientSession() as cs:
             async with cs.get("https://shiro.gg/api/images/kiss") as r:
                 res = await r.json()
                 em = discord.Embed(
                     colour=discord.Colour.random(),
-                    description=f"**{ctx.author.mention}** just kissed {f'**{str(user.mention)}**' if user else 'themselves'}!",
+                    description=f"**{ctx.author.mention}** just kissed {user2}!",
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
