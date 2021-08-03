@@ -835,9 +835,9 @@ class Image(commands.Cog):
             async with session.get(
                 f"https://www.reddit.com/{API}/new.json?sort=new"
             ) as resp:
-                origin = await resp.json()
-                data = origin["data"]
-                children = data["children"]
+                data = await resp.json()
+                data1 = data["data"]
+                children = data1["children"]
                 post = random.choice(children)["data"]
                 title = post["title"] or ""
                 url = post["url_overridden_by_dest"] or ""
