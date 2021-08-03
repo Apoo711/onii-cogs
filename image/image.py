@@ -833,7 +833,7 @@ class Image(commands.Cog):
 #                link = data["post_url"] or ""
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://www.reddit.com/{API}/top.json?sort=new"
+                f"https://www.reddit.com/{API}/new.json?sort=new"
             ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
