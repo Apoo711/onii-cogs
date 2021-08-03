@@ -67,7 +67,7 @@ class Perform(commands.Cog):
                 "https://media1.tenor.com/images/fd3616d34ade61e1ac5cd0975c25a917/tenor.gif?itemid=13653906",
                 "https://imgur.com/v7jsPrv",
             ],
-            "spank":[
+            "spank": [
                 "https://media1.tenor.com/images/ef5f040254c2fbf91232088b91fe2341/tenor.gif?itemid=13569259",
                 "https://media1.tenor.com/images/d0f32f61c2964999b344c6846b30e1d6/tenor.gif?itemid=13665166",
                 "https://media1.tenor.com/images/b51750728709353206263f0407f0be96/tenor.gif?itemid=16173937",
@@ -352,7 +352,7 @@ class Perform(commands.Cog):
     async def spank(self, ctx, user: discord.Member):
         """Spanks a user!"""
 
-        author = ctx.message.author
+
         images = await self.config.spank()
 
         mn = len(images)
@@ -413,7 +413,6 @@ class Perform(commands.Cog):
     async def highfive(self, ctx, user: discord.Member):
         """Highfives a user!"""
 
-        author = ctx.message.author
         images = await self.config.highfive()
 
         mn = len(images)
@@ -436,7 +435,6 @@ class Perform(commands.Cog):
     async def feed(self, ctx, user: discord.Member):
         """Feeds a user!"""
 
-        author = ctx.message.author
         images = await self.config.feed()
 
         mn = len(images)
@@ -444,7 +442,7 @@ class Perform(commands.Cog):
 
         em = discord.Embed(
             colour=discord.Colour.random(),
-            description=f"**{ctx.author.mention}** feeds {f'**{str(user.mention)}**' if user else 'themselves'}!",
+            description=f"**{ctx.author.mention}** fed {f'**{str(user.mention)}**' if user else 'themselves'}!",
         )
         em.set_footer(
             text=f"Requested by: {str(ctx.author)}",
@@ -479,7 +477,6 @@ class Perform(commands.Cog):
     async def facepalm(self, ctx):
         """Do a facepalm!"""
 
-        author = ctx.message.author
         images = await self.config.facepalm()
 
         mn = len(images)
@@ -502,7 +499,6 @@ class Perform(commands.Cog):
     async def kill(self, ctx, user: discord.Member):
         """Kills a user!"""
 
-        author = ctx.message.author
         images = await self.config.kill()
 
         mn = len(images)

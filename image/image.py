@@ -533,7 +533,6 @@ class Image(commands.Cog):
                     ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
-                url = data["image_url"]
                 subreddit = data["subreddit"] or ""
                 sub_name = subreddit["name"] or "Unknown"
                 sub_url = subreddit["url"] or ""
@@ -551,24 +550,29 @@ class Image(commands.Cog):
                     return await ctx.send(
                         "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
                     )
-
+                if data["image_url"] is None:
+                    url = ""
+                    msg = "Something went wrong while posting an image."
+                else:
+                    url = data["image_url"]
+                    msg = (
+                        "**Post by:** [u/{}]({})\n"
+                        "**From:** [r/{}]({})\n"
+                        "**This post was created on:** <t:{}:F>\n"
+                        "**Title:** [{}]({})"
+                    ).format(
+                        r_author,
+                        r_author_url,
+                        sub_name,
+                        sub_url,
+                        created_at,
+                        title,
+                        link,
+                    )
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
-            description=(
-                "**Post by:** [u/{}]({})\n"
-                "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>\n"
-                "**Title:** [{}]({})"
-            ).format(
-                r_author,
-                r_author_url,
-                sub_name,
-                sub_url,
-                created_at,
-                title,
-                link,
-            ),
+            description=msg,
         )
         embed.set_image(url=url)
         embed.set_footer(
