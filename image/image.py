@@ -534,6 +534,7 @@ class Image(commands.Cog):
                 origin = await resp.json()
                 data = origin["data"]
                 subreddit = data["subreddit"] or ""
+                url = data["image_url"]
                 sub_name = subreddit["name"] or "Unknown"
                 sub_url = subreddit["url"] or ""
                 author = data["author"] or ""
@@ -550,29 +551,24 @@ class Image(commands.Cog):
                     return await ctx.send(
                         "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
                     )
-                if data["image_url"] is None:
-                    url = ""
-                    msg = "Something went wrong while posting an image."
-                else:
-                    url = data["image_url"]
-                    msg = (
-                        "**Post by:** [u/{}]({})\n"
-                        "**From:** [r/{}]({})\n"
-                        "**This post was created on:** <t:{}:F>\n"
-                        "**Title:** [{}]({})"
-                    ).format(
-                        r_author,
-                        r_author_url,
-                        sub_name,
-                        sub_url,
-                        created_at,
-                        title,
-                        link,
-                    )
+
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
-            description=msg,
+            description=(
+                    "**Post by:** [u/{}]({})\n"
+                    "**From:** [r/{}]({})\n"
+                    "**This post was created on:** <t:{}:F>\n"
+                    "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
         )
         embed.set_image(url=url)
         embed.set_footer(
@@ -816,27 +812,49 @@ class Image(commands.Cog):
             "awwnime"
         ]
         API = random.choice(SUBREDDITS)
+#        async with aiohttp.ClientSession() as session:
+#            async with session.get(
+#                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+#                    ) as resp:
+#                origin = await resp.json()
+#                data = origin["data"]
+#                url = data["image_url"]
+#                subreddit = data["subreddit"] or ""
+#                sub_name = subreddit["name"] or "Unknown"
+#                sub_url = subreddit["url"] or ""
+#                author = data["author"] or ""
+#                r_author = author["name"] or "Unknown"
+#                r_author_url = author["url"] or ""
+#                title = data["title"] or ""
+#                created_at = data["created_at"] or ""
+#                downvotes = data["downvotes"] or ""
+#                comments = data["comments"] or ""
+#                ups = data["upvotes"] or ""
+#                link = data["post_url"] or ""
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
-                    ) as resp:
+                f"https://www.reddit.com/{API}/top.json?sort=new"
+            ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
-                url = data["image_url"]
-                subreddit = data["subreddit"] or ""
-                sub_name = subreddit["name"] or "Unknown"
-                sub_url = subreddit["url"] or ""
-                author = data["author"] or ""
-                r_author = author["name"] or "Unknown"
-                r_author_url = author["url"] or ""
-                title = data["title"] or ""
-                created_at = data["created_at"] or ""
-                downvotes = data["downvotes"] or ""
-                comments = data["comments"] or ""
-                ups = data["upvotes"] or ""
-                link = data["post_url"] or ""
+                children = data["children"]
+                post = random.choice(children)["data"]
+                title = post["title"] or ""
+                url = post["url_overridden_by_dest"] or ""
+                link = f'https://reddit.com{post["permalink"]}' or ""
+                ups = post["ups"] or ""
+                comments = post["num_comments"] or ""
+                subreddit = post["subreddit_name_prefixed"] or ""
+                sub_name = post["subreddit"] or "Unknown"
+                sub_url = f"https://reddit.com/{subreddit}/"
+                author = post["author"] or ""
+                r_author = post["author"] or "Unknown"
+                r_author_url = f"https://reddit.com/u/{author}" or ""
+                title = post["title"] or ""
+                created_at = post["created_utc"] or ""
+                downvotes = post["downs"] or ""
 
-                if data["nsfw"] and not ctx.channel.is_nsfw():
+                if post["over_18"] is True and not ctx.channel.is_nsfw():
                     return await ctx.send(
                         "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
                     )
