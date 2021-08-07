@@ -484,7 +484,7 @@ class Perform(commands.Cog):
             async with cs.get(
                 f"https://kawaii.red/api/gif/facepalm/token={token}/"
             ) as r:
-                res = await r.json
+                res = await r.json()
 
                 em = discord.Embed(
                     colour=discord.Colour.random(),
@@ -494,7 +494,7 @@ class Perform(commands.Cog):
                     text=f"Requested by: {str(ctx.author)}",
                     icon_url=ctx.author.avatar_url,
                 )
-                em.set_image(url=res["url"])
+                em.set_image(url=res["response"])
                 await ctx.reply(embed=em, mention_author=False)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
