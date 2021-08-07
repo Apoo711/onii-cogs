@@ -352,7 +352,6 @@ class Perform(commands.Cog):
     async def spank(self, ctx, user: discord.Member):
         """Spanks a user!"""
 
-
         images = await self.config.spank()
 
         mn = len(images)
@@ -476,22 +475,27 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def facepalm(self, ctx):
         """Do a facepalm!"""
+        token = await self.bot.get_shared_api_tokens("kawaii")
 
-        images = await self.config.facepalm()
+        if token.get("api_key") is None:
+            return await ctx.send("The YouTube API key has not been set.")
 
-        mn = len(images)
-        i = randint(0, mn - 1)
+        async with aiohttp.ClientSession() as cs:
+            async with cs.get(
+                f"https://kawaii.red/api/gif/facepalm/token={token}/"
+            ) as r:
+                res = await r.json
 
-        em = discord.Embed(
-            colour=discord.Colour.random(),
-            description=f"**{ctx.author.mention}** is facepalming!",
-        )
-        em.set_footer(
-            text=f"Requested by: {str(ctx.author)}",
-            icon_url=ctx.author.avatar_url,
-        )
-        em.set_image(url=images[i])
-        await ctx.reply(embed=em, mention_author=False)
+                em = discord.Embed(
+                    colour=discord.Colour.random(),
+                    description=f"**{ctx.author.mention}** is facepalming!",
+                )
+                em.set_footer(
+                    text=f"Requested by: {str(ctx.author)}",
+                    icon_url=ctx.author.avatar_url,
+                )
+                em.set_image(url=res["url"])
+                await ctx.reply(embed=em, mention_author=False)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="kill")
