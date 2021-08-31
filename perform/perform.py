@@ -223,9 +223,10 @@ class Perform(commands.Cog):
                     description=f"**{ctx.author.mention}** is acting so smug!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)}",
+                    text=f'Requested by: {ctx.author}',
                     icon_url=ctx.author.avatar_url,
                 )
+
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
@@ -280,9 +281,10 @@ class Perform(commands.Cog):
                     description=f"**{ctx.author.mention}** is crying!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)}",
+                    text=f'Requested by: {ctx.author}',
                     icon_url=ctx.author.avatar_url,
                 )
+
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
@@ -299,9 +301,10 @@ class Perform(commands.Cog):
                     description=f"**{ctx.author.mention}** is sleepy!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)}",
+                    text=f'Requested by: {ctx.author}',
                     icon_url=ctx.author.avatar_url,
                 )
+
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
@@ -341,9 +344,10 @@ class Perform(commands.Cog):
                     description=f"**{ctx.author.mention}** is acting pout!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)}",
+                    text=f'Requested by: {ctx.author}',
                     icon_url=ctx.author.avatar_url,
                 )
+
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
@@ -360,9 +364,10 @@ class Perform(commands.Cog):
                     description=f"**{ctx.author.mention}** is blushing!",
                 )
                 em.set_footer(
-                    text=f"Requested by: {str(ctx.author)}",
+                    text=f'Requested by: {ctx.author}',
                     icon_url=ctx.author.avatar_url,
                 )
+
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
 
