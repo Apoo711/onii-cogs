@@ -15,10 +15,11 @@ limitations under the License.
 """
 
 
+from random import randint
+
 import aiohttp
 import discord
-from redbot.core import commands, Config
-from random import randint
+from redbot.core import Config, commands
 
 
 async def api_call(call_uri, returnObj=False):
