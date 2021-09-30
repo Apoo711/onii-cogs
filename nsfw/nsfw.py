@@ -343,7 +343,7 @@ class Nsfw(commands.Cog):
     @hentai.command()
     @commands.is_nsfw()
     @commands.guild_only()
-    async def pussy(self, ctx):
+    async def pussy(self, ctx: commands.Context):
         """Tight pussies"""
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
