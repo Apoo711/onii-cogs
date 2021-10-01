@@ -855,7 +855,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def fourk(self, ctx):
-        """4K Hentai"""
+        """Real 4K"""
         if ctx.channel.is_nsfw():
             response = await api_call(
                 "https://nekobot.xyz/api/image?type=4k",
@@ -921,7 +921,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     @commands.guild_only()
     async def thigh(self, ctx):
-        """Thigh Hentai"""
+        """Real Thigh"""
         if ctx.channel.is_nsfw():
             response = await api_call(
                 "https://nekobot.xyz/api/image?type=thigh",
@@ -949,6 +949,137 @@ class Nsfw(commands.Cog):
                 mention_author=False
             )
 
+    @commands.cooldown(3, 7, commands.BucketType.user)
+    @real.command()
+    @commands.is_nsfw()
+    @commands.guild_only()
+    async def pussy(self, ctx):
+        """Real pussy"""
+        if ctx.channel.is_nsfw():
+            response = await api_call(
+                "https://nekobot.xyz/api/image?type=pussy",
+                True
+            )
+            embed = discord.Embed(
+                title="Real pussy",
+                color=response["color"],
+            )
+
+            embed.set_footer(
+                text=f"Requested by {ctx.author.display_name}",
+                icon_url=ctx.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+
+            embed.set_image(url=response["message"])
+            await ctx.reply(embed=embed, mention_author=False)
+        else:
+            await ctx.reply(
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
+            )
+
+    @commands.cooldown(3, 7, commands.BucketType.user)
+    @real.command()
+    @commands.is_nsfw()
+    @commands.guild_only()
+    async def ass(self, ctx):
+        """Real ass"""
+        if ctx.channel.is_nsfw():
+            response = await api_call(
+                "https://nekobot.xyz/api/image?type=ass",
+                True
+            )
+            embed = discord.Embed(
+                title="Real ass",
+                color=response["color"],
+            )
+
+            embed.set_footer(
+                text=f"Requested by {ctx.author.display_name}",
+                icon_url=ctx.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+
+            embed.set_image(url=response["message"])
+            await ctx.reply(embed=embed, mention_author=False)
+        else:
+            await ctx.reply(
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
+            )
+
+    @commands.cooldown(3, 7, commands.BucketType.user)
+    @real.command()
+    @commands.is_nsfw()
+    @commands.guild_only()
+    async def anal(self, ctx):
+        """Real anal"""
+        if ctx.channel.is_nsfw():
+            response = await api_call(
+                "https://nekobot.xyz/api/image?type=anal",
+                True
+            )
+            embed = discord.Embed(
+                title="Real anal",
+                color=response["color"],
+            )
+
+            embed.set_footer(
+                text=f"Requested by {ctx.author.display_name}",
+                icon_url=ctx.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+
+            embed.set_image(url=response["message"])
+            await ctx.reply(embed=embed, mention_author=False)
+        else:
+            await ctx.reply(
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
+            )
+
+    @commands.cooldown(3, 7, commands.BucketType.user)
+    @real.command(aliases=["tits"])
+    @commands.is_nsfw()
+    @commands.guild_only()
+    async def boobs(self, ctx):
+        """Just Porn"""
+        if ctx.channel.is_nsfw():
+            response = await api_call(
+                "https://nekobot.xyz/api/image?type=boobs",
+                True
+            )
+            embed = discord.Embed(
+                title="Real boobs",
+                color=response["color"],
+            )
+
+            embed.set_footer(
+                text=f"Requested by {ctx.author.display_name}",
+                icon_url=ctx.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name,
+                icon_url=self.bot.user.avatar_url
+            )
+
+            embed.set_image(url=response["message"])
+            await ctx.reply(embed=embed, mention_author=False)
+        else:
+            await ctx.reply(
+                "This command can only be used in a NSFW channel.",
+                mention_author=False
+            )
 #    @real.command()
 #    @commands.guild_only()
 #    @commands.cooldown(1, 5, commands.BucketType.user)
