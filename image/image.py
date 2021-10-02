@@ -39,6 +39,9 @@ log = logging.getLogger("red.onii.image")
 class Image(commands.Cog):
     """Get tons of memes or other images"""
 
+    __author__ = ["Onii-chan"]
+    __version__ = "3.3.0"
+
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
@@ -58,49 +61,6 @@ class Image(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.config = Config.get_conf(
-            self,
-            identifier=741291562687922329,
-            force_registration=True,
-        )
-        default_guild = {
-            "memereddit": ["memes", "dankmemes"],
-        }
-        self.config.register_guild(**default_guild)
-
-    __author__ = ["Onii-chan"]
-    __version__ = "3.2.1"
-
-    @commands.group(name="imset")
-    @commands.guild_only()
-    @commands.admin()
-    async def imageset(self, ctx: commands.Context):
-        """Base command for managing meme stuff."""
-
-    @imageset.command(name="memereddit", aliases=["mreddit"])
-    @commands.cooldown(1, 30, commands.BucketType.guild)
-    async def _memereddit(
-        self,
-        ctx: commands.Context,
-        *,
-        subreddit: str
-    ):
-        """Set the subreddit for the meme command.
-        Default subreddit is [r/memes](https://reddit.com/r/memes).
-        Examples:
-        - `[p]imset mreddit memes`
-        This will set the subreddit to subreddit/memes.
-        - `[p]imset mreddit `dankmemes memes`
-        This will set the subreddit to r/dankmemes **and** r/memes.
-        Arguments:
-        - `<subreddit>` The name of the subreddit/s to be used. Only
-        enter the subreddit name like in the examples above,
-        don't enter the full url or you'll break smth.
-        """
-        await self.config.guild(ctx.guild).memereddit.set(subreddit)
-        await ctx.send(
-            f"The subreddit/s has sucessfully set to `{subreddit}`"
-        )
 
     @commands.command()
     @commands.guild_only()
@@ -135,7 +95,6 @@ class Image(commands.Cog):
                     return await ctx.send(
                         "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
                     )
-
         embed = discord.Embed(
             title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
@@ -163,11 +122,13 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
-        await ctx.reply(
-            embed=embed,
-            mention_author=False,
-        )
+        try:
+            await ctx.reply(
+                embed=embed,
+                mention_author=False,
+            )
+        except discord.HTTPException:
+            await ctx.send("Something went wrong while posting an image.")
 
     @commands.command()
     @commands.guild_only()
@@ -244,7 +205,7 @@ class Image(commands.Cog):
                     ),
                     icon_url=ctx.message.author.avatar_url,
                 )
-                await session.close()
+
                 return await ctx.reply(
                     embed=embed,
                     mention_author=False
@@ -318,7 +279,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -385,7 +346,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -419,12 +380,9 @@ class Image(commands.Cog):
         Memes shown are taken from the subreddit set by the admins.
         """
         await ctx.trigger_typing()
-        subreddit = await self.config.guild(ctx.guild).memereddit()
-        subreddit2 = subreddit.split()
-        API = random.choice(subreddit2)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+                        "https://api.martinebot.com/v1/images/memes"
                     ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
@@ -475,7 +433,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -547,7 +505,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -575,8 +533,8 @@ class Image(commands.Cog):
                     ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
-                url = data["image_url"]
                 subreddit = data["subreddit"] or ""
+                url = data["image_url"]
                 sub_name = subreddit["name"] or "Unknown"
                 sub_url = subreddit["url"] or ""
                 author = data["author"] or ""
@@ -598,10 +556,10 @@ class Image(commands.Cog):
             title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
-                "**Post by:** [u/{}]({})\n"
-                "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>\n"
-                "**Title:** [{}]({})"
+                    "**Post by:** [u/{}]({})\n"
+                    "**From:** [r/{}]({})\n"
+                    "**This post was created on:** <t:{}:F>\n"
+                    "**Title:** [{}]({})"
             ).format(
                 r_author,
                 r_author_url,
@@ -621,11 +579,14 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
-        await ctx.reply(
-            embed=embed,
-            mention_author=False,
-        )
+
+        try:
+            await ctx.reply(
+                embed=embed,
+                mention_author=False,
+            )
+        except discord.HTTPException:
+            await ctx.send("Something went wrong while posting an image.")
 
     @commands.command()
     @commands.guild_only()
@@ -688,7 +649,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -755,7 +716,7 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
@@ -829,8 +790,107 @@ class Image(commands.Cog):
             ),
             icon_url=ctx.message.author.avatar_url,
         )
-        await session.close()
+
         await ctx.reply(
             embed=embed,
             mention_author=False,
         )
+
+    @commands.command()
+    @commands.guild_only()
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def test(self, ctx: commands.Context):
+        """Shows some moe images from reddit.
+        Images shown are taken from:
+        r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.
+        """
+        await ctx.trigger_typing()
+        SUBREDDITS = [
+            "animeboys",
+            "CuteAnimeGirlss",
+            "cuteanimeboys",
+            "awwnime"
+        ]
+        API = random.choice(SUBREDDITS)
+#        async with aiohttp.ClientSession() as session:
+#            async with session.get(
+#                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+#                    ) as resp:
+#                origin = await resp.json()
+#                data = origin["data"]
+#                url = data["image_url"]
+#                subreddit = data["subreddit"] or ""
+#                sub_name = subreddit["name"] or "Unknown"
+#                sub_url = subreddit["url"] or ""
+#                author = data["author"] or ""
+#                r_author = author["name"] or "Unknown"
+#                r_author_url = author["url"] or ""
+#                title = data["title"] or ""
+#                created_at = data["created_at"] or ""
+#                downvotes = data["downvotes"] or ""
+#                comments = data["comments"] or ""
+#                ups = data["upvotes"] or ""
+#                link = data["post_url"] or ""
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                f"https://www.reddit.com/{API}/new.json?sort=new"
+            ) as resp:
+                data = await resp.json()
+                data1 = data["data"]
+                children = data1["children"]
+                post = random.choice(children)["data"]
+                title = post["title"] or ""
+                url = post["url_overridden_by_dest"] or ""
+                link = f'https://reddit.com{post["permalink"]}' or ""
+                ups = post["ups"] or ""
+                comments = post["num_comments"] or ""
+                subreddit = post["subreddit_name_prefixed"] or ""
+                sub_name = post["subreddit"] or "Unknown"
+                sub_url = f"https://reddit.com/{subreddit}/"
+                author = post["author"] or ""
+                r_author = post["author"] or "Unknown"
+                r_author_url = f"https://reddit.com/u/{author}" or ""
+                title = post["title"] or ""
+                created_at = post["created_utc"] or ""
+                downvotes = post["downs"] or ""
+
+                if post["over_18"] is True and not ctx.channel.is_nsfw():
+                    return await ctx.send(
+                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
+                    )
+
+        embed = discord.Embed(
+            title="Here's a random image...:frame_photo:",
+            colour=discord.Colour.random(),
+            description=(
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
+            ).format(
+                r_author,
+                r_author_url,
+                sub_name,
+                sub_url,
+                created_at,
+                title,
+                link,
+            ),
+        )
+        embed.set_image(url=url)
+        embed.set_footer(
+            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
+                ups,
+                downvotes,
+                comments,
+            ),
+            icon_url=ctx.message.author.avatar_url,
+        )
+
+        try:
+            await ctx.reply(
+                embed=embed,
+                mention_author=False,
+            )
+        except discord.HTTPException:
+            await ctx.send("Something went wrong while posting an image.")

@@ -2,13 +2,23 @@
     "author": [
         "Onii-chan#3920"
     ],
-    "install_msg": "Hey there! Thank you so much for installing for my repo, should you need any support please contact me in the #support_othercogs channel in the cog support server or feel free to make an issue on github!.",
-    "name": "Onii's Cogs",
-    "short": "A list of fun cogs by Onii",
     "description": "A list of fun oriented cogs by Onii",
+    "disabled": false,
+    "end_user_data_statement": "This cog does not persistently store data or metadata about users.",
+    "hidden": false,
+    "install_msg": "Hey there! Thank you so much for installing for my repo, should you need any support please contact me in the #support_othercogs channel in the cog support server or feel free to make an issue on github!.",
+    "max_bot_version": "0.0.0",
+    "min_bot_version": "3.1.8",
+    "min_python_version": [],
+    "name": "Onii's Cogs",
+    "permissions": [],
+    "required_cogs": {},
+    "requirements": [],
+    "short": "A list of fun cogs by Onii",
     "tags": [
         "Image",
         "Roleplay",
         "Nsfw"
-    ]
+    ],
+    "type": "COG"
 }

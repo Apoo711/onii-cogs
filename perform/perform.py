@@ -62,7 +62,7 @@ class Perform(commands.Cog):
                 "https://media1.tenor.com/images/fd3616d34ade61e1ac5cd0975c25a917/tenor.gif?itemid=13653906",
                 "https://imgur.com/v7jsPrv",
             ],
-            "spank":[
+            "spank": [
                 "https://media1.tenor.com/images/ef5f040254c2fbf91232088b91fe2341/tenor.gif?itemid=13569259",
                 "https://media1.tenor.com/images/fa2472b2cca1e4a407b7772b329eafb4/tenor.gif?itemid=21468457",
                 "https://media1.tenor.com/images/2eb222b142f24be14ea2da5c84a92b08/tenor.gif?itemid=15905904",
@@ -138,12 +138,17 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def kiss(self, ctx, user: discord.Member):
         """Kiss a user!"""
+        if user == ctx.author:
+            user2 = "themselves"
+        else:
+            user2 = f"**{str(user.mention)}**"
+
         async with aiohttp.ClientSession() as cs:
             async with cs.get("https://shiro.gg/api/images/kiss") as r:
                 res = await r.json()
                 em = discord.Embed(
                     colour=discord.Colour.random(),
-                    description=f"**{ctx.author.mention}** just kissed {f'**{str(user.mention)}**' if user else 'themselves'}!",
+                    description=f"**{ctx.author.mention}** just kissed {user2}!",
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
@@ -310,7 +315,6 @@ class Perform(commands.Cog):
     async def spank(self, ctx, user: discord.Member):
         """Spanks a user!"""
 
-        author = ctx.message.author
         images = await self.config.spank()
 
         mn = len(images)
@@ -371,7 +375,6 @@ class Perform(commands.Cog):
     async def feed(self, ctx, user: discord.Member):
         """Feeds a user!"""
 
-        author = ctx.message.author
         images = await self.config.feed()
 
         mn = len(images)
@@ -379,7 +382,7 @@ class Perform(commands.Cog):
 
         em = discord.Embed(
             colour=discord.Colour.random(),
-            description=f"**{ctx.author.mention}** feeds {f'**{str(user.mention)}**' if user else 'themselves'}!",
+            description=f"**{ctx.author.mention}** fed {f'**{str(user.mention)}**' if user else 'themselves'}!",
         )
         em.set_footer(
             text=f"Requested by: {str(ctx.author)}",
