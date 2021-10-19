@@ -1,0 +1,20 @@
+{
+    "author": [
+        "Onii-Chan"
+    ],
+    "end_user_data_statement": "This cog does not save data about users persistently.",
+    "description": "A game cog, which has games like, akinato, 2048, minesweeper, tictactoe and wumpus.",
+    "short": "A game cog with multiple games.",
+    "install_msg": "Thanks for installing Game, have fun.",
+    "min_bot_version": "3.4.0",
+    "tags": [
+        "2048",
+        "miesweeper",
+        "tictactoe",
+        "wumpus",
+        "games"
+    ],
+    "requirenments":  [
+        "git+https://github.com/nirlep5252/Discord-Games.git"
+    ]
+}

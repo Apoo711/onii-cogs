@@ -33,6 +33,7 @@ async def api_call(call_uri, returnObj=False):
                 return response
     await session.close()
 
+
 log = logging.getLogger("red.onii.image")
 
 
@@ -73,8 +74,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                        "https://api.martinebot.com/v1/images/subreddit?name=narutowallpapers"
-                    ) as resp:
+                "https://api.martinebot.com/v1/images/subreddit?name=narutowallpapers"
+            ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -141,8 +142,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                        f"https://api.martinebot.com/v1/images/subreddit?name={reddit}"
-                    ) as resp:
+                f"https://api.martinebot.com/v1/images/subreddit?name={reddit}"
+            ) as resp:
                 origin = await resp.json()
 
                 if not origin["success"]:
@@ -152,9 +153,7 @@ class Image(commands.Cog):
                         description=(
                             "**I did my best to find '{}', but my search yielded no results.**\n"
                             "**Please check for any mistakes in the name and try again.**"
-                        ).format(
-                            reddit
-                            )
+                        ).format(reddit),
                     )
                     return await ctx.reply(embed=embed, mention_author=False)
 
@@ -206,10 +205,7 @@ class Image(commands.Cog):
                     icon_url=ctx.message.author.avatar_url,
                 )
 
-                return await ctx.reply(
-                    embed=embed,
-                    mention_author=False
-                )
+                return await ctx.reply(embed=embed, mention_author=False)
 
     @commands.command(name="randomwallpaper", aliases=["raw"])
     @commands.guild_only()
@@ -222,15 +218,10 @@ class Image(commands.Cog):
         Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
         await ctx.trigger_typing()
-        SUBREDDITS = [
-            "images/subreddits?name=Animewallpaper",
-            "images/wallpaper"
-        ]
+        SUBREDDITS = ["images/subreddits?name=Animewallpaper", "images/wallpaper"]
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                        f"https://api.martinebot.com/v1/{API}"
-                    ) as resp:
+            async with session.get(f"https://api.martinebot.com/v1/{API}") as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -296,8 +287,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                        "https://api.martinebot.com/v1/images/subreddit?name=AnimePFP"
-                    ) as resp:
+                "https://api.martinebot.com/v1/images/subreddit?name=AnimePFP"
+            ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -365,8 +356,7 @@ class Image(commands.Cog):
             text="Powered by nekos.best",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(name=self.bot.user.display_name,
-                         icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
 
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
         await ctx.reply(embed=embed, mention_author=False)
@@ -381,9 +371,7 @@ class Image(commands.Cog):
         """
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                        "https://api.martinebot.com/v1/images/memes"
-                    ) as resp:
+            async with session.get("https://api.martinebot.com/v1/images/memes") as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -448,15 +436,12 @@ class Image(commands.Cog):
         Images shown are taken from r/spaceengine and r/LandscapeAstro.
         """
         await ctx.trigger_typing()
-        SUBREDDITS = [
-            "spaceengine",
-            "LandscapeAstro"
-        ]
+        SUBREDDITS = ["spaceengine", "LandscapeAstro"]
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
-                    ) as resp:
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+            ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -520,17 +505,12 @@ class Image(commands.Cog):
         r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.
         """
         await ctx.trigger_typing()
-        SUBREDDITS = [
-            "animeboys",
-            "CuteAnimeGirlss",
-            "cuteanimeboys",
-            "awwnime"
-        ]
+        SUBREDDITS = ["animeboys", "CuteAnimeGirlss", "cuteanimeboys", "awwnime"]
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
-                    ) as resp:
+                f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+            ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 subreddit = data["subreddit"] or ""
@@ -556,10 +536,10 @@ class Image(commands.Cog):
             title="Here's a random image...:frame_photo:",
             colour=discord.Colour.random(),
             description=(
-                    "**Post by:** [u/{}]({})\n"
-                    "**From:** [r/{}]({})\n"
-                    "**This post was created on:** <t:{}:F>\n"
-                    "**Title:** [{}]({})"
+                "**Post by:** [u/{}]({})\n"
+                "**From:** [r/{}]({})\n"
+                "**This post was created on:** <t:{}:F>\n"
+                "**Title:** [{}]({})"
             ).format(
                 r_author,
                 r_author_url,
@@ -599,8 +579,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                        "https://api.martinebot.com/v1/images/subreddit?name=EarthPorn"
-                    ) as resp:
+                "https://api.martinebot.com/v1/images/subreddit?name=EarthPorn"
+            ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -666,8 +646,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                        "https://api.martinebot.com/v1/images/subreddit?name=UnixPorn"
-                    ) as resp:
+                "https://api.martinebot.com/v1/images/subreddit?name=UnixPorn"
+            ) as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -805,36 +785,29 @@ class Image(commands.Cog):
         r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.
         """
         await ctx.trigger_typing()
-        SUBREDDITS = [
-            "animeboys",
-            "CuteAnimeGirlss",
-            "cuteanimeboys",
-            "awwnime"
-        ]
+        SUBREDDITS = ["animeboys", "CuteAnimeGirlss", "cuteanimeboys", "awwnime"]
         API = random.choice(SUBREDDITS)
-#        async with aiohttp.ClientSession() as session:
-#            async with session.get(
-#                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
-#                    ) as resp:
-#                origin = await resp.json()
-#                data = origin["data"]
-#                url = data["image_url"]
-#                subreddit = data["subreddit"] or ""
-#                sub_name = subreddit["name"] or "Unknown"
-#                sub_url = subreddit["url"] or ""
-#                author = data["author"] or ""
-#                r_author = author["name"] or "Unknown"
-#                r_author_url = author["url"] or ""
-#                title = data["title"] or ""
-#                created_at = data["created_at"] or ""
-#                downvotes = data["downvotes"] or ""
-#                comments = data["comments"] or ""
-#                ups = data["upvotes"] or ""
-#                link = data["post_url"] or ""
+        #        async with aiohttp.ClientSession() as session:
+        #            async with session.get(
+        #                        f"https://api.martinebot.com/v1/images/subreddit?name={API}"
+        #                    ) as resp:
+        #                origin = await resp.json()
+        #                data = origin["data"]
+        #                url = data["image_url"]
+        #                subreddit = data["subreddit"] or ""
+        #                sub_name = subreddit["name"] or "Unknown"
+        #                sub_url = subreddit["url"] or ""
+        #                author = data["author"] or ""
+        #                r_author = author["name"] or "Unknown"
+        #                r_author_url = author["url"] or ""
+        #                title = data["title"] or ""
+        #                created_at = data["created_at"] or ""
+        #                downvotes = data["downvotes"] or ""
+        #                comments = data["comments"] or ""
+        #                ups = data["upvotes"] or ""
+        #                link = data["post_url"] or ""
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                f"https://www.reddit.com/{API}/new.json?sort=new"
-            ) as resp:
+            async with session.get(f"https://www.reddit.com/{API}/new.json?sort=new") as resp:
                 data = await resp.json()
                 data1 = data["data"]
                 children = data1["children"]

@@ -22,6 +22,7 @@ log = logging.getLogger("red.onii.animal")
 
 class Animal(commands.Cog):
     """Get images of animals!"""
+
     def __init__(self, bot):
         self.bot = bot
 
@@ -198,9 +199,7 @@ class Animal(commands.Cog):
         """Get a random dog fact"""
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://some-random-api.ml/facts/dog"
-                ) as resp:
+            async with session.get("https://some-random-api.ml/facts/dog") as resp:
                 data = await resp.json()
                 fact = data["fact"]
 
@@ -208,9 +207,7 @@ class Animal(commands.Cog):
                 embed.set_image(
                     url="https://media.tenor.com/images/d7afbeb5c3b3efc48a86eb2c3450ceb8/tenor.gif"
                 )
-                embed.add_field(
-                    name="Here's a random dog fact!", value=fact
-                )
+                embed.add_field(name="Here's a random dog fact!", value=fact)
                 await ctx.send(embed=embed)
 
     @fact.command(name="cat")
@@ -220,9 +217,7 @@ class Animal(commands.Cog):
         """Get a random cat fact"""
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://some-random-api.ml/facts/cat"
-            ) as resp:
+            async with session.get("https://some-random-api.ml/facts/cat") as resp:
                 data = await resp.json()
                 fact = data["fact"]
 
@@ -230,7 +225,5 @@ class Animal(commands.Cog):
         embed.set_image(
             url="https://media1.tenor.com/images/f6fe8d1d0463f4e51b6367bbecf56a3e/tenor.gif?itemid=6198981"
         )
-        embed.add_field(
-            name="Here's a random cat fact!", value=fact
-        )
+        embed.add_field(name="Here's a random cat fact!", value=fact)
         await ctx.send(embed=embed)

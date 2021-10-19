@@ -40,7 +40,7 @@ class Oniitools(commands.Cog):
     async def penis(self, ctx, user: discord.Member):
         """Detects user's penis length this is 100% accurate."""
         random.seed(user.id)
-        p = "8" + "="*random.randint(0, 30) + "D"
+        p = "8" + "=" * random.randint(0, 30) + "D"
         await ctx.reply("Size: " + p, mention_author=False)
 
     @commands.command()
@@ -53,14 +53,9 @@ class Oniitools(commands.Cog):
                 f"https://api.martinebot.com/v1/imagesgen/osuprofile?&player_username={player}"
             ) as resp:
                 if resp.status in (200, 201):
-                    f = discord.File(
-                        fp=BytesIO(
-                            await resp.read()
-                        ), filename="osu.png"
-                    )
+                    f = discord.File(fp=BytesIO(await resp.read()), filename="osu.png")
                     emb = discord.Embed(
-                        title=f"{player}'s Osu Stats",
-                        colour=discord.Colour.random()
+                        title=f"{player}'s Osu Stats", colour=discord.Colour.random()
                     )
                     emb.set_image(url="attachment://osu.png")
                     emb.set_footer(text="Powered by martinebot.com API")
@@ -69,7 +64,7 @@ class Oniitools(commands.Cog):
                     f.close()
 
                 elif resp.status in (404, 410, 422):
-                    await ctx.reply((await resp.json())['message'])
+                    await ctx.reply((await resp.json())["message"])
 
                 else:
                     await ctx.reply("API is down currently, please try later")
