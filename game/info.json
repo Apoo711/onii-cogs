@@ -14,7 +14,8 @@
         "wumpus",
         "games"
     ],
-    "requirenments":  [
+    "hidden": true,
+    "requirenments": [
         "git+https://github.com/nirlep5252/Discord-Games.git"
     ]
 }
