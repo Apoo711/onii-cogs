@@ -1,7 +1,7 @@
 import asyncio
 import random
 
-from Discord_Games import aki_buttons, twenty_40_buttons
+from Discord_Games import aki_buttons, twenty_48_buttons
 from redbot.core import commands
 
 from .games import minesweeper, tictactoe, twenty, wumpus
@@ -20,7 +20,7 @@ class Games(commands.Cog):
     @commands.cooldown(1, 30, commands.BucketType.user)
     @commands.command(name="2048", help="Play 2048 game.")
     async def twenty(self, ctx):
-        await twenty_40_buttons.BetaTwenty48().start(ctx)
+        await twenty_48_buttons.BetaTwenty48().start(ctx)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
     @commands.command(name="minesweeper", help="Play Minesweeper")
