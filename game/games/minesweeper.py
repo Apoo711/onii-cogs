@@ -17,7 +17,7 @@ async def play(ctx, columns = None, rows = None, bombs = None):
             # The amount of bombs depends on a random range from 5 to this formula:
             # ((columns * rows) - 1) / 2.5
             # This is to make sure the percentages of bombs at a given random board isn't too high
-            columns = random.randint(4,13)
+            columns = random.randint(4, 13)
             rows = random.randint(4,13)
             bombs = columns * rows - 1
             bombs = bombs / 2.5
@@ -45,7 +45,7 @@ async def play(ctx, columns = None, rows = None, bombs = None):
         y = random.randint(0, rows - 1)
         # We use B as a variable to represent a Bomb (this will be replaced with emotes later)
         if grid[y][x] == 0:
-        grid[y][x] = 'B'
+            grid[y][x] = 'B'
             loop_count = loop_count + 1
         # It will loop again if a bomb is already selected at a random point
         if grid[y][x] == 'B':
