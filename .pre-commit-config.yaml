@@ -55,7 +55,7 @@ repos:
       - id: check-merge-conflict
 
   - repo: https://github.com/sourcery-ai/sourcery
-    rev: v0.9.6b20+79eb9c0 # Get the latest tag from https://github.com/sourcery-ai/sourcery/tags
+    rev: v0.9.6b24+f0e51cc # Get the latest tag from https://github.com/sourcery-ai/sourcery/tags
     hooks:
       - id: sourcery
       # - args: [--in-place]  Automatically apply the refactorings in the hook
