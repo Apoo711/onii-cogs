@@ -32,6 +32,7 @@ async def api_call(call_uri, returnObj=False):
                 return response
     await session.close()
 
+
 async def api_call2(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
         async with session.get(f"{call_uri}") as response:
@@ -42,6 +43,7 @@ async def api_call2(call_uri, returnObj=False):
                 return response
     await session.close()
 
+
 async def nekosembed(self, ctx, user, action: str, endpoint: str):
     embed = discord.Embed(
         description=f"**{ctx.author.mention}** {action} {f'**{str(user.mention)}**' if user else 'themselves'}!",
@@ -51,18 +53,12 @@ async def nekosembed(self, ctx, user, action: str, endpoint: str):
         text=f"Requested by {ctx.message.author.display_name}",
         icon_url=ctx.message.author.avatar_url,
     )
-    embed.set_author(
-            name=self.bot.user.display_name,
-            icon_url=self.bot.user.avatar_url
-        )
-    embed.set_image(
-        url=await api_call(
-            "https://nekos.life/api/v2/img/" + endpoint
-        )
-    )
+    embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+    embed.set_image(url=await api_call("https://nekos.life/api/v2/img/" + endpoint))
     await ctx.reply(embed=embed, mention_author=False)
 
-async def shiroembed(self, ctx, action: str, endpoint: str, user = None):
+
+async def shiroembed(self, ctx, action: str, endpoint: str, user=None):
     async with aiohttp.ClientSession() as cs:
         async with cs.get("https://shiro.gg/api/images/" + endpoint) as r:
             res = await r.json()
@@ -71,7 +67,7 @@ async def shiroembed(self, ctx, action: str, endpoint: str, user = None):
                     colour=discord.Colour.random(),
                     description=f"**{ctx.author.mention}** " + action,
                 )
-            else: 
+            else:
                 em = discord.Embed(
                     colour=discord.Colour.random(),
                     description=f"**{ctx.author.mention}** {action} {f'**{str(user.mention)}**' if user else 'themselves'}!",
@@ -83,39 +79,38 @@ async def shiroembed(self, ctx, action: str, endpoint: str, user = None):
             em.set_image(url=res["url"])
             await ctx.reply(embed=em, mention_author=False)
 
-async def kawaiiembed(self, ctx, action: str, endpoint: str, user = None):
-        api_key = (await self.bot.get_shared_api_tokens("perform")).get("api_key")
-        if not api_key:
-            return await ctx.send("Set a API token before using this command. If you are the bot owner, then use `[p]performapi` to see how to add the API.")
-        if user is None:
-            embed = discord.Embed(
-                description=f"**{ctx.author.mention}** {action}",
-                color=discord.Colour.random(),
-            )
-        else:
-            embed = discord.Embed(
-                description=f"**{ctx.author.mention}** {action} {f'**{str(user.mention)}**' if user else 'themselves'}!",
-                color=discord.Colour.random(),
-            )
-        embed.set_footer(
-            text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
-        )
-        embed.set_author(
-                name = self.bot.user.display_name,
-                icon_url = self.bot.user.avatar_url
-            )
 
-        embed.set_image(
-            url=await api_call2(
-                "https://kawaii.red/api/gif/"+ endpoint + "/token=" + api_key
-            )
+async def kawaiiembed(self, ctx, action: str, endpoint: str, user=None):
+    api_key = (await self.bot.get_shared_api_tokens("perform")).get("api_key")
+    if not api_key:
+        return await ctx.send(
+            "Set a API token before using this command. If you are the bot owner, then use `[p]performapi` to see how to add the API."
         )
-        await ctx.reply(embed=embed, mention_author=False)
+    if user is None:
+        embed = discord.Embed(
+            description=f"**{ctx.author.mention}** {action}",
+            color=discord.Colour.random(),
+        )
+    else:
+        embed = discord.Embed(
+            description=f"**{ctx.author.mention}** {action} {f'**{str(user.mention)}**' if user else 'themselves'}!",
+            color=discord.Colour.random(),
+        )
+    embed.set_footer(
+        text=f"Requested by {ctx.message.author.display_name}",
+        icon_url=ctx.message.author.avatar_url,
+    )
+    embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+
+    embed.set_image(
+        url=await api_call2("https://kawaii.red/api/gif/" + endpoint + "/token=" + api_key)
+    )
+    await ctx.reply(embed=embed, mention_author=False)
 
 
 class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
+
     def __init__(self, bot):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=8423644625413)
@@ -145,14 +140,13 @@ class Perform(commands.Cog):
                 "https://media1.tenor.com/images/eafb13b900645ddf3b30cf9cc28e9f91/tenor.gif?itemid=4603671",
                 "https://media1.tenor.com/images/be2bb9db1c8b8dc2194ec6a1b3d96b89/tenor.gif?itemid=18811244",
                 "https://media.giphy.com/media/OoCuLoM6iEhYk/giphy.gif",
-                "https://media.giphy.com/media/Qo3qovmbqaKT6/giphy.gif"
+                "https://media.giphy.com/media/Qo3qovmbqaKT6/giphy.gif",
             ],
         }
         self.config.register_global(**default_global)
 
-
     __author__ = ["Onii-chan", "sravan"]
-    __version__ = "5.0.0" #idk what im doing with version
+    __version__ = "5.0.0"  # idk what im doing with version
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
@@ -179,6 +173,7 @@ class Perform(commands.Cog):
     async def kiss(self, ctx, user: discord.Member):
         """Kiss a user!"""
         await shiroembed(self, ctx, "just kissed", "kiss", user)
+
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="hug")
     @commands.bot_has_permissions(embed_links=True)
@@ -500,6 +495,9 @@ class Perform(commands.Cog):
     @commands.command()
     async def performapi(self, ctx):
         """Steps to get the API token needed for few commands."""
-        embed=discord.Embed(title="How to set API for perform cog", description="1. Go to https://kawaii.red/\n2. Login using your discord account\n3. Click on dashboard and copy your token\n4. Use `[p]set api perform api_key <token>`")
-    #    embed.description(")
+        embed = discord.Embed(
+            title="How to set API for perform cog",
+            description="1. Go to https://kawaii.red/\n2. Login using your discord account\n3. Click on dashboard and copy your token\n4. Use `[p]set api perform api_key <token>`",
+        )
+        #    embed.description(")
         await ctx.send(embed=embed)
