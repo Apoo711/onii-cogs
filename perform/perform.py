@@ -101,9 +101,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cuddle"))
         await ctx.reply(embed=embed, mention_author=False)
@@ -122,7 +122,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -146,7 +146,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -165,7 +165,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -184,7 +184,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -203,7 +203,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -222,7 +222,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -241,7 +241,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -260,7 +260,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -279,7 +279,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -298,7 +298,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -320,7 +320,7 @@ class Perform(commands.Cog):
         )
         em.set_footer(
             text=f"Requested by: {str(ctx.author)}",
-            icon_url=ctx.author.avatar_url,
+            icon_url=ctx.author.avatar.url,
         )
         em.set_image(url=images[i])
         await ctx.reply(embed=em, mention_author=False)
@@ -339,7 +339,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -358,7 +358,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -380,7 +380,7 @@ class Perform(commands.Cog):
         )
         em.set_footer(
             text=f"Requested by: {str(ctx.author)}",
-            icon_url=ctx.author.avatar_url,
+            icon_url=ctx.author.avatar.url,
         )
         em.set_image(url=images[i])
         await ctx.reply(embed=em, mention_author=False)
@@ -399,7 +399,7 @@ class Perform(commands.Cog):
                 )
                 em.set_footer(
                     text=f"Requested by: {str(ctx.author)}",
-                    icon_url=ctx.author.avatar_url,
+                    icon_url=ctx.author.avatar.url,
                 )
                 em.set_image(url=res["url"])
                 await ctx.reply(embed=em, mention_author=False)
@@ -421,9 +421,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(
             url=await api_call2("https://kawaii.red/api/gif/confused/token=" + api_key)
@@ -448,9 +448,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/amazing/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -472,9 +472,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(
             url=await api_call2("https://kawaii.red/api/gif/highfive/token=" + api_key)
@@ -498,9 +498,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/ask/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -522,9 +522,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/clap/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -546,9 +546,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(
             url=await api_call2("https://kawaii.red/api/gif/facepalm/token=" + api_key)
@@ -572,9 +572,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(
             url=await api_call2("https://kawaii.red/api/gif/facedesk/token=" + api_key)
@@ -598,9 +598,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/kill/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -622,9 +622,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/love/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -646,9 +646,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/hide/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -670,9 +670,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/laugh/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -695,9 +695,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/peek/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -719,9 +719,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/bite/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -743,9 +743,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/dance/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -767,9 +767,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/yeet/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -791,9 +791,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/dodge/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -815,9 +815,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/happy/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -839,9 +839,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/cute/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -863,9 +863,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/lonely/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -887,9 +887,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/mad/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -911,9 +911,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(
             url=await api_call2("https://kawaii.red/api/gif/nosebleed/token=" + api_key)
@@ -937,9 +937,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/protect/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -961,9 +961,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/run/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -985,9 +985,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/scared/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -1009,9 +1009,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/shrug/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -1033,9 +1033,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/scream/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -1057,9 +1057,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/stare/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
@@ -1081,9 +1081,9 @@ class Perform(commands.Cog):
 
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
-        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url)
 
         embed.set_image(url=await api_call2("https://kawaii.red/api/gif/wave/token=" + api_key))
         await ctx.reply(embed=embed, mention_author=False)
