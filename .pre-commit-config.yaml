@@ -8,7 +8,7 @@ repos:
       - id: black
 
   - repo: https://github.com/pycqa/isort
-    rev: 5.9.3
+    rev: 5.10.0
     hooks:
       - id: isort
 
@@ -55,7 +55,7 @@ repos:
       - id: check-merge-conflict
 
   - repo: https://github.com/sourcery-ai/sourcery
-    rev: v0.9.7b4+c36e9b0 # Get the latest tag from https://github.com/sourcery-ai/sourcery/tags
+    rev: v0.9.6b47+e550f77 # Get the latest tag from https://github.com/sourcery-ai/sourcery/tags
     hooks:
       - id: sourcery
       # - args: [--in-place]  Automatically apply the refactorings in the hook
