@@ -26,7 +26,7 @@ class Perform(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.config = Config.get_conf(self, identifier=8423644625413)
+        self.config = Config.get_conf(self, identifier=8423644625413, force_registration=True)
         default_global = {
             "feed": [
                 "https://media1.tenor.com/images/93c4833dbcfd5be9401afbda220066ee/tenor.gif?itemid=11223742",
@@ -56,7 +56,73 @@ class Perform(commands.Cog):
                 "https://media.giphy.com/media/Qo3qovmbqaKT6/giphy.gif",
             ],
         }
+        default_member = {
+            "cuddle_s": 0,
+            "cuddle_r": 0,
+            "poke_s": 0,
+            "poke_r": 0,
+            "kiss_s": 0,
+            "kiss_r": 0,
+            "hug_s": 0,
+            "hug_r": 0,
+            "slap_s": 0,
+            "slap_r": 0,
+            "pat_s": 0,
+            "pat_r": 0,
+            "tickle_s": 0,
+            "tickle_r": 0,
+            "smug_s": 0,
+            "smug_r": 0,
+            "lick_s": 0,
+            "lick_r": 0,
+            "cry": 0,
+            "sleep": 0,
+            "spank_s": 0,
+            "spank_r": 0,
+            "pout": 0,
+            "blush": 0,
+            "feed_s": 0,
+            "feed_r": 0,
+            "punch_s": 0,
+            "punch_r": 0,
+            "confused": 0,
+            "amazed": 0,
+            "highfive_s": 0,
+            "highfive_r": 0,
+            "plead_s": 0,
+            "plead_r": 0,
+            "clap": 0,
+            "facepalm": 0,
+            "kill_s": 0,
+            "kill_r": 0,
+            "love_s": 0,
+            "love_r": 0,
+            "hide": 0,
+            "laugh": 0,
+            "lurk": 0,
+            "bite_s": 0,
+            "bite_r": 0,
+            "dance": 0,
+            "yeet_s": 0,
+            "yeet_r": 0,
+            "dodge": 0,
+            "happy": 0,
+            "cute": 0,
+            "lonely": 0,
+            "mad": 0,
+            "nosebleed": 0,
+            "protect_s": 0,
+            "protect_r": 0,
+            "run": 0,
+            "scared": 0,
+            "shrug": 0,
+            "scream": 0,
+            "stare": 0,
+            "wave_s": 0,
+            "wave_r": 0,
+        }
         self.config.register_global(**default_global)
+        self.config.register_member(**default_member)
         self.cache = {}
 
     __author__ = ["Onii-chan", "sravan"]
@@ -72,8 +138,21 @@ class Perform(commands.Cog):
     @commands.guild_only()
     async def cuddle(self, ctx, user: discord.Member):
         """Cuddle a user!"""
-        await nekosembed(self, ctx, user, "cuddled", "cuddle")
-
+        target = await self.config.member(user).cuddle_r()
+        used = await self.config.member(ctx.author).cuddle_s()
+        embed = await nekosembed(self, ctx, user, "cuddled", "cuddle")
+        embed.set_footer(text=f"{ctx.author.name}'s total cuddles: {used + 1} | {ctx.author.name} has cuddled {user.name} {target + 1} times")
+        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+            hook = await get_hook(self, ctx)
+            await hook.send(
+                username=ctx.author.display_name,
+                avatar_url=ctx.author.avatar_url,
+                embed=embed
+                )
+        else:
+            await ctx.reply(embed=embed, mention_author=False)
+        await self.config.member(ctx.author).cuddle_s.set(used + 1)
+        await self.config.member(user).cuddle_r.set(target + 1)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="poke")
@@ -350,7 +429,7 @@ class Perform(commands.Cog):
     @commands.guild_only()
     async def cute(self, ctx):
         """Act cute!"""
-        await kawaiiembed(self, ctx, "is acting cute!", "facepalm")
+        await kawaiiembed(self, ctx, "is acting cute!", "cute")
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="lonely", aliases=["alone"])
@@ -430,5 +509,4 @@ class Perform(commands.Cog):
             title="How to set API for perform cog",
             description="1. Go to https://kawaii.red/\n2. Login using your discord account\n3. Click on dashboard and copy your token\n4. Use `[p]set api perform api_key <token>`",
         )
-        #    embed.description(")
         await ctx.send(embed=embed)

@@ -29,21 +29,9 @@ async def nekosembed(self, ctx, user, action: str, endpoint: str):
         description=f"**{ctx.author.mention}** {action} {f'**{str(user.mention)}**' if user else 'themselves'}!",
         color=discord.Colour.random(),
     )
-    embed.set_footer(
-        text=f"Requested by {ctx.message.author.display_name}",
-        icon_url=ctx.message.author.avatar_url,
-    )
     embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
     embed.set_image(url=await api_call("https://nekos.life/api/v2/img/" + endpoint))
-    if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
-        hook = await get_hook(self, ctx)
-        await hook.send(
-            username=ctx.author.display_name,
-            avatar_url=ctx.author.avatar_url,
-            embed=embed
-            )
-    else:
-        await ctx.reply(embed=embed, mention_author=False)
+    return embed
 
 
 async def shiroembed(self, ctx, action: str, endpoint: str, user=None):
