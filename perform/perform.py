@@ -56,7 +56,7 @@ class Perform(commands.Cog):
                 "https://media.giphy.com/media/Qo3qovmbqaKT6/giphy.gif",
             ],
         }
-        default_member = {
+        default_user = {
             "cuddle_s": 0,
             "cuddle_r": 0,
             "poke_s": 0,
@@ -122,7 +122,7 @@ class Perform(commands.Cog):
             "wave_r": 0,
         }
         self.config.register_global(**default_global)
-        self.config.register_member(**default_member)
+        self.config.register_user(**default_user)
         self.cache = {}
 
     __author__ = ["Onii-chan", "sravan"]
@@ -138,8 +138,8 @@ class Perform(commands.Cog):
     @commands.guild_only()
     async def cuddle(self, ctx, user: discord.Member):
         """Cuddle a user!"""
-        target = await self.config.member(user).cuddle_r()
-        used = await self.config.member(ctx.author).cuddle_s()
+        target = await self.config.user(user).cuddle_r()
+        used = await self.config.user(ctx.author).cuddle_s()
         embed = await nekosembed(self, ctx, user, "cuddled", "cuddle")
         embed.set_footer(text=f"{ctx.author.name}'s total cuddles: {used + 1} | {ctx.author.name} has cuddled {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
@@ -151,8 +151,8 @@ class Perform(commands.Cog):
                 )
         else:
             await ctx.reply(embed=embed, mention_author=False)
-        await self.config.member(ctx.author).cuddle_s.set(used + 1)
-        await self.config.member(user).cuddle_r.set(target + 1)
+        await self.config.user(ctx.author).cuddle_s.set(used + 1)
+        await self.config.user(user).cuddle_r.set(target + 1)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="poke")
