@@ -19,9 +19,7 @@ from random import randint
 
 import discord
 from redbot.core import Config, commands
-
-from .utils import kawaiiembed, nekosembed, shiroembed
-
+from .utils import shiroembed, nekosembed, kawaiiembed, get_hook
 
 class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
@@ -59,6 +57,7 @@ class Perform(commands.Cog):
             ],
         }
         self.config.register_global(**default_global)
+        self.cache = {}
 
     __author__ = ["Onii-chan", "sravan"]
     __version__ = "5.0.0"  # idk what im doing with version
@@ -74,6 +73,7 @@ class Perform(commands.Cog):
     async def cuddle(self, ctx, user: discord.Member):
         """Cuddle a user!"""
         await nekosembed(self, ctx, user, "cuddled", "cuddle")
+
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="poke")
@@ -165,7 +165,15 @@ class Perform(commands.Cog):
             icon_url=ctx.author.avatar_url,
         )
         em.set_image(url=images[i])
-        await ctx.reply(embed=em, mention_author=False)
+        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+            hook = await get_hook(self, ctx)
+            await hook.send(
+                username=ctx.author.display_name,
+                avatar_url=ctx.author.avatar_url,
+                embed=em
+                )
+        else:
+            await ctx.reply(embed=em, mention_author=False)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="pout")
@@ -201,7 +209,15 @@ class Perform(commands.Cog):
             icon_url=ctx.author.avatar_url,
         )
         em.set_image(url=images[i])
-        await ctx.reply(embed=em, mention_author=False)
+        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+            hook = await get_hook(self, ctx)
+            await hook.send(
+                username=ctx.author.display_name,
+                avatar_url=ctx.author.avatar_url,
+                embed=em
+                )
+        else:
+            await ctx.reply(embed=em, mention_author=False)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="punch")

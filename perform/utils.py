@@ -35,7 +35,15 @@ async def nekosembed(self, ctx, user, action: str, endpoint: str):
     )
     embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
     embed.set_image(url=await api_call("https://nekos.life/api/v2/img/" + endpoint))
-    await ctx.reply(embed=embed, mention_author=False)
+    if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        hook = await get_hook(self, ctx)
+        await hook.send(
+            username=ctx.author.display_name,
+            avatar_url=ctx.author.avatar_url,
+            embed=embed
+            )
+    else:
+        await ctx.reply(embed=embed, mention_author=False)
 
 
 async def shiroembed(self, ctx, action: str, endpoint: str, user=None):
@@ -57,7 +65,15 @@ async def shiroembed(self, ctx, action: str, endpoint: str, user=None):
                 icon_url=ctx.author.avatar_url,
             )
             em.set_image(url=res["url"])
-            await ctx.reply(embed=em, mention_author=False)
+            if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=em
+                    )
+            else:
+                await ctx.reply(embed=em, mention_author=False)
 
 
 async def kawaiiembed(self, ctx, action: str, endpoint: str, user=None):
@@ -85,4 +101,31 @@ async def kawaiiembed(self, ctx, action: str, endpoint: str, user=None):
     embed.set_image(
         url=await api_call2("https://kawaii.red/api/gif/" + endpoint + "/token=" + api_key)
     )
-    await ctx.reply(embed=embed, mention_author=False)
+    if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        hook = await get_hook(self, ctx)
+        await hook.send(
+            username=ctx.author.display_name,
+            avatar_url=ctx.author.avatar_url,
+            embed=embed
+            )
+    else:
+        await ctx.reply(embed=embed, mention_author=False)
+
+# Thanks epic
+async def get_hook(self, ctx):
+    try:
+        if ctx.channel.id not in self.cache:
+            for i in await ctx.channel.webhooks():
+                if i.user.id == self.bot.user.id:
+                    hook = i
+                    self.cache[ctx.channel.id] = hook
+                    break
+            else:
+                hook = await ctx.channel.create_webhook(
+                    name="red_bot_hook_" + str(ctx.channel.id)
+                )
+        else:
+            hook = self.cache[ctx.channel.id]
+    except discord.errors.NotFound:  # Probably user deleted the hook
+        hook = await ctx.channel.create_webhook(name="red_bot_hook_" + str(ctx.channel.id))
+    return hook
