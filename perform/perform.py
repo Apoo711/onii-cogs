@@ -19,7 +19,9 @@ from random import randint
 
 import discord
 from redbot.core import Config, commands
-from .utils import shiroembed, nekosembed, kawaiiembed, get_hook
+
+from .utils import get_hook, kawaiiembed, nekosembed, shiroembed
+
 
 class Perform(commands.Cog):
     """Perform different actions, like cuddle, poke etc."""
