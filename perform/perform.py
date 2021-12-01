@@ -418,12 +418,15 @@ class Perform(commands.Cog):
         used = await self.config.user(ctx.author).spank_s()
         em.set_footer(text=f"{ctx.author.name}'s total cuddles: {used + 1} | {ctx.author.name} has cuddled {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
-            hook = await get_hook(self, ctx)
-            await hook.send(
-                username=ctx.author.display_name,
-                avatar_url=ctx.author.avatar_url,
-                embed=em
-                )
+            try:
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=em
+                    )
+            except discord.Forbidden:
+                await ctx.reply(embed=em, mention_author=False)
         else:
             await ctx.reply(embed=em, mention_author=False)
         await self.config.user(ctx.author).spank_s.set(used + 1)
@@ -493,12 +496,15 @@ class Perform(commands.Cog):
         used = await self.config.user(ctx.author).feed_s()
         em.set_footer(text=f"{ctx.author.name}'s total feeds: {used + 1} | {ctx.author.name} has feeded {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
-            hook = await get_hook(self, ctx)
-            await hook.send(
-                username=ctx.author.display_name,
-                avatar_url=ctx.author.avatar_url,
-                embed=em
-                )
+            try:
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=em
+                    )
+            except discord.Forbidden:
+                await ctx.reply(embed=em, mention_author=False)
         else:
             await ctx.reply(embed=em, mention_author=False)
         await self.config.user(ctx.author).feed_s.set(used + 1)
