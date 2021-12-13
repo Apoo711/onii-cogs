@@ -1,4 +1,5 @@
 from typing import Container
+
 import aiohttp
 import discord
 from discord.enums import ContentFilter
@@ -42,7 +43,7 @@ async def shiroembed(self, ctx, action: str, endpoint: str, user=None):
             try:
                 res = await r.json()
             except aiohttp.ContentTypeError:
-                return False    
+                return False
             if user is None:
                 em = discord.Embed(
                     colour=discord.Colour.random(),
