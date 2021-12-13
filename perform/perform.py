@@ -170,6 +170,8 @@ class Perform(commands.Cog):
     async def poke(self, ctx, user: discord.Member):
         """Poke a user!"""
         embed = await shiroembed(self, ctx, "poked", "poke", user)
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         target = await self.config.custom("Target", ctx.author.id, user.id).poke_r()
         used = await self.config.user(ctx.author).poke_s()
         embed.set_footer(text=f"{ctx.author.name}'s total pokes: {used + 1} | {ctx.author.name} has poked {user.name} {target + 1} times")
@@ -194,6 +196,8 @@ class Perform(commands.Cog):
     async def kiss(self, ctx, user: discord.Member):
         """Kiss a user!"""
         embed = await shiroembed(self, ctx, "just kissed", "kiss", user)
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         target = await self.config.custom("Target", ctx.author.id, user.id).kiss_r()
         used = await self.config.user(ctx.author).kiss_s()
         embed.set_footer(text=f"{ctx.author.name}'s total kisses: {used + 1} | {ctx.author.name} has kissed {user.name} {target + 1} times")
@@ -218,6 +222,8 @@ class Perform(commands.Cog):
     async def hug(self, ctx, user: discord.Member):
         """Hugs a user!"""
         embed = await shiroembed(self, ctx, "just hugged", "hug", user)
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         target = await self.config.custom("Target", ctx.author.id, user.id).hug_r()
         used = await self.config.user(ctx.author).hug_s()
         embed.set_footer(text=f"{ctx.author.name}'s total hugs: {used + 1} | {ctx.author.name} has hugged {user.name} {target + 1} times")
@@ -242,6 +248,8 @@ class Perform(commands.Cog):
     async def pat(self, ctx, user: discord.Member):
         """Pats a user!"""
         embed = await shiroembed(self, ctx, "just patted", "pat", user)
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         target = await self.config.custom("Target", ctx.author.id, user.id).pat_r()
         used = await self.config.user(ctx.author).pat_s()
         embed.set_footer(text=f"{ctx.author.name}'s total pats: {used + 1} | {ctx.author.name} has patted {user.name} {target + 1} times")
@@ -266,6 +274,8 @@ class Perform(commands.Cog):
     async def tickle(self, ctx, user: discord.Member):
         """Tickles a user!"""
         embed = await shiroembed(self, ctx, "just tickled", "tickle", user)
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         target = await self.config.custom("Target", ctx.author.id, user.id).tickle_r()
         used = await self.config.user(ctx.author).tickle_s()
         embed.set_footer(text=f"{ctx.author.name}'s total tickles: {used + 1} | {ctx.author.name} has tickled {user.name} {target + 1} times")
@@ -290,6 +300,8 @@ class Perform(commands.Cog):
     async def smug(self, ctx):
         """Be smug towards someone!"""
         embed = await shiroembed(self, ctx, "is acting so smug!", "smug")
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).smug()
         embed.set_footer(text=f"{ctx.author.name}'s total smugs: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
@@ -312,6 +324,8 @@ class Perform(commands.Cog):
     async def lick(self, ctx, user: discord.Member):
         """Licks a user!"""
         embed = await shiroembed(self, ctx, "just licked", "lick", user)
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         target = await self.config.custom("Target", ctx.author.id, user.id).lick_r()
         used = await self.config.user(ctx.author).lick_s()
         embed.set_footer(text=f"{ctx.author.name}'s total licks: {used + 1} | {ctx.author.name} has licked {user.name} {target + 1} times")
@@ -336,6 +350,8 @@ class Perform(commands.Cog):
     async def slap(self, ctx, user: discord.Member):
         """Slaps a user!"""
         embed = await shiroembed(self, ctx, "just slapped", "slap", user)
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         target = await self.config.custom("Target", ctx.author.id, user.id).slap_r()
         used = await self.config.user(ctx.author).slap_s()
         embed.set_footer(text=f"{ctx.author.name}'s total slaps: {used + 1} | {ctx.author.name} has slapped {user.name} {target + 1} times")
@@ -360,6 +376,8 @@ class Perform(commands.Cog):
     async def cry(self, ctx):
         """Start crying!"""
         embed = await shiroembed(self, ctx, "is crying!", "cry")
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).cry()
         embed.set_footer(text=f"{ctx.author.name}'s total cries: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
@@ -382,6 +400,8 @@ class Perform(commands.Cog):
     async def sleep(self, ctx):
         """Act sleepy!"""
         embed = await shiroembed(self, ctx, "is sleepy!, sleep")
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).sleep()
         embed.set_footer(text=f"{ctx.author.name}'s total sleeps: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
@@ -438,6 +458,8 @@ class Perform(commands.Cog):
     async def pout(self, ctx):
         """Act pout!"""
         embed = await shiroembed(self, ctx, "is acting pout!", "pout")
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).pout()
         embed.set_footer(text=f"{ctx.author.name}'s total pouts: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
@@ -460,6 +482,8 @@ class Perform(commands.Cog):
     async def blush(self, ctx):
         """Act blush!"""
         embed = await shiroembed(self, ctx, "is blushing!", "blush")
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).blush()
         embed.set_footer(text=f"{ctx.author.name}'s total blushes: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
@@ -516,6 +540,8 @@ class Perform(commands.Cog):
     async def punch(self, ctx, user: discord.Member):
         """Punch a user!"""
         embed = await shiroembed(self, ctx, "just punched", "punch", user)
+        if embed is False:
+            return await ctx.send("shiro.gg api is down")
         target = await self.config.custom("Target", ctx.author.id, user.id).punch_r()
         used = await self.config.user(ctx.author).punch_s()
         embed.set_footer(text=f"{ctx.author.name}'s total punxhes: {used + 1} | {ctx.author.name} has punxhed {user.name} {target + 1} times")

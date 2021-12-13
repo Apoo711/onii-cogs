@@ -1,5 +1,7 @@
+from typing import Container
 import aiohttp
 import discord
+from discord.enums import ContentFilter
 
 
 async def api_call(call_uri, returnObj=False):
@@ -37,7 +39,10 @@ async def nekosembed(self, ctx, user, action: str, endpoint: str):
 async def shiroembed(self, ctx, action: str, endpoint: str, user=None):
     async with aiohttp.ClientSession() as cs:
         async with cs.get("https://shiro.gg/api/images/" + endpoint) as r:
-            res = await r.json()
+            try:
+                res = await r.json()
+            except aiohttp.ContentTypeError:
+                return False    
             if user is None:
                 em = discord.Embed(
                     colour=discord.Colour.random(),
