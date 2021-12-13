@@ -436,7 +436,7 @@ class Perform(commands.Cog):
         em.set_image(url=images[i])
         target = await self.config.custom("Target", ctx.author.id, user.id).spank_r()
         used = await self.config.user(ctx.author).spank_s()
-        em.set_footer(text=f"{ctx.author.name}'s total cuddles: {used + 1} | {ctx.author.name} has cuddled {user.name} {target + 1} times")
+        em.set_footer(text=f"{ctx.author.name}'s total spanks: {used + 1} | {ctx.author.name} has spanked {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
                 hook = await get_hook(self, ctx)
@@ -589,7 +589,7 @@ class Perform(commands.Cog):
         """Act amazed!"""
         embed = await kawaiiembed(self, ctx, "is amazed!", "amazing")
         used = await self.config.user(ctx.author).amazed()
-        embed.set_footer(text=f"{ctx.author.name}'s total cuddles: {used + 1}")
+        embed.set_footer(text=f"{ctx.author.name}'s total amazes: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
                 hook = await get_hook(self, ctx)
@@ -659,7 +659,7 @@ class Perform(commands.Cog):
         """Clap for someone!"""
         embed = await kawaiiembed(self, ctx, "is clapping!", "clap")
         used = await self.config.user(ctx.author).clap()
-        embed.set_footer(text=f"{ctx.author.name}'s total cuddles: {used + 1}")
+        embed.set_footer(text=f"{ctx.author.name}'s total claps: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
                 hook = await get_hook(self, ctx)
@@ -703,7 +703,7 @@ class Perform(commands.Cog):
         """Do a facedesk!"""
         embed = await kawaiiembed(self, ctx, "is facedesking!", "facedesk")
         used = await self.config.user(ctx.author).facedesk()
-        embed.set_footer(text=f"{ctx.author.name}'s total cuddles: {used + 1}")
+        embed.set_footer(text=f"{ctx.author.name}'s total facedesks: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
                 hook = await get_hook(self, ctx)
