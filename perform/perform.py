@@ -21,6 +21,10 @@ import discord
 from redbot.core import Config, commands
 
 from .utils import get_hook, kawaiiembed, nekosembed, shiroembed
+import logging
+
+
+log = logging.getLogger("red.onii.perform")
 
 
 class Perform(commands.Cog):
@@ -133,12 +137,24 @@ class Perform(commands.Cog):
         self.cache = {}
 
     __author__ = ["Onii-chan", "sravan"]
-    __version__ = "5.4.0"  # idk what im doing with version
+    __version__ = "5.4.1"  # idk what im doing with version
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
+
+    def cog_unload(self):
+        global hug
+        if hug:
+            try:
+                self.bot.remove_command("hug")
+            except Exception as e:
+                log.info(e)
+            self.bot.add_command(hug)
+        # This is worse case scenario but still important to check for
+        if self.startup_task:
+            self.startup_task.cancel()
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
@@ -1198,6 +1214,17 @@ class Perform(commands.Cog):
         """Steps to get the API token needed for few commands."""
         embed = discord.Embed(
             title="How to set API for perform cog",
-            description="1. Go to https://kawaii.red/\n2. Login using your discord account\n3. Click on dashboard and copy your token\n4. Use `[p]set api perform api_key <token>`",
+            description=(
+                "1. Go to https://kawaii.red/\n"
+                "2. Login using your discord account\n"
+                "3. Click on dashboard and copy your token\n"
+                "4. Use `[p]set api perform api_key <token>`",
+            )
         )
         await ctx.send(embed=embed)
+
+def setup(bot):
+    global hug
+
+    hug = bot.remove_command("hug")
+    bot.add_cog(Perform(bot))
