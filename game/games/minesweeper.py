@@ -78,7 +78,7 @@ async def play(ctx, columns = None, rows = None, bombs = None):
         else:
             pos_x = pos_x + 1
 
-    # Builds the string to be Discord-ready 
+    # Builds the string to be Discord-ready
     string_builder = []
     for the_rows in grid:
         string_builder.append(''.join(map(str, the_rows)))
