@@ -73,3 +73,6 @@ class Memes(commands.Cog):
         await ctx.reply(
             file=discord.File(m.my_heart(normal, slight_panic, ultra_panic))
         )
+
+def setup(bot):
+    bot.add_cog(Memes(bot))
