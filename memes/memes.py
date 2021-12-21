@@ -10,7 +10,7 @@ class Memes(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def drake(ctx: commands.Context, text: str):
+    async def drake(self, ctx, text: str):
         """Drake meme"""
         async with ctx.typing():
             if len(text.split(",")) < 2:
@@ -23,7 +23,7 @@ class Memes(commands.Cog):
             )
 
     @commands.command()
-    async def disappointed(ctx, text: str):
+    async def disappointed(self, ctx, text: str):
         """Disappointed meme"""
         async with ctx.typing():
             if len(text.split(",")) < 2:
@@ -36,7 +36,7 @@ class Memes(commands.Cog):
             )
 
     @commands.command(name="flextape", aliases=["flex", "flext"])
-    async def flex_tape(ctx, text: str):
+    async def flex_tape(self, ctx, text: str):
         """Flex tape meme"""
         async with ctx.typing():
             if len(text.split(",")) < 2:
