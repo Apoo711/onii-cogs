@@ -15,14 +15,13 @@ limitations under the License.
 """
 
 
+import logging
 from random import randint
 
 import discord
 from redbot.core import Config, commands
 
 from .utils import get_hook, kawaiiembed, nekosembed, shiroembed
-import logging
-
 
 log = logging.getLogger("red.onii.perform")
 
