@@ -10,17 +10,17 @@ class Memes(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def drake(ctx, text: str):
+    async def drake(ctx: commands.Context, text: str):
         """Drake meme"""
-        await ctx.typing()
-        if len(text.split(",")) < 2:
-            return await ctx.send(
-                "You need to specify two pieces of text, split by a comma"
+        async with ctx.typing():
+            if len(text.split(",")) < 2:
+                return await ctx.send(
+                    "You need to specify two pieces of text, split by a comma"
+                )
+            drake_text = text.split(",")
+            await ctx.reply(
+                file=discord.File(m.drake(drake_text[0], drake_text[1]))
             )
-        drake_text = text.split(",")
-        await ctx.reply(
-            file=discord.File(m.drake(drake_text[0], drake_text[1]))
-        )
 
     @commands.command()
     async def disappointed(ctx, text: str):
