@@ -1,13 +1,7 @@
 [tool.black]
-line-length = 99
+line-length = 79
 target-version = ['py38']
 
 [tool.isort]
 profile = "black"
-line_length = 99
-
-[flake8]
-ignore = E266, E501, W503, F403, F401, E203
-max-line-length = 99
-max-complexity = 18
-select = B,C,E,F,W,T4,B9
+line_length = 79

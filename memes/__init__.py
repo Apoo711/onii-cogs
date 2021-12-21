@@ -1,0 +1,1 @@
+from .memes import setup
