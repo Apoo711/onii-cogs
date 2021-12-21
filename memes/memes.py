@@ -12,9 +12,11 @@ class Memes(commands.Cog):
     @commands.command()
     async def drake(ctx, text: str):
         """Drake meme"""
-        async with ctx..typing():
+        async with ctx.typing():
             if len(text.split(",")) < 2:
-                return await ctx.send("You need to specify two pieces of text, split by a comma")
+                return await ctx.send(
+                    "You need to specify two pieces of text, split by a comma"
+                )
             drake_text = text.split(",")
             await ctx.reply(
                 file=discord.File(m.drake(drake_text[0], drake_text[1]))
@@ -25,7 +27,9 @@ class Memes(commands.Cog):
         """Disappointed meme"""
         async with ctx.typing():
             if len(text.split(",")) < 2:
-                return await ctx.send("You need to specify two pieces of text, split by a comma")
+                return await ctx.send(
+                    "You need to specify two pieces of text, split by a comma"
+                )
             dis_text = text.split(",")
             await ctx.reply(
                 file=discord.File(m.disappointed(dis_text[0], dis_text[1]))
@@ -36,7 +40,9 @@ class Memes(commands.Cog):
         """Flex tape meme"""
         async with ctx.typing():
             if len(text.split(",")) < 2:
-                return await ctx.send("You need to specify two pieces of text, split by a comma")
+                return await ctx.send(
+                    "You need to specify two pieces of text, split by a comma"
+                )
             flextape_text = text.split(",")
             await ctx.reply(
                 file=discord.File(
@@ -50,16 +56,16 @@ class Memes(commands.Cog):
     async def bernie(self, ctx, text: str):
         """Bernie meme"""
         async with ctx.typing():
-            await ctx.reply(
-                file=discord.File(m.bernie(text))
-            )
-    
+            await ctx.reply(file=discord.File(m.bernie(text)))
+
     @commands.command()
     async def doge(self, ctx, text: str):
         """Doge meme"""
         async with ctx.typing():
             if len(text.split(",")) < 2:
-                return await ctx.send("You need to specify two pieces of text, split by a comma")
+                return await ctx.send(
+                    "You need to specify two pieces of text, split by a comma"
+                )
             doge_text = text.split(",")
             await ctx.reply(
                 file=discord.File(m.doge(doge_text[0], doge_text[1]))
@@ -69,17 +75,20 @@ class Memes(commands.Cog):
     async def panik(self, ctx, panic: str, kalm: str, panik: str):
         """Panik... Kalm... PANIKK!!!"""
         async with ctx.typing():
-            await ctx.reply(
-                file=discord.File(m.panik(panic, kalm, panik))
-            )
-    
+            await ctx.reply(file=discord.File(m.panik(panic, kalm, panik)))
+
     @commands.command(name="myheart")
-    async def my_heart(self, ctx, normal:str, slight_panic: str, ultra_panic: str):
+    async def my_heart(
+        self, ctx, normal: str, slight_panic: str, ultra_panic: str
+    ):
         """My heart meme"""
         async with ctx.typing():
             await ctx.reply(
-                file=discord.File(m.my_heart(normal, slight_panic, ultra_panic))
+                file=discord.File(
+                    m.my_heart(normal, slight_panic, ultra_panic)
+                )
             )
+
 
 def setup(bot):
     bot.add_cog(Memes(bot))
