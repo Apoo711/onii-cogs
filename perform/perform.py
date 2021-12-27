@@ -317,7 +317,7 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is acting so smug!", "smug")
         if embed is False:
             return await ctx.send("shiro.gg api is down")
-        used = await self.config.user(ctx.author).smug()
+        used = await self.config.user(ctx.author).smug_s()
         embed.set_footer(text=f"{ctx.author.name}'s total smugs: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
@@ -331,7 +331,7 @@ class Perform(commands.Cog):
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
-        await self.config.user(ctx.author).smug.set(used + 1)
+        await self.config.user(ctx.author).smug_s.set(used + 1)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="lick")
