@@ -21,6 +21,7 @@ import random
 import aiohttp
 import discord
 from redbot.core import Config, commands
+from .utils import reddit_embed
 
 
 async def api_call(call_uri, returnObj=False):
@@ -121,7 +122,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
         try:
             await ctx.reply(
@@ -202,7 +203,7 @@ class Image(commands.Cog):
                         downvotes,
                         comments,
                     ),
-                    icon_url=ctx.message.author.avatar_url,
+                    icon_url=ctx.message.author.avatar.url,
                 )
 
                 return await ctx.reply(embed=embed, mention_author=False)
@@ -273,7 +274,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -290,63 +291,7 @@ class Image(commands.Cog):
         Pictures shown are taken from r/AnimePFP.
         """
         await ctx.trigger_typing()
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://api.martinebot.com/v1/images/subreddit?name=AnimePFP"
-            ) as resp:
-                origin = await resp.json()
-                data = origin["data"]
-                url = data["image_url"]
-                subreddit = data["subreddit"] or ""
-                sub_name = subreddit["name"] or "Unknown"
-                sub_url = subreddit["url"] or ""
-                author = data["author"] or ""
-                r_author = author["name"] or "Unknown"
-                r_author_url = author["url"] or ""
-                title = data["title"] or ""
-                created_at = data["created_at"] or ""
-                downvotes = data["downvotes"] or ""
-                comments = data["comments"] or ""
-                ups = data["upvotes"] or ""
-                link = data["post_url"] or ""
-
-                if data["nsfw"] and not ctx.channel.is_nsfw():
-                    return await ctx.send(
-                        "Sorry the contents of this post are NSFW and this channel isn't set to allow NSFW content, please it on and try again later."
-                    )
-
-        embed = discord.Embed(
-            title="Here's a random image...:frame_photo:",
-            colour=discord.Colour.random(),
-            description=(
-                "**Post by:** [u/{}]({})\n"
-                "**From:** [r/{}]({})\n"
-                "**This post was created on:** <t:{}:F>\n"
-                "**Title:** [{}]({})"
-            ).format(
-                r_author,
-                r_author_url,
-                sub_name,
-                sub_url,
-                created_at,
-                title,
-                link,
-            ),
-        )
-        embed.set_image(url=url)
-        embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
-            icon_url=ctx.message.author.avatar_url,
-        )
-
-        await ctx.reply(
-            embed=embed,
-            mention_author=False,
-        )
+        await reddit_embed(self, ctx, "AnimePFP")
 
     @commands.command()
     @commands.guild_only()
@@ -359,10 +304,10 @@ class Image(commands.Cog):
 
         embed.set_footer(
             text="Powered by nekos.best",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
         embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+            name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
         )
 
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
@@ -428,7 +373,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -497,7 +442,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -571,7 +516,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         try:
@@ -641,7 +586,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -708,7 +653,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -782,7 +727,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -878,7 +823,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         try:

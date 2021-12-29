@@ -33,7 +33,7 @@ async def nekosembed(self, ctx, user, action: str, endpoint: str):
         color=discord.Colour.random(),
     )
     embed.set_author(
-        name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+        name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
     )
     embed.set_image(
         url=await api_call("https://nekos.life/api/v2/img/" + endpoint)
@@ -60,7 +60,7 @@ async def shiroembed(self, ctx, action: str, endpoint: str, user=None):
                 )
             em.set_footer(
                 text=f"Requested by: {str(ctx.author)}",
-                icon_url=ctx.author.avatar_url,
+                icon_url=ctx.author.avatar.url,
             )
             em.set_image(url=res["url"])
             return em
@@ -84,10 +84,10 @@ async def kawaiiembed(self, ctx, action: str, endpoint: str, user=None):
         )
     embed.set_footer(
         text=f"Requested by {ctx.message.author.display_name}",
-        icon_url=ctx.message.author.avatar_url,
+        icon_url=ctx.message.author.avatar.url,
     )
     embed.set_author(
-        name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+        name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
     )
 
     embed.set_image(

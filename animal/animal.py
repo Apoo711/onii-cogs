@@ -107,7 +107,7 @@ class Animal(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.trigger_typing()
@@ -184,7 +184,7 @@ class Animal(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
