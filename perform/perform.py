@@ -21,7 +21,7 @@ from random import randint
 import discord
 from redbot.core import Config, commands
 
-from .utils import get_hook, kawaiiembed, nekosembed, shiroembed
+from .utils import get_hook, kawaiiembed, nekosembed
 
 log = logging.getLogger("red.onii.perform")
 
@@ -195,7 +195,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def poke(self, ctx, user: discord.Member):
         """Poke a user!"""
-        embed = await shiroembed(self, ctx, "poked", "poke", user)
+        embed = await kawaiiembed(self, ctx, "poked", "poke", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         target = await self.config.custom(
@@ -230,7 +230,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def kiss(self, ctx, user: discord.Member):
         """Kiss a user!"""
-        embed = await shiroembed(self, ctx, "just kissed", "kiss", user)
+        embed = await kawaiiembed(self, ctx, "just kissed", "kiss", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         target = await self.config.custom(
@@ -265,7 +265,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def hug(self, ctx, user: discord.Member):
         """Hugs a user!"""
-        embed = await shiroembed(self, ctx, "just hugged", "hug", user)
+        embed = await kawaiiembed(self, ctx, "just hugged", "hug", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         target = await self.config.custom(
@@ -300,7 +300,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def pat(self, ctx, user: discord.Member):
         """Pats a user!"""
-        embed = await shiroembed(self, ctx, "just patted", "pat", user)
+        embed = await kawaiiembed(self, ctx, "just patted", "pat", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         target = await self.config.custom(
@@ -335,7 +335,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def tickle(self, ctx, user: discord.Member):
         """Tickles a user!"""
-        embed = await shiroembed(self, ctx, "just tickled", "tickle", user)
+        embed = await kawaiiembed(self, ctx, "just tickled", "tickle", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         target = await self.config.custom(
@@ -370,10 +370,10 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def smug(self, ctx):
         """Be smug towards someone!"""
-        embed = await shiroembed(self, ctx, "is acting so smug!", "smug")
+        embed = await kawaiiembed(self, ctx, "is acting so smug!", "smug")
         if embed is False:
             return await ctx.send("shiro.gg api is down")
-        used = await self.config.user(ctx.author).smug()
+        used = await self.config.user(ctx.author).smug_s()
         embed.set_footer(text=f"{ctx.author.name}'s total smugs: {used + 1}")
         if (
             ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks
@@ -390,14 +390,14 @@ class Perform(commands.Cog):
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
-        await self.config.user(ctx.author).smug.set(used + 1)
+        await self.config.user(ctx.author).smug_s.set(used + 1)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="lick")
     @commands.bot_has_permissions(embed_links=True)
     async def lick(self, ctx, user: discord.Member):
         """Licks a user!"""
-        embed = await shiroembed(self, ctx, "just licked", "lick", user)
+        embed = await kawaiiembed(self, ctx, "just licked", "lick", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         target = await self.config.custom(
@@ -432,7 +432,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def slap(self, ctx, user: discord.Member):
         """Slaps a user!"""
-        embed = await shiroembed(self, ctx, "just slapped", "slap", user)
+        embed = await kawaiiembed(self, ctx, "just slapped", "slap", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         target = await self.config.custom(
@@ -467,7 +467,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def cry(self, ctx):
         """Start crying!"""
-        embed = await shiroembed(self, ctx, "is crying!", "cry")
+        embed = await kawaiiembed(self, ctx, "is crying!", "cry")
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).cry()
@@ -494,7 +494,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def sleep(self, ctx):
         """Act sleepy!"""
-        embed = await shiroembed(self, ctx, "is sleepy!, sleep")
+        embed = await kawaiiembed(self, ctx, "is sleepy!, sleep")
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).sleep()
@@ -564,7 +564,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def pout(self, ctx):
         """Act pout!"""
-        embed = await shiroembed(self, ctx, "is acting pout!", "pout")
+        embed = await kawaiiembed(self, ctx, "is acting pout!", "pout")
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).pout()
@@ -591,7 +591,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def blush(self, ctx):
         """Act blush!"""
-        embed = await shiroembed(self, ctx, "is blushing!", "blush")
+        embed = await kawaiiembed(self, ctx, "is blushing!", "blush")
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).blush()
@@ -661,7 +661,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def punch(self, ctx, user: discord.Member):
         """Punch a user!"""
-        embed = await shiroembed(self, ctx, "just punched", "punch", user)
+        embed = await kawaiiembed(self, ctx, "just punched", "punch", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         target = await self.config.custom(
