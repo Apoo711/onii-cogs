@@ -1,5 +1,5 @@
-import discord
 import aiohttp
+import discord
 
 
 async def reddit_embed(self, ctx, subr: str):

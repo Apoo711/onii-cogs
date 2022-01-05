@@ -15,7 +15,7 @@
         "games"
     ],
     "hidden": true,
-    "requirenments": [
+    "requirements": [
         "git+https://github.com/nirlep5252/Discord-Games.git"
     ]
 }

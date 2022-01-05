@@ -1,7 +1,17 @@
 import asyncio
 import random
 
-from Discord_Games import aki_buttons, twenty_48_buttons
+import discord
+from Discord_Games import (
+    aki,
+    aki_buttons,
+    battleship,
+    connect_four,
+    hangman,
+    twenty_48,
+    twenty_48_buttons,
+    typeracer,
+)
 from redbot.core import commands
 
 from .games import minesweeper, tictactoe, twenty, wumpus
@@ -15,14 +25,22 @@ class Games(commands.Cog):
     @commands.cooldown(1, 30, commands.BucketType.user)
     @commands.max_concurrency(1, commands.BucketType.user)
     async def akinator(self, ctx):
-        await aki_buttons.BetaAkinator().start(
-            ctx, color=(await ctx.embed_colour())
-        )
+        if not discord.__version__ == "2.0.0a":
+            return await aki.Akinator.start(self, ctx)
+        else:
+            await aki_buttons.BetaAkinator().start(
+                ctx, color=(await ctx.embed_colour())
+            )
 
     @commands.cooldown(1, 30, commands.BucketType.user)
-    @commands.command(name="2048", help="Play 2048 game.")
-    async def twenty(self, ctx):
-        await twenty_48_buttons.BetaTwenty48().start(ctx)
+    @commands.command(
+        name="2048", aliases=["twenty48"], help="Play 2048 game."
+    )
+    async def _twenty_48(self, ctx):
+        if not discord.__version__ == "2.0.0a":
+            return await twenty_48.Twenty48.start(self, ctx)
+        else:
+            await twenty_48_buttons.BetaTwenty48().start(ctx)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
     @commands.command(name="minesweeper", help="Play Minesweeper")
@@ -90,6 +108,31 @@ class Games(commands.Cog):
                 await ctx.send("**You win :sparkles:**")
             else:
                 await ctx.send("**I win :robot:**")
+
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    @commands.command(
+        name="typerace",
+        help="How fast can you type? Test it out with typeracer!",
+    )
+    async def typeracer(self, ctx):
+        await typeracer.TypeRacer.start(self, ctx)
+
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    @commands.command(name="hangman", help="Play Hangman")
+    async def hangman(self, ctx):
+        await hangman.Hangman.start(self, ctx)
+
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    @commands.command(
+        name="connect4", aliases=["connectfour"], help="Play Connect4"
+    )
+    async def connect4(self, ctx):
+        await connect_four.ConnectFour.start(self, ctx)
+
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    @commands.command(name="battleship", help="Play Battleship")
+    async def _battleship(self, ctx):
+        await battleship.Ship.start(self, ctx)
 
 
 def setup(bot):
