@@ -129,10 +129,10 @@ class Games(commands.Cog):
     async def connect4(self, ctx):
         await connect_four.ConnectFour.start(self, ctx)
 
-    @commands.cooldown(1, 5, commands.BucketType.user)
-    @commands.command(name="battleship", help="Play Battleship")
-    async def _battleship(self, ctx):
-        await battleship.BattleShip.start(self, ctx)
+    # @commands.cooldown(1, 5, commands.BucketType.user)
+    # @commands.command(name="battleship", help="Play Battleship")
+    # async def _battleship(self, ctx):
+    #     await battleship.BattleShip.start(self, ctx)
 
 
 def setup(bot):
