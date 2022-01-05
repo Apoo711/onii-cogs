@@ -17,6 +17,6 @@
     "hidden": true,
     "requirements": [
         "git+https://github.com/nirlep5252/Discord-Games.git",
-        "git+https://github.com/Tom-the-Bomb/Discord-Games.git@master#egg=discord_game_original"
+        "git+https://github.com/Tom-the-Bomb/Discord-Games.git@master#egg=Discord-Game-Original"
     ]
 }
