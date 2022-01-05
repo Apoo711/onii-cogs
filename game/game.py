@@ -5,14 +5,16 @@ import discord
 from Discord_Games import (
     aki,
     aki_buttons,
-    battleship,
     connect_four,
-    hangman,
     twenty_48,
     twenty_48_buttons,
-    typeracer,
 )
 from redbot.core import commands
+from discord_games_original import (
+    battleship,
+    hangman,
+    typeracer,
+)
 
 from .games import minesweeper, tictactoe, twenty, wumpus
 
@@ -129,10 +131,10 @@ class Games(commands.Cog):
     async def connect4(self, ctx):
         await connect_four.ConnectFour.start(self, ctx)
 
-    # @commands.cooldown(1, 5, commands.BucketType.user)
-    # @commands.command(name="battleship", help="Play Battleship")
-    # async def _battleship(self, ctx):
-    #     await battleship.BattleShip.start(self, ctx)
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    @commands.command(name="battleship", help="Play Battleship")
+    async def _battleship(self, ctx):
+        await battleship.BattleShip.start(self, ctx)
 
 
 def setup(bot):
