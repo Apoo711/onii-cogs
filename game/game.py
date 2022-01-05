@@ -132,7 +132,7 @@ class Games(commands.Cog):
     @commands.cooldown(1, 5, commands.BucketType.user)
     @commands.command(name="battleship", help="Play Battleship")
     async def _battleship(self, ctx):
-        await battleship.Ship.start(self, ctx)
+        await battleship.BattleShip.start(self, ctx)
 
 
 def setup(bot):
