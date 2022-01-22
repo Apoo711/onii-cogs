@@ -494,7 +494,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def sleep(self, ctx):
         """Act sleepy!"""
-        embed = await kawaiiembed(self, ctx, "is sleepy!, sleep")
+        embed = await kawaiiembed(self, ctx, "is sleepy!", "sleep")
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).sleep()
@@ -959,7 +959,7 @@ class Perform(commands.Cog):
     @commands.guild_only()
     async def hide(self, ctx):
         """Hide yourself!"""
-        embed = await kawaiiembed(self, ctx, "is hideing!", "hide")
+        embed = await kawaiiembed(self, ctx, "is hiding!", "hide")
         used = await self.config.user(ctx.author).hide()
         embed.set_footer(text=f"{ctx.author.name}'s total hides: {used + 1}")
         if (
