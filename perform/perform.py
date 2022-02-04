@@ -414,7 +414,7 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def sleep(self, ctx):
         """Act sleepy!"""
-        embed = await kawaiiembed(self, ctx, "is sleepy!", "sleep")
+        embed = await kawaiiembed(self, ctx, "is sleepy!", "sleepy")
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).sleep()
