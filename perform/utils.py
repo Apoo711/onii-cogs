@@ -85,7 +85,7 @@ async def get_hook(self, ctx):
     return hook
 
 async def print_it(self, ctx, embed, retried=False):
-    hook = await self.get_hook(ctx)
+    hook = await get_hook(ctx)
     try:
         await hook.send(
                 username=ctx.message.author.display_name,
