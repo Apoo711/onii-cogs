@@ -21,7 +21,7 @@ from random import randint
 import discord
 from redbot.core import Config, commands
 
-from .utils import get_hook, kawaiiembed, nekosembed
+from .utils import get_hook, kawaiiembed, nekosembed, print_it
 
 log = logging.getLogger("red.onii.perform")
 
@@ -136,7 +136,7 @@ class Perform(commands.Cog):
         self.cache = {}
 
     __author__ = ["Onii-chan", "sravan"]
-    __version__ = "5.4.1"  # idk what im doing with version
+    __version__ = "5.5.1"  # idk what im doing with version
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
@@ -166,12 +166,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total cuddles: {used + 1} | {ctx.author.name} has cuddled {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx, embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:

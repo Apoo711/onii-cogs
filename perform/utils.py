@@ -83,3 +83,17 @@ async def get_hook(self, ctx):
     except discord.NotFound:  # Probably user deleted the hook
         hook = await ctx.channel.create_webhook(name="red_bot_hook_" + str(ctx.channel.id))
     return hook
+
+async def print_it(self, ctx, embed, retried=False):
+    hook = await self.get_hook(ctx)
+    try:
+        await hook.send(
+                username=ctx.message.author.display_name,
+                avatar_url=ctx.message.author.avatar_url,
+                content=embed,
+            )
+    except discord.NotFound:
+        if retried:  # This is an edge case, just a hack to prevent infinite loops
+            return await ctx.send("I can't find the webhook, sorry.")
+        self.cache.pop(ctx.channel.id)
+        await self.print_it(ctx, embed, True)
