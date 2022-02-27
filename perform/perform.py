@@ -187,12 +187,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total pokes: {used + 1} | {ctx.author.name} has poked {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -213,12 +208,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total kisses: {used + 1} | {ctx.author.name} has kissed {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -239,12 +229,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total hugs: {used + 1} | {ctx.author.name} has hugged {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -265,12 +250,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total pats: {used + 1} | {ctx.author.name} has patted {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -291,12 +271,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total tickles: {used + 1} | {ctx.author.name} has tickled {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -316,12 +291,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total smugs: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -341,12 +311,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total licks: {used + 1} | {ctx.author.name} has licked {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -367,12 +332,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total slaps: {used + 1} | {ctx.author.name} has slapped {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -392,12 +352,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total cries: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -416,12 +371,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total sleeps: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -474,12 +424,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total pouts: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -498,12 +443,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total blushes: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -557,12 +497,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total punxhes: {used + 1} | {ctx.author.name} has punxhed {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -580,12 +515,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total confusions: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -602,12 +532,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total amazes: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -625,12 +550,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total highfives: {used + 1} | {ctx.author.name} has highfived {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -649,12 +569,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total pleads: {used + 1} | {ctx.author.name} has pleaded {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -672,12 +587,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total claps: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -694,12 +604,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total facepalms: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -716,12 +621,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total facedesks: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -739,12 +639,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total kills: {used + 1} | {ctx.author.name} has killed {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -763,12 +658,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total loves: {used + 1} | {ctx.author.name} has loved {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -786,12 +676,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total hides: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -808,12 +693,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total laughs: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -830,12 +710,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total lurks: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -853,12 +728,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total bites: {used + 1} | {ctx.author.name} has bitten {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -876,12 +746,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total dances: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -899,12 +764,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total yeets: {used + 1} | {ctx.author.name} has yeeted {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -922,12 +782,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total dodges: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -944,12 +799,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total happiness: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -966,12 +816,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total cuteness: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -988,12 +833,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total loneliness: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1010,12 +850,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total angriness: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1032,12 +867,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total nosebleeds: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1055,12 +885,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total protects: {used + 1} | {ctx.author.name} has protected {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1078,12 +903,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total runs: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1100,12 +920,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total scares: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1122,12 +937,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total shrugs: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1144,12 +954,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total screams: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1166,12 +971,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total stares: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1189,12 +989,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total waves: {used + 1} | {ctx.author.name} has waved {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed
-                    )
+                await print_it(self, ctx. embed)
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
