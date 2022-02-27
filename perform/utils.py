@@ -96,4 +96,4 @@ async def print_it(self, ctx, embed, retried=False):
         if retried:  # This is an edge case, just a hack to prevent infinite loops
             return await ctx.send("I can't find the webhook, sorry.")
         self.cache.pop(ctx.channel.id)
-        await self.print_it(ctx, embed, True)
+        await print_it(self, ctx, embed, True)
