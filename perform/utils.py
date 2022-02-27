@@ -90,7 +90,7 @@ async def print_it(self, ctx, embed, retried=False):
         await hook.send(
                 username=ctx.message.author.display_name,
                 avatar_url=ctx.message.author.avatar_url,
-                content=embed,
+                embed=embed,
             )
     except discord.NotFound:
         if retried:  # This is an edge case, just a hack to prevent infinite loops
