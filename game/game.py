@@ -9,12 +9,8 @@ from Discord_Games import (
     twenty_48,
     twenty_48_buttons,
 )
+from discord_games_original import battleship, hangman, typeracer
 from redbot.core import commands
-from discord_games_original import (
-    battleship,
-    hangman,
-    typeracer,
-)
 
 from .games import minesweeper, tictactoe, twenty, wumpus
 

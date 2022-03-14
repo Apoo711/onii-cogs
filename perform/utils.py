@@ -38,7 +38,6 @@ async def nekosembed(self, ctx, user, action: str, endpoint: str):
     return embed
 
 
-
 async def kawaiiembed(self, ctx, action: str, endpoint: str, user=None):
     api_key = (await self.bot.get_shared_api_tokens("perform")).get("api_key")
     if not api_key:
@@ -89,19 +88,24 @@ async def get_hook(self, ctx):
         else:
             hook = self.cache[ctx.channel.id]
     except discord.NotFound:  # Probably user deleted the hook
-        hook = await ctx.channel.create_webhook(name="red_bot_hook_" + str(ctx.channel.id))
+        hook = await ctx.channel.create_webhook(
+            name="red_bot_hook_" + str(ctx.channel.id)
+        )
     return hook
+
 
 async def print_it(self, ctx, embed, retried=False):
     hook = await get_hook(self, ctx)
     try:
         await hook.send(
-                username=ctx.message.author.display_name,
-                avatar_url=ctx.message.author.avatar_url,
-                embed=embed,
-            )
+            username=ctx.message.author.display_name,
+            avatar_url=ctx.message.author.avatar_url,
+            embed=embed,
+        )
     except discord.NotFound:
-        if retried:  # This is an edge case, just a hack to prevent infinite loops
+        if (
+            retried
+        ):  # This is an edge case, just a hack to prevent infinite loops
             return await ctx.send("I can't find the webhook, sorry.")
         self.cache.pop(ctx.channel.id)
         await print_it(self, ctx, embed, True)
