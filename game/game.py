@@ -3,16 +3,13 @@ import random
 
 <<<<<<< HEAD
 import discord
-from Discord_Games import (
-    aki,
-    aki_buttons,
-    connect_four,
-    twenty_48,
-    twenty_48_buttons,
-)
+from Discord_Games import (aki, aki_buttons, connect_four, twenty_48,
+                           twenty_48_buttons)
 from discord_games_original import battleship, hangman, typeracer
+
 =======
 from Discord_Games import aki_buttons, twenty_48_buttons
+
 >>>>>>> parent of 79593b7 (Merge branch 'dpy2' into main)
 from redbot.core import commands
 
