@@ -75,9 +75,7 @@ class InfoJson:
     tags: List[str] = field(default_factory=list)
     type: Optional[str] = "COG"
     permissions: List[str] = field(default_factory=list)
-    min_python_version: Optional[List[int]] = field(
-        default_factory=lambda: [3, 8, 0]
-    )
+    min_python_version: Optional[List[int]] = field(default_factory=lambda: [3, 8, 0])
     end_user_data_statement: str = (
         "This cog does not persistently store data or metadata about users."
     )
@@ -99,7 +97,9 @@ class InfoJson:
         type = "COG"
         permissions = []
         min_python_version = []
-        end_user_data_statement = "This cog does not persistently store data or metadata about users."
+        end_user_data_statement = (
+            "This cog does not persistently store data or metadata about users."
+        )
         if "author" in data:
             author = data["author"]
         if "description" in data:
@@ -165,9 +165,7 @@ class InfoJson:
 
 def save_json(folder, data):
     with open(folder, "w") as newfile:
-        json.dump(
-            data, newfile, indent=4, sort_keys=True, separators=(",", " : ")
-        )
+        json.dump(data, newfile, indent=4, sort_keys=True, separators=(",", " : "))
 
 
 @click.group()
@@ -192,14 +190,8 @@ def mass_fix():
 
 
 @cli.command()
-@click.option(
-    "--author", default=DEFAULT_AUTHOR, help="Author of the cog", prompt=True
-)
-@click.option(
-    "--name",
-    prompt="Enter the name of the cog",
-    help="Name of the cog being added",
-)
+@click.option("--author", default=DEFAULT_AUTHOR, help="Author of the cog", prompt=True)
+@click.option("--name", prompt="Enter the name of the cog", help="Name of the cog being added")
 @click.option(
     "--description",
     prompt="Enter a longer description for the cog.",
@@ -242,26 +234,12 @@ def mass_fix():
     prompt=True,
     type=bool,
 )
+@click.option("--required-cogs", default={}, help="Required cogs for this cog to function.")
+@click.option("--requirements", prompt=True, default=[], help="Requirements for the cog.")
 @click.option(
-    "--required-cogs",
-    default={},
-    help="Required cogs for this cog to function.",
+    "--tags", default=[], prompt=True, help="Any tags to help people find the cog better."
 )
-@click.option(
-    "--requirements", prompt=True, default=[], help="Requirements for the cog."
-)
-@click.option(
-    "--tags",
-    default=[],
-    prompt=True,
-    help="Any tags to help people find the cog better.",
-)
-@click.option(
-    "--permissions",
-    prompt=True,
-    default=[],
-    help="Any permissions the cog requires.",
-)
+@click.option("--permissions", prompt=True, default=[], help="Any permissions the cog requires.")
 @click.option(
     "--min-python-version",
     default=[3, 8, 0],
@@ -381,11 +359,7 @@ def countlines(include_hidden: bool = False, include_disabled: bool = False):
             pass
     totals = sorted(totals, key=lambda x: x[1], reverse=True)
     totals.insert(0, ("Total", total))
-    print(
-        tabulate.tabulate(
-            totals, headers=["Cog", "# ofLines"], tablefmt="pretty"
-        )
-    )
+    print(tabulate.tabulate(totals, headers=["Cog", "# ofLines"], tablefmt="pretty"))
     return totals
 
 
@@ -424,11 +398,7 @@ def countchars(include_hidden: bool = False, include_disabled: bool = False):
             pass
     totals = sorted(totals, key=lambda x: x[1], reverse=True)
     totals.insert(0, ("Total", total))
-    print(
-        tabulate.tabulate(
-            totals, headers=["Cog", "# ofchars"], tablefmt="pretty"
-        )
-    )
+    print(tabulate.tabulate(totals, headers=["Cog", "# ofchars"], tablefmt="pretty"))
     return totals
 
 
@@ -466,12 +436,7 @@ def makereadme():
 
     body = tabulate.tabulate(
         table_data,
-        headers=[
-            "Name",
-            "Status/Version",
-            "Description (Click to see full status)",
-            "Authors",
-        ],
+        headers=["Name", "Status/Version", "Description (Click to see full status)", "Authors"],
         tablefmt="github",
     )
     with open(f"{ROOT}/README.md", "w") as outfile:
