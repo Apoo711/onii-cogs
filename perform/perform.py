@@ -15,8 +15,12 @@ limitations under the License.
 """
 
 
+
+import contextlib
 import logging
 from random import randint
+from tabulate import tabulate
+from redbot.core.utils.chat_formatting import box
 
 import discord
 from redbot.core import Config, commands
@@ -494,7 +498,7 @@ class Perform(commands.Cog):
             return await ctx.send("shiro.gg api is down")
         target = await self.config.custom("Target", ctx.author.id, user.id).punch_r()
         used = await self.config.user(ctx.author).punch_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total punxhes: {used + 1} | {ctx.author.name} has punxhed {user.name} {target + 1} times")
+        embed.set_footer(text=f"{ctx.author.name}'s total punches: {used + 1} | {ctx.author.name} has punched {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
                 await print_it(self, ctx, embed)
@@ -1011,6 +1015,77 @@ class Perform(commands.Cog):
             )
         )
         await ctx.send(embed=embed)
+
+    @commands.command()
+    @commands.guild_only()
+    async def rstats(self, ctx: commands.Context, action: str, member: discord.Member = None):
+        """RStats cog commands."""
+        valid = [
+            "cuddle",
+            "poke",
+            "kiss",
+            "hug",
+            "pat",
+            "tickle",
+            "smug",
+            "lick",
+            "slap",
+            "cry",
+            "sleep",
+            "spank",
+            "pout",
+            "blush",
+            "feed",
+            "punch",
+            "confuse",
+            "amazed",
+            "highfive",
+            "plead",
+            "clap",
+            "facepalm",
+            "headdesk",
+            "kill",
+            "love",
+            "hide",
+            "laugh",
+            "peek",
+            "bite",
+            "dance",
+            "yeet",
+            "dodge",
+            "happy",
+            "cute",
+            "lonely",
+            "mad",
+            "nosebleed",
+            "protect",
+            "run",
+            "scared",
+            "shrug",
+            "scream",
+            "stare",
+            "wave",
+            ]
+        if action.lower() not in valid:
+            return await ctx.send("Invalid action.")
+        if member is None:
+            member = ctx.author
+        data = await self.config.custom("Target").all()
+        top_10 = get_top10(data, member.id)
+        embed = discord.Embed(title=f"Top 10 for {member.name}")
+        top_10 = tabulate(top_10, tablefmt="psql", headers=["User", "Spanks"])
+        embed.description = box(top_10)
+        await ctx.send(embed=embed)
+        
+
+def get_top10(data, action: str):
+    targets = []
+    for i in data:
+        for key, value in data[i].items():
+            with contextlib.suppress(KeyError):
+                targets.append((value["spank_r"], key))
+        targets.sort(key=lambda x: x[0], reverse = True)
+    return targets[:10]
 
 def setup(bot):
     global hug
