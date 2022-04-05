@@ -19,11 +19,11 @@ limitations under the License.
 import contextlib
 import logging
 from random import randint
-from tabulate import tabulate
-from redbot.core.utils.chat_formatting import box
 
 import discord
 from redbot.core import Config, commands
+from redbot.core.utils.chat_formatting import box
+from tabulate import tabulate
 
 from .utils import get_hook, kawaiiembed, nekosembed, print_it
 
@@ -1076,7 +1076,7 @@ class Perform(commands.Cog):
         top_10 = tabulate(top_10, tablefmt="psql", headers=["User", "Spanks"])
         embed.description = box(top_10)
         await ctx.send(embed=embed)
-        
+
 
 def get_top10(data, action: str):
     targets = []
