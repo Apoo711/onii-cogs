@@ -53,12 +53,9 @@ class Oniitools(commands.Cog):
                 f"https://api.martinebot.com/v1/imagesgen/osuprofile?&player_username={player}"
             ) as resp:
                 if resp.status in (200, 201):
-                    f = discord.File(
-                        fp=BytesIO(await resp.read()), filename="osu.png"
-                    )
+                    f = discord.File(fp=BytesIO(await resp.read()), filename="osu.png")
                     emb = discord.Embed(
-                        title=f"{player}'s Osu Stats",
-                        colour=discord.Colour.random(),
+                        title=f"{player}'s Osu Stats", colour=discord.Colour.random()
                     )
                     emb.set_image(url="attachment://osu.png")
                     emb.set_footer(text="Powered by martinebot.com API")
