@@ -102,13 +102,10 @@ class Animal(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         await ctx.trigger_typing()
         await ctx.reply(
@@ -179,13 +176,10 @@ class Animal(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         await ctx.reply(
             embed=embed,

@@ -27,9 +27,10 @@ async def play(ctx, bot):
 
     def check(reaction, user):
         return (
-            (user.id == ctx.author.id)
-            and (str(reaction.emoji) in ["\u2B06", "\u2B07", "\u2B05", "\u27A1", "\u274C"])
-            and (reaction.message.id == message.id)
+            user.id == ctx.author.id
+            and str(reaction.emoji)
+            in {"\u2B06", "\u2B07", "\u2B05", "\u27A1", "\u274C"}
+            and reaction.message.id == message.id
         )
 
     while True:
@@ -70,10 +71,10 @@ async def play(ctx, bot):
 
 def print_board(board):
     col_width = max(len(str(word)) for row in board for word in row) + 2  # padding
-    whole_thing = ""
-    for row in board:
-        whole_thing += "".join(str(word).ljust(col_width) for word in row) + "\n"
-    return whole_thing
+    return "".join(
+        "".join(str(word).ljust(col_width) for word in row) + "\n"
+        for row in board
+    )
 
 def execute_move(move, pboard):
     board = dc(pboard)
@@ -170,10 +171,7 @@ def add_number(board):
         result, board = add_number(board)
         return result, board
     joining = random.randint(0, 100)
-    if joining < 85:
-        joining = 2
-    else:
-        joining = 4
+    joining = 2 if joining < 85 else 4
     board[row][column] = joining
     return "", board
 

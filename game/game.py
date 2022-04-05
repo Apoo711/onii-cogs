@@ -53,11 +53,11 @@ class Games(commands.Cog):
     async def rps(self, ctx):
         def check_win(p, b):
             if p == "🌑":
-                return False if b == "📄" else True
+                return b != "📄"
             if p == "📄":
-                return False if b == "✂" else True
+                return b != "✂"
             # p=='✂'
-            return False if b == "🌑" else True
+            return b != "🌑"
 
         async with ctx.typing():
             reactions = ["🌑", "📄", "✂"]

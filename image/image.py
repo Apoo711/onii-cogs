@@ -116,13 +116,10 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
         try:
             await ctx.reply(
                 embed=embed,
@@ -142,8 +139,8 @@ class Image(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f"https://api.martinebot.com/v1/images/subreddit?name={reddit}"
-            ) as resp:
+                        f"https://api.martinebot.com/v1/images/subreddit?name={reddit}"
+                    ) as resp:
                 origin = await resp.json()
 
                 if not origin["success"]:
@@ -197,13 +194,10 @@ class Image(commands.Cog):
                 )
                 embed.set_image(url=image_url)
                 embed.set_footer(
-                    text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                        ups,
-                        downvotes,
-                        comments,
-                    ),
+                    text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
                     icon_url=ctx.message.author.avatar_url,
                 )
+
 
                 return await ctx.reply(embed=embed, mention_author=False)
 
@@ -263,13 +257,10 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         await ctx.reply(
             embed=embed,
@@ -330,13 +321,10 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         await ctx.reply(
             embed=embed,
@@ -414,13 +402,10 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         await ctx.reply(
             embed=embed,
@@ -483,13 +468,10 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         await ctx.reply(
             embed=embed,
@@ -552,13 +534,10 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         try:
             await ctx.reply(
@@ -622,13 +601,10 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         await ctx.reply(
             embed=embed,
@@ -689,13 +665,10 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         await ctx.reply(
             embed=embed,
@@ -763,13 +736,10 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         await ctx.reply(
             embed=embed,
@@ -852,13 +822,10 @@ class Image(commands.Cog):
         )
         embed.set_image(url=url)
         embed.set_footer(
-            text="👍  {} • 👎  {} • 💬  {} • martinebot.com API".format(
-                ups,
-                downvotes,
-                comments,
-            ),
+            text=f"👍  {ups} • 👎  {downvotes} • 💬  {comments} • martinebot.com API",
             icon_url=ctx.message.author.avatar_url,
         )
+
 
         try:
             await ctx.reply(

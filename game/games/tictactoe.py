@@ -69,7 +69,12 @@ def play(board, player, col, row):
         raise IllegalBoard
     if not 0 <= col <= 2 or not 0 <= row <= 2 or player not in PLAYERS or board[board_index(col, row)] is not None:
         raise IllegalMove
-    board = board[0:board_index(col, row)] + (player,) + board[board_index(col, row) + 1:]
+    board = (
+        board[: board_index(col, row)]
+        + (player,)
+        + board[board_index(col, row) + 1 :]
+    )
+
     return board, board_winner(board)
 
 
@@ -77,22 +82,18 @@ def board_is_valid(board):
     if len(board) != 9:
         return False
 
-    for mark in board:
-        if mark is not None and mark not in PLAYERS:
-            return False
-
-    return True
+    return not any(mark is not None and mark not in PLAYERS for mark in board)
 
 
 def board_winner(board):
     if not board_is_valid(board):
         raise IllegalBoard
 
-    for row in range(0, 3):
+    for row in range(3):
         if board[board_index(0, row)] == board[board_index(1, row)] == board[board_index(2, row)]:
             return board[board_index(0, row)]
 
-    for col in range(0, 3):
+    for col in range(3):
         if board[board_index(col, 0)] == board[board_index(col, 1)] == board[board_index(col, 2)]:
             return board[board_index(col, 0)]
 
@@ -156,14 +157,10 @@ def get_printable_board(board):
         raise IllegalBoard
 
     output = '**'
-    for row in range(0, 3):
-        for col in range(0, 3):
+    for row in range(3):
+        for col in range(3):
             mark = board[board_index(col, row)]
-            if mark is None:
-                output += '      '
-            else:
-                output += mark
-
+            output += '      ' if mark is None else mark
             if col != 2:
                 output += '|'
 

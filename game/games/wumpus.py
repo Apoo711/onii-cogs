@@ -61,18 +61,14 @@ async def play(bot, ctx):
     alive = True
 
     def printBoard(r, c):
-        out = []
         w = [['  ' for _ in range(10)] for _ in range(7)]
         w[r][c] = '💂🏻‍♂️'
-        for i in w:
-            out.append('|'.join(i[1:-1]))
+        out = ['|'.join(i[1:-1]) for i in w]
         return '```\n' + '\n--+--+--+--+--+--+--+--\n'.join(out[1:-1]) + '\n```'
 
     async def endBoard(r, c, sys_msg):
-        out = []
         world[r][c] = '💂🏻‍♂️'
-        for i in world:
-            out.append('|'.join(i[1:-1]))
+        out = ['|'.join(i[1:-1]) for i in world]
         await sys_msg.edit(content='```\n' + '\n--+--+--+--+--+--+--+--\n'.join(out[1:-1]).replace('w', '👹').replace('b', '🦇').replace('p', '⚫') + '\n```')
         return await p_msg.delete()
 

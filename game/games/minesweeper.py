@@ -9,19 +9,18 @@ errortxt = ''.join(errortxt)
 
 
 async def play(ctx, columns = None, rows = None, bombs = None):
-    if columns is None or rows is None and bombs is None:
-        if columns is not None or rows is not None or bombs is not None:
-            return await ctx.send(errortxt)
-        else:
-            # Gives a random range of columns and rows from 4-13 if no arguments are given
-            # The amount of bombs depends on a random range from 5 to this formula:
-            # ((columns * rows) - 1) / 2.5
-            # This is to make sure the percentages of bombs at a given random board isn't too high
-            columns = random.randint(4, 13)
-            rows = random.randint(4,13)
-            bombs = columns * rows - 1
-            bombs = bombs / 2.5
-            bombs = round(random.randint(5, round(bombs)))
+    if columns is None and rows is None and bombs is None:
+        # Gives a random range of columns and rows from 4-13 if no arguments are given
+        # The amount of bombs depends on a random range from 5 to this formula:
+        # ((columns * rows) - 1) / 2.5
+        # This is to make sure the percentages of bombs at a given random board isn't too high
+        columns = random.randint(4, 13)
+        rows = random.randint(4,13)
+        bombs = columns * rows - 1
+        bombs = bombs / 2.5
+        bombs = round(random.randint(5, round(bombs)))
+    elif columns is None or rows is None and bombs is None:
+        return await ctx.send(errortxt)
     try:
         columns = int(columns)
         rows = int(rows)
@@ -36,7 +35,7 @@ async def play(ctx, columns = None, rows = None, bombs = None):
         return await ctx.send(':boom:**BOOM**, you have more bombs than spaces on the grid or you attempted to make all of the spaces bombs!')
 
     # Creates a list within a list and fills them with 0s, this is our makeshift grid
-    grid = [[0 for num in range (columns)] for num in range(rows)]
+    grid = [[0 for _ in range (columns)] for _ in range(rows)]
 
     # Loops for the amount of bombs there will be
     loop_count = 0
@@ -46,11 +45,7 @@ async def play(ctx, columns = None, rows = None, bombs = None):
         # We use B as a variable to represent a Bomb (this will be replaced with emotes later)
         if grid[y][x] == 0:
             grid[y][x] = 'B'
-            loop_count = loop_count + 1
-        # It will loop again if a bomb is already selected at a random point
-        if grid[y][x] == 'B':
-            pass
-
+            loop_count += 1
     # The while loop will go though every point though our makeshift grid
     pos_x = 0
     pos_y = 0
@@ -74,14 +69,12 @@ async def play(ctx, columns = None, rows = None, bombs = None):
         # If the while loop does not have "pos_y < rows" will index error
         if pos_x == columns - 1:
             pos_x = 0
-            pos_y = pos_y + 1
+            pos_y += 1
         else:
-            pos_x = pos_x + 1
+            pos_x += 1
 
     # Builds the string to be Discord-ready
-    string_builder = []
-    for the_rows in grid:
-        string_builder.append(''.join(map(str, the_rows)))
+    string_builder = [''.join(map(str, the_rows)) for the_rows in grid]
     string_builder = '\n'.join(string_builder)
     # Replaces the numbers and B for the respective emotes and spoiler tags
     string_builder = string_builder.replace('0', '||:zero:||')

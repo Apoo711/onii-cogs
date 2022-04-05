@@ -243,12 +243,10 @@ class Nsfw(commands.Cog):
         spanked_users = "".join(f"{users.mention} " for users in user)
         embed = discord.Embed(
             title="Oooof!",
-            description="{} got spanked by {}".format(
-                spanked_users,
-                ctx.author.mention,
-            ),
+            description=f"{spanked_users} got spanked by {ctx.author.mention}",
             color=ctx.message.author.color,
         )
+
         embed.set_footer(
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,

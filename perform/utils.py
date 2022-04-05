@@ -82,8 +82,9 @@ async def get_hook(self, ctx):
             hook = self.cache[ctx.channel.id]
     except discord.NotFound:  # Probably user deleted the hook
         hook = await ctx.channel.create_webhook(
-            name="red_bot_hook_" + str(ctx.channel.id)
+            name=f"red_bot_hook_{str(ctx.channel.id)}"
         )
+
     return hook
 
 
