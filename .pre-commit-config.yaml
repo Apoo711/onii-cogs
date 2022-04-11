@@ -18,7 +18,7 @@ repos:
       - id: flake8
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.2.0
     hooks:
       # all files should end with an empty line (for one, it minimizes the diffs)
       - id: end-of-file-fixer
