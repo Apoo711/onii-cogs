@@ -515,7 +515,7 @@ class Perform(commands.Cog):
     async def confuse(self, ctx):
         """Act confused!"""
         embed = await kawaiiembed(self, ctx, "is confused!", "confused")
-        used = await self.config.user(ctx.author).confuse()
+        used = await self.config.user(ctx.author).confused()
         embed.set_footer(text=f"{ctx.author.name}'s total confusions: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
@@ -524,7 +524,7 @@ class Perform(commands.Cog):
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
-        await self.config.user(ctx.author).confuse.set(used + 1)
+        await self.config.user(ctx.author).confused.set(used + 1)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="amazed", aliases=["amazing"])
