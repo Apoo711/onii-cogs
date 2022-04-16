@@ -64,6 +64,18 @@ class Perform(commands.Cog):
                 "https://media.giphy.com/media/OoCuLoM6iEhYk/giphy.gif",
                 "https://media.giphy.com/media/Qo3qovmbqaKT6/giphy.gif",
             ],
+            "nut": [
+                "https://tenor.com/view/kick-anime-kick-balls-explode-crushed-gif-15974215",
+                "https://tenor.com/view/kick-in-the-balls-anime-mad-kick-gif-17162461",
+                "https://tenor.com/view/voz-dap-chym-dap-chym-kick-gif-15524285",
+                "https://tenor.com/view/heion-sedai-no-idatentachi-paula-nut-shot-balls-kick-anime-gif-22764850",
+                "https://tenor.com/view/ball-kick-anime-ouch-maid-gif-17735722",
+                "https://tenor.com/view/kick-anime-balls-ouch-dont-hurt-me-gif-17162430",
+                "https://tenor.com/view/talho-eureka-seven-kick-to-the-balls-pout-gif-20621029",
+                "https://tenor.com/view/kick-gif-19390720",
+                "https://tenor.com/view/ow-balls-kick-kick-anime-yugioh-zexal-gif-24687510",
+                "https://tenor.com/view/kick-balls-kick-in-the-balls-gif-12707456",
+            ],
         }
         default_member = {
             "cuddle_s": 0,
@@ -110,6 +122,7 @@ class Perform(commands.Cog):
             "scream": 0,
             "stare": 0,
             "wave_s": 0,
+            "nut_s": 0,
         }
         default_target = {
             "cuddle_r": 0,
@@ -132,6 +145,7 @@ class Perform(commands.Cog):
             "yeet_r": 0,
             "protect_r": 0,
             "wave_r": 0,
+            "nut_r": 0,
         }
         self.config.register_global(**default_global)
         self.config.register_user(**default_member)
@@ -140,7 +154,7 @@ class Perform(commands.Cog):
         self.cache = {}
 
     __author__ = ["Onii-chan", "sravan"]
-    __version__ = "5.5.1"  # idk what im doing with version
+    __version__ = "5.5.5"  # idk what im doing with version
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
@@ -155,9 +169,6 @@ class Perform(commands.Cog):
             except Exception as e:
                 log.info(e)
             self.bot.add_command(hug)
-        # This is worse case scenario but still important to check for
-        if self.startup_task:
-            self.startup_task.cancel()
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
@@ -1002,6 +1013,41 @@ class Perform(commands.Cog):
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).wave_s.set(used + 1)
         await self.config.custom("Target", ctx.author.id, user.id).wave_r.set(target + 1)
+
+    @commands.cooldown(1, 10, commands.BucketType.user)
+    @commands.command(name="nutkick", aliases=["kicknuts"])
+    @commands.bot_has_permissions(embed_links=True)
+    async def kicknuts(self, ctx, user: discord.Member):
+        """Kick a user on the nuts!"""
+
+        images = await self.config.nut()
+
+        mn = len(images)
+        i = randint(0, mn - 1)
+
+        em = discord.Embed(
+            colour=discord.Colour.random(),
+            description=f"**{ctx.author.mention}** just kicked nuts of {f'**{str(user.mention)}**' if user else 'themselves'}!",
+        )
+        em.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        em.set_image(url=images[i])
+        target = await self.config.custom("Target", ctx.author.id, user.id).nut_r()
+        used = await self.config.user(ctx.author).nut_s()
+        em.set_footer(text=f"{ctx.author.name}'s total nutkicks: {used + 1} | {ctx.author.name} has nutkicked {user.name} {target + 1} times")
+        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+            try:
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=em
+                    )
+            except discord.Forbidden:
+                await ctx.reply(embed=em, mention_author=False)
+        else:
+            await ctx.reply(embed=em, mention_author=False)
+        await self.config.user(ctx.author).nut_s.set(used + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).nut_r.set(target + 1)
 
     @commands.is_owner()
     @commands.command()
