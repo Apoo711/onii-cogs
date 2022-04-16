@@ -1018,76 +1018,76 @@ class Perform(commands.Cog):
         )
         await ctx.send(embed=embed)
 
-    @commands.command()
-    @commands.guild_only()
-    async def rstats(self, ctx: commands.Context, action: str, member: discord.Member = None):
-        """RStats cog commands."""
-        valid = [
-            "cuddle",
-            "poke",
-            "kiss",
-            "hug",
-            "pat",
-            "tickle",
-            "smug",
-            "lick",
-            "slap",
-            "cry",
-            "sleep",
-            "spank",
-            "pout",
-            "blush",
-            "feed",
-            "punch",
-            "confuse",
-            "amazed",
-            "highfive",
-            "plead",
-            "clap",
-            "facepalm",
-            "headdesk",
-            "kill",
-            "love",
-            "hide",
-            "laugh",
-            "peek",
-            "bite",
-            "dance",
-            "yeet",
-            "dodge",
-            "happy",
-            "cute",
-            "lonely",
-            "mad",
-            "nosebleed",
-            "protect",
-            "run",
-            "scared",
-            "shrug",
-            "scream",
-            "stare",
-            "wave",
-            ]
-        if action.lower() not in valid:
-            return await ctx.send("Invalid action.")
-        if member is None:
-            member = ctx.author
-        data = await self.config.custom("Target").all()
-        top_10 = get_top10(data, member.id)
-        embed = discord.Embed(title=f"Top 10 for {member.name}")
-        top_10 = tabulate(top_10, tablefmt="psql", headers=["User", "Spanks"])
-        embed.description = box(top_10)
-        await ctx.send(embed=embed)
+#     @commands.command()
+#     @commands.guild_only()
+#     async def rstats(self, ctx: commands.Context, action: str, member: discord.Member = None):
+#         """RStats cog commands."""
+#         valid = [
+#             "cuddle",
+#             "poke",
+#             "kiss",
+#             "hug",
+#             "pat",
+#             "tickle",
+#             "smug",
+#             "lick",
+#             "slap",
+#             "cry",
+#             "sleep",
+#             "spank",
+#             "pout",
+#             "blush",
+#             "feed",
+#             "punch",
+#             "confuse",
+#             "amazed",
+#             "highfive",
+#             "plead",
+#             "clap",
+#             "facepalm",
+#             "headdesk",
+#             "kill",
+#             "love",
+#             "hide",
+#             "laugh",
+#             "peek",
+#             "bite",
+#             "dance",
+#             "yeet",
+#             "dodge",
+#             "happy",
+#             "cute",
+#             "lonely",
+#             "mad",
+#             "nosebleed",
+#             "protect",
+#             "run",
+#             "scared",
+#             "shrug",
+#             "scream",
+#             "stare",
+#             "wave",
+#             ]
+#         if action.lower() not in valid:
+#             return await ctx.send("Invalid action.")
+#         if member is None:
+#             member = ctx.author
+#         data = await self.config.custom("Target").all()
+#         top_10 = get_top10(data, member.id)
+#         embed = discord.Embed(title=f"Top 10 for {member.name}")
+#         top_10 = tabulate(top_10, tablefmt="psql", headers=["User", "Spanks"])
+#         embed.description = box(top_10)
+#         await ctx.send(embed=embed)
 
 
-def get_top10(data, action: str):
-    targets = []
-    for i in data:
-        for key, value in data[i].items():
-            with contextlib.suppress(KeyError):
-                targets.append((value["spank_r"], key))
-        targets.sort(key=lambda x: x[0], reverse = True)
-    return targets[:10]
+# def get_top10(data, action: str):
+#     targets = []
+#     for i in data:
+#         for key, value in data[i].items():
+#             with contextlib.suppress(KeyError):
+#                 targets.append((value["spank_r"], key))
+#         targets.sort(key=lambda x: x[0], reverse = True)
+#     return targets[:10]
 
 def setup(bot):
     global hug
