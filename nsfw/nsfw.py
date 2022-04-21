@@ -443,7 +443,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     async def yuri(self, ctx):
         """Yuri Porn"""
-            async with ctx.typing():
+        async with ctx.typing():
             embed = discord.Embed(
                 title="",
                 color=ctx.author.color,
