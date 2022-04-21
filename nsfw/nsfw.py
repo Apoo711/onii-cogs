@@ -169,7 +169,7 @@ class Nsfw(commands.Cog):
             embed.set_image(url=await api_call("https://nekos.life/api/v2/img/nsfw_neko_gif"))
             await ctx.reply(embed=embed, mention_author=False)
 
-        @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.cooldown(5, 7, commands.BucketType.user)
     @hentai.command(name="futanari")
     @commands.is_nsfw()
     async def futanari(self, ctx):
