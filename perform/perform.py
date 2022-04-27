@@ -183,9 +183,9 @@ class Perform(commands.Cog):
             try:
                 await print_it(self, ctx, embed)
             except discord.Forbidden:
-                await ctx.reply(embed=embed, mention_author=False)
+                await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
-            await ctx.reply(embed=embed, mention_author=False)
+            await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         await self.config.user(ctx.author).cuddle_s.set(used + 1)
         await self.config.custom("Target", ctx.author.id, user.id).cuddle_r.set(target + 1)
 
