@@ -290,7 +290,7 @@ class Perform(commands.Cog):
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
-            await ctx.reply(embed=embed, content=user.mention, content=user.mention, mention_author=False)
+            await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         await self.config.user(ctx.author).tickle_s.set(used + 1)
         await self.config.custom("Target", ctx.author.id, user.id).tickle_r.set(target + 1)
 
