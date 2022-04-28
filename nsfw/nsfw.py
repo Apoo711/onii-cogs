@@ -53,9 +53,7 @@ class Nsfw(commands.Cog):
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nAuthors: {', '.join(self.__author__)}\nCog Version: {self.__version__}"
 
-    async def _version_msg(
-        self, ctx: commands.Context, version: str, authors: List[str]
-    ):
+    async def _version_msg(self, ctx: commands.Context, version: str, authors: List[str]):
         """Cog version message."""
         msg = box(
             ("Nsfw cog version: {version}\nAuthors: {authors}").format(
@@ -94,12 +92,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/erok")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/erok"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -115,12 +109,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/erokemo")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/erokemo"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -136,12 +126,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/feetg")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/feetg"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -157,12 +143,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/cum")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cum"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -178,12 +160,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/nsfw_neko_gif")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/nsfw_neko_gif"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -199,12 +177,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/futanari")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/futanari"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -220,12 +194,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/boobs")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/boobs"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -241,12 +211,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/blowjob")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/blowjob"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -262,12 +228,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/pussy")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/pussy"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -276,9 +238,7 @@ class Nsfw(commands.Cog):
     async def spank(self, ctx, user: commands.Greedy[discord.Member] = None):
         """Spank somebody"""
         if user is None:
-            await ctx.message.reply(
-                "Please mention somebody to spank nex time."
-            )
+            await ctx.message.reply("Please mention somebody to spank nex time.")
             return
         spanked_users = "".join(f"{users.mention} " for users in user)
         embed = discord.Embed(
@@ -293,12 +253,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/spank")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/spank"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -311,12 +267,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/les")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/les"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -329,12 +281,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/trap")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/trap"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
@@ -347,12 +295,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/hololewd")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/hololewd"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -368,12 +312,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/fox_girl")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/fox_girl"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -389,12 +329,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/lewdk")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/lewdk"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -410,12 +346,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/kuni")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/kuni"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -431,12 +363,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/femdom")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/femdom"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -452,12 +380,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/erofeet")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/erofeet"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -473,12 +397,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/solog")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/solog"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -494,12 +414,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.message.author.display_name}",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/gasm")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/gasm"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -515,12 +431,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/yuri")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/yuri"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -536,12 +448,8 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
-        embed.set_image(
-            url=await api_call("https://nekos.life/api/v2/img/anal")
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/anal"))
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.cooldown(3, 7, commands.BucketType.user)
@@ -549,9 +457,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     async def _ass(self, ctx):
         """Ass Hentai"""
-        response = await api_call(
-            "https://nekobot.xyz/api/image?type=hass", True
-        )
+        response = await api_call("https://nekobot.xyz/api/image?type=hass", True)
         embed = discord.Embed(
             title="Big ass",
             color=response["color"],
@@ -560,9 +466,7 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
         embed.set_image(url=response["message"])
         await ctx.reply(embed=embed, mention_author=False)
 
@@ -571,9 +475,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     async def porn(self, ctx):
         """Just Porn"""
-        response = await api_call(
-            "https://nekobot.xyz/api/image?type=pgif", True
-        )
+        response = await api_call("https://nekobot.xyz/api/image?type=pgif", True)
         embed = discord.Embed(
             title="Real porn",
             color=response["color"],
@@ -582,9 +484,7 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
         embed.set_image(url=response["message"])
         await ctx.reply(embed=embed, mention_author=False)
 
@@ -593,9 +493,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     async def fourk(self, ctx):
         """Real 4K"""
-        response = await api_call(
-            "https://nekobot.xyz/api/image?type=4k", True
-        )
+        response = await api_call("https://nekobot.xyz/api/image?type=4k", True)
         embed = discord.Embed(
             title="The best quality",
             color=response["color"],
@@ -604,9 +502,7 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
         embed.set_image(url=response["message"])
         await ctx.reply(embed=embed, mention_author=False)
 
@@ -615,9 +511,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     async def yaoi(self, ctx):
         """yaoi hentai"""
-        response = await api_call(
-            "https://nekobot.xyz/api/image?type=yaoi", True
-        )
+        response = await api_call("https://nekobot.xyz/api/image?type=yaoi", True)
         embed = discord.Embed(
             title="Yaoi",
             color=response["color"],
@@ -626,9 +520,7 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
         embed.set_image(url=response["message"])
         await ctx.reply(embed=embed, mention_author=False)
 
@@ -637,9 +529,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     async def thigh(self, ctx):
         """Real Thigh"""
-        response = await api_call(
-            "https://nekobot.xyz/api/image?type=thigh", True
-        )
+        response = await api_call("https://nekobot.xyz/api/image?type=thigh", True)
         embed = discord.Embed(
             title="Them thic thighs",
             color=response["color"],
@@ -648,9 +538,7 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
         embed.set_image(url=response["message"])
         await ctx.reply(embed=embed, mention_author=False)
 
@@ -659,9 +547,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     async def pussy(self, ctx):
         """Real pussy"""
-        response = await api_call(
-            "https://nekobot.xyz/api/image?type=pussy", True
-        )
+        response = await api_call("https://nekobot.xyz/api/image?type=pussy", True)
         embed = discord.Embed(
             title="Real pussy",
             color=response["color"],
@@ -670,9 +556,7 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
         embed.set_image(url=response["message"])
         await ctx.reply(embed=embed, mention_author=False)
 
@@ -681,9 +565,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     async def ass(self, ctx):
         """Real ass"""
-        response = await api_call(
-            "https://nekobot.xyz/api/image?type=ass", True
-        )
+        response = await api_call("https://nekobot.xyz/api/image?type=ass", True)
         embed = discord.Embed(
             title="Real ass",
             color=response["color"],
@@ -692,9 +574,7 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
         embed.set_image(url=response["message"])
         await ctx.reply(embed=embed, mention_author=False)
 
@@ -703,9 +583,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     async def anal(self, ctx):
         """Real anal"""
-        response = await api_call(
-            "https://nekobot.xyz/api/image?type=anal", True
-        )
+        response = await api_call("https://nekobot.xyz/api/image?type=anal", True)
         embed = discord.Embed(
             title="Real anal",
             color=response["color"],
@@ -714,9 +592,7 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
         embed.set_image(url=response["message"])
         await ctx.reply(embed=embed, mention_author=False)
 
@@ -725,9 +601,7 @@ class Nsfw(commands.Cog):
     @commands.is_nsfw()
     async def boobs(self, ctx):
         """Just Porn"""
-        response = await api_call(
-            "https://nekobot.xyz/api/image?type=boobs", True
-        )
+        response = await api_call("https://nekobot.xyz/api/image?type=boobs", True)
         embed = discord.Embed(
             title="Real boobs",
             color=response["color"],
@@ -736,8 +610,6 @@ class Nsfw(commands.Cog):
             text=f"Requested by {ctx.author.display_name}",
             icon_url=ctx.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
         embed.set_image(url=response["message"])
         await ctx.reply(embed=embed, mention_author=False)

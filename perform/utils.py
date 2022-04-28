@@ -32,12 +32,8 @@ async def nekosembed(self, ctx, user, action: str, endpoint: str):
         description=f"**{ctx.author.mention}** {action} {f'**{str(user.mention)}**' if user else 'themselves'}!",
         color=discord.Colour.random(),
     )
-    embed.set_author(
-        name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-    )
-    embed.set_image(
-        url=await api_call("https://nekos.life/api/v2/img/" + endpoint)
-    )
+    embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+    embed.set_image(url=await api_call("https://nekos.life/api/v2/img/" + endpoint))
     return embed
 
 
@@ -65,7 +61,6 @@ async def shiroembed(self, ctx, action: str, endpoint: str, user=None):
             em.set_image(url=res["url"])
             return em
 
-
 async def kawaiiembed(self, ctx, action: str, endpoint: str, user=None):
     api_key = (await self.bot.get_shared_api_tokens("perform")).get("api_key")
     if not api_key:
@@ -86,17 +81,12 @@ async def kawaiiembed(self, ctx, action: str, endpoint: str, user=None):
         text=f"Requested by {ctx.message.author.display_name}",
         icon_url=ctx.message.author.avatar_url,
     )
-    embed.set_author(
-        name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-    )
+    embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
 
     embed.set_image(
-        url=await api_call2(
-            "https://kawaii.red/api/gif/" + endpoint + "/token=" + api_key
-        )
+        url=await api_call2("https://kawaii.red/api/gif/" + endpoint + "/token=" + api_key)
     )
     return embed
-
 
 # Thanks epic
 async def get_hook(self, ctx):
@@ -114,7 +104,5 @@ async def get_hook(self, ctx):
         else:
             hook = self.cache[ctx.channel.id]
     except discord.errors.NotFound:  # Probably user deleted the hook
-        hook = await ctx.channel.create_webhook(
-            name="red_bot_hook_" + str(ctx.channel.id)
-        )
+        hook = await ctx.channel.create_webhook(name="red_bot_hook_" + str(ctx.channel.id))
     return hook

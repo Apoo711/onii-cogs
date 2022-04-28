@@ -4,7 +4,7 @@ import random
 from Discord_Games import aki_buttons, twenty_48_buttons
 from redbot.core import commands
 
-from .games import minesweeper, tictactoe, wumpus
+from .games import minesweeper, tictactoe, twenty, wumpus
 
 
 class Games(commands.Cog):
@@ -15,9 +15,7 @@ class Games(commands.Cog):
     @commands.cooldown(1, 30, commands.BucketType.user)
     @commands.max_concurrency(1, commands.BucketType.user)
     async def akinator(self, ctx):
-        await aki_buttons.BetaAkinator().start(
-            ctx, color=(await ctx.embed_colour())
-        )
+        await aki_buttons.BetaAkinator().start(ctx, color=(await ctx.embed_colour()))
 
     @commands.cooldown(1, 30, commands.BucketType.user)
     @commands.command(name="2048", help="Play 2048 game.")
@@ -37,15 +35,11 @@ class Games(commands.Cog):
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(aliases=["ttt", "tic-tac-toe"], help="Play Tic-Tac-Toe")
     async def tictactoe(self, ctx):
-        await tictactoe.play_game(
-            self.bot, ctx, chance_for_error=0.2
-        )  # Win Plausible
+        await tictactoe.play_game(self.bot, ctx, chance_for_error=0.2)  # Win Plausible
 
     @commands.cooldown(1, 5, commands.BucketType.user)
     @commands.command(
-        name="rps",
-        aliases=["rockpaperscissors"],
-        help="Play Rock, Paper, Scissors game",
+        name="rps", aliases=["rockpaperscissors"], help="Play Rock, Paper, Scissors game"
     )
     async def rps(self, ctx):
         def check_win(p, b):
@@ -59,8 +53,7 @@ class Games(commands.Cog):
         async with ctx.typing():
             reactions = ["🌑", "📄", "✂"]
             game_message = await ctx.send(
-                "**Rock Paper Scissors**\nChoose your shape:",
-                delete_after=15.0,
+                "**Rock Paper Scissors**\nChoose your shape:", delete_after=15.0
             )
             for reaction in reactions:
                 await game_message.add_reaction(reaction)
@@ -75,14 +68,14 @@ class Games(commands.Cog):
 
         try:
             reaction, _ = await self.bot.wait_for(
-                "reaction_add", timeout=10.0, check=check
+                "reaction_add",
+                timeout=10.0,
+                check=check
             )
         except asyncio.TimeoutError:
             await ctx.send("Time's Up! :stopwatch:")
         else:
-            await ctx.send(
-                f"**Your Choice:\t{reaction.emoji}\nMy Choice:\t{bot_emoji}**"
-            )
+            await ctx.send(f"**Your Choice:\t{reaction.emoji}\nMy Choice:\t{bot_emoji}**")
             # if conds
             if str(reaction.emoji) == bot_emoji:
                 await ctx.send("**It's a Tie :ribbon:**")
@@ -90,3 +83,7 @@ class Games(commands.Cog):
                 await ctx.send("**You win :sparkles:**")
             else:
                 await ctx.send("**I win :robot:**")
+
+
+def setup(bot):
+    bot.add_cog(Games(bot))

@@ -218,15 +218,10 @@ class Image(commands.Cog):
         Warning: Some Images Could Be Considered Nsfw In Some Servers.
         """
         await ctx.trigger_typing()
-        SUBREDDITS = [
-            "images/subreddits?name=Animewallpaper",
-            "images/wallpaper",
-        ]
+        SUBREDDITS = ["images/subreddits?name=Animewallpaper", "images/wallpaper"]
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                f"https://api.martinebot.com/v1/{API}"
-            ) as resp:
+            async with session.get(f"https://api.martinebot.com/v1/{API}") as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -361,9 +356,7 @@ class Image(commands.Cog):
             text="Powered by nekos.best",
             icon_url=ctx.message.author.avatar_url,
         )
-        embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
-        )
+        embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
 
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
         await ctx.reply(embed=embed, mention_author=False)
@@ -378,9 +371,7 @@ class Image(commands.Cog):
         """
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://api.martinebot.com/v1/images/memes"
-            ) as resp:
+            async with session.get("https://api.martinebot.com/v1/images/memes") as resp:
                 origin = await resp.json()
                 data = origin["data"]
                 url = data["image_url"]
@@ -514,12 +505,7 @@ class Image(commands.Cog):
         r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.
         """
         await ctx.trigger_typing()
-        SUBREDDITS = [
-            "animeboys",
-            "CuteAnimeGirlss",
-            "cuteanimeboys",
-            "awwnime",
-        ]
+        SUBREDDITS = ["animeboys", "CuteAnimeGirlss", "cuteanimeboys", "awwnime"]
         API = random.choice(SUBREDDITS)
         async with aiohttp.ClientSession() as session:
             async with session.get(
@@ -799,12 +785,7 @@ class Image(commands.Cog):
         r/awwnime, r/animeboys, r/cuteanimeboys and r/CuteAnimeGirls.
         """
         await ctx.trigger_typing()
-        SUBREDDITS = [
-            "animeboys",
-            "CuteAnimeGirlss",
-            "cuteanimeboys",
-            "awwnime",
-        ]
+        SUBREDDITS = ["animeboys", "CuteAnimeGirlss", "cuteanimeboys", "awwnime"]
         API = random.choice(SUBREDDITS)
         #        async with aiohttp.ClientSession() as session:
         #            async with session.get(
@@ -826,9 +807,7 @@ class Image(commands.Cog):
         #                ups = data["upvotes"] or ""
         #                link = data["post_url"] or ""
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                f"https://www.reddit.com/{API}/new.json?sort=new"
-            ) as resp:
+            async with session.get(f"https://www.reddit.com/{API}/new.json?sort=new") as resp:
                 data = await resp.json()
                 data1 = data["data"]
                 children = data1["children"]

@@ -199,9 +199,7 @@ class Animal(commands.Cog):
         """Get a random dog fact"""
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://some-random-api.ml/facts/dog"
-            ) as resp:
+            async with session.get("https://some-random-api.ml/facts/dog") as resp:
                 data = await resp.json()
                 fact = data["fact"]
 
@@ -219,9 +217,7 @@ class Animal(commands.Cog):
         """Get a random cat fact"""
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://some-random-api.ml/facts/cat"
-            ) as resp:
+            async with session.get("https://some-random-api.ml/facts/cat") as resp:
                 data = await resp.json()
                 fact = data["fact"]
 
