@@ -29,8 +29,12 @@ async def nekosembed(self, ctx, user, action: str, endpoint: str):
         description=f"**{ctx.author.mention}** {action} {f'**{str(user.mention)}**' if user else 'themselves'}!",
         color=discord.Colour.random(),
     )
-    embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
-    embed.set_image(url=await api_call("https://nekos.life/api/v2/img/" + endpoint))
+    embed.set_author(
+        name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+    )
+    embed.set_image(
+        url=await api_call("https://nekos.life/api/v2/img/" + endpoint)
+    )
     return embed
 
 
@@ -54,7 +58,9 @@ async def kawaiiembed(self, ctx, action: str, endpoint: str, user=None):
         text=f"Requested by {ctx.message.author.display_name}",
         icon_url=ctx.message.author.avatar_url,
     )
-    embed.set_author(name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url)
+    embed.set_author(
+        name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+    )
 
     embed.set_image(
         url=await api_call2(
@@ -63,6 +69,7 @@ async def kawaiiembed(self, ctx, action: str, endpoint: str, user=None):
     )
 
     return embed
+
 
 # Thanks epic
 async def get_hook(self, ctx):

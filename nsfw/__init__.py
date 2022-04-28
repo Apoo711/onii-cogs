@@ -1,5 +1,5 @@
 from .nsfw import Nsfw
 
 
-def setup(bot):
-    bot.add_cog(Nsfw(bot))
+async def setup(bot):
+    await bot.add_cog(Nsfw(bot))

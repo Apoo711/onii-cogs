@@ -15,17 +15,13 @@ limitations under the License.
 """
 
 
-
-import contextlib
 import logging
 from random import randint
 
 import discord
 from redbot.core import Config, commands
-from redbot.core.utils.chat_formatting import box
-from tabulate import tabulate
 
-from .utils import get_hook, kawaiiembed, nekosembed, print_it
+from .utils import get_hook, kawaiiembed, nekosembed
 
 log = logging.getLogger("red.onii.perform")
 
@@ -35,7 +31,9 @@ class Perform(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.config = Config.get_conf(self, identifier=8423644625413, force_registration=True)
+        self.config = Config.get_conf(
+            self, identifier=8423644625413, force_registration=True
+        )
         default_global = {
             "feed": [
                 "https://media1.tenor.com/images/93c4833dbcfd5be9401afbda220066ee/tenor.gif?itemid=11223742",
@@ -140,7 +138,7 @@ class Perform(commands.Cog):
         self.cache = {}
 
     __author__ = ["Onii-chan", "sravan"]
-    __version__ = "5.5.1"  # idk what im doing with version
+    __version__ = "5.4.2"  # idk what im doing with version
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
@@ -159,24 +157,50 @@ class Perform(commands.Cog):
         if self.startup_task:
             self.startup_task.cancel()
 
+    # @commands.command()
+    # async def rstats(self, ctx, action: str):
+    #     embed = discord.Embed()
+    #     embed.set_author(name=f"{ctx.author.name}'s {action} statistics")
+    #     embed.add_field(name=f"Sent {action}s", value=)
+
+    async def check_perm(self, ctx):
+        perm = ctx.channel.permissions_for(
+            ctx.channel.guild.me
+        ).manage_webhooks
+        if perm is True:
+            return True
+        else:
+            return False
+
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
     @commands.guild_only()
     async def cuddle(self, ctx, user: discord.Member):
         """Cuddle a user!"""
         embed = await nekosembed(self, ctx, user, "cuddled", "cuddle")
-        target = await self.config.custom("Target", ctx.author.id, user.id).cuddle_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).cuddle_r()
         used = await self.config.user(ctx.author).cuddle_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total cuddles: {used + 1} | {ctx.author.name} has cuddled {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total cuddles: {used + 1} | {ctx.author.name} has cuddled {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).cuddle_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).cuddle_r.set(target + 1)
+        await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).cuddle_r.set(target + 1)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="poke")
@@ -186,18 +210,29 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "poked", "poke", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
-        target = await self.config.custom("Target", ctx.author.id, user.id).poke_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).poke_r()
         used = await self.config.user(ctx.author).poke_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total pokes: {used + 1} | {ctx.author.name} has poked {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total pokes: {used + 1} | {ctx.author.name} has poked {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).poke_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).poke_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).poke_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="kiss")
@@ -207,18 +242,29 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "just kissed", "kiss", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
-        target = await self.config.custom("Target", ctx.author.id, user.id).kiss_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).kiss_r()
         used = await self.config.user(ctx.author).kiss_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total kisses: {used + 1} | {ctx.author.name} has kissed {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total kisses: {used + 1} | {ctx.author.name} has kissed {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).kiss_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).kiss_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).kiss_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="hug")
@@ -228,18 +274,29 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "just hugged", "hug", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
-        target = await self.config.custom("Target", ctx.author.id, user.id).hug_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).hug_r()
         used = await self.config.user(ctx.author).hug_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total hugs: {used + 1} | {ctx.author.name} has hugged {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total hugs: {used + 1} | {ctx.author.name} has hugged {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).hug_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).hug_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).hug_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="pat")
@@ -249,18 +306,29 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "just patted", "pat", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
-        target = await self.config.custom("Target", ctx.author.id, user.id).pat_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).pat_r()
         used = await self.config.user(ctx.author).pat_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total pats: {used + 1} | {ctx.author.name} has patted {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total pats: {used + 1} | {ctx.author.name} has patted {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).pat_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).pat_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).pat_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="tickle")
@@ -270,18 +338,29 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "just tickled", "tickle", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
-        target = await self.config.custom("Target", ctx.author.id, user.id).tickle_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).tickle_r()
         used = await self.config.user(ctx.author).tickle_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total tickles: {used + 1} | {ctx.author.name} has tickled {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total tickles: {used + 1} | {ctx.author.name} has tickled {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).tickle_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).tickle_r.set(target + 1)
+        await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).tickle_r.set(target + 1)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="smug")
@@ -293,9 +372,14 @@ class Perform(commands.Cog):
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).smug_s()
         embed.set_footer(text=f"{ctx.author.name}'s total smugs: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -310,18 +394,29 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "just licked", "lick", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
-        target = await self.config.custom("Target", ctx.author.id, user.id).lick_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).lick_r()
         used = await self.config.user(ctx.author).lick_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total licks: {used + 1} | {ctx.author.name} has licked {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total licks: {used + 1} | {ctx.author.name} has licked {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).lick_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).lick_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).lick_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="slap")
@@ -331,18 +426,29 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "just slapped", "slap", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
-        target = await self.config.custom("Target", ctx.author.id, user.id).slap_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).slap_r()
         used = await self.config.user(ctx.author).slap_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total slaps: {used + 1} | {ctx.author.name} has slapped {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total slaps: {used + 1} | {ctx.author.name} has slapped {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).slap_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).slap_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).slap_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="cry")
@@ -354,9 +460,14 @@ class Perform(commands.Cog):
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).cry()
         embed.set_footer(text=f"{ctx.author.name}'s total cries: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -368,14 +479,19 @@ class Perform(commands.Cog):
     @commands.bot_has_permissions(embed_links=True)
     async def sleep(self, ctx):
         """Act sleepy!"""
-        embed = await kawaiiembed(self, ctx, "is sleepy!", "sleepy")
+        embed = await kawaiiembed(self, ctx, "is sleepy!", "sleep")
         if embed is False:
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).sleep()
         embed.set_footer(text=f"{ctx.author.name}'s total sleeps: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -398,23 +514,29 @@ class Perform(commands.Cog):
             description=f"**{ctx.author.mention}** just spanked {f'**{str(user.mention)}**' if user else 'themselves'}!",
         )
         em.set_image(url=images[i])
-        target = await self.config.custom("Target", ctx.author.id, user.id).spank_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).spank_r()
         used = await self.config.user(ctx.author).spank_s()
-        em.set_footer(text=f"{ctx.author.name}'s total spanks: {used + 1} | {ctx.author.name} has spanked {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        em.set_footer(
+            text=f"{ctx.author.name}'s total spanks: {used + 1} | {ctx.author.name} has spanked {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
                     avatar_url=ctx.author.avatar_url,
-                    embed=em
-                    )
+                    embed=em,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=em, mention_author=False)
         else:
             await ctx.reply(embed=em, mention_author=False)
         await self.config.user(ctx.author).spank_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).spank_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).spank_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="pout")
@@ -426,9 +548,14 @@ class Perform(commands.Cog):
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).pout()
         embed.set_footer(text=f"{ctx.author.name}'s total pouts: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -445,9 +572,14 @@ class Perform(commands.Cog):
             return await ctx.send("shiro.gg api is down")
         used = await self.config.user(ctx.author).blush()
         embed.set_footer(text=f"{ctx.author.name}'s total blushes: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -470,23 +602,29 @@ class Perform(commands.Cog):
             description=f"**{ctx.author.mention}** feeds {f'**{str(user.mention)}**' if user else 'themselves'}!",
         )
         em.set_image(url=images[i])
-        target = await self.config.custom("Target", ctx.author.id, user.id).feed_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).feed_r()
         used = await self.config.user(ctx.author).feed_s()
-        em.set_footer(text=f"{ctx.author.name}'s total feeds: {used + 1} | {ctx.author.name} has feeded {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        em.set_footer(
+            text=f"{ctx.author.name}'s total feeds: {used + 1} | {ctx.author.name} has feeded {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
                     avatar_url=ctx.author.avatar_url,
-                    embed=em
-                    )
+                    embed=em,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=em, mention_author=False)
         else:
             await ctx.reply(embed=em, mention_author=False)
         await self.config.user(ctx.author).feed_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).feed_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).feed_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="punch")
@@ -496,18 +634,29 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "just punched", "punch", user)
         if embed is False:
             return await ctx.send("shiro.gg api is down")
-        target = await self.config.custom("Target", ctx.author.id, user.id).punch_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).punch_r()
         used = await self.config.user(ctx.author).punch_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total punches: {used + 1} | {ctx.author.name} has punched {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total punxhes: {used + 1} | {ctx.author.name} has punxhed {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).punch_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).punch_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).punch_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="confuse", aliases=["confused"])
@@ -516,10 +665,17 @@ class Perform(commands.Cog):
         """Act confused!"""
         embed = await kawaiiembed(self, ctx, "is confused!", "confused")
         used = await self.config.user(ctx.author).confuse()
-        embed.set_footer(text=f"{ctx.author.name}'s total confusions: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total confusions: {used + 1}"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -534,9 +690,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is amazed!", "amazing")
         used = await self.config.user(ctx.author).amazed()
         embed.set_footer(text=f"{ctx.author.name}'s total amazes: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -549,18 +710,29 @@ class Perform(commands.Cog):
     async def highfive(self, ctx, user: discord.Member):
         """Highfive a user!"""
         embed = await kawaiiembed(self, ctx, "highfived", "highfive", user)
-        target = await self.config.custom("Target", ctx.author.id, user.id).highfive_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).highfive_r()
         used = await self.config.user(ctx.author).highfive_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total highfives: {used + 1} | {ctx.author.name} has highfived {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total highfives: {used + 1} | {ctx.author.name} has highfived {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).highfive_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).highfive_r.set(target + 1)
+        await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).highfive_r.set(target + 1)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="plead", aliases=["ask"])
@@ -568,18 +740,29 @@ class Perform(commands.Cog):
     async def plead(self, ctx, user: discord.Member):
         """Asks a user!"""
         embed = await kawaiiembed(self, ctx, "is pleading", "ask", user)
-        target = await self.config.custom("Target", ctx.author.id, user.id).plead_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).plead_r()
         used = await self.config.user(ctx.author).plead_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total pleads: {used + 1} | {ctx.author.name} has pleaded {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total pleads: {used + 1} | {ctx.author.name} has pleaded {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).plead_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).plead_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).plead_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="clap")
@@ -589,9 +772,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is clapping!", "clap")
         used = await self.config.user(ctx.author).clap()
         embed.set_footer(text=f"{ctx.author.name}'s total claps: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -605,10 +793,17 @@ class Perform(commands.Cog):
         """Do a facepalm!"""
         embed = await kawaiiembed(self, ctx, "is facepalming!", "facepalm")
         used = await self.config.user(ctx.author).facepalm()
-        embed.set_footer(text=f"{ctx.author.name}'s total facepalms: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total facepalms: {used + 1}"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -622,10 +817,17 @@ class Perform(commands.Cog):
         """Do a facedesk!"""
         embed = await kawaiiembed(self, ctx, "is facedesking!", "facedesk")
         used = await self.config.user(ctx.author).facedesk()
-        embed.set_footer(text=f"{ctx.author.name}'s total facedesks: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total facedesks: {used + 1}"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -638,18 +840,29 @@ class Perform(commands.Cog):
     async def kill(self, ctx, user: discord.Member):
         """Kill a user!"""
         embed = await kawaiiembed(self, ctx, "killed", "kill", user)
-        target = await self.config.custom("Target", ctx.author.id, user.id).kill_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).kill_r()
         used = await self.config.user(ctx.author).kill_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total kills: {used + 1} | {ctx.author.name} has killed {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total kills: {used + 1} | {ctx.author.name} has killed {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).kill_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).kill_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).kill_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
@@ -657,18 +870,29 @@ class Perform(commands.Cog):
     async def love(self, ctx, user: discord.Member):
         """Love a user!"""
         embed = await kawaiiembed(self, ctx, "loves", "love", user)
-        target = await self.config.custom("Target", ctx.author.id, user.id).love_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).love_r()
         used = await self.config.user(ctx.author).love_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total loves: {used + 1} | {ctx.author.name} has loved {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total loves: {used + 1} | {ctx.author.name} has loved {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).love_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).love_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).love_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="hide")
@@ -678,9 +902,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is hiding!", "hide")
         used = await self.config.user(ctx.author).hide()
         embed.set_footer(text=f"{ctx.author.name}'s total hides: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -695,9 +924,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is laughing!", "laugh")
         used = await self.config.user(ctx.author).laugh()
         embed.set_footer(text=f"{ctx.author.name}'s total laughs: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -712,9 +946,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is lurking!", "peek")
         used = await self.config.user(ctx.author).lurk()
         embed.set_footer(text=f"{ctx.author.name}'s total lurks: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -727,18 +966,29 @@ class Perform(commands.Cog):
     async def bite(self, ctx, user: discord.Member):
         """Bite a user!"""
         embed = await kawaiiembed(self, ctx, "is biting", "bite", user)
-        target = await self.config.custom("Target", ctx.author.id, user.id).bite_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).bite_r()
         used = await self.config.user(ctx.author).bite_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total bites: {used + 1} | {ctx.author.name} has bitten {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total bites: {used + 1} | {ctx.author.name} has bitten {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).bite_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).bite_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).bite_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="dance")
@@ -748,9 +998,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is dancing", "dance")
         used = await self.config.user(ctx.author).dance()
         embed.set_footer(text=f"{ctx.author.name}'s total dances: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -763,18 +1018,29 @@ class Perform(commands.Cog):
     async def yeet(self, ctx, user: discord.Member):
         """Yeet someone!"""
         embed = await kawaiiembed(self, ctx, "yeeted", "yeet", user)
-        target = await self.config.custom("Target", ctx.author.id, user.id).yeet_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).yeet_r()
         used = await self.config.user(ctx.author).yeet_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total yeets: {used + 1} | {ctx.author.name} has yeeted {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total yeets: {used + 1} | {ctx.author.name} has yeeted {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).yeet_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).yeet_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).yeet_r.set(
+            target + 1
+        )
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="dodge")
@@ -784,9 +1050,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is dodging!", "dodge")
         used = await self.config.user(ctx.author).dodge()
         embed.set_footer(text=f"{ctx.author.name}'s total dodges: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -800,10 +1071,17 @@ class Perform(commands.Cog):
         """Act happy!"""
         embed = await kawaiiembed(self, ctx, "is happy!", "happy")
         used = await self.config.user(ctx.author).happy()
-        embed.set_footer(text=f"{ctx.author.name}'s total happiness: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total happiness: {used + 1}"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -817,10 +1095,17 @@ class Perform(commands.Cog):
         """Act cute!"""
         embed = await kawaiiembed(self, ctx, "is acting cute!", "cute")
         used = await self.config.user(ctx.author).cute()
-        embed.set_footer(text=f"{ctx.author.name}'s total cuteness: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total cuteness: {used + 1}"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -834,10 +1119,17 @@ class Perform(commands.Cog):
         """Act lonely!"""
         embed = await kawaiiembed(self, ctx, "is lonely!", "lonely")
         used = await self.config.user(ctx.author).lonely()
-        embed.set_footer(text=f"{ctx.author.name}'s total loneliness: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total loneliness: {used + 1}"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -851,10 +1143,17 @@ class Perform(commands.Cog):
         """Act angry!"""
         embed = await kawaiiembed(self, ctx, "is angry!", "mad")
         used = await self.config.user(ctx.author).mad()
-        embed.set_footer(text=f"{ctx.author.name}'s total angriness: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total angriness: {used + 1}"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -866,12 +1165,21 @@ class Perform(commands.Cog):
     @commands.guild_only()
     async def nosebleed(self, ctx):
         """Start bleeding from nose!"""
-        embed = await kawaiiembed(self, ctx, "'s nose is bleeding!", "nosebleed")
+        embed = await kawaiiembed(
+            self, ctx, "'s nose is bleeding!", "nosebleed"
+        )
         used = await self.config.user(ctx.author).nosebleed()
-        embed.set_footer(text=f"{ctx.author.name}'s total nosebleeds: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total nosebleeds: {used + 1}"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -884,18 +1192,29 @@ class Perform(commands.Cog):
     async def protect(self, ctx, user: discord.Member):
         """Protech someone!"""
         embed = await kawaiiembed(self, ctx, "is protecting!", "protect", user)
-        target = await self.config.custom("Target", ctx.author.id, user.id).protect_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).protect_r()
         used = await self.config.user(ctx.author).protect_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total protects: {used + 1} | {ctx.author.name} has protected {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total protects: {used + 1} | {ctx.author.name} has protected {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).protect_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).protect_r.set(target + 1)
+        await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).protect_r.set(target + 1)
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(name="run")
@@ -905,9 +1224,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is running!", "run")
         used = await self.config.user(ctx.author).run()
         embed.set_footer(text=f"{ctx.author.name}'s total runs: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -922,9 +1246,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is scared!", "scared")
         used = await self.config.user(ctx.author).scared()
         embed.set_footer(text=f"{ctx.author.name}'s total scares: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -939,9 +1268,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is shrugging!", "shrug")
         used = await self.config.user(ctx.author).shrug()
         embed.set_footer(text=f"{ctx.author.name}'s total shrugs: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -956,9 +1290,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is screaming!", "scream")
         used = await self.config.user(ctx.author).scream()
         embed.set_footer(text=f"{ctx.author.name}'s total screams: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -973,9 +1312,14 @@ class Perform(commands.Cog):
         embed = await kawaiiembed(self, ctx, "is stareing!", "stare")
         used = await self.config.user(ctx.author).stare()
         embed.set_footer(text=f"{ctx.author.name}'s total stares: {used + 1}")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -988,18 +1332,29 @@ class Perform(commands.Cog):
     async def wave(self, ctx, user: discord.Member):
         """Wave to someone!"""
         embed = await kawaiiembed(self, ctx, "is waving", "wave", user)
-        target = await self.config.custom("Target", ctx.author.id, user.id).wave_r()
+        target = await self.config.custom(
+            "Target", ctx.author.id, user.id
+        ).wave_r()
         used = await self.config.user(ctx.author).wave_s()
-        embed.set_footer(text=f"{ctx.author.name}'s total waves: {used + 1} | {ctx.author.name} has waved {user.name} {target + 1} times")
-        if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
+        embed.set_footer(
+            text=f"{ctx.author.name}'s total waves: {used + 1} | {ctx.author.name} has waved {user.name} {target + 1} times"
+        )
+        if self.check_perm(ctx) is True:
             try:
-                await print_it(self, ctx, embed)
+                hook = await get_hook(self, ctx)
+                await hook.send(
+                    username=ctx.author.display_name,
+                    avatar_url=ctx.author.avatar_url,
+                    embed=embed,
+                )
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
             await ctx.reply(embed=embed, mention_author=False)
         await self.config.user(ctx.author).wave_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).wave_r.set(target + 1)
+        await self.config.custom("Target", ctx.author.id, user.id).wave_r.set(
+            target + 1
+        )
 
     @commands.is_owner()
     @commands.command()
@@ -1012,83 +1367,6 @@ class Perform(commands.Cog):
                 "2. Login using your discord account\n"
                 "3. Click on dashboard and copy your token\n"
                 "4. Use `[p]set api perform api_key <token>`",
-            )
+            ),
         )
         await ctx.send(embed=embed)
-
-    @commands.command()
-    @commands.guild_only()
-    async def rstats(self, ctx: commands.Context, action: str, member: discord.Member = None):
-        """RStats cog commands."""
-        valid = [
-            "cuddle",
-            "poke",
-            "kiss",
-            "hug",
-            "pat",
-            "tickle",
-            "smug",
-            "lick",
-            "slap",
-            "cry",
-            "sleep",
-            "spank",
-            "pout",
-            "blush",
-            "feed",
-            "punch",
-            "confuse",
-            "amazed",
-            "highfive",
-            "plead",
-            "clap",
-            "facepalm",
-            "headdesk",
-            "kill",
-            "love",
-            "hide",
-            "laugh",
-            "peek",
-            "bite",
-            "dance",
-            "yeet",
-            "dodge",
-            "happy",
-            "cute",
-            "lonely",
-            "mad",
-            "nosebleed",
-            "protect",
-            "run",
-            "scared",
-            "shrug",
-            "scream",
-            "stare",
-            "wave",
-            ]
-        if action.lower() not in valid:
-            return await ctx.send("Invalid action.")
-        if member is None:
-            member = ctx.author
-        data = await self.config.custom("Target").all()
-        top_10 = get_top10(data, member.id)
-        embed = discord.Embed(title=f"Top 10 for {member.name}")
-        top_10 = tabulate(top_10, tablefmt="psql", headers=["User", "Spanks"])
-        embed.description = box(top_10)
-        await ctx.send(embed=embed)
-
-
-def get_top10(data, action: str):
-    targets = []
-    for i in data:
-        for key, value in data[i].items():
-            with contextlib.suppress(KeyError):
-                targets.append((value["spank_r"], key))
-        targets.sort(key=lambda x: x[0], reverse = True)
-    return targets[:10]
-
-def setup(bot):
-    global hug
-
-    hug = bot.remove_command("hug")
-    bot.add_cog(Perform(bot))

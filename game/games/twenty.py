@@ -28,7 +28,10 @@ async def play(ctx, bot):
     def check(reaction, user):
         return (
             (user.id == ctx.author.id)
-            and (str(reaction.emoji) in ["\u2B06", "\u2B07", "\u2B05", "\u27A1", "\u274C"])
+            and (
+                str(reaction.emoji)
+                in ["\u2B06", "\u2B07", "\u2B05", "\u27A1", "\u274C"]
+            )
             and (reaction.message.id == message.id)
         )
 
@@ -66,14 +69,22 @@ async def play(ctx, bot):
                 await message.delete()
                 return
             board = nb
-            await message.edit(content=f"Score: **{score}**```{print_board(board)}```")
+            await message.edit(
+                content=f"Score: **{score}**```{print_board(board)}```"
+            )
+
 
 def print_board(board):
-    col_width = max(len(str(word)) for row in board for word in row) + 2  # padding
+    col_width = (
+        max(len(str(word)) for row in board for word in row) + 2
+    )  # padding
     whole_thing = ""
     for row in board:
-        whole_thing += "".join(str(word).ljust(col_width) for word in row) + "\n"
+        whole_thing += (
+            "".join(str(word).ljust(col_width) for word in row) + "\n"
+        )
     return whole_thing
+
 
 def execute_move(move, pboard):
     board = dc(pboard)
@@ -81,7 +92,9 @@ def execute_move(move, pboard):
     if move.lower() == "left":
         nb, total = check_left(board)
         for x in range(len(nb)):
-            while nb[x][0] == "_" and (nb[x][1] != "_" or nb[x][2] != "_" or nb[x][3] != "_"):
+            while nb[x][0] == "_" and (
+                nb[x][1] != "_" or nb[x][2] != "_" or nb[x][3] != "_"
+            ):
                 nb[x][0] = nb[x][1]
                 nb[x][1] = nb[x][2]
                 nb[x][2] = nb[x][3]
@@ -96,7 +109,9 @@ def execute_move(move, pboard):
     if move.lower() == "right":
         nb, total = check_right(board)
         for x in range(len(nb)):
-            while nb[x][3] == "_" and (nb[x][2] != "_" or nb[x][1] != "_" or nb[x][0] != "_"):
+            while nb[x][3] == "_" and (
+                nb[x][2] != "_" or nb[x][1] != "_" or nb[x][0] != "_"
+            ):
                 nb[x][3] = nb[x][2]
                 nb[x][2] = nb[x][1]
                 nb[x][1] = nb[x][0]
@@ -112,7 +127,9 @@ def execute_move(move, pboard):
         nb = columize(board)
         nb, total = check_down(nb)
         for x in range(len(nb)):
-            while nb[x][0] == "_" and (nb[x][1] != "_" or nb[x][2] != "_" or nb[x][3] != "_"):
+            while nb[x][0] == "_" and (
+                nb[x][1] != "_" or nb[x][2] != "_" or nb[x][3] != "_"
+            ):
                 nb[x][0] = nb[x][1]
                 nb[x][1] = nb[x][2]
                 nb[x][2] = nb[x][3]
@@ -129,7 +146,9 @@ def execute_move(move, pboard):
         nb = columize(board)
         nb, total = check_up(nb)
         for x in range(len(nb)):
-            while nb[x][3] == "_" and (nb[x][2] != "_" or nb[x][1] != "_" or nb[x][0] != "_"):
+            while nb[x][3] == "_" and (
+                nb[x][2] != "_" or nb[x][1] != "_" or nb[x][0] != "_"
+            ):
                 nb[x][3] = nb[x][2]
                 nb[x][2] = nb[x][1]
                 nb[x][1] = nb[x][0]
@@ -152,6 +171,7 @@ def execute_move(move, pboard):
         return "Lost", nb, total
     else:
         return "", nb, total
+
 
 def add_number(board):
     try:
@@ -176,6 +196,7 @@ def add_number(board):
         joining = 4
     board[row][column] = joining
     return "", board
+
 
 def columize(board):
     new_board = [[], [], [], []]
@@ -202,6 +223,7 @@ def columize(board):
     board = new_board
     return board
 
+
 def rowize(board):
     new_board = [[], [], [], []]
     # Make first row
@@ -227,6 +249,7 @@ def rowize(board):
     board = new_board
     return board
 
+
 def check_left(board):
     total = 0
     for x in range(len(board)):
@@ -250,6 +273,7 @@ def check_left(board):
             except IndexError:
                 pass
     return board, total
+
 
 def check_right(board):
     total = 0
@@ -277,6 +301,7 @@ def check_right(board):
         board[x].reverse()
     return board, total
 
+
 def check_up(board):
     total = 0
     for x in range(len(board)):
@@ -302,6 +327,7 @@ def check_up(board):
                 pass
         board[x].reverse()
     return board, total
+
 
 def check_down(board):
     total = 0
