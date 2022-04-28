@@ -121,7 +121,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
         try:
             await ctx.reply(
@@ -202,7 +202,7 @@ class Image(commands.Cog):
                         downvotes,
                         comments,
                     ),
-                    icon_url=ctx.message.author.avatar_url,
+                    icon_url=ctx.message.author.avatar.url,
                 )
 
                 return await ctx.reply(embed=embed, mention_author=False)
@@ -273,7 +273,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -340,7 +340,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -359,10 +359,10 @@ class Image(commands.Cog):
 
         embed.set_footer(
             text="Powered by nekos.best",
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
         embed.set_author(
-            name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+            name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
         )
 
         embed.set_image(url=await api_call("https://nekos.best/nekos"))
@@ -428,7 +428,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -497,7 +497,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -571,7 +571,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         try:
@@ -641,7 +641,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -708,7 +708,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -782,7 +782,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         await ctx.reply(
@@ -878,7 +878,7 @@ class Image(commands.Cog):
                 downvotes,
                 comments,
             ),
-            icon_url=ctx.message.author.avatar_url,
+            icon_url=ctx.message.author.avatar.url,
         )
 
         try:

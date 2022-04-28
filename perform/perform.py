@@ -190,7 +190,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -222,7 +222,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -254,7 +254,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -286,7 +286,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -318,7 +318,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -350,7 +350,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -377,7 +377,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -406,7 +406,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -438,7 +438,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -465,7 +465,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -489,7 +489,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -526,7 +526,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=em,
                 )
             except discord.Forbidden:
@@ -553,7 +553,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -577,7 +577,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -614,7 +614,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=em,
                 )
             except discord.Forbidden:
@@ -646,7 +646,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -673,7 +673,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -695,7 +695,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -722,7 +722,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -752,7 +752,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -777,7 +777,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -801,7 +801,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -825,7 +825,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -852,7 +852,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -882,7 +882,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -907,7 +907,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -929,7 +929,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -951,7 +951,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -978,7 +978,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1003,7 +1003,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1030,7 +1030,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1055,7 +1055,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1079,7 +1079,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1103,7 +1103,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1127,7 +1127,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1151,7 +1151,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1177,7 +1177,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1204,7 +1204,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1229,7 +1229,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1251,7 +1251,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1273,7 +1273,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1295,7 +1295,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1317,7 +1317,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
@@ -1344,7 +1344,7 @@ class Perform(commands.Cog):
                 hook = await get_hook(self, ctx)
                 await hook.send(
                     username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
+                    avatar_url=ctx.author.avatar.url,
                     embed=embed,
                 )
             except discord.Forbidden:
