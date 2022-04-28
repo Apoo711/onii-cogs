@@ -59,6 +59,7 @@ disable=C, # black is enforcing this for us already, incompatibly
     W0613, # Too many places where we need to take unused args do to d.py ... also menus
     W0221, # Overriden converters.
     W0223, # abstractmethod not defined in mixins is expected
+    E501, # line too long is annoying alr
     I, # ...
     R # While some of these have merit, It's too large a burden to enable this right now.
 

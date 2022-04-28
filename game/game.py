@@ -1,7 +1,15 @@
 import asyncio
 import random
 
-from Discord_Games import aki_buttons, twenty_48_buttons
+import discord
+from Discord_Games import (
+    aki,
+    aki_buttons,
+    connect_four,
+    twenty_48,
+    twenty_48_buttons
+)
+
 from redbot.core import commands
 
 from .games import minesweeper, tictactoe, wumpus
