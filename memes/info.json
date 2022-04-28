@@ -1,0 +1,18 @@
+{
+    "author": [
+        "Onii-Chan"
+    ],
+    "end_user_data_statement": "This cog does not save data about users persistently.",
+    "description": "A meme generation commands which can even make gifs! All credit goes to nirlep who made the package used.",
+    "short": "A very basic meme generation cog to light up your discord server!",
+    "install_msg": "Thanks for installing Memes, have fun.",
+    "min_bot_version": "3.5.0",
+    "tags": [
+        "meme",
+        "image-gen"
+    ],
+    "hidden": false,
+    "requirenments": [
+        "epicbot-images"
+    ]
+}
