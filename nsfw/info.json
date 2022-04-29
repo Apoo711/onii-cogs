@@ -4,5 +4,6 @@
     ],
     "name": "Nsfw",
     "description": "NSFW commands.",
-    "install_msg": "This cog contains NSFW commands, these commands will only work in an Nsfw channel. But, I would still advise that you proceed with caution."
+    "install_msg": "A nsfw cog with many commands to help with your fetishes.",
+    "min_bot_version": "3.5.0"
 }

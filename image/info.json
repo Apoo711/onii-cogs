@@ -5,5 +5,6 @@
     ],
     "name": "Image",
     "description": "Image commands!",
-    "install_msg": "Look at many images from space, look at memes, get wallpapers and a whole lot of other stuff!"
+    "install_msg": "Look at many images from space, look at memes, get wallpapers and a whole lot of other stuff!",
+    "min_bot_version": "3.5.0"
 }

@@ -6,7 +6,7 @@
     "description": "A game cog, which has games like, akinato, 2048, minesweeper, tictactoe and wumpus.",
     "short": "A game cog with multiple games.",
     "install_msg": "Thanks for installing Game, have fun.",
-    "min_bot_version": "3.4.0",
+    "min_bot_version": "3.5.0",
     "tags": [
         "2048",
         "miesweeper",

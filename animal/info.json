@@ -5,5 +5,6 @@
     ],
     "name": "Wallpaper",
     "description": "Wallpaper commands!",
-    "install_msg": "Get animal images, facts and more animals coming soon."
+    "install_msg": "Get animal images, facts and more animals coming soon.",
+    "min_bot_version": "3.5.0"
 }
