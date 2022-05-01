@@ -156,11 +156,7 @@ class Perform(commands.Cog):
         self.cache = {}
 
     __author__ = ["Onii-chan", "sravan"]
-<<<<<<< HEAD
-    __version__ = "5.4.2"  # idk what im doing with version
-=======
     __version__ = "5.5.5"  # idk what im doing with version
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         """Thanks Sinbad!"""
@@ -206,16 +202,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -242,16 +229,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -278,16 +256,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -314,16 +283,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -350,16 +310,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -386,16 +337,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -417,16 +359,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total smugs: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -450,16 +383,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -486,16 +410,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -517,16 +432,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total cries: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -545,16 +451,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total sleeps: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -614,16 +511,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total pouts: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -642,16 +530,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total blushes: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -711,24 +590,10 @@ class Perform(commands.Cog):
             "Target", ctx.author.id, user.id
         ).punch_r()
         used = await self.config.user(ctx.author).punch_s()
-<<<<<<< HEAD
-        embed.set_footer(
-            text=f"{ctx.author.name}'s total punxhes: {used + 1} | {ctx.author.name} has punxhed {user.name} {target + 1} times"
-        )
-        if self.check_perm(ctx) is True:
-            try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
         embed.set_footer(text=f"{ctx.author.name}'s total punches: {used + 1} | {ctx.author.name} has punched {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -744,26 +609,11 @@ class Perform(commands.Cog):
     async def confuse(self, ctx):
         """Act confused!"""
         embed = await kawaiiembed(self, ctx, "is confused!", "confused")
-<<<<<<< HEAD
-        used = await self.config.user(ctx.author).confuse()
-        embed.set_footer(
-            text=f"{ctx.author.name}'s total confusions: {used + 1}"
-        )
-        if self.check_perm(ctx) is True:
-            try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
         used = await self.config.user(ctx.author).confused()
         embed.set_footer(text=f"{ctx.author.name}'s total confusions: {used + 1}")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -780,16 +630,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total amazes: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -811,16 +652,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -845,16 +677,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -874,16 +697,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total claps: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -902,16 +716,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -930,16 +735,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -961,16 +757,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -995,16 +782,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -1024,16 +802,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total hides: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1050,16 +819,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total laughs: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1076,16 +836,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total lurks: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1107,16 +858,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -1136,16 +878,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total dances: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1167,16 +900,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -1196,16 +920,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total dodges: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1224,16 +939,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1252,16 +958,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1280,16 +977,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1308,16 +996,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1338,16 +1017,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1369,16 +1039,7 @@ class Perform(commands.Cog):
         )
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed, user)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, content=user.mention, mention_author=False)
         else:
@@ -1398,16 +1059,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total runs: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1424,16 +1076,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total scares: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1450,16 +1093,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total shrugs: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1476,16 +1110,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total screams: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1502,16 +1127,7 @@ class Perform(commands.Cog):
         embed.set_footer(text=f"{ctx.author.name}'s total stares: {used + 1}")
         if self.check_perm(ctx) is True:
             try:
-<<<<<<< HEAD
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=embed,
-                )
-=======
                 await print_it(self, ctx, embed)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
             except discord.Forbidden:
                 await ctx.reply(embed=embed, mention_author=False)
         else:
@@ -1563,31 +1179,13 @@ class Perform(commands.Cog):
         em.set_footer(text=f"{ctx.author.name}'s total nutkicks: {used + 1} | {ctx.author.name} has nutkicked {user.name} {target + 1} times")
         if ctx.channel.permissions_for(ctx.channel.guild.me).manage_webhooks is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-<<<<<<< HEAD
-                    embed=embed,
-                )
-=======
-                    embed=em
-                    )
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
+                await print_it(self, ctx, em, user)
             except discord.Forbidden:
                 await ctx.reply(embed=em, mention_author=False)
         else:
-<<<<<<< HEAD
-            await ctx.reply(embed=embed, mention_author=False)
-        await self.config.user(ctx.author).wave_s.set(used + 1)
-        await self.config.custom("Target", ctx.author.id, user.id).wave_r.set(
-            target + 1
-        )
-=======
             await ctx.reply(embed=em, mention_author=False)
         await self.config.user(ctx.author).nut_s.set(used + 1)
         await self.config.custom("Target", ctx.author.id, user.id).nut_r.set(target + 1)
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
 
     @commands.is_owner()
     @commands.command()
@@ -1603,8 +1201,6 @@ class Perform(commands.Cog):
             ),
         )
         await ctx.send(embed=embed)
-<<<<<<< HEAD
-=======
 
 #     @commands.command()
 #     @commands.guild_only()
@@ -1682,4 +1278,3 @@ def setup(bot):
 
     hug = bot.remove_command("hug")
     bot.add_cog(Perform(bot))
->>>>>>> fb334323a2359250b3f7c3c66057c5a597af8f9e
