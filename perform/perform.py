@@ -481,12 +481,7 @@ class Perform(commands.Cog):
         )
         if await self.check_perm(ctx) is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=em,
-                )
+                await print_it(self, ctx, em, user)
             except discord.Forbidden:
                 await ctx.reply(embed=em, mention_author=False)
         else:
@@ -560,12 +555,7 @@ class Perform(commands.Cog):
         )
         if await self.check_perm(ctx) is True:
             try:
-                hook = await get_hook(self, ctx)
-                await hook.send(
-                    username=ctx.author.display_name,
-                    avatar_url=ctx.author.avatar_url,
-                    embed=em,
-                )
+                await print_it(self, ctx, em, user)
             except discord.Forbidden:
                 await ctx.reply(embed=em, mention_author=False)
         else:
