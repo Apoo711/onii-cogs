@@ -182,7 +182,7 @@ class Perform(commands.Cog):
         perm = ctx.channel.permissions_for(
             ctx.channel.guild.me
         ).manage_webhooks
-        return True
+        return perm is True
 
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command()
