@@ -22,7 +22,7 @@ To add cogs from this repo to your instance, do these steps:
 | --- | ---------- |---------------- |
 | Image | Alpha |<details><summary>Wallpaper commands for anime</summary>This cog chooses random wallpapers from a different subreddits and sends them to you in an embed.</details>
 | Nsfw | Alpha |<details><summary>Nsfw commands</summary>Nsfw commands, proceed with caution.</details>
-| Perform | Deprecated |<details><summary>Roleplaying commands</summary>Perform things like cuddle, poke, kiss etc. [NOTE] This cog has been deprecated and is now maintained by by [Sravan](https://github.com/sravan1946) [here](https://github.com/sravan1946/sravan-cogs)</details>
+| Perform |Alpha |<deatails><summary>Perform commands</summary>Perform things like cuddle, poke, kiss etc.</details>
 | Oniitools | Alpha |<details><summary> My set of must have commands.</summary>This cog chooses random wallpapers from a different subreddits and sends them to you in an embed.</details>
 | Animals | Alpha |<details><summary>Sends images of cute animals!</summary>Sends very cute animals in an embed, more animals coming soon.</details>
 
@@ -30,6 +30,7 @@ To add cogs from this repo to your instance, do these steps:
 - Everyone who contributed to make this better.
 - Thank you Red community, you guys are awesome.
 
+- Thank you OofChair for fixing things in my readme
 - Sravan, for always improving my cogs.
 
 # Contributing.md
