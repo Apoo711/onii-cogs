@@ -31,4 +31,3 @@ msgid "Shows some cat wallpaperd from reddit.\n\n"
 "        Wallpapers shown are taken from r/catwallpapers.\n"
 "        "
 msgstr ""
-
