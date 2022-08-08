@@ -23,7 +23,7 @@ class Games(commands.Cog):
     @commands.cooldown(1, 30, commands.BucketType.user)
     @commands.max_concurrency(1, commands.BucketType.user)
     async def akinator(self, ctx):
-        if not discord.__version__ == "2.0.0a":
+        if discord.__version__ != "2.0.0a":
             return await aki.Akinator.start(self, ctx)
         else:
             await aki_buttons.BetaAkinator().start(
@@ -35,7 +35,7 @@ class Games(commands.Cog):
         name="2048", aliases=["twenty48"], help="Play 2048 game."
     )
     async def _twenty_48(self, ctx):
-        if not discord.__version__ == "2.0.0a":
+        if discord.__version__ != "2.0.0a":
             return await twenty_48.Twenty48.start(self, ctx)
         else:
             await twenty_48_buttons.BetaTwenty48().start(ctx)
@@ -66,11 +66,8 @@ class Games(commands.Cog):
     async def rps(self, ctx):
         def check_win(p, b):
             if p == "🌑":
-                return False if b == "📄" else True
-            if p == "📄":
-                return False if b == "✂" else True
-            # p=='✂'
-            return False if b == "🌑" else True
+                return b != "📄"
+            return b != "✂" if p == "📄" else b != "🌑"
 
         async with ctx.typing():
             reactions = ["🌑", "📄", "✂"]
