@@ -16,4 +16,3 @@ msgstr ""
 "X-Crowdin-File: /Dev/perform/locales/messages.pot\n"
 "X-Crowdin-File-ID: 32\n"
 "Language: ro_RO\n"
-
