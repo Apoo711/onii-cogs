@@ -3,7 +3,7 @@ default_language_version:
 exclude: ^.stubs/
 repos:
   - repo: https://github.com/psf/black
-    rev: '22.6.0'
+    rev: '22.8.0'
     hooks:
       - id: black
 
@@ -55,7 +55,7 @@ repos:
       - id: check-merge-conflict
 
   - repo: https://github.com/sourcery-ai/sourcery
-    rev: v0.12.8b7+e69bf5ac # Get the latest tag from https://github.com/sourcery-ai/sourcery/tags
+    rev: v0.12.8b10+63a90d60 # Get the latest tag from https://github.com/sourcery-ai/sourcery/tags
     hooks:
       - id: sourcery
       # - args: [--in-place]  Automatically apply the refactorings in the hook
